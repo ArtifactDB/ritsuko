@@ -18,6 +18,7 @@ enable_testing()
 add_executable(
     libtest 
     src/r_missing_value.cpp
+    src/is_date_time.cpp
 )
 
 target_link_libraries(
