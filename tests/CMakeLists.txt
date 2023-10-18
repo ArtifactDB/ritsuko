@@ -24,6 +24,7 @@ add_executable(
     src/hdf5/forbid_large_integers.cpp
     src/hdf5/load_scalar_string_attribute.cpp
     src/hdf5/iterate_1d_blocks.cpp
+    src/hdf5/load_1d_string_dataset.cpp
 )
 
 target_link_libraries(
