@@ -2,13 +2,16 @@
 #define RITSUKO_R_MISSING_HPP
 
 #include <cstdint>
+#include <cstring>
 
 namespace ritsuko {
 
 /**
- * @return NaN with a payload of 1954, equivalent to the missing value in R.
+ * Create R's missing value for doubles, allowing us to mimic R's missingness concept in other languages.
+ *
+ * @return A quiet NaN with a payload of 1954, equivalent to R's double-precision missing value.
  */
-inline double r_missing() {
+inline double r_missing_value() {
     uint32_t tmp_value = 1;
     auto tmp_ptr = reinterpret_cast<unsigned char*>(&tmp_value);
 
@@ -33,6 +36,23 @@ inline double r_missing() {
     *(missing_ptr += step) = 0xa2;
 
     return missing_value;
+}
+
+/**
+ * Check for identical floating-point numbers, including NaN status and the payload.
+ *
+ * @tparam Float_ Floating-point type.
+ *
+ * @param x Pointer to a floating point value.
+ * @param y Pointer to another floating point value.
+ *
+ * @return Whether or not `x` and `y` have identical bit patterns.
+ */
+template<typename Float_>
+bool are_floats_identical(const Float_* x, const Float_* y) {
+    auto xptr = reinterpret_cast<const unsigned char*>(x);
+    auto yptr = reinterpret_cast<const unsigned char*>(y);
+    return std::memcmp(xptr, yptr, sizeof(Float_)) == 0;
 }
 
 }

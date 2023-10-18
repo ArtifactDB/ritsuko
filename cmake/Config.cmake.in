@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+if(@RITSUKO_FIND_HDF5@)
+    find_package(HDF5 COMPONENTS C CXX)
+endif()
+
+include("${CMAKE_CURRENT_LIST_DIR}/artifactdb_ritsukoTargets.cmake")
