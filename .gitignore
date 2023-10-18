@@ -1,3 +1,5 @@
 build/
 *.swp
 *.h5
+docs/html
+docs/latex
