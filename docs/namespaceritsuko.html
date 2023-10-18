@@ -24,7 +24,7 @@
   <td id="projectalign">
    <div id="projectname">ritsuko
    </div>
-   <div id="projectbrief">Recovering R lists faithfully from HDF5 or JSON</div>
+   <div id="projectbrief">Helper utilities for ArtifactDB C++ code</div>
   </td>
  </tr>
  </tbody>
@@ -191,7 +191,7 @@ template&lt;typename Float_ &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Whether <code>ptr</code> refers to a XXXX-YY-ZZ date, for approximately valid combinations of YY and ZZ. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether <code>ptr</code> refers to a XXXX-YY-ZZ date, for approximately valid combinations of YY and ZZ (see <code><a class="el" href="namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8">is_date_prefix()</a></code> for details). </dd></dl>
 
 </div>
 </div>
@@ -218,7 +218,7 @@ template&lt;typename Float_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Does a string start with a XXXX-YY-ZZ date, for approximately valid combinations of YY and ZZ? (No check is performed for the exact correctness of the number of days for each month.)</p>
+<p >Does a string start with a XXXX-YY-ZZ date, for approximately valid combinations of YY and ZZ? (This is only approximate as we do not check the exact correctness of the number of days for each month.)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ptr</td><td>Pointer to a C-style string containing at least 10 characters.</td></tr>
@@ -262,7 +262,7 @@ template&lt;typename Float_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Does a string follow the RFC3339 format?</p>
+<p >Does a string follow the RFC3339 format? This uses <code><a class="el" href="namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8">is_date_prefix()</a></code> and <code><a class="el" href="namespaceritsuko.html#ac5f8ff07715c8177a709e440eb029f30">is_rfc3339_suffix()</a></code> to check the date and the rest of the timestamp, respectively.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ptr</td><td>Pointer to a C-style string. </td></tr>
@@ -307,10 +307,10 @@ template&lt;typename Float_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Does a string finish with an RFC3339-compliant timestamp (i.e., starting at the <code>T</code> after the date)? This assumes that the start of the string was previously parsed with <code><a class="el" href="namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8">is_date_prefix()</a></code>. Note that the timestamp validity checks are only approximate as the correctness of leap seconds are not currently considered.</p>
+<p >Does a string finish with an RFC3339-compliant timestamp, i.e., does the substring starting at <code>T</code> after the date follow the RFC3339 specification? Note that the timestamp validity checks are only approximate as the correctness of leap seconds are not currently considered. It is expected that the start of the string up to the <code>T</code> was already validated with <code><a class="el" href="namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8">is_date_prefix()</a></code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ptr</td><td>Pointer to a C-style string containing at least 10 characters, presumably starting from <code>T</code> in the timestamp. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ptr</td><td>Pointer to a character array containing at least 10 characters. This should start from the 10th position in the original string, i.e., <code>T</code> in the timestamp. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">len</td><td>Length of the string in <code>ptr</code>.</td></tr>
   </table>
   </dd>

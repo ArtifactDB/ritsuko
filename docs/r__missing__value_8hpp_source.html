@@ -24,7 +24,7 @@
   <td id="projectalign">
    <div id="projectname">ritsuko
    </div>
-   <div id="projectbrief">Recovering R lists faithfully from HDF5 or JSON</div>
+   <div id="projectbrief">Helper utilities for ArtifactDB C++ code</div>
   </td>
  </tr>
  </tbody>
@@ -78,54 +78,54 @@ $(function() {
   <div class="headertitle"><div class="title">r_missing_value.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef RITSUKO_R_MISSING_HPP</span></div>
+<a href="r__missing__value_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef RITSUKO_R_MISSING_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define RITSUKO_R_MISSING_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">   14</a></span><span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">r_missing_value</a>() {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    uint32_t tmp_value = 1;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">auto</span> tmp_ptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;tmp_value);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// Mimic R&#39;s generation of these values, but we can&#39;t use type punning as</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// this is not legal in C++, and we don&#39;t have bit_cast yet.</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">double</span> missing_value = 0;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">auto</span> missing_ptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;missing_value);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">   19</a></span><span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">r_missing_value</a>() {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    uint32_t tmp_value = 1;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">auto</span> tmp_ptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;tmp_value);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">int</span> step = 1;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (tmp_ptr[0] == 1) { <span class="comment">// little-endian. </span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        missing_ptr += <span class="keyword">sizeof</span>(double) - 1;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        step = -1;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    *missing_ptr = 0x7f;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    *(missing_ptr += step) = 0xf0;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    *(missing_ptr += step) = 0x00;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    *(missing_ptr += step) = 0x00;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    *(missing_ptr += step) = 0x00;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    *(missing_ptr += step) = 0x00;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    *(missing_ptr += step) = 0x07;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    *(missing_ptr += step) = 0xa2;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">return</span> missing_value;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Float_&gt;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="namespaceritsuko.html#a74c2618a51291704bc7024b1dfc178d8">   52</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceritsuko.html#a74c2618a51291704bc7024b1dfc178d8">are_floats_identical</a>(<span class="keyword">const</span> Float_* x, <span class="keyword">const</span> Float_* y) {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">auto</span> xptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(x);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">auto</span> yptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(y);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> std::memcmp(xptr, yptr, <span class="keyword">sizeof</span>(Float_)) == 0;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Mimic R&#39;s generation of these values, but we can&#39;t use type punning as</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// this is not legal in C++, and we don&#39;t have bit_cast yet.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">double</span> missing_value = 0;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">auto</span> missing_ptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;missing_value);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> step = 1;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> (tmp_ptr[0] == 1) { <span class="comment">// little-endian. </span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        missing_ptr += <span class="keyword">sizeof</span>(double) - 1;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        step = -1;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    *missing_ptr = 0x7f;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    *(missing_ptr += step) = 0xf0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    *(missing_ptr += step) = 0x00;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    *(missing_ptr += step) = 0x00;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    *(missing_ptr += step) = 0x00;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    *(missing_ptr += step) = 0x00;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    *(missing_ptr += step) = 0x07;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    *(missing_ptr += step) = 0xa2;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> missing_value;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Float_&gt;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="namespaceritsuko.html#a74c2618a51291704bc7024b1dfc178d8">   57</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceritsuko.html#a74c2618a51291704bc7024b1dfc178d8">are_floats_identical</a>(<span class="keyword">const</span> Float_* x, <span class="keyword">const</span> Float_* y) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">auto</span> xptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(x);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">auto</span> yptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(y);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> std::memcmp(xptr, yptr, <span class="keyword">sizeof</span>(Float_)) == 0;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> forbid_large_integers.hpp:12</div></div>
-<div class="ttc" id="anamespaceritsuko_html_a74c2618a51291704bc7024b1dfc178d8"><div class="ttname"><a href="namespaceritsuko.html#a74c2618a51291704bc7024b1dfc178d8">ritsuko::are_floats_identical</a></div><div class="ttdeci">bool are_floats_identical(const Float_ *x, const Float_ *y)</div><div class="ttdef"><b>Definition:</b> r_missing_value.hpp:52</div></div>
-<div class="ttc" id="anamespaceritsuko_html_aafacebbb1cafbc7637b140730373d1d6"><div class="ttname"><a href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">ritsuko::r_missing_value</a></div><div class="ttdeci">double r_missing_value()</div><div class="ttdef"><b>Definition:</b> r_missing_value.hpp:14</div></div>
+<div class="ttc" id="anamespaceritsuko_html_a74c2618a51291704bc7024b1dfc178d8"><div class="ttname"><a href="namespaceritsuko.html#a74c2618a51291704bc7024b1dfc178d8">ritsuko::are_floats_identical</a></div><div class="ttdeci">bool are_floats_identical(const Float_ *x, const Float_ *y)</div><div class="ttdef"><b>Definition:</b> r_missing_value.hpp:57</div></div>
+<div class="ttc" id="anamespaceritsuko_html_aafacebbb1cafbc7637b140730373d1d6"><div class="ttname"><a href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">ritsuko::r_missing_value</a></div><div class="ttdeci">double r_missing_value()</div><div class="ttdef"><b>Definition:</b> r_missing_value.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

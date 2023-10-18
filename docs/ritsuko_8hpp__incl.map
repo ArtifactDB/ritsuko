@@ -1,7 +1,7 @@
 <map id="ritsuko/ritsuko.hpp" name="ritsuko/ritsuko.hpp">
 <area shape="rect" id="node1" title="Umbrella header for ritsuko." alt="" coords="135,5,263,31"/>
-<area shape="rect" id="node2" href="$r__missing__value_8hpp_source.html" title=" " alt="" coords="51,79,191,104"/>
-<area shape="rect" id="node5" href="$is__date__time_8hpp_source.html" title=" " alt="" coords="223,79,343,104"/>
+<area shape="rect" id="node2" href="$r__missing__value_8hpp.html" title="Obtain R&#39;s missing value." alt="" coords="51,79,191,104"/>
+<area shape="rect" id="node5" href="$is__date__time_8hpp.html" title="Utilities to check date and time formats." alt="" coords="223,79,343,104"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,152,67,177"/>
 <area shape="rect" id="node4" title=" " alt="" coords="91,152,152,177"/>
 <area shape="rect" id="node6" title=" " alt="" coords="177,152,237,177"/>

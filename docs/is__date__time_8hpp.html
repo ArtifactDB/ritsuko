@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/load_1d_string_dataset.hpp File Reference</title>
+<title>ritsuko: ritsuko/is_date_time.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,67 +71,64 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li><li class="navelem"><a class="el" href="dir_29ed3d7dd90c3bc55abde691efb7e794.html">hdf5</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">load_1d_string_dataset.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">is_date_time.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Load and iterate over a 1-dimensional HDF5 string dataset.  
+<p>Utilities to check date and time formats.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;cstring&gt;</code><br />
-<code>#include &quot;<a class="el" href="pick__1d__block__size_8hpp_source.html">pick_1d_block_size.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="iterate__1d__blocks_8hpp_source.html">iterate_1d_blocks.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;cctype&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for load_1d_string_dataset.hpp:</div>
+Include dependency graph for is_date_time.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="load__1d__string__dataset_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2load__1d__string__dataset_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2load__1d__string__dataset_8hpp" id="aritsuko_2hdf5_2load__1d__string__dataset_8hpp">
-<area shape="rect" title="Load and iterate over a 1&#45;dimensional HDF5 string dataset." alt="" coords="69,5,207,45"/>
-<area shape="rect" title=" " alt="" coords="237,167,309,192"/>
-<area shape="rect" title=" " alt="" coords="25,93,83,119"/>
-<area shape="rect" title=" " alt="" coords="107,93,169,119"/>
-<area shape="rect" href="pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="193,93,352,119"/>
-<area shape="rect" href="iterate__1d__blocks_8hpp.html" title="Blockwise iteration through a 1&#45;dimensional HDF5 dataset." alt="" coords="376,93,524,119"/>
-<area shape="rect" title=" " alt="" coords="413,167,487,192"/>
+<div class="center"><img src="is__date__time_8hpp__incl.png" border="0" usemap="#aritsuko_2is__date__time_8hpp" alt=""/></div>
+<map name="aritsuko_2is__date__time_8hpp" id="aritsuko_2is__date__time_8hpp">
+<area shape="rect" title="Utilities to check date and time formats." alt="" coords="38,5,201,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,65,104"/>
+<area shape="rect" title=" " alt="" coords="89,79,149,104"/>
+<area shape="rect" title=" " alt="" coords="174,79,246,104"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="load__1d__string__dataset_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2load__1d__string__dataset_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2load__1d__string__dataset_8hppdep" id="aritsuko_2hdf5_2load__1d__string__dataset_8hppdep">
-<area shape="rect" title="Load and iterate over a 1&#45;dimensional HDF5 string dataset." alt="" coords="7,5,146,45"/>
-<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,93,148,119"/>
+<div class="center"><img src="is__date__time_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2is__date__time_8hppdep" alt=""/></div>
+<map name="aritsuko_2is__date__time_8hppdep" id="aritsuko_2is__date__time_8hppdep">
+<area shape="rect" title="Utilities to check date and time formats." alt="" coords="5,5,168,31"/>
+<area shape="rect" href="ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="23,79,151,104"/>
 </map>
 </div>
 </div>
-<p><a href="load__1d__string__dataset_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="is__date__time_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html">ritsuko</a></td></tr>
 <tr class="memdesc:namespaceritsuko"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for parsing and validation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceritsuko_1_1hdf5"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html">ritsuko::hdf5</a></td></tr>
-<tr class="memdesc:namespaceritsuko_1_1hdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for HDF5 parsing. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
-<tr class="memitem:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ae1d98f3668942a1f74f3c22e515beaf1">ritsuko::hdf5::load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size, Function_ fun)</td></tr>
-<tr class="separator:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8">ritsuko::is_date_prefix</a> (const char *ptr)</td></tr>
+<tr class="separator:a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af53ad376d532eaac211b7cd93f3dda4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c">ritsuko::is_date</a> (const char *ptr, size_t len)</td></tr>
+<tr class="separator:af53ad376d532eaac211b7cd93f3dda4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5f8ff07715c8177a709e440eb029f30"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#ac5f8ff07715c8177a709e440eb029f30">ritsuko::is_rfc3339_suffix</a> (const char *ptr, size_t len)</td></tr>
+<tr class="separator:ac5f8ff07715c8177a709e440eb029f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf542db46552ae71530ecfccd1f66505"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505">ritsuko::is_rfc3339</a> (const char *ptr, size_t len)</td></tr>
+<tr class="separator:abf542db46552ae71530ecfccd1f66505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Load and iterate over a 1-dimensional HDF5 string dataset. </p>
+<div class="textblock"><p >Utilities to check date and time formats. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
