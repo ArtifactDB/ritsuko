@@ -4,6 +4,11 @@
 #include "H5Cpp.h"
 #include <stdexcept>
 
+/**
+ * @file get_1d_length.hpp
+ * @brief Get the length of a 1-dimensional HDF5 dataset.
+ */
+
 namespace ritsuko {
 
 namespace hdf5 {

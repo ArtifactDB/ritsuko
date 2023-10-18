@@ -8,6 +8,11 @@
 #include "pick_1d_block_size.hpp"
 #include "iterate_1d_blocks.hpp"
 
+/**
+ * @file load_1d_string_dataset.hpp
+ * @brief Load and iterate over a 1-dimensional HDF5 string dataset.
+ */
+
 namespace ritsuko {
 
 namespace hdf5 {
@@ -23,7 +28,7 @@ namespace hdf5 {
  * @param full_length Length of the dataset in `handle`, usually obtained by `get_1d_length()`.
  * @param buffer_size Buffer size to use for iteration in `iterate_1d_blocks()`.
  * @param fun Function to be called on each string.
- * It can be assumed that the function is called on consecutive `i`.
+ * It can be assumed that the consecutive calls to `fun` will operate on consecutive `i`.
  */
 template<class Function_>
 void load_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length, hsize_t buffer_size, Function_ fun) {

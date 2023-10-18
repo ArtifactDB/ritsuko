@@ -4,6 +4,11 @@
 #include "H5Cpp.h"
 #include <stdexcept>
 
+/**
+ * @file forbid_large_integers.hpp
+ * @brief Forbid large integers in HDF5 datasets.
+ */
+
 namespace ritsuko {
 
 namespace hdf5 {

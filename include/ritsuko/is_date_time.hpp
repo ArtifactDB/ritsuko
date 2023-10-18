@@ -5,11 +5,16 @@
 #include <cstdlib>
 #include <iostream>
 
+/**
+ * @file is_date_time.hpp
+ * @brief Utilities to check date and time formats.
+ */
+
 namespace ritsuko {
 
 /**
  * Does a string start with a XXXX-YY-ZZ date, for approximately valid combinations of YY and ZZ?
- * (No check is performed for the exact correctness of the number of days for each month.)
+ * (This is only approximate as we do not check the exact correctness of the number of days for each month.)
  *
  * @param[in] ptr Pointer to a C-style string containing at least 10 characters.
  *
@@ -63,7 +68,7 @@ inline bool is_date_prefix(const char* ptr) {
  * @param[in] ptr Pointer to a C-style string.
  * @param len Length of the string referenced by `ptr`, excluding the null terminator.
  *
- * @return Whether `ptr` refers to a XXXX-YY-ZZ date, for approximately valid combinations of YY and ZZ.
+ * @return Whether `ptr` refers to a XXXX-YY-ZZ date, for approximately valid combinations of YY and ZZ (see `is_date_prefix()` for details).
  */
 inline bool is_date(const char* ptr, size_t len) {
     if (len != 10) {
@@ -129,11 +134,13 @@ inline bool okay_seconds(const char* ptr, size_t offset) {
  */
 
 /**
- * Does a string finish with an RFC3339-compliant timestamp (i.e., starting at the `T` after the date)?
- * This assumes that the start of the string was previously parsed with `is_date_prefix()`.
+ * Does a string finish with an RFC3339-compliant timestamp, i.e., does the substring starting at `T` after the date follow the RFC3339 specification?
  * Note that the timestamp validity checks are only approximate as the correctness of leap seconds are not currently considered.
+ * It is expected that the start of the string up to the `T` was already validated with `is_date_prefix()`.
  *
- * @param[in] ptr Pointer to a C-style string containing at least 10 characters.
+ * @param[in] ptr Pointer to a character array containing at least 10 characters.
+ * This should start from the 10th position in the original string, i.e., `T` in the timestamp.
+ * @param len Length of the string in `ptr`.
  *
  * @return Whether or not the string finishes with an RFC3339-compliant timestamp.
  */
@@ -220,6 +227,7 @@ inline bool is_rfc3339_suffix(const char* ptr, size_t len) {
 
 /**
  * Does a string follow the RFC3339 format?
+ * This uses `is_date_prefix()` and `is_rfc3339_suffix()` to check the date and the rest of the timestamp, respectively.
  *
  * @param[in] ptr Pointer to a C-style string. 
  * @param len Length of the string in `ptr`.

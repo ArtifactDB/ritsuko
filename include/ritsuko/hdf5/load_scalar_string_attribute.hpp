@@ -4,6 +4,11 @@
 #include "H5Cpp.h"
 #include <string>
 
+/**
+ * @file load_scalar_string_attribute.hpp
+ * @brief Load a scalar string HDF5 attribute.
+ */
+
 namespace ritsuko {
 
 namespace hdf5 {
@@ -27,7 +32,7 @@ inline std::string load_scalar_string_attribute(const H5::Attribute& attr, const
 /**
  * @tparam Object_ HDF5 object class, usually a DataSet or a Group.
  *
- * @param attr Handle to a HDF5 object that can contain attributes.
+ * @param handle Handle to a HDF5 object that can contain attributes.
  * @param field Name of the attribute.
  * @param name Name of the object containing the attribute, for error messages.
  *

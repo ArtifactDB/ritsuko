@@ -4,6 +4,11 @@
 #include <cstdint>
 #include <cstring>
 
+/**
+ * @file r_missing_value.hpp
+ * @brief Obtain R's missing value.
+ */
+
 namespace ritsuko {
 
 /**

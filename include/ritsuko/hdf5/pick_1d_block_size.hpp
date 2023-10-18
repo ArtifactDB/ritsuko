@@ -3,6 +3,11 @@
 
 #include "H5Cpp.h"
 
+/**
+ * @file pick_1d_block_size.hpp
+ * @brief Pick a block size for a 1-dimensional HDF5 dataset.
+ */
+
 namespace ritsuko {
 
 namespace hdf5 {

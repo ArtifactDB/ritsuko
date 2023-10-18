@@ -4,6 +4,11 @@
 #include "H5Cpp.h"
 #include <algorithm>
 
+/**
+ * @file iterate_1d_blocks.hpp
+ * @brief Blockwise iteration through a 1-dimensional HDF5 dataset.
+ */
+
 namespace ritsuko {
 
 namespace hdf5 {
@@ -15,8 +20,8 @@ namespace hdf5 {
  * @param full_length Length of the dataset, usually derived from `get_1d_length()`.
  * @param fun Function that accepts `(hsize_t start, hsize_t len, H5::DataSpace& memspace, H5::DataSpace& dataspace)` and is called on each block.
  * In each call, the block contains elements from `[start, start + len)`.
- * `memspace` is configured to deposit the block elements in a contiguous buffer from `[0, len)`.
- * `dataspace` is also configured to extract that block from the dataset.
+ * `dataspace` is configured to extract that block from the dataset, while `memspace` is configured to deposit the block contents in a buffer from `[0, len)`.
+ * It can be assumed that consecutive calls to `fun` will operate on consecutive contiguous blocks.
  */
 template<class Function_>
 void iterate_1d_blocks(hsize_t block_size, hsize_t full_length, Function_ fun) {
