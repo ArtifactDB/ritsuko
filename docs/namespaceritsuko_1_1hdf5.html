@@ -248,7 +248,7 @@ template&lt;class Function_ &gt; </div>
   <table class="params">
     <tr><td class="paramname">block_size</td><td>Size of the blocks, usually derived from <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size()</a></code>. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the dataset, usually derived from <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length()</a></code>. </td></tr>
-    <tr><td class="paramname">fun</td><td>Function that accepts <code>(hsize_t start, hsize_t len, H5::DataSpace&amp; memspace, H5::DataSpace&amp; dataspace)</code> and is called on each block. In each call, the block contains elements from <code>[start, start + len)</code>. <code>memspace</code> is configured to deposit the block elements in a contiguous buffer from <code>[0, len)</code>. <code>dataspace</code> is also configured to extract that block from the dataset. </td></tr>
+    <tr><td class="paramname">fun</td><td>Function that accepts <code>(hsize_t start, hsize_t len, H5::DataSpace&amp; memspace, H5::DataSpace&amp; dataspace)</code> and is called on each block. In each call, the block contains elements from <code>[start, start + len)</code>. <code>dataspace</code> is configured to extract that block from the dataset, while <code>memspace</code> is configured to deposit the block contents in a buffer from <code>[0, len)</code>. It can be assumed that consecutive calls to <code>fun</code> will operate on consecutive contiguous blocks. </td></tr>
   </table>
   </dd>
 </dl>
@@ -306,7 +306,7 @@ template&lt;class Function_ &gt; </div>
     <tr><td class="paramname">handle</td><td>Handle to a string dataset. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the dataset in <code>handle</code>, usually obtained by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length()</a></code>. </td></tr>
     <tr><td class="paramname">buffer_size</td><td>Buffer size to use for iteration in <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">iterate_1d_blocks()</a></code>. </td></tr>
-    <tr><td class="paramname">fun</td><td>Function to be called on each string. It can be assumed that the function is called on consecutive <code>i</code>. </td></tr>
+    <tr><td class="paramname">fun</td><td>Function to be called on each string. It can be assumed that the consecutive calls to <code>fun</code> will operate on consecutive <code>i</code>. </td></tr>
   </table>
   </dd>
 </dl>

@@ -74,9 +74,88 @@ $(function() {
   <div class="headertitle"><div class="title">C++ utilities for parsing and validation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a> </p><h1>Overview</h1>
-<p ><b>ritsuko</b> provides common utilities for parsing and validation of file formats used throughout the <a href="https://github.com/ArtifactDB">ArtifactDB</a> C++ codebase. This is generally not intended for consumption by external developers, but they are nonetheless free to use it if they choose. Functionality includes some convenience wrappers for HDF5 parsing, date/time string checking functions, a definition of R's missing value, and more random stuff that is re-usable across different C++ libraries.</p>
-<h1>Further remarks</h1>
+<div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a> <img src="https://github.com/ArtifactDB/ritsuko/actions/workflows/run-tests.yaml/badge.svg" alt="Unit tests" style="pointer-events: none;" class="inline"/> <img src="https://github.com/ArtifactDB/ritsuko/actions/workflows/doxygenate.yaml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/> <a href="https://codecov.io/gh/ArtifactDB/ritsuko"><img src="https://codecov.io/gh/ArtifactDB/ritsuko/branch/master/graph/badge.svg?token=J3dxS3MtT1" alt="codecov" style="pointer-events: none;" class="inline"/></a></p>
+<h1>Overview</h1>
+<p ><b>ritsuko</b> provides common utilities for parsing and validation throughout the <a href="https://github.com/ArtifactDB">ArtifactDB</a> C++ codebase. This is generally not intended for consumption by external developers, but they are nonetheless free to use it. Functionality includes some convenience wrappers for HDF5 parsing, date/time string checking functions, a definition of R's missing value, and more random stuff that is re-usable across different C++ libraries.</p>
+<h1>Quick start</h1>
+<p >For the non-HDF5-dependent utilities, we can just pull in <b>ritsuko</b>'s main header:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ritsuko_8hpp.html">ritsuko/ritsuko.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Get R&#39;s missing double-precision value.</span></div>
+<div class="line"><span class="keyword">auto</span> rmissing = <a class="code hl_function" href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">ritsuko::r_missing_value</a>();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Is a string formatted as a YYYY-MM-DD date?</span></div>
+<div class="line">std::string potential_date = <span class="stringliteral">&quot;2031-11-21&quot;</span></div>
+<div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c">ritsuko::is_date</a>(potential_date.c_str(), potential_date.size())) {</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Is a string formatted as an RFC3339-compliant timestamp?</span></div>
+<div class="line">std::string potential_time = <span class="stringliteral">&quot;2031-11-21T11:49:21.34+09:00&quot;</span></div>
+<div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505">ritsuko::is_rfc3339</a>(potential_time.c_str(), potential_time.size())) {</div>
+<div class="line">    <span class="comment">// ...  </span></div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceritsuko_html_aafacebbb1cafbc7637b140730373d1d6"><div class="ttname"><a href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">ritsuko::r_missing_value</a></div><div class="ttdeci">double r_missing_value()</div><div class="ttdef"><b>Definition:</b> r_missing_value.hpp:14</div></div>
+<div class="ttc" id="anamespaceritsuko_html_abf542db46552ae71530ecfccd1f66505"><div class="ttname"><a href="namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505">ritsuko::is_rfc3339</a></div><div class="ttdeci">bool is_rfc3339(const char *ptr, size_t len)</div><div class="ttdef"><b>Definition:</b> is_date_time.hpp:230</div></div>
+<div class="ttc" id="anamespaceritsuko_html_af53ad376d532eaac211b7cd93f3dda4c"><div class="ttname"><a href="namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c">ritsuko::is_date</a></div><div class="ttdeci">bool is_date(const char *ptr, size_t len)</div><div class="ttdef"><b>Definition:</b> is_date_time.hpp:68</div></div>
+<div class="ttc" id="aritsuko_8hpp_html"><div class="ttname"><a href="ritsuko_8hpp.html">ritsuko.hpp</a></div><div class="ttdoc">Umbrella header for ritsuko.</div></div>
+</div><!-- fragment --><p >For HDF5, the header is a little different:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="hdf5_8hpp.html">ritsuko/hdf5/hdf5.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Opening a handle to a dataset.</span></div>
+<div class="line">H5::H5File handle(<span class="stringliteral">&quot;some.h5&quot;</span>, H5F_ACC_RDONLY);</div>
+<div class="line"><span class="keyword">auto</span> dhandle = handle.openDataSet(<span class="stringliteral">&quot;some_data&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Reading some interesting bits and pieces.</span></div>
+<div class="line"><span class="keyword">auto</span> len = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">ritsuko::hdf5::get_1d_length</a>(dhandle, <span class="stringliteral">&quot;some_data&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span> tag = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a699a7a8d7a9f91db29fb414eb5eae2a8">ritsuko::hdf5::load_scalar_string_attribute</a>(dhandle, <span class="stringliteral">&quot;tag&quot;</span>, <span class="stringliteral">&quot;some_data&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Iterating over the dataset by block.</span></div>
+<div class="line"><span class="keyword">auto</span> block_size = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a>(dhandle.getCreatePlist(), len);</div>
+<div class="line">std::vector&lt;double&gt; buffer(len);</div>
+<div class="line"><a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">ritsuko::hdf5::iterate_1d_blocks</a>(block_size, len, </div>
+<div class="line">    [&amp;](</div>
+<div class="line">        hsize_t start, </div>
+<div class="line">        hsize_t len, </div>
+<div class="line">        <span class="keyword">const</span> H5::DataSpace&amp; mspace, </div>
+<div class="line">        <span class="keyword">const</span> H5::DataSpace&amp; dspace</div>
+<div class="line">    ) {</div>
+<div class="line">        dhandle.read(buffer.data() + start, H5::PredType::NATIVE_DOUBLE, mspace, dspace);</div>
+<div class="line">    }</div>
+<div class="line">);</div>
+<div class="ttc" id="ahdf5_8hpp_html"><div class="ttname"><a href="hdf5_8hpp.html">hdf5.hpp</a></div><div class="ttdoc">Umbrella header for ritsuko's HDF5 utilities.</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a0cdd51a078df2aecc261499ae5506595"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t block_size, hsize_t full_length, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2e20754e74dfc5afff5d2c89db34cde9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a></div><div class="ttdeci">hsize_t pick_1d_block_size(const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</div><div class="ttdef"><b>Definition:</b> pick_1d_block_size.hpp:26</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a699a7a8d7a9f91db29fb414eb5eae2a8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a699a7a8d7a9f91db29fb414eb5eae2a8">ritsuko::hdf5::load_scalar_string_attribute</a></div><div class="ttdeci">std::string load_scalar_string_attribute(const H5::Attribute &amp;attr, const char *field, const char *name)</div><div class="ttdef"><b>Definition:</b> load_scalar_string_attribute.hpp:23</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a72ac8356c88dcd7ea775c373468f07c9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">ritsuko::hdf5::get_1d_length</a></div><div class="ttdeci">hsize_t get_1d_length(const H5::DataSpace &amp;space, bool allow_scalar, const char *name)</div><div class="ttdef"><b>Definition:</b> get_1d_length.hpp:26</div></div>
+</div><!-- fragment --><p >Also see the <a href="https://artifactdb.github.io/ritsuko">reference documentation</a> for more details.</p>
+<h2>Building projects</h2>
+<h3>CMake with <code>FetchContent</code></h3>
+<p >If you're using CMake, you just need to add something like this to your <code>CMakeLists.txt</code>:</p>
+<div class="fragment"><div class="line">include(FetchContent)</div>
+<div class="line"> </div>
+<div class="line">FetchContent_Declare(</div>
+<div class="line">  ritsuko </div>
+<div class="line">  GIT_REPOSITORY https://github.com/ArtifactDB/ritsuko</div>
+<div class="line">  GIT_TAG master # or any version of interest</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line">FetchContent_MakeAvailable(ritsuko)</div>
+</div><!-- fragment --><p >Then you can link to <b>ritsuko</b> to make the headers available during compilation:</p>
+<div class="fragment"><div class="line"># For executables:</div>
+<div class="line">target_link_libraries(myexe ritsuko)</div>
+<div class="line"> </div>
+<div class="line"># For libaries</div>
+<div class="line">target_link_libraries(mylib INTERFACE ritsuko)</div>
+</div><!-- fragment --><h3>CMake with <code>find_package()</code></h3>
+<p >You can install the library by cloning a suitable version of this repository and running the following commands:</p>
+<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">cmake .. -DRITSUKO_TESTS=OFF</div>
+<div class="line">cmake --build . --target install</div>
+</div><!-- fragment --><p >Then you can use <code>find_package()</code> as usual:</p>
+<div class="fragment"><div class="line">find_package(artifactdb_ritsuko CONFIG REQUIRED)</div>
+<div class="line">target_link_libraries(mylib INTERFACE artifactdb::ritsuko)</div>
+</div><!-- fragment --><h1>Further remarks</h1>
 <p >This library is named after <a href="https://myanimelist.net/character/6170/Ritsuko_Akizuki">Ritsuko Akizuki</a>, as befitting her important role in supporting the other idols in the series.</p>
 <p ><img src="https://media.tenor.com/I0ED_9E3vnwAAAAd/ritsuko-akizuki-idolmaster.gif" alt="Ritsuko GIF" class="inline"/> </p>
 </div></div><!-- PageDoc -->
