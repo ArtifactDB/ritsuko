@@ -19,6 +19,11 @@ add_executable(
     libtest 
     src/r_missing_value.cpp
     src/is_date_time.cpp
+    src/hdf5/get_1d_length.cpp
+    src/hdf5/pick_1d_block_size.cpp
+    src/hdf5/forbid_large_integers.cpp
+    src/hdf5/load_scalar_string_attribute.cpp
+    src/hdf5/iterate_1d_blocks.cpp
 )
 
 target_link_libraries(
