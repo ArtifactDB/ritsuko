@@ -113,7 +113,7 @@ $(function() {
 <div class="line"><span class="comment">// Iterating over the dataset by block.</span></div>
 <div class="line"><span class="keyword">auto</span> block_size = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a>(dhandle.getCreatePlist(), len);</div>
 <div class="line">std::vector&lt;double&gt; buffer(len);</div>
-<div class="line"><a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">ritsuko::hdf5::iterate_1d_blocks</a>(block_size, len, </div>
+<div class="line"><a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">ritsuko::hdf5::iterate_1d_blocks</a>(block_size, len, </div>
 <div class="line">    [&amp;](</div>
 <div class="line">        hsize_t start, </div>
 <div class="line">        hsize_t len, </div>
@@ -124,10 +124,10 @@ $(function() {
 <div class="line">    }</div>
 <div class="line">);</div>
 <div class="ttc" id="ahdf5_8hpp_html"><div class="ttname"><a href="hdf5_8hpp.html">hdf5.hpp</a></div><div class="ttdoc">Umbrella header for ritsuko's HDF5 utilities.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a0cdd51a078df2aecc261499ae5506595"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t block_size, hsize_t full_length, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2e20754e74dfc5afff5d2c89db34cde9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a></div><div class="ttdeci">hsize_t pick_1d_block_size(const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</div><div class="ttdef"><b>Definition:</b> pick_1d_block_size.hpp:26</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a699a7a8d7a9f91db29fb414eb5eae2a8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a699a7a8d7a9f91db29fb414eb5eae2a8">ritsuko::hdf5::load_scalar_string_attribute</a></div><div class="ttdeci">std::string load_scalar_string_attribute(const H5::Attribute &amp;attr, const char *field, const char *name)</div><div class="ttdef"><b>Definition:</b> load_scalar_string_attribute.hpp:23</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a72ac8356c88dcd7ea775c373468f07c9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">ritsuko::hdf5::get_1d_length</a></div><div class="ttdeci">hsize_t get_1d_length(const H5::DataSpace &amp;space, bool allow_scalar, const char *name)</div><div class="ttdef"><b>Definition:</b> get_1d_length.hpp:26</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a95eecb7d1464cc84615cf0ab1c3102a8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t full_length, hsize_t block_size, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>
 </div><!-- fragment --><p >Also see the <a href="https://artifactdb.github.io/ritsuko">reference documentation</a> for more details.</p>
 <h2>Building projects</h2>
 <h3>CMake with <code>FetchContent</code></h3>

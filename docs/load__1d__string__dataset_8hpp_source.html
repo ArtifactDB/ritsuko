@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (dtype.isVariableStr()) {</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        std::vector&lt;char*&gt; buffer(block_size);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">iterate_1d_blocks</a>(</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a>(</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            block_size, </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            full_length, </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            [&amp;](hsize_t start, hsize_t len, <span class="keyword">const</span> H5::DataSpace&amp; mspace, <span class="keyword">const</span> H5::DataSpace&amp; dspace) -&gt; <span class="keywordtype">void</span> {</div>
@@ -114,7 +114,7 @@ $(function() {
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">size_t</span> len = dtype.getSize();</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        std::vector&lt;char&gt; buffer(len * block_size);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">iterate_1d_blocks</a>(</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a>(</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            block_size, </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            full_length, </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            [&amp;](hsize_t start, hsize_t length, <span class="keyword">const</span> H5::DataSpace&amp; mspace, <span class="keyword">const</span> H5::DataSpace&amp; dspace) -&gt; <span class="keywordtype">void</span> {</div>
@@ -137,8 +137,8 @@ $(function() {
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="ttc" id="aiterate__1d__blocks_8hpp_html"><div class="ttname"><a href="iterate__1d__blocks_8hpp.html">iterate_1d_blocks.hpp</a></div><div class="ttdoc">Blockwise iteration through a 1-dimensional HDF5 dataset.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a0cdd51a078df2aecc261499ae5506595"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t block_size, hsize_t full_length, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2e20754e74dfc5afff5d2c89db34cde9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a></div><div class="ttdeci">hsize_t pick_1d_block_size(const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</div><div class="ttdef"><b>Definition:</b> pick_1d_block_size.hpp:26</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a95eecb7d1464cc84615cf0ab1c3102a8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t full_length, hsize_t block_size, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ae1d98f3668942a1f74f3c22e515beaf1"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ae1d98f3668942a1f74f3c22e515beaf1">ritsuko::hdf5::load_1d_string_dataset</a></div><div class="ttdeci">void load_1d_string_dataset(const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size, Function_ fun)</div><div class="ttdef"><b>Definition:</b> load_1d_string_dataset.hpp:34</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> forbid_large_integers.hpp:12</div></div>
 <div class="ttc" id="apick__1d__block__size_8hpp_html"><div class="ttname"><a href="pick__1d__block__size_8hpp.html">pick_1d_block_size.hpp</a></div><div class="ttdoc">Pick a block size for a 1-dimensional HDF5 dataset.</div></div>

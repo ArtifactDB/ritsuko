@@ -89,7 +89,7 @@ $(function() {
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span>hdf5 {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Function_&gt;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">   27</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">iterate_1d_blocks</a>(hsize_t block_size, hsize_t full_length, Function_ fun) {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">   27</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a>(hsize_t full_length, hsize_t block_size, Function_ fun) {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    H5::DataSpace mspace(1, &amp;block_size);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    H5::DataSpace dspace(1, &amp;full_length);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    hsize_t start = 0;</div>
@@ -107,7 +107,7 @@ $(function() {
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a0cdd51a078df2aecc261499ae5506595"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t block_size, hsize_t full_length, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a95eecb7d1464cc84615cf0ab1c3102a8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t full_length, hsize_t block_size, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> forbid_large_integers.hpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
