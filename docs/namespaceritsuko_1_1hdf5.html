@@ -90,6 +90,9 @@ Functions</h2></td></tr>
 <tr class="separator:a47a5cb41e7d2f5a8a0195a8b2d391bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72ac8356c88dcd7ea775c373468f07c9"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length</a> (const H5::DataSpace &amp;space, bool allow_scalar, const char *name)</td></tr>
 <tr class="separator:a72ac8356c88dcd7ea775c373468f07c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cb6491677dc79e02685e36835802476"><td class="memTemplParams" colspan="2">template&lt;bool type_class_only_ = false&gt; </td></tr>
+<tr class="memitem:a0cb6491677dc79e02685e36835802476"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a0cb6491677dc79e02685e36835802476">get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, const char *data_name)</td></tr>
+<tr class="separator:a0cb6491677dc79e02685e36835802476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cdd51a078df2aecc261499ae5506595"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
 <tr class="memitem:a0cdd51a078df2aecc261499ae5506595"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">iterate_1d_blocks</a> (hsize_t block_size, hsize_t full_length, Function_ fun)</td></tr>
 <tr class="separator:a0cdd51a078df2aecc261499ae5506595"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -207,6 +210,57 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Length of the dataset, i.e., the extent of its single dimension. If <code>allow_scalar = true</code>, zero is returned in the presence of a scalar dataset, otherwise an error is raised. </dd></dl>
+
+</div>
+</div>
+<a id="a0cb6491677dc79e02685e36835802476" name="a0cb6491677dc79e02685e36835802476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cb6491677dc79e02685e36835802476">&#9670;&#160;</a></span>get_missing_placeholder_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;bool type_class_only_ = false&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">H5::Attribute ritsuko::hdf5::get_missing_placeholder_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>attr_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">type_class_only_</td><td>Whether to only require identical type classes for the placeholder. By default, we require identity in the types themselves.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
+    <tr><td class="paramname">attr_name</td><td>Name of the attribute containing the missing value placeholder. </td></tr>
+    <tr><td class="paramname">data_name</td><td>Name of the dataset, for use in error messages.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Handle to the attribute. An error is raised if the attribute is not a scalar or has a different type (or type class, if <code>type_class_only_ = true</code>) to the dataset. </dd></dl>
 
 </div>
 </div>
