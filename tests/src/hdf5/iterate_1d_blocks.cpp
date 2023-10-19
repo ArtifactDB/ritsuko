@@ -25,8 +25,8 @@ TEST(Hdf5Iterate1dBlocks, Basic) {
         auto block_size = ritsuko::hdf5::pick_1d_block_size(dhandle.getCreatePlist(), example.size(), buf);
         std::vector<int> buffer(example.size());
         ritsuko::hdf5::iterate_1d_blocks(
-            block_size, 
             example.size(), 
+            block_size, 
             [&](hsize_t start, hsize_t, const H5::DataSpace& memspace, const H5::DataSpace& dataspace) {
                 dhandle.read(buffer.data() + start, H5::PredType::NATIVE_INT, memspace, dataspace);
             }
