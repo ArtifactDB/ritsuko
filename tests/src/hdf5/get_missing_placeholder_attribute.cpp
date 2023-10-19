@@ -42,7 +42,7 @@ TEST(Hdf5GetMissingPlaceholderAttribute, Basic) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::get_missing_placeholder_attribute<true>(dhandle, "ouch", "foobar");
+        ritsuko::hdf5::get_missing_placeholder_attribute(dhandle, "ouch", "foobar", true);
     }
 }
 
@@ -83,7 +83,7 @@ TEST(Hdf5GetMissingPlaceholderAttribute, Failed) {
         auto dhandle = handle.openDataSet("foobar");
         EXPECT_ANY_THROW({
             try {
-                ritsuko::hdf5::get_missing_placeholder_attribute<true>(dhandle, "ouch", "foobar");
+                ritsuko::hdf5::get_missing_placeholder_attribute(dhandle, "ouch", "foobar", true);
             } catch (std::exception& e) {
                 EXPECT_THAT(e.what(), ::testing::HasSubstr("same type class"));
                 throw;
