@@ -30,6 +30,8 @@ TEST(Hdf5Load1dStringDataset, Fixed) {
             counterexample[i] = std::string(p, p + l);
         }
     );
+
+    EXPECT_EQ(example, counterexample);
 }
 
 TEST(Hdf5Load1dStringDataset, Variable) {
@@ -57,5 +59,6 @@ TEST(Hdf5Load1dStringDataset, Variable) {
             counterexample[i] = std::string(p, p + l);
         }
     );
-}
 
+    EXPECT_EQ(example, counterexample);
+}

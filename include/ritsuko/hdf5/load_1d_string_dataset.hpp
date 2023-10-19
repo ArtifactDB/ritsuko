@@ -38,8 +38,8 @@ void load_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length, hsiz
     if (dtype.isVariableStr()) {
         std::vector<char*> buffer(block_size);
         iterate_1d_blocks(
-            block_size, 
             full_length, 
+            block_size, 
             [&](hsize_t start, hsize_t len, const H5::DataSpace& mspace, const H5::DataSpace& dspace) -> void {
                 handle.read(buffer.data(), dtype, mspace, dspace);
                 for (hsize_t i = 0; i < len; ++i) {
@@ -53,8 +53,8 @@ void load_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length, hsiz
         size_t len = dtype.getSize();
         std::vector<char> buffer(len * block_size);
         iterate_1d_blocks(
-            block_size, 
             full_length, 
+            block_size, 
             [&](hsize_t start, hsize_t length, const H5::DataSpace& mspace, const H5::DataSpace& dspace) -> void {
                 handle.read(buffer.data(), dtype, mspace, dspace);
                 auto ptr = buffer.data();
