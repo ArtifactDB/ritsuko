@@ -6,6 +6,7 @@
 #include "iterate_1d_blocks.hpp"
 #include "load_1d_string_dataset.hpp"
 #include "load_scalar_string_attribute.hpp"
+#include "get_missing_placeholder_attribute.hpp"
 
 /**
  * @file hdf5.hpp
