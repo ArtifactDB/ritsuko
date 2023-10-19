@@ -100,8 +100,8 @@ $(function() {
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (dtype.isVariableStr()) {</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        std::vector&lt;char*&gt; buffer(block_size);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a>(</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            block_size, </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            full_length, </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            full_length, </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            block_size, </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            [&amp;](hsize_t start, hsize_t len, <span class="keyword">const</span> H5::DataSpace&amp; mspace, <span class="keyword">const</span> H5::DataSpace&amp; dspace) -&gt; <span class="keywordtype">void</span> {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                handle.read(buffer.data(), dtype, mspace, dspace);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                for (hsize_t i = 0; i &lt; len; ++i) {</div>
@@ -115,8 +115,8 @@ $(function() {
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">size_t</span> len = dtype.getSize();</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        std::vector&lt;char&gt; buffer(len * block_size);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a>(</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            block_size, </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            full_length, </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            full_length, </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            block_size, </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            [&amp;](hsize_t start, hsize_t length, <span class="keyword">const</span> H5::DataSpace&amp; mspace, <span class="keyword">const</span> H5::DataSpace&amp; dspace) -&gt; <span class="keywordtype">void</span> {</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                handle.read(buffer.data(), dtype, mspace, dspace);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keyword">auto</span> ptr = buffer.data();</div>
