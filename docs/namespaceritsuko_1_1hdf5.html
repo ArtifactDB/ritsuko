@@ -90,9 +90,8 @@ Functions</h2></td></tr>
 <tr class="separator:a47a5cb41e7d2f5a8a0195a8b2d391bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72ac8356c88dcd7ea775c373468f07c9"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length</a> (const H5::DataSpace &amp;space, bool allow_scalar, const char *name)</td></tr>
 <tr class="separator:a72ac8356c88dcd7ea775c373468f07c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cb6491677dc79e02685e36835802476"><td class="memTemplParams" colspan="2">template&lt;bool type_class_only_ = false&gt; </td></tr>
-<tr class="memitem:a0cb6491677dc79e02685e36835802476"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a0cb6491677dc79e02685e36835802476">get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, const char *data_name)</td></tr>
-<tr class="separator:a0cb6491677dc79e02685e36835802476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a580003bb8514afc6f18dc77d2968cccc"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a580003bb8514afc6f18dc77d2968cccc">get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, const char *data_name, bool type_class_only=false)</td></tr>
+<tr class="separator:a580003bb8514afc6f18dc77d2968cccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cdd51a078df2aecc261499ae5506595"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
 <tr class="memitem:a0cdd51a078df2aecc261499ae5506595"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a0cdd51a078df2aecc261499ae5506595">iterate_1d_blocks</a> (hsize_t block_size, hsize_t full_length, Function_ fun)</td></tr>
 <tr class="separator:a0cdd51a078df2aecc261499ae5506595"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,13 +212,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0cb6491677dc79e02685e36835802476" name="a0cb6491677dc79e02685e36835802476"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cb6491677dc79e02685e36835802476">&#9670;&#160;</a></span>get_missing_placeholder_attribute()</h2>
+<a id="a580003bb8514afc6f18dc77d2968cccc" name="a580003bb8514afc6f18dc77d2968cccc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a580003bb8514afc6f18dc77d2968cccc">&#9670;&#160;</a></span>get_missing_placeholder_attribute()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;bool type_class_only_ = false&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">H5::Attribute ritsuko::hdf5::get_missing_placeholder_attribute </td>
@@ -237,7 +237,13 @@ template&lt;bool type_class_only_ = false&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>data_name</em>&#160;</td>
+          <td class="paramname"><em>data_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>type_class_only</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -245,18 +251,18 @@ template&lt;bool type_class_only_ = false&gt; </div>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">type_class_only_</td><td>Whether to only require identical type classes for the placeholder. By default, we require identity in the types themselves.</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
     <tr><td class="paramname">attr_name</td><td>Name of the attribute containing the missing value placeholder. </td></tr>
-    <tr><td class="paramname">data_name</td><td>Name of the dataset, for use in error messages.</td></tr>
+    <tr><td class="paramname">data_name</td><td>Name of the dataset, for use in error messages. </td></tr>
+    <tr><td class="paramname">type_class_only</td><td>Whether to only require identical type classes for the placeholder. By default, we require identity in the types themselves.</td></tr>
   </table>
   </dd>
 </dl>
