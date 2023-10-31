@@ -5,6 +5,7 @@
 #include <set>
 #include <type_traits>
 #include <cmath>
+#include <algorithm>
 
 /**
  * @file choose_missing_placeholder.hpp
