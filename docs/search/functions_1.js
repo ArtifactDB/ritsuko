@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['forbid_5flarge_5fintegers_0',['forbid_large_integers',['../namespaceritsuko_1_1hdf5.html#a47a5cb41e7d2f5a8a0195a8b2d391bba',1,'ritsuko::hdf5']]]
+  ['choose_5fmissing_5ffloat_5fplaceholder_0',['choose_missing_float_placeholder',['../namespaceritsuko.html#aeaa67d8a37f9aa436d6cd649f0d9b752',1,'ritsuko']]],
+  ['choose_5fmissing_5finteger_5fplaceholder_1',['choose_missing_integer_placeholder',['../namespaceritsuko.html#a50a9e4b90108738c8c487c4346d63e61',1,'ritsuko']]]
 ];

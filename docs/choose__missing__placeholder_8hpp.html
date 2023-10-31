@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/ritsuko.hpp File Reference</title>
+<title>ritsuko: ritsuko/choose_missing_placeholder.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,47 +76,59 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">ritsuko.hpp File Reference</div></div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">choose_missing_placeholder.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Umbrella header for <b>ritsuko</b>.  
+<p>Choose a placeholder for missing values.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="r__missing__value_8hpp_source.html">r_missing_value.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="is__date__time_8hpp_source.html">is_date_time.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="choose__missing__placeholder_8hpp_source.html">choose_missing_placeholder.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for ritsuko.hpp:</div>
+Include dependency graph for choose_missing_placeholder.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="ritsuko_8hpp__incl.png" border="0" usemap="#aritsuko_2ritsuko_8hpp" alt=""/></div>
-<map name="aritsuko_2ritsuko_8hpp" id="aritsuko_2ritsuko_8hpp">
-<area shape="rect" title="Umbrella header for ritsuko." alt="" coords="227,5,355,31"/>
-<area shape="rect" href="r__missing__value_8hpp.html" title="Obtain R&#39;s missing value." alt="" coords="51,79,191,104"/>
-<area shape="rect" href="is__date__time_8hpp.html" title="Utilities to check date and time formats." alt="" coords="231,79,351,104"/>
-<area shape="rect" href="choose__missing__placeholder_8hpp.html" title="Choose a placeholder for missing values." alt="" coords="432,79,645,104"/>
-<area shape="rect" title=" " alt="" coords="5,152,67,177"/>
-<area shape="rect" title=" " alt="" coords="91,152,152,177"/>
-<area shape="rect" title=" " alt="" coords="177,152,237,177"/>
-<area shape="rect" title=" " alt="" coords="261,152,321,177"/>
-<area shape="rect" title=" " alt="" coords="345,152,417,177"/>
-<area shape="rect" title=" " alt="" coords="441,152,495,177"/>
-<area shape="rect" title=" " alt="" coords="519,152,559,177"/>
-<area shape="rect" title=" " alt="" coords="583,152,665,177"/>
-<area shape="rect" title=" " alt="" coords="689,152,748,177"/>
+<div class="center"><img src="choose__missing__placeholder_8hpp__incl.png" border="0" usemap="#aritsuko_2choose__missing__placeholder_8hpp" alt=""/></div>
+<map name="aritsuko_2choose__missing__placeholder_8hpp" id="aritsuko_2choose__missing__placeholder_8hpp">
+<area shape="rect" title="Choose a placeholder for missing values." alt="" coords="66,5,225,45"/>
+<area shape="rect" title=" " alt="" coords="5,93,59,119"/>
+<area shape="rect" title=" " alt="" coords="83,93,123,119"/>
+<area shape="rect" title=" " alt="" coords="147,93,229,119"/>
+<area shape="rect" title=" " alt="" coords="253,93,312,119"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="choose__missing__placeholder_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2choose__missing__placeholder_8hppdep" alt=""/></div>
+<map name="aritsuko_2choose__missing__placeholder_8hppdep" id="aritsuko_2choose__missing__placeholder_8hppdep">
+<area shape="rect" title="Choose a placeholder for missing values." alt="" coords="5,5,164,45"/>
+<area shape="rect" href="ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="21,93,149,119"/>
 </map>
 </div>
 </div>
-<p><a href="ritsuko_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="choose__missing__placeholder_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html">ritsuko</a></td></tr>
 <tr class="memdesc:namespaceritsuko"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for parsing and validation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a50a9e4b90108738c8c487c4346d63e61"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:a50a9e4b90108738c8c487c4346d63e61"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a50a9e4b90108738c8c487c4346d63e61">ritsuko::choose_missing_integer_placeholder</a> (Iterator start, Iterator end)</td></tr>
+<tr class="separator:a50a9e4b90108738c8c487c4346d63e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa67d8a37f9aa436d6cd649f0d9b752"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:aeaa67d8a37f9aa436d6cd649f0d9b752"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#aeaa67d8a37f9aa436d6cd649f0d9b752">ritsuko::choose_missing_float_placeholder</a> (Iterator start, Iterator end)</td></tr>
+<tr class="separator:aeaa67d8a37f9aa436d6cd649f0d9b752"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Umbrella header for <b>ritsuko</b>. </p>
+<div class="textblock"><p >Choose a placeholder for missing values. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['load_5f1d_5fstring_5fdataset_0',['load_1d_string_dataset',['../namespaceritsuko_1_1hdf5.html#ae1d98f3668942a1f74f3c22e515beaf1',1,'ritsuko::hdf5']]],
-  ['load_5fscalar_5fstring_5fattribute_1',['load_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#a699a7a8d7a9f91db29fb414eb5eae2a8',1,'ritsuko::hdf5::load_scalar_string_attribute(const H5::Attribute &amp;attr, const char *field, const char *name)'],['../namespaceritsuko_1_1hdf5.html#a34f35cba9d19b31dcfd6d149e2f02200',1,'ritsuko::hdf5::load_scalar_string_attribute(const Object_ &amp;handle, const char *field, const char *name)']]]
+  ['is_5fdate_0',['is_date',['../namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c',1,'ritsuko']]],
+  ['is_5fdate_5fprefix_1',['is_date_prefix',['../namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8',1,'ritsuko']]],
+  ['is_5frfc3339_2',['is_rfc3339',['../namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505',1,'ritsuko']]],
+  ['is_5frfc3339_5fsuffix_3',['is_rfc3339_suffix',['../namespaceritsuko.html#ac5f8ff07715c8177a709e440eb029f30',1,'ritsuko']]],
+  ['iterate_5f1d_5fblocks_4',['iterate_1d_blocks',['../namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8',1,'ritsuko::hdf5']]]
 ];
