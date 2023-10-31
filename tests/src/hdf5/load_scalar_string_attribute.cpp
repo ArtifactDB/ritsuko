@@ -17,7 +17,7 @@ TEST(Hdf5LoadScalarStringAttribute, OkayDataset) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("INT8");
-    EXPECT_EQ(ritsuko::hdf5::load_scalar_string_attribute(dhandle, attr_name, "INT8"), attr_val);
+    EXPECT_EQ(ritsuko::hdf5::load_scalar_string_attribute(dhandle, attr_name), attr_val);
 }
 
 TEST(Hdf5LoadScalarStringAttribute, OkayGroup) {
@@ -35,13 +35,13 @@ TEST(Hdf5LoadScalarStringAttribute, OkayGroup) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto ghandle = handle.openGroup("UINT8");
-    EXPECT_EQ(ritsuko::hdf5::load_scalar_string_attribute(ghandle, attr_name, "UINT8"), attr_val);
+    EXPECT_EQ(ritsuko::hdf5::load_scalar_string_attribute(ghandle, attr_name), attr_val);
 }
 
-static void expect_error(const H5::Group& handle, const char* field, const char* name, std::string msg) {
+static void expect_error(const H5::Group& handle, const char* field, std::string msg) {
     EXPECT_ANY_THROW({
         try {
-            ritsuko::hdf5::load_scalar_string_attribute(handle, field, name);
+            ritsuko::hdf5::load_scalar_string_attribute(handle, field);
         } catch (std::exception& e) {
             EXPECT_THAT(e.what(), ::testing::HasSubstr(msg));
             throw;
@@ -60,7 +60,7 @@ TEST(Hdf5LoadScalarStringAttribute, Failures) {
     }
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
-        expect_error(handle.openGroup("UINT8"), attr_name, "UINT8", "'nagisa'");
+        expect_error(handle.openGroup("UINT8"), attr_name, "'nagisa'");
     }
 
     {
@@ -70,7 +70,7 @@ TEST(Hdf5LoadScalarStringAttribute, Failures) {
     }
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
-        expect_error(handle.openGroup("UINT8"), attr_name, "UINT8", "scalar string");
+        expect_error(handle.openGroup("UINT8"), attr_name, "scalar string");
     }
 
     {
@@ -83,6 +83,6 @@ TEST(Hdf5LoadScalarStringAttribute, Failures) {
     }
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
-        expect_error(handle.openGroup("UINT8"), attr_name, "UINT8", "scalar string");
+        expect_error(handle.openGroup("UINT8"), attr_name, "scalar string");
     }
 }

@@ -2,10 +2,10 @@
 #include <gmock/gmock.h>
 #include "ritsuko/hdf5/get_1d_length.hpp"
 
-static void expect_error(const H5::DataSpace& space, bool allow_scalar, const char* name, std::string msg) {
+static void expect_error(const H5::DataSpace& space, bool allow_scalar, std::string msg) {
     EXPECT_ANY_THROW({
         try {
-            ritsuko::hdf5::get_1d_length(space, allow_scalar, name);
+            ritsuko::hdf5::get_1d_length(space, allow_scalar);
         } catch (std::exception& e) {
             EXPECT_THAT(e.what(), ::testing::HasSubstr(msg));
             throw;
@@ -23,7 +23,7 @@ TEST(Hdf5Get1dLength, Basic) {
     {
         H5::H5File handle("TEST-1d-length.h5", H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foo");
-        EXPECT_EQ(len, ritsuko::hdf5::get_1d_length(dhandle.getSpace(), false, "foo"));
+        EXPECT_EQ(len, ritsuko::hdf5::get_1d_length(dhandle.getSpace(), false));
     }
 
     { 
@@ -35,7 +35,7 @@ TEST(Hdf5Get1dLength, Basic) {
     {
         H5::H5File handle("TEST-1d-length.h5", H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foo");
-        expect_error(dhandle.getSpace(), false, "foo", "1-dimensional");
+        expect_error(dhandle.getSpace(), false, "1-dimensional");
     }
 }
 
@@ -48,7 +48,7 @@ TEST(Hdf5Get1dLength, Scalar) {
     {
         H5::H5File handle("TEST-1d-length.h5", H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foo");
-        EXPECT_EQ(ritsuko::hdf5::get_1d_length(dhandle.getSpace(), true, "foo"), 0);
-        expect_error(dhandle.getSpace(), false, "foo", "1-dimensional");
+        EXPECT_EQ(ritsuko::hdf5::get_1d_length(dhandle.getSpace(), true), 0);
+        expect_error(dhandle.getSpace(), false, "1-dimensional");
     }
 }
