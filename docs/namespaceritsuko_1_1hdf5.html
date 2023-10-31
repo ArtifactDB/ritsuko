@@ -86,35 +86,37 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a47a5cb41e7d2f5a8a0195a8b2d391bba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a47a5cb41e7d2f5a8a0195a8b2d391bba">forbid_large_integers</a> (const H5::DataSet &amp;handle, size_t bit_limit, const char *name)</td></tr>
-<tr class="separator:a47a5cb41e7d2f5a8a0195a8b2d391bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ac8356c88dcd7ea775c373468f07c9"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length</a> (const H5::DataSpace &amp;space, bool allow_scalar, const char *name)</td></tr>
-<tr class="separator:a72ac8356c88dcd7ea775c373468f07c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8101d57fbdf4a10b2297509acb1c2c0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8101d57fbdf4a10b2297509acb1c2c0f">exceeds_integer_limit</a> (const H5::DataSet &amp;handle, size_t precision, bool is_signed)</td></tr>
+<tr class="separator:a8101d57fbdf4a10b2297509acb1c2c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaeb27fa68cb7564cfdec29e4b6d6789"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#acaeb27fa68cb7564cfdec29e4b6d6789">exceeds_float_limit</a> (const H5::DataSet &amp;handle, size_t precision)</td></tr>
+<tr class="separator:acaeb27fa68cb7564cfdec29e4b6d6789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac15dcfa823155b137686519d25ccca7d"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a> (const H5::DataSpace &amp;space, bool allow_scalar)</td></tr>
+<tr class="separator:ac15dcfa823155b137686519d25ccca7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a30dedd3c6544a1745035581cd2c31d"><td class="memItemLeft" align="right" valign="top">H5::DataSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8a30dedd3c6544a1745035581cd2c31d">get_dataset</a> (const H5::Group &amp;handle, const char *name)</td></tr>
 <tr class="separator:a8a30dedd3c6544a1745035581cd2c31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60bb02dcde8b7de2048930cdfd7541d0"><td class="memItemLeft" align="right" valign="top">H5::DataSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a60bb02dcde8b7de2048930cdfd7541d0">get_scalar_dataset</a> (const H5::Group &amp;handle, const char *name)</td></tr>
 <tr class="separator:a60bb02dcde8b7de2048930cdfd7541d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a580003bb8514afc6f18dc77d2968cccc"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a580003bb8514afc6f18dc77d2968cccc">get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, const char *data_name, bool type_class_only=false)</td></tr>
-<tr class="separator:a580003bb8514afc6f18dc77d2968cccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c441c7a6e4745df9a604045799bdbd2"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a4c441c7a6e4745df9a604045799bdbd2">get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=false)</td></tr>
+<tr class="separator:a4c441c7a6e4745df9a604045799bdbd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95eecb7d1464cc84615cf0ab1c3102a8"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
 <tr class="memitem:a95eecb7d1464cc84615cf0ab1c3102a8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a> (hsize_t full_length, hsize_t block_size, Function_ fun)</td></tr>
 <tr class="separator:a95eecb7d1464cc84615cf0ab1c3102a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
 <tr class="memitem:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ae1d98f3668942a1f74f3c22e515beaf1">load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size, Function_ fun)</td></tr>
 <tr class="separator:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a699a7a8d7a9f91db29fb414eb5eae2a8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a699a7a8d7a9f91db29fb414eb5eae2a8">load_scalar_string_attribute</a> (const H5::Attribute &amp;attr, const char *field, const char *name)</td></tr>
-<tr class="separator:a699a7a8d7a9f91db29fb414eb5eae2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34f35cba9d19b31dcfd6d149e2f02200"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
-<tr class="memitem:a34f35cba9d19b31dcfd6d149e2f02200"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a34f35cba9d19b31dcfd6d149e2f02200">load_scalar_string_attribute</a> (const Object_ &amp;handle, const char *field, const char *name)</td></tr>
-<tr class="separator:a34f35cba9d19b31dcfd6d149e2f02200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca89e2c5149f6517461a8d31d48c58b9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aca89e2c5149f6517461a8d31d48c58b9">load_scalar_string_attribute</a> (const H5::Attribute &amp;attr, const char *field)</td></tr>
+<tr class="separator:aca89e2c5149f6517461a8d31d48c58b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160a83252d5d8ef5b886acf9726fa720"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
+<tr class="memitem:a160a83252d5d8ef5b886acf9726fa720"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a160a83252d5d8ef5b886acf9726fa720">load_scalar_string_attribute</a> (const Object_ &amp;handle, const char *field)</td></tr>
+<tr class="separator:a160a83252d5d8ef5b886acf9726fa720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size</a> (const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</td></tr>
 <tr class="separator:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Assorted helper functions for HDF5 parsing. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a47a5cb41e7d2f5a8a0195a8b2d391bba" name="a47a5cb41e7d2f5a8a0195a8b2d391bba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47a5cb41e7d2f5a8a0195a8b2d391bba">&#9670;&#160;</a></span>forbid_large_integers()</h2>
+<a id="acaeb27fa68cb7564cfdec29e4b6d6789" name="acaeb27fa68cb7564cfdec29e4b6d6789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaeb27fa68cb7564cfdec29e4b6d6789">&#9670;&#160;</a></span>exceeds_float_limit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,7 +125,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ritsuko::hdf5::forbid_large_integers </td>
+          <td class="memname">bool ritsuko::hdf5::exceeds_float_limit </td>
           <td>(</td>
           <td class="paramtype">const H5::DataSet &amp;&#160;</td>
           <td class="paramname"><em>handle</em>, </td>
@@ -132,13 +134,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>bit_limit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
+          <td class="paramname"><em>precision</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -152,20 +148,72 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Forbid the existence of integer types that can hold values greater than a <code>bit_limit</code>-bit signed integer. If a dataset with a large integer type is detected, an error is raised.</p>
+<p >Check if a HDF5 dataset has a type that might hold values beyond the range of a limiting float type. This is used by validators to ensure that a dataset can be represented in memory by the limiting type.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handle</td><td>Integer dataset. </td></tr>
-    <tr><td class="paramname">bit_limit</td><td>Limit on the size of the integer. </td></tr>
-    <tr><td class="paramname">name</td><td>String containing the name of the dataset for error messages. </td></tr>
+    <tr><td class="paramname">handle</td><td>Handle for a HDF5 dataset. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting float type, assuming IEEE754 floats.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting float type. <code>true</code> is also returned for non-numeric datasets. </dd></dl>
 
 </div>
 </div>
-<a id="a72ac8356c88dcd7ea775c373468f07c9" name="a72ac8356c88dcd7ea775c373468f07c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72ac8356c88dcd7ea775c373468f07c9">&#9670;&#160;</a></span>get_1d_length()</h2>
+<a id="a8101d57fbdf4a10b2297509acb1c2c0f" name="a8101d57fbdf4a10b2297509acb1c2c0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8101d57fbdf4a10b2297509acb1c2c0f">&#9670;&#160;</a></span>exceeds_integer_limit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ritsuko::hdf5::exceeds_integer_limit </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>precision</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_signed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check if a HDF5 dataset has a type that might hold values beyond the range of a limiting integer type. This is used by validators to ensure that a dataset can be represented in memory by the limiting type.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle for a HDF5 dataset. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
+    <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting integer type. <code>true</code> is also returned for non-integer datasets. </dd></dl>
+
+</div>
+</div>
+<a id="ac15dcfa823155b137686519d25ccca7d" name="ac15dcfa823155b137686519d25ccca7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac15dcfa823155b137686519d25ccca7d">&#9670;&#160;</a></span>get_1d_length()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,13 +231,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>allow_scalar</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
+          <td class="paramname"><em>allow_scalar</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -207,8 +249,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">space</td><td>The data space of the dataset. </td></tr>
-    <tr><td class="paramname">allow_scalar</td><td>Whether to allow scalars. </td></tr>
-    <tr><td class="paramname">name</td><td>Name of the dataset, to use for error messages.</td></tr>
+    <tr><td class="paramname">allow_scalar</td><td>Whether to allow scalars.</td></tr>
   </table>
   </dd>
 </dl>
@@ -260,8 +301,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a580003bb8514afc6f18dc77d2968cccc" name="a580003bb8514afc6f18dc77d2968cccc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a580003bb8514afc6f18dc77d2968cccc">&#9670;&#160;</a></span>get_missing_placeholder_attribute()</h2>
+<a id="a4c441c7a6e4745df9a604045799bdbd2" name="a4c441c7a6e4745df9a604045799bdbd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c441c7a6e4745df9a604045799bdbd2">&#9670;&#160;</a></span>get_missing_placeholder_attribute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -280,12 +321,6 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>attr_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>data_name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -309,7 +344,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
     <tr><td class="paramname">attr_name</td><td>Name of the attribute containing the missing value placeholder. </td></tr>
-    <tr><td class="paramname">data_name</td><td>Name of the dataset, for use in error messages. </td></tr>
     <tr><td class="paramname">type_class_only</td><td>Whether to only require identical type classes for the placeholder. By default, we require identity in the types themselves.</td></tr>
   </table>
   </dd>
@@ -398,7 +432,7 @@ template&lt;class Function_ &gt; </div>
 <p >Iterate through a 1-dimensional dataset via contiguous blocks.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">full_length</td><td>Length of the dataset, usually obtained from <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length()</a></code>. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the dataset, usually obtained from <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </td></tr>
     <tr><td class="paramname">block_size</td><td>Size of the blocks, usually calculated by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size()</a></code>. </td></tr>
     <tr><td class="paramname">fun</td><td>Function that accepts <code>(hsize_t start, hsize_t len, H5::DataSpace&amp; memspace, H5::DataSpace&amp; dataspace)</code> and is called on each block. In each call, the block contains elements from <code>[start, start + len)</code>. <code>dataspace</code> is configured to extract that block from the dataset, while <code>memspace</code> is configured to deposit the block contents in a buffer from <code>[0, len)</code>. It can be assumed that consecutive calls to <code>fun</code> will operate on consecutive contiguous blocks. </td></tr>
   </table>
@@ -456,7 +490,7 @@ template&lt;class Function_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Handle to a string dataset. </td></tr>
-    <tr><td class="paramname">full_length</td><td>Length of the dataset in <code>handle</code>, usually obtained by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length()</a></code>. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the dataset in <code>handle</code>, usually obtained by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </td></tr>
     <tr><td class="paramname">buffer_size</td><td>Buffer size to use for iteration in <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks()</a></code>. </td></tr>
     <tr><td class="paramname">fun</td><td>Function to be called on each string. It can be assumed that the consecutive calls to <code>fun</code> will operate on consecutive <code>i</code>. </td></tr>
   </table>
@@ -465,8 +499,8 @@ template&lt;class Function_ &gt; </div>
 
 </div>
 </div>
-<a id="a699a7a8d7a9f91db29fb414eb5eae2a8" name="a699a7a8d7a9f91db29fb414eb5eae2a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a699a7a8d7a9f91db29fb414eb5eae2a8">&#9670;&#160;</a></span>load_scalar_string_attribute() <span class="overload">[1/2]</span></h2>
+<a id="aca89e2c5149f6517461a8d31d48c58b9" name="aca89e2c5149f6517461a8d31d48c58b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca89e2c5149f6517461a8d31d48c58b9">&#9670;&#160;</a></span>load_scalar_string_attribute() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -484,13 +518,7 @@ template&lt;class Function_ &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>field</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
+          <td class="paramname"><em>field</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -507,8 +535,7 @@ template&lt;class Function_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">attr</td><td>An Attribute handle. </td></tr>
-    <tr><td class="paramname">field</td><td>Name of the attribute, for error messages. </td></tr>
-    <tr><td class="paramname">name</td><td>Name of the object containing the attribute, for error messages.</td></tr>
+    <tr><td class="paramname">field</td><td>Name of the attribute, for error messages.</td></tr>
   </table>
   </dd>
 </dl>
@@ -516,8 +543,8 @@ template&lt;class Function_ &gt; </div>
 
 </div>
 </div>
-<a id="a34f35cba9d19b31dcfd6d149e2f02200" name="a34f35cba9d19b31dcfd6d149e2f02200"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34f35cba9d19b31dcfd6d149e2f02200">&#9670;&#160;</a></span>load_scalar_string_attribute() <span class="overload">[2/2]</span></h2>
+<a id="a160a83252d5d8ef5b886acf9726fa720" name="a160a83252d5d8ef5b886acf9726fa720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a160a83252d5d8ef5b886acf9726fa720">&#9670;&#160;</a></span>load_scalar_string_attribute() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -534,13 +561,7 @@ template&lt;class Object_ &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>field</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
+          <td class="paramname"><em>field</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -558,8 +579,7 @@ template&lt;class Object_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Handle to a HDF5 object that can contain attributes. </td></tr>
-    <tr><td class="paramname">field</td><td>Name of the attribute. </td></tr>
-    <tr><td class="paramname">name</td><td>Name of the object containing the attribute, for error messages.</td></tr>
+    <tr><td class="paramname">field</td><td>Name of the attribute.</td></tr>
   </table>
   </dd>
 </dl>
@@ -610,7 +630,7 @@ template&lt;class Object_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cplist</td><td>The creation property list for this dataset. </td></tr>
-    <tr><td class="paramname">full_length</td><td>Length of this dataset, e.g., from <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a72ac8356c88dcd7ea775c373468f07c9">get_1d_length()</a></code>. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of this dataset, e.g., from <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </td></tr>
     <tr><td class="paramname">buffer_size</td><td>Size of the buffer in terms of the number of elements. Smaller values reduce peak memory usage at the cost of more iterations.</td></tr>
   </table>
   </dd>

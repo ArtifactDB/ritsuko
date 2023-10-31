@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/forbid_large_integers.hpp File Reference</title>
+<title>ritsuko: ritsuko/hdf5/exceeds_limit.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -78,20 +78,20 @@ $(function() {
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">forbid_large_integers.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">exceeds_limit.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Forbid large integers in HDF5 datasets.  
+<p>Check for larger-than-expected types in HDF5 datasets.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for forbid_large_integers.hpp:</div>
+Include dependency graph for exceeds_limit.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="forbid__large__integers_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2forbid__large__integers_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2forbid__large__integers_8hpp" id="aritsuko_2hdf5_2forbid__large__integers_8hpp">
-<area shape="rect" title="Forbid large integers in HDF5 datasets." alt="" coords="23,5,158,45"/>
+<div class="center"><img src="exceeds__limit_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2exceeds__limit_8hpp" alt=""/></div>
+<map name="aritsuko_2hdf5_2exceeds__limit_8hpp" id="aritsuko_2hdf5_2exceeds__limit_8hpp">
+<area shape="rect" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="19,5,162,45"/>
 <area shape="rect" title=" " alt="" coords="5,93,77,119"/>
 <area shape="rect" title=" " alt="" coords="102,93,181,119"/>
 </map>
@@ -99,14 +99,14 @@ Include dependency graph for forbid_large_integers.hpp:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="forbid__large__integers_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2forbid__large__integers_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2forbid__large__integers_8hppdep" id="aritsuko_2hdf5_2forbid__large__integers_8hppdep">
-<area shape="rect" title="Forbid large integers in HDF5 datasets." alt="" coords="9,5,144,45"/>
+<div class="center"><img src="exceeds__limit_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2exceeds__limit_8hppdep" alt=""/></div>
+<map name="aritsuko_2hdf5_2exceeds__limit_8hppdep" id="aritsuko_2hdf5_2exceeds__limit_8hppdep">
+<area shape="rect" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="5,5,148,45"/>
 <area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,93,148,119"/>
 </map>
 </div>
 </div>
-<p><a href="forbid__large__integers_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="exceeds__limit_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -119,11 +119,13 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a47a5cb41e7d2f5a8a0195a8b2d391bba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a47a5cb41e7d2f5a8a0195a8b2d391bba">ritsuko::hdf5::forbid_large_integers</a> (const H5::DataSet &amp;handle, size_t bit_limit, const char *name)</td></tr>
-<tr class="separator:a47a5cb41e7d2f5a8a0195a8b2d391bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8101d57fbdf4a10b2297509acb1c2c0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8101d57fbdf4a10b2297509acb1c2c0f">ritsuko::hdf5::exceeds_integer_limit</a> (const H5::DataSet &amp;handle, size_t precision, bool is_signed)</td></tr>
+<tr class="separator:a8101d57fbdf4a10b2297509acb1c2c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaeb27fa68cb7564cfdec29e4b6d6789"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#acaeb27fa68cb7564cfdec29e4b6d6789">ritsuko::hdf5::exceeds_float_limit</a> (const H5::DataSet &amp;handle, size_t precision)</td></tr>
+<tr class="separator:acaeb27fa68cb7564cfdec29e4b6d6789"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Forbid large integers in HDF5 datasets. </p>
+<div class="textblock"><p >Check for larger-than-expected types in HDF5 datasets. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
