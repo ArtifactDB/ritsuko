@@ -19,6 +19,7 @@ add_executable(
     libtest 
     src/r_missing_value.cpp
     src/is_date_time.cpp
+    src/choose_missing_placeholder.cpp
     src/hdf5/get_1d_length.cpp
     src/hdf5/pick_1d_block_size.cpp
     src/hdf5/forbid_large_integers.cpp
