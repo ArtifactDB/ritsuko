@@ -1,7 +1,7 @@
 #ifndef RITSUKO_HDF5_HPP
 #define RITSUKO_HDF5_HPP
 
-#include "forbid_large_integers.hpp"
+#include "exceeds_limit.hpp"
 #include "get_1d_length.hpp"
 #include "iterate_1d_blocks.hpp"
 #include "load_1d_string_dataset.hpp"

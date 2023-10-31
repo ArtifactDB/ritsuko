@@ -22,7 +22,7 @@ add_executable(
     src/choose_missing_placeholder.cpp
     src/hdf5/get_1d_length.cpp
     src/hdf5/pick_1d_block_size.cpp
-    src/hdf5/forbid_large_integers.cpp
+    src/hdf5/exceeds_limit.cpp
     src/hdf5/load_scalar_string_attribute.cpp
     src/hdf5/iterate_1d_blocks.cpp
     src/hdf5/load_1d_string_dataset.cpp
