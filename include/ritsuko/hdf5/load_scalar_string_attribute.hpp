@@ -4,6 +4,8 @@
 #include "H5Cpp.h"
 #include <string>
 
+#include "get_name.hpp"
+
 /**
  * @file load_scalar_string_attribute.hpp
  * @brief Load a scalar string HDF5 attribute.
@@ -14,14 +16,12 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * @param attr An Attribute handle.
- * @param field Name of the attribute, for error messages.
- *
+ * @param attr An ``Attribute`` handle.
  * @return The attribute as a string.
  */
-inline std::string load_scalar_string_attribute(const H5::Attribute& attr, const char* field) {
+inline std::string load_scalar_string_attribute(const H5::Attribute& attr) {
     if (attr.getTypeClass() != H5T_STRING || attr.getSpace().getSimpleExtentNdims() != 0) {
-        throw std::runtime_error("expected the '" + std::string(field) + "' attribute to be a scalar string");
+        throw std::runtime_error("expected attribute to be a scalar string");
     }
     std::string output;
     attr.read(attr.getStrType(), output);
@@ -29,7 +29,7 @@ inline std::string load_scalar_string_attribute(const H5::Attribute& attr, const
 }
 
 /**
- * @tparam Object_ HDF5 object class, usually a DataSet or a Group.
+ * @tparam Object_ HDF5 object class, usually a ``DataSet`` or a ``Group``.
  *
  * @param handle Handle to a HDF5 object that can contain attributes.
  * @param field Name of the attribute.
@@ -39,9 +39,9 @@ inline std::string load_scalar_string_attribute(const H5::Attribute& attr, const
 template<class Object_>
 std::string load_scalar_string_attribute(const Object_& handle, const char* field) {
     if (!handle.attrExists(field)) {
-        throw std::runtime_error(std::string("expected a '") + std::string(field) + "' attribute to be present");
+        throw std::runtime_error("expected a '" + std::string(field) + "' attribute to be present");
     }
-    return load_scalar_string_attribute(handle.openAttribute(field), field);
+    return load_scalar_string_attribute(handle.openAttribute(field));
 }
 
 }
