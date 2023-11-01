@@ -8,6 +8,7 @@
 #include "load_scalar_string_attribute.hpp"
 #include "get_missing_placeholder_attribute.hpp"
 #include "get_dataset.hpp"
+#include "get_name.hpp"
 
 /**
  * @file hdf5.hpp
