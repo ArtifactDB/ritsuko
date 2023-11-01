@@ -92,26 +92,28 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">   22</a></span><span class="keyword">inline</span> std::string <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (attr.getTypeClass() != H5T_STRING || attr.getSpace().getSimpleExtentNdims() != 0) {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected attribute to be a scalar string&quot;</span>);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::string output;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    attr.read(attr.getStrType(), output);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Object_&gt;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a160a83252d5d8ef5b886acf9726fa720">   40</a></span>std::string <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(<span class="keyword">const</span> Object_&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* field) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> (!handle.attrExists(field)) {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a &#39;&quot;</span> + std::string(field) + <span class="stringliteral">&quot;&#39; attribute to be present&quot;</span>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(handle.openAttribute(field));</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        std::string name;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        attr.getName(name);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected attribute &#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39; to be a scalar string&quot;</span>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    std::string output;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    attr.read(attr.getStrType(), output);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Object_&gt;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a160a83252d5d8ef5b886acf9726fa720">   42</a></span>std::string <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(<span class="keyword">const</span> Object_&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* field) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (!handle.attrExists(field)) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a &#39;&quot;</span> + std::string(field) + <span class="stringliteral">&quot;&#39; attribute to be present&quot;</span>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(handle.openAttribute(field));</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ae09b2aaf282ec0809b610528f4bf87b3"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">ritsuko::hdf5::load_scalar_string_attribute</a></div><div class="ttdeci">std::string load_scalar_string_attribute(const H5::Attribute &amp;attr)</div><div class="ttdef"><b>Definition:</b> load_scalar_string_attribute.hpp:22</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> choose_missing_placeholder.hpp:15</div></div>
