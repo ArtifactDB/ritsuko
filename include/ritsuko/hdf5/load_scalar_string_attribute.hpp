@@ -21,7 +21,9 @@ namespace hdf5 {
  */
 inline std::string load_scalar_string_attribute(const H5::Attribute& attr) {
     if (attr.getTypeClass() != H5T_STRING || attr.getSpace().getSimpleExtentNdims() != 0) {
-        throw std::runtime_error("expected attribute to be a scalar string");
+        std::string name;
+        attr.getName(name);
+        throw std::runtime_error("expected attribute '" + name + "' to be a scalar string");
     }
     std::string output;
     attr.read(attr.getStrType(), output);
