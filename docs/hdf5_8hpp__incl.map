@@ -1,17 +1,18 @@
 <map id="ritsuko/hdf5/hdf5.hpp" name="ritsuko/hdf5/hdf5.hpp">
-<area shape="rect" id="node1" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="426,5,569,31"/>
+<area shape="rect" id="node1" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="523,5,666,31"/>
 <area shape="rect" id="node2" href="$exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="5,86,131,111"/>
 <area shape="rect" id="node5" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="155,86,282,111"/>
-<area shape="rect" id="node6" href="$iterate__1d__blocks_8hpp.html" title="Blockwise iteration through a 1&#45;dimensional HDF5 dataset." alt="" coords="219,167,367,192"/>
-<area shape="rect" id="node8" href="$load__1d__string__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 string dataset." alt="" coords="407,86,587,111"/>
-<area shape="rect" id="node12" href="$load__scalar__string__attribute_8hpp.html" title="Load a scalar string HDF5 attribute." alt="" coords="611,79,738,119"/>
-<area shape="rect" id="node14" href="$get__missing__placeholder__attribute_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="763,79,928,119"/>
-<area shape="rect" id="node15" href="$get__dataset_8hpp.html" title="Quick functions to get a dataset handle." alt="" coords="952,86,1067,111"/>
-<area shape="rect" id="node3" title=" " alt="" coords="596,240,668,265"/>
-<area shape="rect" id="node4" title=" " alt="" coords="65,167,143,192"/>
-<area shape="rect" id="node7" title=" " alt="" coords="256,240,331,265"/>
-<area shape="rect" id="node9" title=" " alt="" coords="392,167,451,192"/>
-<area shape="rect" id="node10" title=" " alt="" coords="475,167,536,192"/>
-<area shape="rect" id="node11" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="611,167,770,192"/>
-<area shape="rect" id="node13" title=" " alt="" coords="846,167,901,192"/>
+<area shape="rect" id="node6" href="$iterate__1d__blocks_8hpp.html" title="Blockwise iteration through a 1&#45;dimensional HDF5 dataset." alt="" coords="222,174,370,199"/>
+<area shape="rect" id="node8" href="$load__1d__string__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 string dataset." alt="" coords="405,86,585,111"/>
+<area shape="rect" id="node12" href="$load__scalar__string__attribute_8hpp.html" title="Load a scalar string HDF5 attribute." alt="" coords="759,79,886,119"/>
+<area shape="rect" id="node14" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="817,174,919,199"/>
+<area shape="rect" id="node15" href="$get__missing__placeholder__attribute_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="995,167,1160,207"/>
+<area shape="rect" id="node16" href="$get__dataset_8hpp.html" title="Quick functions to get a dataset handle." alt="" coords="1184,174,1299,199"/>
+<area shape="rect" id="node3" title=" " alt="" coords="575,255,647,280"/>
+<area shape="rect" id="node4" title=" " alt="" coords="67,174,146,199"/>
+<area shape="rect" id="node7" title=" " alt="" coords="259,255,333,280"/>
+<area shape="rect" id="node9" title=" " alt="" coords="768,255,827,280"/>
+<area shape="rect" id="node10" title=" " alt="" coords="445,174,507,199"/>
+<area shape="rect" id="node11" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="531,174,690,199"/>
+<area shape="rect" id="node13" title=" " alt="" coords="990,255,1045,280"/>
 </map>
