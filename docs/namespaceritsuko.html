@@ -92,9 +92,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a50a9e4b90108738c8c487c4346d63e61"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
 <tr class="memitem:a50a9e4b90108738c8c487c4346d63e61"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a50a9e4b90108738c8c487c4346d63e61">choose_missing_integer_placeholder</a> (Iterator start, Iterator end)</td></tr>
 <tr class="separator:a50a9e4b90108738c8c487c4346d63e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaa67d8a37f9aa436d6cd649f0d9b752"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
-<tr class="memitem:aeaa67d8a37f9aa436d6cd649f0d9b752"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#aeaa67d8a37f9aa436d6cd649f0d9b752">choose_missing_float_placeholder</a> (Iterator start, Iterator end)</td></tr>
-<tr class="separator:aeaa67d8a37f9aa436d6cd649f0d9b752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a6039e4e9382e5e3c5ccab69df2a277ba">choose_missing_float_placeholder</a> (Iterator start, Iterator end, bool skip_nan=false)</td></tr>
+<tr class="separator:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8">is_date_prefix</a> (const char *ptr)</td></tr>
 <tr class="separator:a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af53ad376d532eaac211b7cd93f3dda4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c">is_date</a> (const char *ptr, size_t len)</td></tr>
@@ -157,8 +157,8 @@ template&lt;typename Float_ &gt; </div>
 
 </div>
 </div>
-<a id="aeaa67d8a37f9aa436d6cd649f0d9b752" name="aeaa67d8a37f9aa436d6cd649f0d9b752"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeaa67d8a37f9aa436d6cd649f0d9b752">&#9670;&#160;</a></span>choose_missing_float_placeholder()</h2>
+<a id="a6039e4e9382e5e3c5ccab69df2a277ba" name="a6039e4e9382e5e3c5ccab69df2a277ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6039e4e9382e5e3c5ccab69df2a277ba">&#9670;&#160;</a></span>choose_missing_float_placeholder()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +175,13 @@ template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Iterator&#160;</td>
-          <td class="paramname"><em>end</em>&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>skip_nan</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -195,7 +201,8 @@ template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename 
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
-    <tr><td class="paramname">end</td><td>End of the dataset.</td></tr>
+    <tr><td class="paramname">end</td><td>End of the dataset. </td></tr>
+    <tr><td class="paramname">skip_nan</td><td>Whether to skip NaN as a potential placeholder. Useful in frameworks like R that need special consideration of NaN payloads.</td></tr>
   </table>
   </dd>
 </dl>
