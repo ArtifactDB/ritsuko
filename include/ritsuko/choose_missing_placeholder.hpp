@@ -84,21 +84,25 @@ std::pair<bool, Type_> choose_missing_integer_placeholder(Iterator start, Iterat
  *
  * @param start Start of the dataset.
  * @param end End of the dataset.
+ * @param skip_nan Whether to skip NaN as a potential placeholder. 
+ * Useful in frameworks like R that need special consideration of NaN payloads.
  *
  * @return Pair containing (i) a boolean indicating whether a placeholder was successfully found, and (ii) the chosen placeholder if the previous boolean is true.
  */
 template<class Iterator, class Type_ = typename std::remove_cv<typename std::remove_reference<decltype(*(std::declval<Iterator>()))>::type>::type>
-std::pair<bool, Type_> choose_missing_float_placeholder(Iterator start, Iterator end) {
+std::pair<bool, Type_> choose_missing_float_placeholder(Iterator start, Iterator end, bool skip_nan = false) {
     if constexpr(std::numeric_limits<Type_>::is_iec559) {
-        bool has_nan = false;
-        for (auto x = start; x != end; ++x) {
-            if (std::isnan(*x)) {
-                has_nan = true;
-                break;
+        if (!skip_nan) {
+            bool has_nan = false;
+            for (auto x = start; x != end; ++x) {
+                if (std::isnan(*x)) {
+                    has_nan = true;
+                    break;
+                }
             }
-        }
-        if (!has_nan) {
-            return std::make_pair(true, std::numeric_limits<Type_>::quiet_NaN());
+            if (!has_nan) {
+                return std::make_pair(true, std::numeric_limits<Type_>::quiet_NaN());
+            }
         }
 
         for (int i = 0; i < 2; ++i) {

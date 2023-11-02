@@ -84,6 +84,10 @@ TEST(ChooseMissingPlaceholder, Float) {
             auto found = ritsuko::choose_missing_float_placeholder(foo.begin(), foo.end());
             EXPECT_TRUE(found.first);
             EXPECT_TRUE(std::isnan(found.second));
+
+            auto found2 = ritsuko::choose_missing_float_placeholder(foo.begin(), foo.end(), /* skip_nan = */ true);
+            EXPECT_TRUE(found2.first);
+            EXPECT_EQ(found2.second, pinf);
         }
         foo.push_back(nan);
 
