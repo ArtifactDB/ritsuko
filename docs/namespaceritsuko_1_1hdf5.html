@@ -116,6 +116,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
 <tr class="memitem:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ae1d98f3668942a1f74f3c22e515beaf1">load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size, Function_ fun)</td></tr>
 <tr class="separator:ae1d98f3668942a1f74f3c22e515beaf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add2dd33e65a9809d1d616e5dd4a64e81"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
+<tr class="memitem:add2dd33e65a9809d1d616e5dd4a64e81"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute</a> (const H5::Attribute &amp;handle, hsize_t full_length, Function_ fun)</td></tr>
+<tr class="separator:add2dd33e65a9809d1d616e5dd4a64e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae09b2aaf282ec0809b610528f4bf87b3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
 <tr class="separator:ae09b2aaf282ec0809b610528f4bf87b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a160a83252d5d8ef5b886acf9726fa720"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
@@ -675,6 +678,57 @@ template&lt;class Function_ &gt; </div>
     <tr><td class="paramname">full_length</td><td>Length of the dataset, usually obtained from <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </td></tr>
     <tr><td class="paramname">block_size</td><td>Size of the blocks, usually calculated by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size()</a></code>. </td></tr>
     <tr><td class="paramname">fun</td><td>Function that accepts <code>(hsize_t start, hsize_t len, H5::DataSpace&amp; memspace, H5::DataSpace&amp; dataspace)</code> and is called on each block. In each call, the block contains elements from <code>[start, start + len)</code>. <code>dataspace</code> is configured to extract that block from the dataset, while <code>memspace</code> is configured to deposit the block contents in a buffer from <code>[0, len)</code>. It can be assumed that consecutive calls to <code>fun</code> will operate on consecutive contiguous blocks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="add2dd33e65a9809d1d616e5dd4a64e81" name="add2dd33e65a9809d1d616e5dd4a64e81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add2dd33e65a9809d1d616e5dd4a64e81">&#9670;&#160;</a></span>load_1d_string_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Function_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::load_1d_string_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>full_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Function_&#160;</td>
+          <td class="paramname"><em>fun</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Iterate across a string attribute, extracting each string and running a user-specified function. This works for both variable- and fixed-length strings.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Function_</td><td>Function class that accepts <code>(hsize_t i, const char* start, size_t len)</code> where <code>i</code> is the index of the string from <code>[start, start + len)</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to a string attribute. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the attribute in <code>handle</code>, usually obtained by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </td></tr>
+    <tr><td class="paramname">fun</td><td>Function to be called on each string. It can be assumed that the consecutive calls to <code>fun</code> will operate on consecutive <code>i</code>. </td></tr>
   </table>
   </dd>
 </dl>
