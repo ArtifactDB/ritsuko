@@ -96,3 +96,30 @@ TEST(Hdf5ExceedsFloatLimit, Failed) {
         EXPECT_TRUE(ritsuko::hdf5::exceeds_float_limit(handle.openDataSet("STR"), 32)); 
     }
 }
+
+TEST(Hdf5ExceedsLimit, Attribute) {
+    const char* path = "TEST-forbid.h5";
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        hsize_t len = 10;
+        H5::DataSpace dspace(1, &len);
+        auto dhandle = handle.createDataSet("whee", H5::PredType::NATIVE_INT8, dspace);
+        dhandle.createAttribute("UINT8", H5::PredType::NATIVE_UINT8, H5S_SCALAR);
+        dhandle.createAttribute("INT32", H5::PredType::NATIVE_INT32, H5S_SCALAR);
+        dhandle.createAttribute("INT64", H5::PredType::NATIVE_INT64, H5S_SCALAR);
+        dhandle.createAttribute("STR", H5::StrType(0, H5T_VARIABLE), H5S_SCALAR);
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    auto dhandle = handle.openDataSet("whee");
+    EXPECT_FALSE(ritsuko::hdf5::exceeds_integer_limit(dhandle.openAttribute("UINT8"), 32, true)); 
+    EXPECT_FALSE(ritsuko::hdf5::exceeds_integer_limit(dhandle.openAttribute("INT32"), 32, true)); 
+    EXPECT_TRUE(ritsuko::hdf5::exceeds_integer_limit(dhandle.openAttribute("INT64"), 32, true)); 
+    EXPECT_TRUE(ritsuko::hdf5::exceeds_integer_limit(dhandle.openAttribute("STR"), 32, true)); 
+
+    EXPECT_FALSE(ritsuko::hdf5::exceeds_float_limit(dhandle.openAttribute("UINT8"), 32)); 
+    EXPECT_FALSE(ritsuko::hdf5::exceeds_float_limit(dhandle.openAttribute("INT32"), 64)); 
+    EXPECT_TRUE(ritsuko::hdf5::exceeds_float_limit(dhandle.openAttribute("INT64"), 64)); 
+    EXPECT_TRUE(ritsuko::hdf5::exceeds_float_limit(dhandle.openAttribute("STR"), 64)); 
+}
