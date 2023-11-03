@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/hdf5.hpp File Reference</title>
+<title>ritsuko: ritsuko/hdf5/get_scalar_attribute.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,48 +76,37 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">hdf5.hpp File Reference</div></div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">get_scalar_attribute.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Umbrella header for <b>ritsuko</b>'s HDF5 utilities.  
+<p>Helper to get a scalar attribute handle.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="exceeds__limit_8hpp_source.html">exceeds_limit.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__1d__length_8hpp_source.html">get_1d_length.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="iterate__1d__blocks_8hpp_source.html">iterate_1d_blocks.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="load__1d__string__dataset_8hpp_source.html">load_1d_string_dataset.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="load__scalar__string__attribute_8hpp_source.html">load_scalar_string_attribute.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__missing__placeholder__attribute_8hpp_source.html">get_missing_placeholder_attribute.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__dataset_8hpp_source.html">get_dataset.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__scalar__attribute_8hpp_source.html">get_scalar_attribute.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__name_8hpp_source.html">get_name.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for hdf5.hpp:</div>
+Include dependency graph for get_scalar_attribute.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="hdf5_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2hdf5_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2hdf5_8hpp" id="aritsuko_2hdf5_2hdf5_8hpp">
-<area shape="rect" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="743,5,885,31"/>
-<area shape="rect" href="exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="499,86,625,111"/>
-<area shape="rect" href="get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="649,86,776,111"/>
-<area shape="rect" href="iterate__1d__blocks_8hpp.html" title="Blockwise iteration through a 1&#45;dimensional HDF5 dataset." alt="" coords="5,174,153,199"/>
-<area shape="rect" href="load__1d__string__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 string dataset." alt="" coords="257,86,437,111"/>
-<area shape="rect" href="load__scalar__string__attribute_8hpp.html" title="Load a scalar string HDF5 attribute." alt="" coords="852,79,979,119"/>
-<area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="755,174,857,199"/>
-<area shape="rect" href="get__missing__placeholder__attribute_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="1167,167,1333,207"/>
-<area shape="rect" href="get__dataset_8hpp.html" title="Quick functions to get a dataset handle." alt="" coords="1357,174,1471,199"/>
-<area shape="rect" href="get__scalar__attribute_8hpp.html" title="Helper to get a scalar attribute handle." alt="" coords="983,174,1143,199"/>
-<area shape="rect" title=" " alt="" coords="725,255,797,280"/>
-<area shape="rect" title=" " alt="" coords="600,174,679,199"/>
-<area shape="rect" title=" " alt="" coords="42,255,117,280"/>
-<area shape="rect" title=" " alt="" coords="402,255,461,280"/>
-<area shape="rect" title=" " alt="" coords="463,174,525,199"/>
-<area shape="rect" href="pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="229,174,388,199"/>
-<area shape="rect" title=" " alt="" coords="1036,255,1091,280"/>
+<div class="center"><img src="get__scalar__attribute_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2get__scalar__attribute_8hpp" alt=""/></div>
+<map name="aritsuko_2hdf5_2get__scalar__attribute_8hpp" id="aritsuko_2hdf5_2get__scalar__attribute_8hpp">
+<area shape="rect" title="Helper to get a scalar attribute handle." alt="" coords="8,5,163,45"/>
+<area shape="rect" title=" " alt="" coords="5,93,77,119"/>
+<area shape="rect" title=" " alt="" coords="102,93,157,119"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="get__scalar__attribute_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2get__scalar__attribute_8hppdep" alt=""/></div>
+<map name="aritsuko_2hdf5_2get__scalar__attribute_8hppdep" id="aritsuko_2hdf5_2get__scalar__attribute_8hppdep">
+<area shape="rect" title="Helper to get a scalar attribute handle." alt="" coords="5,5,160,45"/>
+<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="11,93,154,119"/>
 </map>
 </div>
 </div>
-<p><a href="hdf5_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="get__scalar__attribute_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -127,9 +116,15 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko_1_1hdf5"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html">ritsuko::hdf5</a></td></tr>
 <tr class="memdesc:namespaceritsuko_1_1hdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for HDF5 parsing. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a363a6effad1f378fea2e0133c48965af"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
+<tr class="memitem:a363a6effad1f378fea2e0133c48965af"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a363a6effad1f378fea2e0133c48965af">ritsuko::hdf5::get_scalar_attribute</a> (const Object_ &amp;handle, const char *name)</td></tr>
+<tr class="separator:a363a6effad1f378fea2e0133c48965af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Umbrella header for <b>ritsuko</b>'s HDF5 utilities. </p>
+<div class="textblock"><p >Helper to get a scalar attribute handle. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

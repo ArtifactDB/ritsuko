@@ -107,6 +107,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a199d4e8292ebb954ab9f505764ebf2d9"><td class="memTemplParams" colspan="2">template&lt;class Handle_ &gt; </td></tr>
 <tr class="memitem:a199d4e8292ebb954ab9f505764ebf2d9"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a> (const Handle_ &amp;handle)</td></tr>
 <tr class="separator:a199d4e8292ebb954ab9f505764ebf2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363a6effad1f378fea2e0133c48965af"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
+<tr class="memitem:a363a6effad1f378fea2e0133c48965af"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a363a6effad1f378fea2e0133c48965af">get_scalar_attribute</a> (const Object_ &amp;handle, const char *name)</td></tr>
+<tr class="separator:a363a6effad1f378fea2e0133c48965af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95eecb7d1464cc84615cf0ab1c3102a8"><td class="memTemplParams" colspan="2">template&lt;class Function_ &gt; </td></tr>
 <tr class="memitem:a95eecb7d1464cc84615cf0ab1c3102a8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a> (hsize_t full_length, hsize_t block_size, Function_ fun)</td></tr>
 <tr class="separator:a95eecb7d1464cc84615cf0ab1c3102a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -541,6 +544,51 @@ template&lt;class Handle_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Name of the HDF5 object inside the file. </dd></dl>
+
+</div>
+</div>
+<a id="a363a6effad1f378fea2e0133c48965af" name="a363a6effad1f378fea2e0133c48965af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363a6effad1f378fea2e0133c48965af">&#9670;&#160;</a></span>get_scalar_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Object_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">H5::Attribute ritsuko::hdf5::get_scalar_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const Object_ &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Convenient wrapper to get a scalar attribute with all of the usual error checks.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Object_</td><td>Type of the HDF5 handle, usually a <code>DataSet</code> or <code>Group</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>HDF5 dataset or group handle. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the attribute.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Attribute handle. </dd></dl>
 
 </div>
 </div>
