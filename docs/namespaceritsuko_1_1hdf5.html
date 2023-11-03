@@ -86,10 +86,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a6cd65a78811faa2894a672f5ce993949"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit</a> (const H5::IntType &amp;itype, size_t precision, bool is_signed)</td></tr>
+<tr class="separator:a6cd65a78811faa2894a672f5ce993949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8101d57fbdf4a10b2297509acb1c2c0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8101d57fbdf4a10b2297509acb1c2c0f">exceeds_integer_limit</a> (const H5::DataSet &amp;handle, size_t precision, bool is_signed)</td></tr>
 <tr class="separator:a8101d57fbdf4a10b2297509acb1c2c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac47306af2cffbd1c5e6510e263433917"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ac47306af2cffbd1c5e6510e263433917">exceeds_integer_limit</a> (const H5::Attribute &amp;handle, size_t precision, bool is_signed)</td></tr>
+<tr class="separator:ac47306af2cffbd1c5e6510e263433917"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaeb27fa68cb7564cfdec29e4b6d6789"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#acaeb27fa68cb7564cfdec29e4b6d6789">exceeds_float_limit</a> (const H5::DataSet &amp;handle, size_t precision)</td></tr>
 <tr class="separator:acaeb27fa68cb7564cfdec29e4b6d6789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ca0022b59f5b2922d9899af3f3ec07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a81ca0022b59f5b2922d9899af3f3ec07">exceeds_float_limit</a> (const H5::Attribute &amp;handle, size_t precision)</td></tr>
+<tr class="separator:a81ca0022b59f5b2922d9899af3f3ec07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac15dcfa823155b137686519d25ccca7d"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a> (const H5::DataSpace &amp;space, bool allow_scalar)</td></tr>
 <tr class="separator:ac15dcfa823155b137686519d25ccca7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a30dedd3c6544a1745035581cd2c31d"><td class="memItemLeft" align="right" valign="top">H5::DataSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8a30dedd3c6544a1745035581cd2c31d">get_dataset</a> (const H5::Group &amp;handle, const char *name)</td></tr>
@@ -118,8 +124,54 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Assorted helper functions for HDF5 parsing. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a81ca0022b59f5b2922d9899af3f3ec07" name="a81ca0022b59f5b2922d9899af3f3ec07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81ca0022b59f5b2922d9899af3f3ec07">&#9670;&#160;</a></span>exceeds_float_limit() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ritsuko::hdf5::exceeds_float_limit </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>precision</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#acaeb27fa68cb7564cfdec29e4b6d6789">exceeds_float_limit()</a></code> that accepts a HDF5 attribute handle.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle for a HDF5 attribute. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
+    <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting integer type. </dd></dl>
+
+</div>
+</div>
 <a id="acaeb27fa68cb7564cfdec29e4b6d6789" name="acaeb27fa68cb7564cfdec29e4b6d6789"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acaeb27fa68cb7564cfdec29e4b6d6789">&#9670;&#160;</a></span>exceeds_float_limit()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acaeb27fa68cb7564cfdec29e4b6d6789">&#9670;&#160;</a></span>exceeds_float_limit() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,8 +215,60 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac47306af2cffbd1c5e6510e263433917" name="ac47306af2cffbd1c5e6510e263433917"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac47306af2cffbd1c5e6510e263433917">&#9670;&#160;</a></span>exceeds_integer_limit() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ritsuko::hdf5::exceeds_integer_limit </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>precision</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_signed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code> that accepts a HDF5 attribute handle.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle for a HDF5 attribute. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
+    <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting integer type. </dd></dl>
+
+</div>
+</div>
 <a id="a8101d57fbdf4a10b2297509acb1c2c0f" name="a8101d57fbdf4a10b2297509acb1c2c0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8101d57fbdf4a10b2297509acb1c2c0f">&#9670;&#160;</a></span>exceeds_integer_limit()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8101d57fbdf4a10b2297509acb1c2c0f">&#9670;&#160;</a></span>exceeds_integer_limit() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,10 +306,62 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Check if a HDF5 dataset has a type that might hold values beyond the range of a limiting integer type. This is used by validators to ensure that a dataset can be represented in memory by the limiting type.</p>
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code> that accepts a HDF5 dataset handle.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Handle for a HDF5 dataset. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
+    <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting integer type. </dd></dl>
+
+</div>
+</div>
+<a id="a6cd65a78811faa2894a672f5ce993949" name="a6cd65a78811faa2894a672f5ce993949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cd65a78811faa2894a672f5ce993949">&#9670;&#160;</a></span>exceeds_integer_limit() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ritsuko::hdf5::exceeds_integer_limit </td>
+          <td>(</td>
+          <td class="paramtype">const H5::IntType &amp;&#160;</td>
+          <td class="paramname"><em>itype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>precision</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_signed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check if a HDF5 dataset has a type that might hold values beyond the range of a limiting integer type. This is used by validators to ensure that a dataset can be represented in memory by the limiting type.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itype</td><td>HDF5 integer datatype. </td></tr>
     <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
     <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
   </table>
