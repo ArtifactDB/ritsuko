@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 
 project(ritsuko
-    VERSION 0.3.3
+    VERSION 0.3.4
     DESCRIPTION "Helper functions for ArtifactDB libraries"
     LANGUAGES CXX)
 
