@@ -96,9 +96,15 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a1e2efff2630c08b7145f28b6dd0caaac"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:a1e2efff2630c08b7145f28b6dd0caaac"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a1e2efff2630c08b7145f28b6dd0caaac">choose_missing_integer_placeholder</a> (Iterator start, Iterator end, Mask mask)</td></tr>
+<tr class="separator:a1e2efff2630c08b7145f28b6dd0caaac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50a9e4b90108738c8c487c4346d63e61"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
 <tr class="memitem:a50a9e4b90108738c8c487c4346d63e61"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a50a9e4b90108738c8c487c4346d63e61">choose_missing_integer_placeholder</a> (Iterator start, Iterator end)</td></tr>
 <tr class="separator:a50a9e4b90108738c8c487c4346d63e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0d04408fd63a41f12337d8e27b20f9"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:a8f0d04408fd63a41f12337d8e27b20f9"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a8f0d04408fd63a41f12337d8e27b20f9">choose_missing_float_placeholder</a> (Iterator start, Iterator end, Mask mask, bool skip_nan)</td></tr>
+<tr class="separator:a8f0d04408fd63a41f12337d8e27b20f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
 <tr class="memitem:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a6039e4e9382e5e3c5ccab69df2a277ba">choose_missing_float_placeholder</a> (Iterator start, Iterator end, bool skip_nan=false)</td></tr>
 <tr class="separator:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,7 +174,7 @@ template&lt;typename Float_ &gt; </div>
 </div>
 </div>
 <a id="a6039e4e9382e5e3c5ccab69df2a277ba" name="a6039e4e9382e5e3c5ccab69df2a277ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6039e4e9382e5e3c5ccab69df2a277ba">&#9670;&#160;</a></span>choose_missing_float_placeholder()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6039e4e9382e5e3c5ccab69df2a277ba">&#9670;&#160;</a></span>choose_missing_float_placeholder() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +206,66 @@ template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename 
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Choose an appropriate placeholder for missing values in a floating-point dataset. This will try the various IEEE special values (NaN, Inf, -Inf) and then some type-specific boundaries (the minimum, the maximum, and for signed types, 0) before sorting the dataset and searching for an unused float.</p>
+<p >Overload of <code><a class="el" href="namespaceritsuko.html#a8f0d04408fd63a41f12337d8e27b20f9">choose_missing_float_placeholder()</a></code> where no values are masked.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterator_</td><td>Forward iterator for floating-point values. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Integer type pointed to by <code>Iterator_</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
+    <tr><td class="paramname">end</td><td>End of the dataset. </td></tr>
+    <tr><td class="paramname">skip_nan</td><td>Whether to skip NaN as a potential placeholder.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pair containing (i) a boolean indicating whether a placeholder was successfully found, and (ii) the chosen placeholder if the previous boolean is true. </dd></dl>
+
+</div>
+</div>
+<a id="a8f0d04408fd63a41f12337d8e27b20f9" name="a8f0d04408fd63a41f12337d8e27b20f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f0d04408fd63a41f12337d8e27b20f9">&#9670;&#160;</a></span>choose_missing_float_placeholder() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; bool, Type_ &gt; ritsuko::choose_missing_float_placeholder </td>
+          <td>(</td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mask&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>skip_nan</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Choose an appropriate placeholder for missing values in a floating-point dataset, after ignoring all masked values. This will try the various IEEE special values (NaN, Inf, -Inf) and then some type-specific boundaries (the minimum, the maximum, and for signed types, 0) before sorting the dataset and searching for an unused float.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Iterator_</td><td>Forward iterator for floating-point values. </td></tr>
@@ -212,6 +277,7 @@ template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename 
   <table class="params">
     <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
     <tr><td class="paramname">end</td><td>End of the dataset. </td></tr>
+    <tr><td class="paramname">mask</td><td>Start of the mask vector. </td></tr>
     <tr><td class="paramname">skip_nan</td><td>Whether to skip NaN as a potential placeholder. Useful in frameworks like R that need special consideration of NaN payloads.</td></tr>
   </table>
   </dd>
@@ -221,7 +287,7 @@ template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename 
 </div>
 </div>
 <a id="a50a9e4b90108738c8c487c4346d63e61" name="a50a9e4b90108738c8c487c4346d63e61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50a9e4b90108738c8c487c4346d63e61">&#9670;&#160;</a></span>choose_missing_integer_placeholder()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a50a9e4b90108738c8c487c4346d63e61">&#9670;&#160;</a></span>choose_missing_integer_placeholder() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +313,7 @@ template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename 
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Choose an appropriate placeholder for missing values in an integer dataset. This will try the various special values (the minimum, the maximum, and for signed types, 0) before sorting the dataset and searching for an unused integer value.</p>
+<p >Overload of <code><a class="el" href="namespaceritsuko.html#a1e2efff2630c08b7145f28b6dd0caaac">choose_missing_integer_placeholder()</a></code> where no values are masked.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Iterator_</td><td>Forward iterator for integer values. </td></tr>
@@ -259,6 +325,60 @@ template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename 
   <table class="params">
     <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
     <tr><td class="paramname">end</td><td>End of the dataset.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pair containing (i) a boolean indicating whether a placeholder was successfully found, and (ii) the chosen placeholder if the previous boolean is true. </dd></dl>
+
+</div>
+</div>
+<a id="a1e2efff2630c08b7145f28b6dd0caaac" name="a1e2efff2630c08b7145f28b6dd0caaac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e2efff2630c08b7145f28b6dd0caaac">&#9670;&#160;</a></span>choose_missing_integer_placeholder() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; bool, Type_ &gt; ritsuko::choose_missing_integer_placeholder </td>
+          <td>(</td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mask&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Choose an appropriate placeholder for missing values in an integer dataset, after ignoring all the masked values. This will try the various special values (the minimum, the maximum, and for signed types, 0) before sorting the dataset and searching for an unused integer value.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterator_</td><td>Forward iterator for integer values. </td></tr>
+    <tr><td class="paramname">Mask_</td><td>Random access iterator for mask values. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Integer type pointed to by <code>Iterator_</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
+    <tr><td class="paramname">end</td><td>End of the dataset. </td></tr>
+    <tr><td class="paramname">mask</td><td>Start of the mask vector. This should have the same length as <code>end - start</code>; each entry is true if the corresponding value of the integer dataset is masked, and false otherwise.</td></tr>
   </table>
   </dd>
 </dl>
