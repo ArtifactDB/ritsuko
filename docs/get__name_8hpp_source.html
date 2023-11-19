@@ -92,9 +92,9 @@ $(function() {
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Handle_&gt;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">   24</a></span>std::string <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a>(<span class="keyword">const</span> Handle_&amp; handle) {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">size_t</span> len = H5Iget_name(handle.getId(), NULL, 0);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::vector&lt;char&gt; buffer(len+1);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    H5Iget_name(handle.getId(), buffer.data(), len+1);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">return</span> std::string(buffer.begin(), buffer.end());</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::vector&lt;char&gt; buffer(len + 1);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    H5Iget_name(handle.getId(), buffer.data(), buffer.size());</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">return</span> std::string(buffer.begin(), buffer.begin() + len);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
