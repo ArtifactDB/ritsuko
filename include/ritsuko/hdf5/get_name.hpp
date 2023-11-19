@@ -23,9 +23,9 @@ namespace hdf5 {
 template<class Handle_>
 std::string get_name(const Handle_& handle) {
     size_t len = H5Iget_name(handle.getId(), NULL, 0);
-    std::vector<char> buffer(len);
-    H5Iget_name(handle.getId(), buffer.data(), len+1);
-    return std::string(buffer.begin(), buffer.end());
+    std::vector<char> buffer(len + 1);
+    H5Iget_name(handle.getId(), buffer.data(), buffer.size());
+    return std::string(buffer.begin(), buffer.begin() + len);
 }
 
 }
