@@ -105,6 +105,8 @@ Functions</h2></td></tr>
 <tr class="separator:a8a30dedd3c6544a1745035581cd2c31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60bb02dcde8b7de2048930cdfd7541d0"><td class="memItemLeft" align="right" valign="top">H5::DataSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a60bb02dcde8b7de2048930cdfd7541d0">get_scalar_dataset</a> (const H5::Group &amp;handle, const char *name)</td></tr>
 <tr class="separator:a60bb02dcde8b7de2048930cdfd7541d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99651a5d5d61b8005d49612241136636"><td class="memItemLeft" align="right" valign="top">H5::Group&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a99651a5d5d61b8005d49612241136636">get_group</a> (const H5::Group &amp;handle, const char *name)</td></tr>
+<tr class="separator:a99651a5d5d61b8005d49612241136636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c441c7a6e4745df9a604045799bdbd2"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a4c441c7a6e4745df9a604045799bdbd2">get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=false)</td></tr>
 <tr class="separator:a4c441c7a6e4745df9a604045799bdbd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a199d4e8292ebb954ab9f505764ebf2d9"><td class="memTemplParams" colspan="2">template&lt;class Handle_ &gt; </td></tr>
@@ -127,6 +129,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a160a83252d5d8ef5b886acf9726fa720"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
 <tr class="memitem:a160a83252d5d8ef5b886acf9726fa720"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a160a83252d5d8ef5b886acf9726fa720">load_scalar_string_attribute</a> (const Object_ &amp;handle, const char *field)</td></tr>
 <tr class="separator:a160a83252d5d8ef5b886acf9726fa720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74e80e9c2e77530752c2dee29af5c9b4"><td class="memItemLeft" align="right" valign="top">H5::H5File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4">open_file</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="separator:a74e80e9c2e77530752c2dee29af5c9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size</a> (const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</td></tr>
 <tr class="separator:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -493,6 +497,50 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Handle to the dataset. An error is raised if <code>name</code> does not refer to a dataset. </dd></dl>
+
+</div>
+</div>
+<a id="a99651a5d5d61b8005d49612241136636" name="a99651a5d5d61b8005d49612241136636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99651a5d5d61b8005d49612241136636">&#9670;&#160;</a></span>get_group()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">H5::Group ritsuko::hdf5::get_group </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Group &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Parent group (or file). </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the group. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Handle to the group. An error is raised if <code>name</code> does not refer to a dataset. </dd></dl>
 
 </div>
 </div>
@@ -897,6 +945,39 @@ template&lt;class Object_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The attribute as a string. </dd></dl>
+
+</div>
+</div>
+<a id="a74e80e9c2e77530752c2dee29af5c9b4" name="a74e80e9c2e77530752c2dee29af5c9b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74e80e9c2e77530752c2dee29af5c9b4">&#9670;&#160;</a></span>open_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">H5::H5File ritsuko::hdf5::open_file </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Path to a HDF5 file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Handle to the file. An error is raised if <code>path</code> does not exist. </dd></dl>
 
 </div>
 </div>
