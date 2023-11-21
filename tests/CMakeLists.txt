@@ -31,6 +31,7 @@ add_executable(
     src/hdf5/get_dataset.cpp
     src/hdf5/get_scalar_attribute.cpp
     src/hdf5/get_name.cpp
+    src/hdf5/choose_datatype.cpp
 )
 
 target_link_libraries(

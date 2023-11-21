@@ -11,6 +11,8 @@
 #include "get_scalar_attribute.hpp"
 #include "get_name.hpp"
 
+#include "choose_datatype.hpp"
+
 /**
  * @file hdf5.hpp
  * @brief Umbrella header for **ritsuko**'s HDF5 utilities.
