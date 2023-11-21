@@ -1,4 +1,5 @@
 <map id="ritsuko/hdf5/get_1d_length.hpp" name="ritsuko/hdf5/get_1d_length.hpp">
-<area shape="rect" id="node1" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="10,5,143,45"/>
-<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,93,148,119"/>
+<area shape="rect" id="node1" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="139,5,272,45"/>
+<area shape="rect" id="node2" href="$Numeric1dDatasetStream_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,93,208,133"/>
+<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="233,101,375,126"/>
 </map>

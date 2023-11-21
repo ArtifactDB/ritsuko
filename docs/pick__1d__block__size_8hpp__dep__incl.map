@@ -1,6 +1,7 @@
 <map id="ritsuko/hdf5/pick_1d_block_size.hpp" name="ritsuko/hdf5/pick_1d_block_size.hpp">
-<area shape="rect" id="node1" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="95,5,233,45"/>
-<area shape="rect" id="node2" href="$load__1d__numeric__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 numeric dataset." alt="" coords="5,93,155,133"/>
-<area shape="rect" id="node3" href="$load__1d__string__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 string dataset." alt="" coords="179,93,317,133"/>
-<area shape="rect" id="node4" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="177,181,319,207"/>
+<area shape="rect" id="node1" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="237,5,376,45"/>
+<area shape="rect" id="node2" href="$Numeric1dDatasetStream_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,93,208,133"/>
+<area shape="rect" id="node3" href="$load__1d__numeric__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 numeric dataset." alt="" coords="232,93,381,133"/>
+<area shape="rect" id="node4" href="$load__1d__string__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 string dataset." alt="" coords="405,93,544,133"/>
+<area shape="rect" id="node5" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="403,181,546,207"/>
 </map>
