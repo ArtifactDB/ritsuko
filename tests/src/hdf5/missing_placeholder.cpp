@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "ritsuko/hdf5/get_missing_placeholder_attribute.hpp"
+#include "ritsuko/hdf5/missing_placeholder.hpp"
 #include "utils.h"
 #include <numeric>
 #include <string>
 
-TEST(Hdf5GetMissingPlaceholderAttribute, Basic) {
+TEST(Hdf5MissingPlaceholder, Loading) {
     const char* path = "TEST-missing-placeholder.h5";
 
    // Integers.
@@ -60,7 +60,7 @@ TEST(Hdf5GetMissingPlaceholderAttribute, Basic) {
 static void expect_error(const H5::DataSet& handle, const char* field, std::string msg) {
     EXPECT_ANY_THROW({
         try {
-            ritsuko::hdf5::get_missing_placeholder_attribute(handle, field);
+            ritsuko::hdf5::open_missing_placeholder_attribute(handle, field);
         } catch (std::exception& e) {
             EXPECT_THAT(e.what(), ::testing::HasSubstr(msg));
             throw;
@@ -68,7 +68,7 @@ static void expect_error(const H5::DataSet& handle, const char* field, std::stri
     });
 }
 
-TEST(Hdf5GetMissingPlaceholderAttribute, Failed) {
+TEST(Hdf5MissingPlaceholder, Failed) {
     const char* path = "TEST-missing-placeholder.h5";
 
     // Different type.
@@ -94,7 +94,7 @@ TEST(Hdf5GetMissingPlaceholderAttribute, Failed) {
         auto dhandle = handle.openDataSet("foobar");
         EXPECT_ANY_THROW({
             try {
-                ritsuko::hdf5::get_missing_placeholder_attribute(dhandle, "ouch", true);
+                ritsuko::hdf5::open_missing_placeholder_attribute(dhandle, "ouch", true);
             } catch (std::exception& e) {
                 EXPECT_THAT(e.what(), ::testing::HasSubstr("same type class"));
                 throw;

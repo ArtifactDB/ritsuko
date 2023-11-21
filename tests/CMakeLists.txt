@@ -33,7 +33,7 @@ add_executable(
 
     src/hdf5/open.cpp
 
-    src/hdf5/get_missing_placeholder_attribute.cpp
+    src/hdf5/missing_placeholder.cpp
     src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp
 )

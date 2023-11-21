@@ -8,7 +8,7 @@
 #include "load_scalar_string_attribute.hpp"
 
 /**
- * @file get_missing_placeholder_attribute.hpp
+ * @file missing_placeholder.hpp
  * @brief Get the missing placeholder attribute.
  */
 
@@ -17,10 +17,9 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * Get a handle to a missing placeholder's attribute.
+ * Open a handle to a missing placeholder's attribute.
  * It is assumed that the caller has already checked `handle` for the existence of the attribute at `attr_name`;
  * this function will only perform additional checks for the shape and type of the attribute.
- * (We do not throw an error on the absence of the missing placeholder attribute, as the caller usually wants to do something else in that case.)
  *
  * @param handle Dataset handle.
  * @param attr_name Name of the attribute containing the missing value placeholder.
@@ -30,7 +29,7 @@ namespace hdf5 {
  * @return Handle to the attribute.
  * An error is raised if the attribute is not a scalar or has a different type (or type class, if `type_class_only_ = true`) to the dataset.
  */
-inline H5::Attribute get_missing_placeholder_attribute(const H5::DataSet& handle, const char* attr_name, bool type_class_only = false) {
+inline H5::Attribute open_missing_placeholder_attribute(const H5::DataSet& handle, const char* attr_name, bool type_class_only = false) {
     auto attr = handle.openAttribute(attr_name);
     if (attr.getSpace().getSimpleExtentNdims() != 0) {
         throw std::runtime_error("expected the '" + std::string(attr_name) + "' attribute to be a scalar");
@@ -50,7 +49,18 @@ inline H5::Attribute get_missing_placeholder_attribute(const H5::DataSet& handle
 }
 
 /**
- * Load a missing numeric placeholder by calling `get_missing_placeholder_attribute()`.
+ * @cond
+ */
+// Back-compatibility only.
+inline H5::Attribute get_missing_placeholder_attribute(const H5::DataSet& handle, const char* attr_name, bool type_class_only = false) {
+    return open_missing_placeholder_attribute(handle, attr_name, type_class_only);
+}
+/**
+ * @cond
+ */
+
+/**
+ * Load a missing numeric placeholder by calling `open_missing_placeholder_attribute()`.
  *
  * @tparam Type_ Type to use to store the data in memory, see `as_numeric_datatype()` for supported types.
  * @param handle Dataset handle.
@@ -64,13 +74,13 @@ std::pair<bool, Type_> load_numeric_missing_placeholder(const H5::DataSet& handl
         return output;
     }
     output.first = true;
-    auto ahandle = get_missing_placeholder_attribute(handle, attr_name, /* type_class_only = */ false);
+    auto ahandle = open_missing_placeholder_attribute(handle, attr_name, /* type_class_only = */ false);
     ahandle.read(as_numeric_datatype<Type_>(), &(output.second));
     return output;
 }
 
 /**
- * Load a missing string placeholder by calling `get_missing_placeholder_attribute()`.
+ * Load a missing string placeholder by calling `open_missing_placeholder_attribute()`.
  * Note the difference in the default for `type_class_only`.
  *
  * @param handle Dataset handle.
@@ -86,7 +96,7 @@ inline std::pair<bool, std::string> load_string_missing_placeholder(const H5::Da
         return output;
     }
     output.first = true;
-    auto ahandle = get_missing_placeholder_attribute(handle, attr_name, type_class_only);
+    auto ahandle = open_missing_placeholder_attribute(handle, attr_name, type_class_only);
     output.second = load_scalar_string_attribute(ahandle);
     return output;
 }
