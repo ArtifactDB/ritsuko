@@ -34,7 +34,7 @@ add_executable(
     src/hdf5/open_file.cpp
     src/hdf5/get_scalar_attribute.cpp
     src/hdf5/get_name.cpp
-    src/hdf5/choose_datatype.cpp
+    src/hdf5/as_numeric_datatype.cpp
 )
 
 target_link_libraries(
