@@ -83,133 +83,137 @@ $(function() {
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;H5Cpp.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="pick__1d__block__size_8hpp.html">pick_1d_block_size.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="get__1d__length_8hpp.html">get_1d_length.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="get__name_8hpp.html">get_name.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span>hdf5 {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">Stream1dStringDataset</a> {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9ac9df0e3a6fa101ff6839e8914ddfe5">   34</a></span>    <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9ac9df0e3a6fa101ff6839e8914ddfe5">Stream1dStringDataset</a>(<span class="keyword">const</span> H5::DataSet* ptr, hsize_t <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">length</a>, hsize_t buffer_size) : </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        ptr(ptr), </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        full_length(<a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">length</a>), </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        block_size(<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size</a>(ptr-&gt;getCreatePlist(), full_length, buffer_size)),</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        mspace(1, &amp;block_size),</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        dspace(1, &amp;full_length),</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        dtype(ptr-&gt;getDataType()),</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        is_variable(dtype.isVariableStr())</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">if</span> (is_variable) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            var_buffer.resize(block_size);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            fixed_length = dtype.getSize();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            fix_buffer.resize(fixed_length * block_size);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        final_buffer.resize(block_size);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a413ab75071bdf53cceac7c642370e9b5">   58</a></span>    <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a413ab75071bdf53cceac7c642370e9b5">Stream1dStringDataset</a>(<span class="keyword">const</span> H5::DataSet* ptr, hsize_t buffer_size) : </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_class" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">Stream1dStringDataset</a>(ptr, <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a>(ptr-&gt;getSpace(), false), buffer_size) </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {}</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adc2692eaebfee12f00edc96a99d99052">   66</a></span>    std::string <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adc2692eaebfee12f00edc96a99d99052">get</a>() {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">while</span> (consumed &gt;= available) {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            consumed -= available;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            load(); </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> final_buffer[consumed];</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9e40c14e62d86993228346f2e8596f68">   79</a></span>    std::string <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9e40c14e62d86993228346f2e8596f68">steal</a>() {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">while</span> (consumed &gt;= available) {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            consumed -= available;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            load(); </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> std::move(final_buffer[consumed]);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a913afb26d1270de7217cf1328be996a0">   92</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a913afb26d1270de7217cf1328be996a0">next</a>(<span class="keywordtype">size_t</span> jump = 1) {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        consumed += jump;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">   99</a></span>    hsize_t <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">length</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span> full_length;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a7e22f514017a0a8d8d209dd210b078d1">  106</a></span>    hsize_t <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a7e22f514017a0a8d8d209dd210b078d1">position</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">return</span> consumed + last_loaded;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">const</span> H5::DataSet* ptr;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    hsize_t full_length, block_size;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    H5::DataSpace mspace;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    H5::DataSpace dspace;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    H5::DataType dtype;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordtype">bool</span> is_variable;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    std::vector&lt;char*&gt; var_buffer;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">size_t</span> fixed_length = 0;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    std::vector&lt;char&gt; fix_buffer;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    std::vector&lt;std::string&gt; final_buffer;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    hsize_t last_loaded = 0;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    hsize_t consumed = 0;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    hsize_t available = 0;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="pick__1d__block__size_8hpp.html">pick_1d_block_size.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="get__1d__length_8hpp.html">get_1d_length.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="get__name_8hpp.html">get_name.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span>hdf5 {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">Stream1dStringDataset</a> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9ac9df0e3a6fa101ff6839e8914ddfe5">   38</a></span>    <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9ac9df0e3a6fa101ff6839e8914ddfe5">Stream1dStringDataset</a>(<span class="keyword">const</span> H5::DataSet* ptr, hsize_t <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">length</a>, hsize_t buffer_size) : </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        ptr(ptr), </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        full_length(<a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">length</a>), </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        block_size(<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size</a>(ptr-&gt;getCreatePlist(), full_length, buffer_size)),</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        mspace(1, &amp;block_size),</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        dspace(1, &amp;full_length),</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        dtype(ptr-&gt;getDataType()),</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        is_variable(dtype.isVariableStr())</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">if</span> (is_variable) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            var_buffer.resize(block_size);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            fixed_length = dtype.getSize();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            fix_buffer.resize(fixed_length * block_size);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        final_buffer.resize(block_size);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a413ab75071bdf53cceac7c642370e9b5">   62</a></span>    <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a413ab75071bdf53cceac7c642370e9b5">Stream1dStringDataset</a>(<span class="keyword">const</span> H5::DataSet* ptr, hsize_t buffer_size) : </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_class" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">Stream1dStringDataset</a>(ptr, <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a>(ptr-&gt;getSpace(), false), buffer_size) </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    {}</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adc2692eaebfee12f00edc96a99d99052">   70</a></span>    std::string <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adc2692eaebfee12f00edc96a99d99052">get</a>() {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">while</span> (consumed &gt;= available) {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            consumed -= available;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            load(); </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">return</span> final_buffer[consumed];</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9e40c14e62d86993228346f2e8596f68">   83</a></span>    std::string <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9e40c14e62d86993228346f2e8596f68">steal</a>() {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">while</span> (consumed &gt;= available) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            consumed -= available;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            load(); </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">return</span> std::move(final_buffer[consumed]);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a913afb26d1270de7217cf1328be996a0">   96</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a913afb26d1270de7217cf1328be996a0">next</a>(<span class="keywordtype">size_t</span> jump = 1) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        consumed += jump;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">  103</a></span>    hsize_t <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">length</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">return</span> full_length;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a7e22f514017a0a8d8d209dd210b078d1">  110</a></span>    hsize_t <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a7e22f514017a0a8d8d209dd210b078d1">position</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">return</span> consumed + last_loaded;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keyword">const</span> H5::DataSet* ptr;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    hsize_t full_length, block_size;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    H5::DataSpace mspace;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    H5::DataSpace dspace;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    H5::DataType dtype;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">bool</span> is_variable;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    std::vector&lt;char*&gt; var_buffer;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">size_t</span> fixed_length = 0;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    std::vector&lt;char&gt; fix_buffer;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    std::vector&lt;std::string&gt; final_buffer;</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">void</span> load() {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">if</span> (last_loaded &gt;= full_length) {</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;requesting data beyond the end of the dataset at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a>(*ptr) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        available = std::min(full_length - last_loaded, block_size);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keyword">constexpr</span> hsize_t zero = 0;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        mspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;zero);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        dspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;last_loaded);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordflow">if</span> (is_variable) {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            ptr-&gt;read(var_buffer.data(), dtype, mspace, dspace);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="keywordflow">for</span> (hsize_t i = 0; i &lt; block_size; ++i) {</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                <span class="keyword">auto</span>&amp; curstr = final_buffer[i];</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                curstr.clear();</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                curstr.insert(0, var_buffer[i]);</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            }</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, var_buffer.data());</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keyword">auto</span> bptr = fix_buffer.data();</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            ptr-&gt;read(bptr, dtype, mspace, dspace);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; available; ++i, bptr += fixed_length) {</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                <span class="keywordtype">size_t</span> j = 0;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>                <span class="keywordflow">for</span> (; j &lt; fixed_length &amp;&amp; bptr[j] != <span class="charliteral">&#39;\0&#39;</span>; ++j) {}</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                <span class="keyword">auto</span>&amp; curstr = final_buffer[i];</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                curstr.clear();</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                curstr.insert(curstr.end(), bptr, bptr + j);</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            }</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        }</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        last_loaded += available;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>};</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    hsize_t last_loaded = 0;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    hsize_t consumed = 0;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    hsize_t available = 0;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">void</span> load() {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">if</span> (last_loaded &gt;= full_length) {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;requesting data beyond the end of the dataset at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a>(*ptr) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        available = std::min(full_length - last_loaded, block_size);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keyword">constexpr</span> hsize_t zero = 0;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        mspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;zero);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        dspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;last_loaded);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordflow">if</span> (is_variable) {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            ptr-&gt;read(var_buffer.data(), dtype, mspace, dspace);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            <span class="keywordflow">for</span> (hsize_t i = 0; i &lt; block_size; ++i) {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                <span class="keyword">auto</span>&amp; curstr = final_buffer[i];</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                curstr.clear();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                curstr.insert(0, var_buffer[i]);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, var_buffer.data());</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            <span class="keyword">auto</span> bptr = fix_buffer.data();</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            ptr-&gt;read(bptr, dtype, mspace, dspace);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; available; ++i, bptr += fixed_length) {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                <span class="keywordtype">size_t</span> j = 0;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                <span class="keywordflow">for</span> (; j &lt; fixed_length &amp;&amp; bptr[j] != <span class="charliteral">&#39;\0&#39;</span>; ++j) {}</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                <span class="keyword">auto</span>&amp; curstr = final_buffer[i];</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                curstr.clear();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                curstr.insert(curstr.end(), bptr, bptr + j);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        }</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>}</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        last_loaded += available;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>};</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>}</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>}</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aas__numeric__datatype_8hpp_html"><div class="ttname"><a href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">ritsuko::hdf5::Stream1dStringDataset</a></div><div class="ttdoc">Stream a 1D HDF5 string dataset into memory.</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:26</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a413ab75071bdf53cceac7c642370e9b5"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a413ab75071bdf53cceac7c642370e9b5">ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset</a></div><div class="ttdeci">Stream1dStringDataset(const H5::DataSet *ptr, hsize_t buffer_size)</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:58</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a7e22f514017a0a8d8d209dd210b078d1"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a7e22f514017a0a8d8d209dd210b078d1">ritsuko::hdf5::Stream1dStringDataset::position</a></div><div class="ttdeci">hsize_t position() const</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:106</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a913afb26d1270de7217cf1328be996a0"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a913afb26d1270de7217cf1328be996a0">ritsuko::hdf5::Stream1dStringDataset::next</a></div><div class="ttdeci">void next(size_t jump=1)</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:92</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a9ac9df0e3a6fa101ff6839e8914ddfe5"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9ac9df0e3a6fa101ff6839e8914ddfe5">ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset</a></div><div class="ttdeci">Stream1dStringDataset(const H5::DataSet *ptr, hsize_t length, hsize_t buffer_size)</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:34</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a9e40c14e62d86993228346f2e8596f68"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9e40c14e62d86993228346f2e8596f68">ritsuko::hdf5::Stream1dStringDataset::steal</a></div><div class="ttdeci">std::string steal()</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:79</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_acc4863e38b980a742f9364127b145a04"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">ritsuko::hdf5::Stream1dStringDataset::length</a></div><div class="ttdeci">hsize_t length() const</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:99</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_adc2692eaebfee12f00edc96a99d99052"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adc2692eaebfee12f00edc96a99d99052">ritsuko::hdf5::Stream1dStringDataset::get</a></div><div class="ttdeci">std::string get()</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:66</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">ritsuko::hdf5::Stream1dStringDataset</a></div><div class="ttdoc">Stream a 1D HDF5 string dataset into memory.</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:30</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a413ab75071bdf53cceac7c642370e9b5"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a413ab75071bdf53cceac7c642370e9b5">ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset</a></div><div class="ttdeci">Stream1dStringDataset(const H5::DataSet *ptr, hsize_t buffer_size)</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:62</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a7e22f514017a0a8d8d209dd210b078d1"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a7e22f514017a0a8d8d209dd210b078d1">ritsuko::hdf5::Stream1dStringDataset::position</a></div><div class="ttdeci">hsize_t position() const</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:110</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a913afb26d1270de7217cf1328be996a0"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a913afb26d1270de7217cf1328be996a0">ritsuko::hdf5::Stream1dStringDataset::next</a></div><div class="ttdeci">void next(size_t jump=1)</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:96</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a9ac9df0e3a6fa101ff6839e8914ddfe5"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9ac9df0e3a6fa101ff6839e8914ddfe5">ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset</a></div><div class="ttdeci">Stream1dStringDataset(const H5::DataSet *ptr, hsize_t length, hsize_t buffer_size)</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:38</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_a9e40c14e62d86993228346f2e8596f68"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9e40c14e62d86993228346f2e8596f68">ritsuko::hdf5::Stream1dStringDataset::steal</a></div><div class="ttdeci">std::string steal()</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:83</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_acc4863e38b980a742f9364127b145a04"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04">ritsuko::hdf5::Stream1dStringDataset::length</a></div><div class="ttdeci">hsize_t length() const</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:103</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_adc2692eaebfee12f00edc96a99d99052"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adc2692eaebfee12f00edc96a99d99052">ritsuko::hdf5::Stream1dStringDataset::get</a></div><div class="ttdeci">std::string get()</div><div class="ttdef"><b>Definition:</b> Stream1dStringDataset.hpp:70</div></div>
 <div class="ttc" id="aget__1d__length_8hpp_html"><div class="ttname"><a href="get__1d__length_8hpp.html">get_1d_length.hpp</a></div><div class="ttdoc">Get the length of a 1-dimensional HDF5 dataset.</div></div>
 <div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a199d4e8292ebb954ab9f505764ebf2d9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Handle_ &amp;handle)</div><div class="ttdef"><b>Definition:</b> get_name.hpp:24</div></div>
