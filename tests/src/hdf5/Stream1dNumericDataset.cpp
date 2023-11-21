@@ -17,11 +17,11 @@ TEST(Hdf5Stream1dNumericDataset, Basic) {
     }
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
+    auto dhandle = handle.openDataSet("foobar");
     std::vector<int> buffer_sizes { 100, 1000, 10000, 100000 };
 
     // One value at a time.
     for (auto buf : buffer_sizes) {
-        auto dhandle = handle.openDataSet("foobar");
         ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, buf);
         EXPECT_EQ(stream.length(), example.size());
         for (auto x : example) {
@@ -32,7 +32,6 @@ TEST(Hdf5Stream1dNumericDataset, Basic) {
 
     // Fetching a data block.
     for (auto buf : buffer_sizes) {
-        auto dhandle = handle.openDataSet("foobar");
         ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, buf);
 
         size_t start = 0;

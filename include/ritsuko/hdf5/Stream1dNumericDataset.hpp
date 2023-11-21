@@ -67,6 +67,7 @@ public:
     /**
      * @return Pair containing a pointer to and the length of an array.
      * The array holds all loaded values of the stream at its current position, up to the specified length.
+     * Note that the pointer is only valid until the next invocation of `next()`.
      */
     std::pair<const Type_*, size_t> get_many() {
         while (consumed >= available) {
