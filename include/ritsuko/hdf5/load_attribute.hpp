@@ -18,6 +18,7 @@ namespace hdf5 {
 
 /**
  * @param attr Handle to a scalar string attribute.
+ * Callers are responsible for checking that `attr` contains a string datatype class.
  * @return The attribute as a string.
  */
 inline std::string load_scalar_string_attribute(const H5::Attribute& attr) {
@@ -29,6 +30,7 @@ inline std::string load_scalar_string_attribute(const H5::Attribute& attr) {
 /**
  * @tparam check_ Whether to check that `attr` is a 1-dimensional string attribute.
  * @param attr Handle to a 1-dimensional string attribute.
+ * Callers are responsible for checking that `attr` contains a string datatype class.
  * @param full_length Length of the attribute in `attr`, usually obtained by `get_1d_length()`.
  * @return Vector of strings.
  */
@@ -68,6 +70,7 @@ inline std::vector<std::string> load_1d_string_attribute(const H5::Attribute& at
 /**
  * Overload of `load_1d_string_attribute()` that determines the length of the attribute via `get_1d_length()`.
  * @param attr Handle to a 1-dimensional string attribute.
+ * Callers are responsible for checking that `attr` contains a string datatype class.
  * @return Vector of strings.
  */
 inline std::vector<std::string> load_1d_string_attribute(const H5::Attribute& attr) {
@@ -77,10 +80,8 @@ inline std::vector<std::string> load_1d_string_attribute(const H5::Attribute& at
 /**
  * @tparam Type_ Type for holding the data in memory, see `as_numeric_datatype()` for supported types.
  * @param attr Handle to a scalar numeric attribute.
+ * Callers are responsible for checking that the datatype of `attr` is appropriate for `Type_`, e.g., with `exceeds_integer_limit()`.
  * @return The value of the attribute.
- *
- * Unlike `load_scalar_string_attribute()`, no error is raised if `attr` is not an appropriate type for `Type_`.
- * Callers are responsible for checking that the right type is present, e.g., with `exceeds_integer_limit()`.
  */
 template<typename Type_>
 Type_ load_scalar_numeric_attribute(const H5::Attribute& attr) {
@@ -93,11 +94,9 @@ Type_ load_scalar_numeric_attribute(const H5::Attribute& attr) {
 /**
  * @tparam Type_ Type for holding the data in memory, see `as_numeric_datatype()` for supported types.
  * @param attr Handle to a numeric attribute.
+ * Callers are responsible for checking that the datatype of `attr` is appropriate for `Type_`, e.g., with `exceeds_integer_limit()`.
  * @param full_length Length of the attribute in `attr`, usually obtained by `get_1d_length()`.
  * @return Vector containing the contents of the attribute.
- * 
- * Unlike `load_1d_string_attribute()`, no error is raised if `attr` is not an appropriate type for `Type_`.
- * Callers are responsible for checking that the right type is present, e.g., with `exceeds_integer_limit()`.
  */
 template<typename Type_>
 std::vector<Type_> load_1d_numeric_attribute(const H5::Attribute& attr, hsize_t full_length) {
@@ -111,10 +110,8 @@ std::vector<Type_> load_1d_numeric_attribute(const H5::Attribute& attr, hsize_t 
  * Overload of `load_1d_numeric_attribute()` that determines the length of the attribute via `get_1d_length()`.
  * @tparam Type_ Type for holding the data in memory, see `as_numeric_datatype()` for supported types.
  * @param attr Handle to a numeric attribute.
+ * Callers are responsible for checking that the datatype of `attr` is appropriate for `Type_`, e.g., with `exceeds_integer_limit()`.
  * @return Vector containing the contents of the attribute.
- *
- * Unlike `load_1d_string_attribute()`, no error is raised if `attr` is not an appropriate type for `Type_`.
- * Callers are responsible for checking that the right type is present, e.g., with `exceeds_integer_limit()`.
  */
 template<typename Type_>
 std::vector<Type_> load_1d_numeric_attribute(const H5::Attribute& attr) {
