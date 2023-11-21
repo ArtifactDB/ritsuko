@@ -114,44 +114,23 @@ $(function() {
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> handle.openDataSet(name);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#acb6bce060b8b8a874b2f7475c02fcacd">   65</a></span><span class="keyword">inline</span> H5::DataSet <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#acb6bce060b8b8a874b2f7475c02fcacd">open_scalar_dataset</a>(<span class="keyword">const</span> H5::Group&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">auto</span> dhandle = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">open_dataset</a>(handle, name);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">auto</span> dspace = dhandle.getSpace();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">int</span> ndims = dspace.getSimpleExtentNdims();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (ndims != 0) {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a scalar dataset at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Object_&gt;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">   68</a></span>H5::Attribute <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">open_attribute</a>(<span class="keyword">const</span> Object_&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (!handle.attrExists(name)) {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected an attribute at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">return</span> dhandle;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">return</span> handle.openAttribute(name);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Object_&gt;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">   84</a></span>H5::Attribute <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">open_attribute</a>(<span class="keyword">const</span> Object_&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">if</span> (!handle.attrExists(name)) {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected an attribute at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">return</span> handle.openAttribute(name);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Object_&gt;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a54dd2e380599e23a7d7f5a6bfacde7ec">  100</a></span>H5::Attribute <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a54dd2e380599e23a7d7f5a6bfacde7ec">open_scalar_attribute</a>(<span class="keyword">const</span> Object_&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">auto</span> attr = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">open_attribute</a>(handle,name);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (attr.getSpace().getSimpleExtentNdims() != 0) {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a scalar attribute at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">return</span> attr;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2562d2fa77b38f6ba2412f4ee3fce3b4"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">ritsuko::hdf5::open_attribute</a></div><div class="ttdeci">H5::Attribute open_attribute(const Object_ &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:84</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a54dd2e380599e23a7d7f5a6bfacde7ec"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a54dd2e380599e23a7d7f5a6bfacde7ec">ritsuko::hdf5::open_scalar_attribute</a></div><div class="ttdeci">H5::Attribute open_scalar_attribute(const Object_ &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:100</div></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2562d2fa77b38f6ba2412f4ee3fce3b4"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">ritsuko::hdf5::open_attribute</a></div><div class="ttdeci">H5::Attribute open_attribute(const Object_ &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:68</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a5b0c6485fc47bfee5f434b8ba0931f1e"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">ritsuko::hdf5::open_dataset</a></div><div class="ttdeci">H5::DataSet open_dataset(const H5::Group &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:52</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a74e80e9c2e77530752c2dee29af5c9b4"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4">ritsuko::hdf5::open_file</a></div><div class="ttdeci">H5::H5File open_file(const std::filesystem::path &amp;path)</div><div class="ttdef"><b>Definition:</b> open.hpp:24</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ab3fb91fb20b959eaf04fcc30087ba9e8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">ritsuko::hdf5::open_group</a></div><div class="ttdeci">H5::Group open_group(const H5::Group &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:39</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_acb6bce060b8b8a874b2f7475c02fcacd"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#acb6bce060b8b8a874b2f7475c02fcacd">ritsuko::hdf5::open_scalar_dataset</a></div><div class="ttdeci">H5::DataSet open_scalar_dataset(const H5::Group &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:65</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> choose_missing_placeholder.hpp:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -1,7 +1,8 @@
 <map id="ritsuko/hdf5/get_1d_length.hpp" name="ritsuko/hdf5/get_1d_length.hpp">
-<area shape="rect" id="node1" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="233,5,366,45"/>
-<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,93,204,133"/>
-<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="228,101,371,126"/>
-<area shape="rect" id="node4" href="$load__attribute_8hpp_source.html" title=" " alt="" coords="395,101,591,126"/>
-<area shape="rect" id="node5" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="423,181,562,221"/>
+<area shape="rect" id="node1" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="239,5,373,45"/>
+<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,181,204,221"/>
+<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="300,269,443,295"/>
+<area shape="rect" id="node4" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="279,93,463,133"/>
+<area shape="rect" id="node5" href="$load__attribute_8hpp_source.html" title=" " alt="" coords="488,101,684,126"/>
+<area shape="rect" id="node6" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="502,181,641,221"/>
 </map>
