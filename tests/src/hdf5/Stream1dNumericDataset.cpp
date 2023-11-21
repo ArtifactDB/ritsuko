@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "ritsuko/hdf5/Numeric1dDatasetStream.hpp"
+#include "ritsuko/hdf5/Stream1dNumericDataset.hpp"
 #include "utils.h"
 #include <numeric>
 
-TEST(Hdf5Numeric1dDatasetStream, Basic) {
+TEST(Hdf5Stream1dNumericDataset, Basic) {
     const char* path = "TEST-iterate.h5";
 
     std::vector<int> example(29726);
@@ -22,7 +22,7 @@ TEST(Hdf5Numeric1dDatasetStream, Basic) {
     // One value at a time.
     for (auto buf : buffer_sizes) {
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::Numeric1dDatasetStream<int> stream(&dhandle, buf);
+        ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, buf);
         EXPECT_EQ(stream.length(), example.size());
         for (auto x : example) {
             EXPECT_EQ(stream.get(), x);
@@ -33,7 +33,7 @@ TEST(Hdf5Numeric1dDatasetStream, Basic) {
     // Fetching a data block.
     for (auto buf : buffer_sizes) {
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::Numeric1dDatasetStream<int> stream(&dhandle, buf);
+        ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, buf);
 
         size_t start = 0;
         while (start < example.size()) {
@@ -49,7 +49,7 @@ TEST(Hdf5Numeric1dDatasetStream, Basic) {
     }
 }
 
-TEST(Hdf5Numeric1dDatasetStream, Floats) {
+TEST(Hdf5Stream1dNumericDataset, Floats) {
     const char* path = "TEST-iterate.h5";
 
     // Works with floating-point data.
@@ -63,7 +63,7 @@ TEST(Hdf5Numeric1dDatasetStream, Floats) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::hdf5::Numeric1dDatasetStream<double> stream(&dhandle, 100);
+    ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, 100);
     EXPECT_EQ(stream.length(), example.size());
 
     for (auto x : example) {

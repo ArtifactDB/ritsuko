@@ -27,7 +27,7 @@ add_executable(
     src/hdf5/get_1d_length.cpp
     src/hdf5/pick_1d_block_size.cpp
 
-    src/hdf5/Numeric1dDatasetStream.cpp
+    src/hdf5/Stream1dNumericDataset.cpp
     src/hdf5/iterate_1d_blocks.cpp
     src/hdf5/load_1d_string_dataset.cpp
 

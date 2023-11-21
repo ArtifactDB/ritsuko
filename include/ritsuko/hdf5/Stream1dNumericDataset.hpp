@@ -9,7 +9,7 @@
 #include "as_numeric_datatype.hpp"
 
 /**
- * @file Numeric1dDatasetStream.hpp
+ * @file Stream1dNumericDataset.hpp
  * @brief Stream a numeric 1D HDF5 dataset into memory.
  */
 
@@ -25,7 +25,7 @@ namespace hdf5 {
  * Callers can then extract one value at a time or they can acquire the entire block.
  */
 template<typename Type_>
-class Numeric1dDatasetStream {
+class Stream1dNumericDataset {
 public:
     /**
      * @param ptr Pointer to a HDF5 dataset handle.
@@ -33,7 +33,7 @@ public:
      * @param buffer_size Size of the buffer for holding streamed blocks of values.
      * Larger buffers improve speed at the cost of some memory efficiency.
      */
-    Numeric1dDatasetStream(const H5::DataSet* ptr, hsize_t length, hsize_t buffer_size) : 
+    Stream1dNumericDataset(const H5::DataSet* ptr, hsize_t length, hsize_t buffer_size) : 
         ptr(ptr), 
         full_length(length), 
         block_size(pick_1d_block_size(ptr->getCreatePlist(), full_length, buffer_size)),
@@ -48,8 +48,8 @@ public:
      * @param ptr Pointer to a HDF5 dataset handle.
      * @param buffer_size Size of the buffer for holding streamed blocks of values.
      */
-    Numeric1dDatasetStream(const H5::DataSet* ptr, hsize_t buffer_size) : 
-        Numeric1dDatasetStream(ptr, get_1d_length(ptr->getSpace(), false), buffer_size) 
+    Stream1dNumericDataset(const H5::DataSet* ptr, hsize_t buffer_size) : 
+        Stream1dNumericDataset(ptr, get_1d_length(ptr->getSpace(), false), buffer_size) 
     {}
 
 public:
