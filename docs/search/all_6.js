@@ -7,7 +7,9 @@ var searchData=
   ['load_5f1d_5fstring_5fattribute_4',['load_1d_string_attribute',['../namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81',1,'ritsuko::hdf5']]],
   ['load_5f1d_5fstring_5fdataset_5',['load_1d_string_dataset',['../namespaceritsuko_1_1hdf5.html#ae1d98f3668942a1f74f3c22e515beaf1',1,'ritsuko::hdf5']]],
   ['load_5f1d_5fstring_5fdataset_2ehpp_6',['load_1d_string_dataset.hpp',['../load__1d__string__dataset_8hpp.html',1,'']]],
-  ['load_5fscalar_5fstring_5fattribute_7',['load_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3',1,'ritsuko::hdf5::load_scalar_string_attribute(const H5::Attribute &amp;attr)'],['../namespaceritsuko_1_1hdf5.html#a160a83252d5d8ef5b886acf9726fa720',1,'ritsuko::hdf5::load_scalar_string_attribute(const Object_ &amp;handle, const char *field)']]],
-  ['load_5fscalar_5fstring_5fattribute_2ehpp_8',['load_scalar_string_attribute.hpp',['../load__scalar__string__attribute_8hpp.html',1,'']]],
-  ['lt_9',['lt',['../structritsuko_1_1Version.html#a60e71e8fd3daee1ed661bdca1ff8f346',1,'ritsuko::Version']]]
+  ['load_5fnumeric_5fmissing_5fplaceholder_7',['load_numeric_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31',1,'ritsuko::hdf5']]],
+  ['load_5fscalar_5fstring_5fattribute_8',['load_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3',1,'ritsuko::hdf5::load_scalar_string_attribute(const H5::Attribute &amp;attr)'],['../namespaceritsuko_1_1hdf5.html#a160a83252d5d8ef5b886acf9726fa720',1,'ritsuko::hdf5::load_scalar_string_attribute(const Object_ &amp;handle, const char *field)']]],
+  ['load_5fscalar_5fstring_5fattribute_2ehpp_9',['load_scalar_string_attribute.hpp',['../load__scalar__string__attribute_8hpp.html',1,'']]],
+  ['load_5fstring_5fmissing_5fplaceholder_10',['load_string_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#aa57f8d748c97ee5b469dd48f3182f7d7',1,'ritsuko::hdf5']]],
+  ['lt_11',['lt',['../structritsuko_1_1Version.html#a60e71e8fd3daee1ed661bdca1ff8f346',1,'ritsuko::Version']]]
 ];

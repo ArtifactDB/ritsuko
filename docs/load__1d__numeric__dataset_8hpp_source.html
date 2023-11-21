@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="pick__1d__block__size_8hpp.html">pick_1d_block_size.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="iterate__1d__blocks_8hpp.html">iterate_1d_blocks.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="choose__datatype_8hpp.html">choose_datatype.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
@@ -98,7 +98,7 @@ $(function() {
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">auto</span> dtype = handle.getDataType();</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    std::vector&lt;Type_&gt; buffer(block_size);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">auto</span> mtype = choose_datatype&lt;Type_&gt;();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">auto</span> mtype = as_numeric_datatype&lt;Type_&gt;();</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">iterate_1d_blocks</a>(</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        full_length, </div>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#aee36514dd3190123248046c4842e3b2b">   61</a></span>std::vector&lt;Type_&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#aee36514dd3190123248046c4842e3b2b">load_1d_numeric_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; handle, hsize_t full_length) {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">auto</span> mtype = choose_datatype&lt;Type_&gt;();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">auto</span> mtype = as_numeric_datatype&lt;Type_&gt;();</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    std::vector&lt;Type_&gt; buffer(full_length);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    handle.read(mtype, buffer.data());</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">return</span> buffer;</div>
@@ -124,7 +124,7 @@ $(function() {
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="ttc" id="achoose__datatype_8hpp_html"><div class="ttname"><a href="choose__datatype_8hpp.html">choose_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
+<div class="ttc" id="aas__numeric__datatype_8hpp_html"><div class="ttname"><a href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
 <div class="ttc" id="aiterate__1d__blocks_8hpp_html"><div class="ttname"><a href="iterate__1d__blocks_8hpp.html">iterate_1d_blocks.hpp</a></div><div class="ttdoc">Blockwise iteration through a 1-dimensional HDF5 dataset.</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2e20754e74dfc5afff5d2c89db34cde9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a></div><div class="ttdeci">hsize_t pick_1d_block_size(const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</div><div class="ttdef"><b>Definition:</b> pick_1d_block_size.hpp:26</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a95eecb7d1464cc84615cf0ab1c3102a8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a95eecb7d1464cc84615cf0ab1c3102a8">ritsuko::hdf5::iterate_1d_blocks</a></div><div class="ttdeci">void iterate_1d_blocks(hsize_t full_length, hsize_t block_size, Function_ fun)</div><div class="ttdef"><b>Definition:</b> iterate_1d_blocks.hpp:27</div></div>

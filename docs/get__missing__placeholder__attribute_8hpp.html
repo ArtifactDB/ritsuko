@@ -86,14 +86,22 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &quot;<a class="el" href="as__numeric__datatype_8hpp_source.html">as_numeric_datatype.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="load__scalar__string__attribute_8hpp_source.html">load_scalar_string_attribute.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for get_missing_placeholder_attribute.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="get__missing__placeholder__attribute_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2get__missing__placeholder__attribute_8hpp" alt=""/></div>
 <map name="aritsuko_2hdf5_2get__missing__placeholder__attribute_8hpp" id="aritsuko_2hdf5_2get__missing__placeholder__attribute_8hpp">
-<area shape="rect" title="Get the missing placeholder attribute." alt="" coords="5,5,179,45"/>
-<area shape="rect" title=" " alt="" coords="12,93,84,119"/>
-<area shape="rect" title=" " alt="" coords="109,93,163,119"/>
+<area shape="rect" title="Get the missing placeholder attribute." alt="" coords="221,5,394,45"/>
+<area shape="rect" title=" " alt="" coords="227,255,299,280"/>
+<area shape="rect" title=" " alt="" coords="440,255,495,280"/>
+<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="5,101,175,126"/>
+<area shape="rect" href="load__scalar__string__attribute_8hpp.html" title="Load a scalar string HDF5 attribute." alt="" coords="296,93,423,133"/>
+<area shape="rect" title=" " alt="" coords="118,181,201,207"/>
+<area shape="rect" title=" " alt="" coords="33,181,94,207"/>
+<area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="327,181,429,207"/>
+<area shape="rect" title=" " alt="" coords="349,255,407,280"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -121,6 +129,11 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a4c441c7a6e4745df9a604045799bdbd2"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a4c441c7a6e4745df9a604045799bdbd2">ritsuko::hdf5::get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=false)</td></tr>
 <tr class="separator:a4c441c7a6e4745df9a604045799bdbd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">ritsuko::hdf5::load_numeric_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
+<tr class="separator:a66d6708bd994a0370e1089caee64bb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57f8d748c97ee5b469dd48f3182f7d7"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aa57f8d748c97ee5b469dd48f3182f7d7">ritsuko::hdf5::load_string_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=true)</td></tr>
+<tr class="separator:aa57f8d748c97ee5b469dd48f3182f7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Get the missing placeholder attribute. </p>

@@ -1,5 +1,5 @@
-<map id="ritsuko/hdf5/choose_datatype.hpp" name="ritsuko/hdf5/choose_datatype.hpp">
-<area shape="rect" id="node1" title="Choose a HDF5 datatype." alt="" coords="75,5,211,45"/>
+<map id="ritsuko/hdf5/as_numeric_datatype.hpp" name="ritsuko/hdf5/as_numeric_datatype.hpp">
+<area shape="rect" id="node1" title="Choose a HDF5 datatype." alt="" coords="62,5,223,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,88,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="112,93,173,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="197,93,269,119"/>
