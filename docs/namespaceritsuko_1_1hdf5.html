@@ -139,6 +139,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a9ceb2994c6a2a0ff2d5c551ff2b874b5"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
 <tr class="memitem:a9ceb2994c6a2a0ff2d5c551ff2b874b5"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a9ceb2994c6a2a0ff2d5c551ff2b874b5">load_1d_numeric_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
 <tr class="separator:a9ceb2994c6a2a0ff2d5c551ff2b874b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e416655257b44128dab2de0b53a39e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a54e416655257b44128dab2de0b53a39e">check_and_load_scalar_string_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:a54e416655257b44128dab2de0b53a39e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8773ea33fa6f510fba3325099ab44f4"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
+<tr class="memitem:ac8773ea33fa6f510fba3325099ab44f4"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ac8773ea33fa6f510fba3325099ab44f4">check_and_load_scalar_string_attribute</a> (const Object_ &amp;handle, const char *name)</td></tr>
+<tr class="separator:ac8773ea33fa6f510fba3325099ab44f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a241b4bf5af6c150f70445a3389da2d1d"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a241b4bf5af6c150f70445a3389da2d1d">open_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=false)</td></tr>
 <tr class="separator:a241b4bf5af6c150f70445a3389da2d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
@@ -185,6 +190,85 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A HDF5 datatype object. </dd></dl>
+
+</div>
+</div>
+<a id="a54e416655257b44128dab2de0b53a39e" name="a54e416655257b44128dab2de0b53a39e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e416655257b44128dab2de0b53a39e">&#9670;&#160;</a></span>check_and_load_scalar_string_attribute() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ritsuko::hdf5::check_and_load_scalar_string_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>attr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Wrapper to handle the common case of validating and loading string scalar attributes. This will check that the attribute exists, is scalar and has a string datatype class.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attr</td><td>Handle to a numeric attribute. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The attribute as a string. </dd></dl>
+
+</div>
+</div>
+<a id="ac8773ea33fa6f510fba3325099ab44f4" name="ac8773ea33fa6f510fba3325099ab44f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8773ea33fa6f510fba3325099ab44f4">&#9670;&#160;</a></span>check_and_load_scalar_string_attribute() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Object_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ritsuko::hdf5::check_and_load_scalar_string_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const Object_ &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a54e416655257b44128dab2de0b53a39e">check_and_load_scalar_string_attribute()</a></code> that handles the opening of the attribute.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Object_</td><td>Type of HDF5 handle, usually to a <code>DataSet</code> or <code>Group</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to a HDF5 object. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the attribute. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The attribute as a string. </dd></dl>
 
 </div>
 </div>
