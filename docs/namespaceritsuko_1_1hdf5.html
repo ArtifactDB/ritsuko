@@ -577,12 +577,11 @@ template&lt;typename Type_ &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attr</td><td>Handle to a numeric attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to a numeric attribute. Callers are responsible for checking that the datatype of <code>attr</code> is appropriate for <code>Type_</code>, e.g., with <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector containing the contents of the attribute.</dd></dl>
-<p>Unlike <code><a class="el" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute()</a></code>, no error is raised if <code>attr</code> is not an appropriate type for <code>Type_</code>. Callers are responsible for checking that the right type is present, e.g., with <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing the contents of the attribute. </dd></dl>
 
 </div>
 </div>
@@ -621,13 +620,12 @@ template&lt;typename Type_ &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attr</td><td>Handle to a numeric attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to a numeric attribute. Callers are responsible for checking that the datatype of <code>attr</code> is appropriate for <code>Type_</code>, e.g., with <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code>. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the attribute in <code>attr</code>, usually obtained by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector containing the contents of the attribute.</dd></dl>
-<p>Unlike <code><a class="el" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute()</a></code>, no error is raised if <code>attr</code> is not an appropriate type for <code>Type_</code>. Callers are responsible for checking that the right type is present, e.g., with <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing the contents of the attribute. </dd></dl>
 
 </div>
 </div>
@@ -656,7 +654,7 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute()</a></code> that determines the length of the attribute via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attr</td><td>Handle to a 1-dimensional string attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to a 1-dimensional string attribute. Callers are responsible for checking that <code>attr</code> contains a string datatype class. </td></tr>
   </table>
   </dd>
 </dl>
@@ -705,7 +703,7 @@ template&lt;typename Type_ &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attr</td><td>Handle to a 1-dimensional string attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to a 1-dimensional string attribute. Callers are responsible for checking that <code>attr</code> contains a string datatype class. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the attribute in <code>attr</code>, usually obtained by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </td></tr>
   </table>
   </dd>
@@ -848,12 +846,11 @@ template&lt;typename Type_ &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attr</td><td>Handle to a scalar numeric attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to a scalar numeric attribute. Callers are responsible for checking that the datatype of <code>attr</code> is appropriate for <code>Type_</code>, e.g., with <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the attribute.</dd></dl>
-<p>Unlike <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute()</a></code>, no error is raised if <code>attr</code> is not an appropriate type for <code>Type_</code>. Callers are responsible for checking that the right type is present, e.g., with <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit()</a></code>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value of the attribute. </dd></dl>
 
 </div>
 </div>
@@ -882,7 +879,7 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attr</td><td>Handle to a scalar string attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to a scalar string attribute. Callers are responsible for checking that <code>attr</code> contains a string datatype class. </td></tr>
   </table>
   </dd>
 </dl>

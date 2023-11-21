@@ -91,82 +91,82 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span>hdf5 {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">   23</a></span><span class="keyword">inline</span> std::string <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::string output;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    attr.read(attr.getStrType(), output);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a42f0cf4323a74f92bbf90af33ebe53a0">   35</a></span><span class="keyword">inline</span> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr, hsize_t full_length) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">auto</span> dtype = attr.getDataType();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">auto</span> mspace = attr.getSpace();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    std::vector&lt;std::string&gt; output;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    output.reserve(full_length);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> (dtype.isVariableStr()) {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::vector&lt;char*&gt; buffer(full_length);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            attr.read(dtype, buffer.data());</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">for</span> (hsize_t i = 0; i &lt; full_length; ++i) {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                output.emplace_back(buffer[i]);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        } <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, buffer.data());</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordflow">throw</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">size_t</span> len = dtype.getSize();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        std::vector&lt;char&gt; buffer(len * full_length);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        attr.read(dtype, buffer.data());</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">auto</span> ptr = buffer.data();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; full_length; ++i, ptr += len) {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordtype">size_t</span> j = 0;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">for</span> (; j &lt; len &amp;&amp; ptr[j] != <span class="charliteral">&#39;\0&#39;</span>; ++j) {}</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            output.emplace_back(ptr, ptr + j);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#aca68893a7c89bac80b2d394256b062b4">   73</a></span><span class="keyword">inline</span> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute</a>(attr, <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a>(attr.getSpace(), <span class="keyword">false</span>));</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a255147f2351c250c5e06a93a63662855">   86</a></span>Type_ <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a255147f2351c250c5e06a93a63662855">load_scalar_numeric_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    Type_ val;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">auto</span> mtype = as_numeric_datatype&lt;Type_&gt;();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    attr.read(mtype, &amp;val);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">return</span> val;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">  103</a></span>std::vector&lt;Type_&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">load_1d_numeric_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr, hsize_t full_length) {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keyword">auto</span> mtype = as_numeric_datatype&lt;Type_&gt;();</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    std::vector&lt;Type_&gt; buffer(full_length);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    attr.read(mtype, buffer.data());</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">return</span> buffer;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a9ceb2994c6a2a0ff2d5c551ff2b874b5">  120</a></span>std::vector&lt;Type_&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">load_1d_numeric_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">return</span> load_1d_numeric_attribute&lt;Type_&gt;(attr, <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a>(attr.getSpace(), <span class="keyword">false</span>));</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">   24</a></span><span class="keyword">inline</span> std::string <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::string output;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    attr.read(attr.getStrType(), output);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a42f0cf4323a74f92bbf90af33ebe53a0">   37</a></span><span class="keyword">inline</span> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr, hsize_t full_length) {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">auto</span> dtype = attr.getDataType();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">auto</span> mspace = attr.getSpace();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::vector&lt;std::string&gt; output;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    output.reserve(full_length);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (dtype.isVariableStr()) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        std::vector&lt;char*&gt; buffer(full_length);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            attr.read(dtype, buffer.data());</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">for</span> (hsize_t i = 0; i &lt; full_length; ++i) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                output.emplace_back(buffer[i]);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, buffer.data());</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">throw</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">size_t</span> len = dtype.getSize();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        std::vector&lt;char&gt; buffer(len * full_length);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        attr.read(dtype, buffer.data());</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">auto</span> ptr = buffer.data();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; full_length; ++i, ptr += len) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordtype">size_t</span> j = 0;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">for</span> (; j &lt; len &amp;&amp; ptr[j] != <span class="charliteral">&#39;\0&#39;</span>; ++j) {}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            output.emplace_back(ptr, ptr + j);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#aca68893a7c89bac80b2d394256b062b4">   76</a></span><span class="keyword">inline</span> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">load_1d_string_attribute</a>(attr, <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a>(attr.getSpace(), <span class="keyword">false</span>));</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a255147f2351c250c5e06a93a63662855">   87</a></span>Type_ <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a255147f2351c250c5e06a93a63662855">load_scalar_numeric_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    Type_ val;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">auto</span> mtype = as_numeric_datatype&lt;Type_&gt;();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    attr.read(mtype, &amp;val);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">return</span> val;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">  102</a></span>std::vector&lt;Type_&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">load_1d_numeric_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr, hsize_t full_length) {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keyword">auto</span> mtype = as_numeric_datatype&lt;Type_&gt;();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    std::vector&lt;Type_&gt; buffer(full_length);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    attr.read(mtype, buffer.data());</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a9ceb2994c6a2a0ff2d5c551ff2b874b5">  117</a></span>std::vector&lt;Type_&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">load_1d_numeric_attribute</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> load_1d_numeric_attribute&lt;Type_&gt;(attr, <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length</a>(attr.getSpace(), <span class="keyword">false</span>));</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aas__numeric__datatype_8hpp_html"><div class="ttname"><a href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
 <div class="ttc" id="aget__1d__length_8hpp_html"><div class="ttname"><a href="get__1d__length_8hpp.html">get_1d_length.hpp</a></div><div class="ttdoc">Get the length of a 1-dimensional HDF5 dataset.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a255147f2351c250c5e06a93a63662855"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a255147f2351c250c5e06a93a63662855">ritsuko::hdf5::load_scalar_numeric_attribute</a></div><div class="ttdeci">Type_ load_scalar_numeric_attribute(const H5::Attribute &amp;attr)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:86</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_aa8b34e4c62bbfd6270ff97a2da35305a"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">ritsuko::hdf5::load_1d_numeric_attribute</a></div><div class="ttdeci">std::vector&lt; Type_ &gt; load_1d_numeric_attribute(const H5::Attribute &amp;attr, hsize_t full_length)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:103</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a255147f2351c250c5e06a93a63662855"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a255147f2351c250c5e06a93a63662855">ritsuko::hdf5::load_scalar_numeric_attribute</a></div><div class="ttdeci">Type_ load_scalar_numeric_attribute(const H5::Attribute &amp;attr)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:87</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_aa8b34e4c62bbfd6270ff97a2da35305a"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">ritsuko::hdf5::load_1d_numeric_attribute</a></div><div class="ttdeci">std::vector&lt; Type_ &gt; load_1d_numeric_attribute(const H5::Attribute &amp;attr, hsize_t full_length)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:102</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ac15dcfa823155b137686519d25ccca7d"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">ritsuko::hdf5::get_1d_length</a></div><div class="ttdeci">hsize_t get_1d_length(const H5::DataSpace &amp;space, bool allow_scalar)</div><div class="ttdef"><b>Definition:</b> get_1d_length.hpp:25</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_add2dd33e65a9809d1d616e5dd4a64e81"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#add2dd33e65a9809d1d616e5dd4a64e81">ritsuko::hdf5::load_1d_string_attribute</a></div><div class="ttdeci">void load_1d_string_attribute(const H5::Attribute &amp;handle, hsize_t full_length, Function_ fun)</div><div class="ttdef"><b>Definition:</b> load_1d_string_dataset.hpp:84</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ae09b2aaf282ec0809b610528f4bf87b3"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">ritsuko::hdf5::load_scalar_string_attribute</a></div><div class="ttdeci">std::string load_scalar_string_attribute(const H5::Attribute &amp;attr)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:23</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ae09b2aaf282ec0809b610528f4bf87b3"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">ritsuko::hdf5::load_scalar_string_attribute</a></div><div class="ttdeci">std::string load_scalar_string_attribute(const H5::Attribute &amp;attr)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:24</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> choose_missing_placeholder.hpp:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
