@@ -1,5 +1,5 @@
-<map id="ritsuko/hdf5/Numeric1dDatasetStream.hpp" name="ritsuko/hdf5/Numeric1dDatasetStream.hpp">
-<area shape="rect" id="node1" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="251,5,454,45"/>
+<map id="ritsuko/hdf5/Stream1dNumericDataset.hpp" name="ritsuko/hdf5/Stream1dNumericDataset.hpp">
+<area shape="rect" id="node1" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="253,5,452,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="302,167,374,192"/>
 <area shape="rect" id="node3" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="156,93,315,119"/>
 <area shape="rect" id="node4" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="5,93,132,119"/>

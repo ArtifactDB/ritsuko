@@ -1,7 +1,5 @@
 <map id="ritsuko/hdf5/get_name.hpp" name="ritsuko/hdf5/get_name.hpp">
-<area shape="rect" id="node1" title="Get the name of a HDF5 object." alt="" coords="158,5,333,31"/>
-<area shape="rect" id="node2" href="$Numeric1dDatasetStream_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,79,208,119"/>
-<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="225,255,367,280"/>
-<area shape="rect" id="node4" href="$load__scalar__string__attribute_8hpp.html" title="Load a scalar string HDF5 attribute." alt="" coords="283,79,443,119"/>
-<area shape="rect" id="node5" href="$get__missing__placeholder__attribute_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="333,167,507,207"/>
+<area shape="rect" id="node1" title="Get the name of a HDF5 object." alt="" coords="115,5,289,31"/>
+<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,79,204,119"/>
+<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="228,86,371,111"/>
 </map>

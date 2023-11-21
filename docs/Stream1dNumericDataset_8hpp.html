@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/get_missing_placeholder_attribute.hpp File Reference</title>
+<title>ritsuko: ritsuko/hdf5/Stream1dNumericDataset.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,46 +76,46 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">get_missing_placeholder_attribute.hpp File Reference</div></div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
+  <div class="headertitle"><div class="title">Stream1dNumericDataset.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Get the missing placeholder attribute.  
+<p>Stream a numeric 1D HDF5 dataset into memory.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<code>#include &quot;<a class="el" href="pick__1d__block__size_8hpp_source.html">pick_1d_block_size.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="get__1d__length_8hpp_source.html">get_1d_length.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="get__name_8hpp_source.html">get_name.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="as__numeric__datatype_8hpp_source.html">as_numeric_datatype.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="load__scalar__string__attribute_8hpp_source.html">load_scalar_string_attribute.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for get_missing_placeholder_attribute.hpp:</div>
+Include dependency graph for Stream1dNumericDataset.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="get__missing__placeholder__attribute_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2get__missing__placeholder__attribute_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2get__missing__placeholder__attribute_8hpp" id="aritsuko_2hdf5_2get__missing__placeholder__attribute_8hpp">
-<area shape="rect" title="Get the missing placeholder attribute." alt="" coords="221,5,394,45"/>
-<area shape="rect" title=" " alt="" coords="227,255,299,280"/>
-<area shape="rect" title=" " alt="" coords="440,255,495,280"/>
-<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="5,101,175,126"/>
-<area shape="rect" href="load__scalar__string__attribute_8hpp.html" title="Load a scalar string HDF5 attribute." alt="" coords="296,93,423,133"/>
-<area shape="rect" title=" " alt="" coords="118,181,201,207"/>
-<area shape="rect" title=" " alt="" coords="33,181,94,207"/>
-<area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="327,181,429,207"/>
-<area shape="rect" title=" " alt="" coords="349,255,407,280"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="get__missing__placeholder__attribute_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2get__missing__placeholder__attribute_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2get__missing__placeholder__attribute_8hppdep" id="aritsuko_2hdf5_2get__missing__placeholder__attribute_8hppdep">
-<area shape="rect" title="Get the missing placeholder attribute." alt="" coords="5,5,179,45"/>
-<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="21,93,163,119"/>
+<div class="center"><img src="Stream1dNumericDataset_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2Stream1dNumericDataset_8hpp" alt=""/></div>
+<map name="aritsuko_2hdf5_2Stream1dNumericDataset_8hpp" id="aritsuko_2hdf5_2Stream1dNumericDataset_8hpp">
+<area shape="rect" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="253,5,452,45"/>
+<area shape="rect" title=" " alt="" coords="302,167,374,192"/>
+<area shape="rect" href="pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="156,93,315,119"/>
+<area shape="rect" href="get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="5,93,132,119"/>
+<area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="391,93,493,119"/>
+<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="517,93,687,119"/>
+<area shape="rect" title=" " alt="" coords="29,167,108,192"/>
+<area shape="rect" title=" " alt="" coords="399,167,453,192"/>
+<area shape="rect" title=" " alt="" coords="478,167,537,192"/>
+<area shape="rect" title=" " alt="" coords="561,167,643,192"/>
+<area shape="rect" title=" " alt="" coords="667,167,729,192"/>
 </map>
 </div>
 </div>
-<p><a href="get__missing__placeholder__attribute_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="Stream1dNumericDataset_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset&lt; Type_ &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a numeric 1D HDF5 dataset into memory.  <a href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html">ritsuko</a></td></tr>
@@ -124,19 +124,9 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko_1_1hdf5"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html">ritsuko::hdf5</a></td></tr>
 <tr class="memdesc:namespaceritsuko_1_1hdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for HDF5 parsing. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a4c441c7a6e4745df9a604045799bdbd2"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a4c441c7a6e4745df9a604045799bdbd2">ritsuko::hdf5::get_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=false)</td></tr>
-<tr class="separator:a4c441c7a6e4745df9a604045799bdbd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
-<tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">ritsuko::hdf5::load_numeric_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
-<tr class="separator:a66d6708bd994a0370e1089caee64bb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa57f8d748c97ee5b469dd48f3182f7d7"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aa57f8d748c97ee5b469dd48f3182f7d7">ritsuko::hdf5::load_string_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=true)</td></tr>
-<tr class="separator:aa57f8d748c97ee5b469dd48f3182f7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Get the missing placeholder attribute. </p>
+<div class="textblock"><p >Stream a numeric 1D HDF5 dataset into memory. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
