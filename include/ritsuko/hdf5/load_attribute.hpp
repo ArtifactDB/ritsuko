@@ -1,7 +1,9 @@
-#ifndef RITSUKO_HDF5_LOAD_SCALAR_STRING_ATTRIBUTE_HPP
-#define RITSUKO_HDF5_LOAD_SCALAR_STRING_ATTRIBUTE_HPP
+#ifndef RITSUKO_HDF5_LOAD_ATTRIBUTE_HPP
+#define RITSUKO_HDF5_LOAD_ATTRIBUTE_HPP
 
 #include "H5Cpp.h"
+
+#include <vector>
 #include <string>
 
 #include "get_1d_length.hpp"

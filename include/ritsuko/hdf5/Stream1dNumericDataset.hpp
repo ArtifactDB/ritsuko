@@ -1,7 +1,10 @@
-#ifndef RITSUKO_HDF5_ITERATE_1D_BLOCKS_HPP
-#define RITSUKO_HDF5_ITERATE_1D_BLOCKS_HPP
+#ifndef RITSUKO_HDF5_STREAM_1D_NUMERIC_DATASET_HPP
+#define RITSUKO_HDF5_STREAM_1D_NUMERIC_DATASET_HPP
 
 #include "H5Cpp.h"
+
+#include <vector>
+#include <stdexcept>
 
 #include "pick_1d_block_size.hpp"
 #include "get_1d_length.hpp"
