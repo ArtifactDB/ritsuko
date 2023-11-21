@@ -42,15 +42,11 @@ inline std::vector<std::string> load_1d_string_attribute(const H5::Attribute& at
 
     if (dtype.isVariableStr()) {
         std::vector<char*> buffer(full_length);
-        try {
-            attr.read(dtype, buffer.data());
-            for (hsize_t i = 0; i < full_length; ++i) {
-                output.emplace_back(buffer[i]);
-            }
-        } catch (...) {
-            H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, buffer.data());
-            throw;
+        attr.read(dtype, buffer.data());
+        for (hsize_t i = 0; i < full_length; ++i) {
+            output.emplace_back(buffer[i]);
         }
+        H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, buffer.data());
 
     } else {
         size_t len = dtype.getSize();
