@@ -63,52 +63,6 @@ TEST(Hdf5Load1dStringDataset, Variable) {
     EXPECT_EQ(example, counterexample);
 }
 
-TEST(Hdf5Load1dStringAttribute, Fixed) {
-    const char* path = "TEST-load-string.h5";
-
-    std::vector<std::string> example(19);
-    for (size_t i = 0; i < example.size(); ++i) {
-        example[i] = std::to_string(i);
-    }
-
-    {
-        size_t maxlen = 1;
-        for (const auto& v : example) {
-            if (v.size() > maxlen) {
-                maxlen = v.size();
-            }
-        }
-
-        std::vector<char> buffer(maxlen * example.size());
-        for (size_t v = 0; v < example.size(); ++v) {
-            const auto& current = example[v];
-            std::copy(current.begin(), current.end(), buffer.data() + v * maxlen);
-        }
-
-        H5::H5File handle(path, H5F_ACC_TRUNC);
-        auto ghandle = handle.createGroup("whee");
-        H5::StrType stype(0, maxlen);
-        hsize_t dim = example.size();
-        H5::DataSpace dspace(1, &dim);
-        auto ahandle = ghandle.createAttribute("foo", stype, dspace);
-        ahandle.write(stype, buffer.data());
-    }
-
-    H5::H5File handle(path, H5F_ACC_RDONLY);
-    auto dhandle = handle.openGroup("whee");
-    std::vector<std::string> counterexample(example.size()); 
-    auto ahandle = dhandle.openAttribute("foo");
-    ritsuko::hdf5::load_1d_string_attribute(
-        ahandle, 
-        example.size(), 
-        [&](size_t i, const char* p, size_t l) {
-            counterexample[i] = std::string(p, p + l);
-        }
-    );
-
-    EXPECT_EQ(example, counterexample);
-}
-
 TEST(Hdf5Load1dStringAttribute, Variable) {
     const char* path = "TEST-load-string.h5";
 
@@ -147,4 +101,3 @@ TEST(Hdf5Load1dStringAttribute, Variable) {
 
     EXPECT_EQ(example, counterexample);
 }
-

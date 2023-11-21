@@ -5,7 +5,7 @@
 #include <string>
 
 #include "as_numeric_datatype.hpp"
-#include "load_scalar_string_attribute.hpp"
+#include "load_attribute.hpp"
 
 /**
  * @file missing_placeholder.hpp
