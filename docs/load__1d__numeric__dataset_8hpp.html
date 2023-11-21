@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/choose_datatype.hpp File Reference</title>
+<title>ritsuko: ritsuko/hdf5/load_1d_numeric_dataset.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -78,38 +78,35 @@ $(function() {
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">choose_datatype.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">load_1d_numeric_dataset.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Choose a HDF5 datatype.  
+<p>Load and iterate over a 1-dimensional HDF5 numeric dataset.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
-<code>#include &lt;cstdint&gt;</code><br />
-<code>#include &quot;H5Cpp.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="pick__1d__block__size_8hpp_source.html">pick_1d_block_size.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="iterate__1d__blocks_8hpp_source.html">iterate_1d_blocks.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="choose__datatype_8hpp_source.html">choose_datatype.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for choose_datatype.hpp:</div>
+Include dependency graph for load_1d_numeric_dataset.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="choose__datatype_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2choose__datatype_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2choose__datatype_8hpp" id="aritsuko_2hdf5_2choose__datatype_8hpp">
-<area shape="rect" title="Choose a HDF5 datatype." alt="" coords="75,5,211,45"/>
-<area shape="rect" title=" " alt="" coords="5,93,88,119"/>
-<area shape="rect" title=" " alt="" coords="112,93,173,119"/>
-<area shape="rect" title=" " alt="" coords="197,93,269,119"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="choose__datatype_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2choose__datatype_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2choose__datatype_8hppdep" id="aritsuko_2hdf5_2choose__datatype_8hppdep">
-<area shape="rect" title="Choose a HDF5 datatype." alt="" coords="94,5,230,45"/>
-<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,101,148,126"/>
-<area shape="rect" href="load__1d__numeric__dataset_8hpp.html" title="Load and iterate over a 1&#45;dimensional HDF5 numeric dataset." alt="" coords="173,93,322,133"/>
+<div class="center"><img src="load__1d__numeric__dataset_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2load__1d__numeric__dataset_8hpp" alt=""/></div>
+<map name="aritsuko_2hdf5_2load__1d__numeric__dataset_8hpp" id="aritsuko_2hdf5_2load__1d__numeric__dataset_8hpp">
+<area shape="rect" title="Load and iterate over a 1&#45;dimensional HDF5 numeric dataset." alt="" coords="239,5,389,45"/>
+<area shape="rect" title=" " alt="" coords="174,167,246,192"/>
+<area shape="rect" title=" " alt="" coords="581,93,639,119"/>
+<area shape="rect" href="pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="5,93,164,119"/>
+<area shape="rect" href="iterate__1d__blocks_8hpp.html" title="Blockwise iteration through a 1&#45;dimensional HDF5 dataset." alt="" coords="240,93,388,119"/>
+<area shape="rect" href="choose__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="413,93,557,119"/>
+<area shape="rect" title=" " alt="" coords="277,167,351,192"/>
+<area shape="rect" title=" " alt="" coords="409,167,491,192"/>
+<area shape="rect" title=" " alt="" coords="515,167,577,192"/>
 </map>
 </div>
 </div>
-<p><a href="choose__datatype_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="load__1d__numeric__dataset_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -122,12 +119,15 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a128bc3f840a452b49c35a4edbabeff8b"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
-<tr class="memitem:a128bc3f840a452b49c35a4edbabeff8b"><td class="memTemplItemLeft" align="right" valign="top">H5::PredType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a128bc3f840a452b49c35a4edbabeff8b">ritsuko::hdf5::choose_datatype</a> ()</td></tr>
-<tr class="separator:a128bc3f840a452b49c35a4edbabeff8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade5f3ba04fb900893f7cd9e4938c9185"><td class="memTemplParams" colspan="2">template&lt;typename Type_ , class Function_ &gt; </td></tr>
+<tr class="memitem:ade5f3ba04fb900893f7cd9e4938c9185"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ade5f3ba04fb900893f7cd9e4938c9185">ritsuko::hdf5::load_1d_numeric_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size, Function_ fun)</td></tr>
+<tr class="separator:ade5f3ba04fb900893f7cd9e4938c9185"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee36514dd3190123248046c4842e3b2b"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:aee36514dd3190123248046c4842e3b2b"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aee36514dd3190123248046c4842e3b2b">ritsuko::hdf5::load_1d_numeric_attribute</a> (const H5::Attribute &amp;handle, hsize_t full_length)</td></tr>
+<tr class="separator:aee36514dd3190123248046c4842e3b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Choose a HDF5 datatype. </p>
+<div class="textblock"><p >Load and iterate over a 1-dimensional HDF5 numeric dataset. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,11 @@
+<map id="ritsuko/hdf5/load_1d_numeric_dataset.hpp" name="ritsuko/hdf5/load_1d_numeric_dataset.hpp">
+<area shape="rect" id="node1" title="Load and iterate over a 1&#45;dimensional HDF5 numeric dataset." alt="" coords="239,5,389,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="174,167,246,192"/>
+<area shape="rect" id="node3" title=" " alt="" coords="581,93,639,119"/>
+<area shape="rect" id="node4" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="5,93,164,119"/>
+<area shape="rect" id="node5" href="$iterate__1d__blocks_8hpp.html" title="Blockwise iteration through a 1&#45;dimensional HDF5 dataset." alt="" coords="240,93,388,119"/>
+<area shape="rect" id="node7" href="$choose__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="413,93,557,119"/>
+<area shape="rect" id="node6" title=" " alt="" coords="277,167,351,192"/>
+<area shape="rect" id="node8" title=" " alt="" coords="409,167,491,192"/>
+<area shape="rect" id="node9" title=" " alt="" coords="515,167,577,192"/>
+</map>
