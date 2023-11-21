@@ -49,17 +49,6 @@ inline H5::Attribute open_missing_placeholder_attribute(const H5::DataSet& handl
 }
 
 /**
- * @cond
- */
-// Back-compatibility only.
-inline H5::Attribute get_missing_placeholder_attribute(const H5::DataSet& handle, const char* attr_name, bool type_class_only = false) {
-    return open_missing_placeholder_attribute(handle, attr_name, type_class_only);
-}
-/**
- * @cond
- */
-
-/**
  * Load a missing numeric placeholder by calling `open_missing_placeholder_attribute()`.
  *
  * @tparam Type_ Type to use to store the data in memory, see `as_numeric_datatype()` for supported types.
