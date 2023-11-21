@@ -57,22 +57,6 @@ inline H5::DataSet open_dataset(const H5::Group& handle, const char* name) {
 }
 
 /**
- * @param handle Group containing the scalar dataset.
- * @param name Name of the dataset inside the group.
- * @return Handle to a scalar dataset.
- * An error is raised if `name` does not refer to a scalar dataset. 
- */
-inline H5::DataSet open_scalar_dataset(const H5::Group& handle, const char* name) {
-    auto dhandle = open_dataset(handle, name);
-    auto dspace = dhandle.getSpace();
-    int ndims = dspace.getSimpleExtentNdims();
-    if (ndims != 0) {
-        throw std::runtime_error("expected a scalar dataset at '" + std::string(name) + "'");
-    }
-    return dhandle;
-}
-
-/**
  * @tparam Object_ Type of the HDF5 handle, usually a `DataSet` or `Group`.
  * @param handle HDF5 dataset or group handle.
  * @param name Name of the attribute.
@@ -86,23 +70,6 @@ H5::Attribute open_attribute(const Object_& handle, const char* name) {
         throw std::runtime_error("expected an attribute at '" + std::string(name) + "'");
     }
     return handle.openAttribute(name);
-}
-
-/**
- * @tparam Object_ Type of the HDF5 handle, usually a `DataSet` or `Group`.
- * @param handle HDF5 dataset or group handle.
- * @param name Name of the attribute.
- *
- * @return Attribute handle.
- * An error is raised if `name` does not refer to a scalar attribute.
- */
-template<class Object_>
-H5::Attribute open_scalar_attribute(const Object_& handle, const char* name) {
-    auto attr = open_attribute(handle,name);
-    if (attr.getSpace().getSimpleExtentNdims() != 0) {
-        throw std::runtime_error("expected a scalar attribute at '" + std::string(name) + "'");
-    }
-    return attr;
 }
 
 }

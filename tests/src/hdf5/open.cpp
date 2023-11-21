@@ -98,25 +98,10 @@ TEST(Hdf5Open, Dataset) {
     }
 }
 
-TEST(Hdf5Open, ScalarDataset) {
-    const char* path = "TEST-dataset.h5";
-
-    {
-        H5::H5File handle(path, H5F_ACC_TRUNC);
-        handle.createDataSet("foobar", H5::PredType::NATIVE_INT, H5S_SCALAR);
-    }
-    {
-        H5::H5File handle(path, H5F_ACC_RDONLY);
-        auto dhandle = ritsuko::hdf5::open_scalar_dataset(handle, "foobar");
-        EXPECT_EQ(dhandle.getTypeClass(), H5T_INTEGER);
-        EXPECT_EQ(dhandle.getSpace().getSimpleExtentNdims(), 0);
-    }
-}
-
 static void expect_attribute_error(const H5::Group& handle, const char* name, std::string msg) {
     EXPECT_ANY_THROW({
         try {
-            ritsuko::hdf5::open_scalar_attribute(handle, name);
+            ritsuko::hdf5::open_attribute(handle, name);
         } catch (std::exception& e) {
             EXPECT_THAT(e.what(), ::testing::HasSubstr(msg));
             throw;
@@ -138,8 +123,9 @@ TEST(Hdf5Open, ScalarAttribute) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto ghandle = handle.openGroup("whee");
-    auto attr = ritsuko::hdf5::open_scalar_attribute(ghandle, "okay");
+    auto attr = ritsuko::hdf5::open_attribute(ghandle, "okay");
     EXPECT_EQ(attr.getTypeClass(), H5T_INTEGER);
     expect_attribute_error(ghandle, "missing", "expected an attribute");
-    expect_attribute_error(ghandle, "nooo", "expected a scalar attribute");
+    auto attr2 = ritsuko::hdf5::open_attribute(ghandle, "nooo");
+    EXPECT_EQ(attr2.getTypeClass(), H5T_INTEGER);
 }
