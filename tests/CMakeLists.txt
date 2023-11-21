@@ -29,6 +29,8 @@ add_executable(
     src/hdf5/load_1d_string_dataset.cpp
     src/hdf5/get_missing_placeholder_attribute.cpp
     src/hdf5/get_dataset.cpp
+    src/hdf5/get_group.cpp
+    src/hdf5/open_file.cpp
     src/hdf5/get_scalar_attribute.cpp
     src/hdf5/get_name.cpp
     src/hdf5/choose_datatype.cpp
