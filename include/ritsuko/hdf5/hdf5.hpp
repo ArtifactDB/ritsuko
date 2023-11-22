@@ -10,6 +10,7 @@
 #include "load_attribute.hpp"
 #include "load_dataset.hpp"
 #include "missing_placeholder.hpp"
+#include "miscellaneous.hpp"
 #include "open.hpp"
 #include "pick_1d_block_size.hpp"
 #include "validate_string.hpp"
