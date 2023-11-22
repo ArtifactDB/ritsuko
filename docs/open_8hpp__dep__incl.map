@@ -1,4 +1,5 @@
 <map id="ritsuko/hdf5/open.hpp" name="ritsuko/hdf5/open.hpp">
 <area shape="rect" id="node1" title="Convenience functions to safely open HDF5 handles." alt="" coords="5,5,152,31"/>
-<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="7,79,150,104"/>
+<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="7,152,150,177"/>
+<area shape="rect" id="node3" href="$miscellaneous_8hpp.html" title="Miscellaneous functions for user convenience." alt="" coords="47,79,249,104"/>
 </map>

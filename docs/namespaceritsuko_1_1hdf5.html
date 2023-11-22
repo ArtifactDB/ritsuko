@@ -148,13 +148,19 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>find_string_length<
 <tr class="separator:abfdd3aa0655fe3d96988574f71699298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aefbca763dcac9ad4b93ace181cdb78a6">load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
 <tr class="separator:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memTemplParams" colspan="2">template&lt;class H5Object_ &gt; </td></tr>
+<tr class="memitem:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8cbc70f0b6aa640eb12e6663cdacd4fe">open_scalar_attribute</a> (const H5Object_ &amp;handle, const char *name)</td></tr>
+<tr class="separator:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb3d656e2411662328752690d008e87"><td class="memTemplParams" colspan="2">template&lt;class H5Object_ &gt; </td></tr>
+<tr class="memitem:afcb3d656e2411662328752690d008e87"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#afcb3d656e2411662328752690d008e87">open_and_load_scalar_string_attribute</a> (const H5Object_ &amp;handle, const char *name)</td></tr>
+<tr class="separator:afcb3d656e2411662328752690d008e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13912457e34944fb0e3c9e462a60b414"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">check_missing_placeholder_attribute</a> (const H5::DataSet &amp;dset, const H5::Attribute &amp;attr, int type_class_only=-1)</td></tr>
 <tr class="separator:a13912457e34944fb0e3c9e462a60b414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
-<tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">load_numeric_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
-<tr class="separator:a66d6708bd994a0370e1089caee64bb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbac5f1829b88a3c9f313a4f75f0376e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#acbac5f1829b88a3c9f313a4f75f0376e">load_string_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
-<tr class="separator:acbac5f1829b88a3c9f313a4f75f0376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adedaf49be1e5a3a1312d9043894f4ad9"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:adedaf49be1e5a3a1312d9043894f4ad9"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#adedaf49be1e5a3a1312d9043894f4ad9">open_and_load_optional_numeric_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
+<tr class="separator:adedaf49be1e5a3a1312d9043894f4ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84eed8b0e86aebfb863ca6080ce14729"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a84eed8b0e86aebfb863ca6080ce14729">open_and_load_optional_string_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
+<tr class="separator:a84eed8b0e86aebfb863ca6080ce14729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74e80e9c2e77530752c2dee29af5c9b4"><td class="memItemLeft" align="right" valign="top">H5::H5File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4">open_file</a> (const std::filesystem::path &amp;path)</td></tr>
 <tr class="separator:a74e80e9c2e77530752c2dee29af5c9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3fb91fb20b959eaf04fcc30087ba9e8"><td class="memItemLeft" align="right" valign="top">H5::Group&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">open_group</a> (const H5::Group &amp;handle, const char *name)</td></tr>
@@ -1029,51 +1035,6 @@ template&lt;typename Type_ &gt; </div>
 
 </div>
 </div>
-<a id="a66d6708bd994a0370e1089caee64bb31" name="a66d6708bd994a0370e1089caee64bb31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66d6708bd994a0370e1089caee64bb31">&#9670;&#160;</a></span>load_numeric_missing_placeholder()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::pair&lt; bool, Type_ &gt; ritsuko::hdf5::load_numeric_missing_placeholder </td>
-          <td>(</td>
-          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
-          <td class="paramname"><em>handle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>attr_name</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Load a missing numeric placeholder by calling <code>open_missing_placeholder_attribute()</code>.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Type_</td><td>Type to use to store the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype()</a></code> for supported types. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
-    <tr><td class="paramname">attr_name</td><td>Name of the attribute containing the missing value placeholder. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pair containing (i) a boolean indicating whether the placeholder attribute was present, and (ii) the value of the placeholder if the first element is <code>true</code>. </dd></dl>
-
-</div>
-</div>
 <a id="a255147f2351c250c5e06a93a63662855" name="a255147f2351c250c5e06a93a63662855"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a255147f2351c250c5e06a93a63662855">&#9670;&#160;</a></span>load_scalar_numeric_attribute()</h2>
 
@@ -1173,8 +1134,53 @@ template&lt;typename Type_ &gt; </div>
 
 </div>
 </div>
-<a id="acbac5f1829b88a3c9f313a4f75f0376e" name="acbac5f1829b88a3c9f313a4f75f0376e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbac5f1829b88a3c9f313a4f75f0376e">&#9670;&#160;</a></span>load_string_missing_placeholder()</h2>
+<a id="adedaf49be1e5a3a1312d9043894f4ad9" name="adedaf49be1e5a3a1312d9043894f4ad9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adedaf49be1e5a3a1312d9043894f4ad9">&#9670;&#160;</a></span>open_and_load_optional_numeric_missing_placeholder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; bool, Type_ &gt; ritsuko::hdf5::open_and_load_optional_numeric_missing_placeholder </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>attr_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Check if a missing numeric placeholder attribute is present, and if so, open it and loads it value. This will also call <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">check_missing_placeholder_attribute()</a></code> to validate the placeholder's properties.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type_</td><td>Type to use to store the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype()</a></code> for supported types. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
+    <tr><td class="paramname">attr_name</td><td>Name of the attribute containing the missing value placeholder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pair containing (i) a boolean indicating whether the placeholder attribute was present, and (ii) the value of the placeholder if the first element is <code>true</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a84eed8b0e86aebfb863ca6080ce14729" name="a84eed8b0e86aebfb863ca6080ce14729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84eed8b0e86aebfb863ca6080ce14729">&#9670;&#160;</a></span>open_and_load_optional_string_missing_placeholder()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1183,7 +1189,7 @@ template&lt;typename Type_ &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt; bool, std::string &gt; ritsuko::hdf5::load_string_missing_placeholder </td>
+          <td class="memname">std::pair&lt; bool, std::string &gt; ritsuko::hdf5::open_and_load_optional_string_missing_placeholder </td>
           <td>(</td>
           <td class="paramtype">const H5::DataSet &amp;&#160;</td>
           <td class="paramname"><em>handle</em>, </td>
@@ -1206,7 +1212,7 @@ template&lt;typename Type_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Load a missing string placeholder by calling <code>open_missing_placeholder_attribute()</code>.</p>
+<p >Check if a missing string placeholder attribute is present, and if so, open it and loads it value. This will also call <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">check_missing_placeholder_attribute()</a></code> to validate the placeholder's properties.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
@@ -1215,6 +1221,50 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pair containing (i) a boolean indicating whether the placeholder attribute was present, and (ii) the value of the placeholder if the first element is <code>true</code>. </dd></dl>
+
+</div>
+</div>
+<a id="afcb3d656e2411662328752690d008e87" name="afcb3d656e2411662328752690d008e87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb3d656e2411662328752690d008e87">&#9670;&#160;</a></span>open_and_load_scalar_string_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class H5Object_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ritsuko::hdf5::open_and_load_scalar_string_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5Object_ &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Object_</td><td>Type of the HDF5 handle, usually a <code>DataSet</code> or <code>Group</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>HDF5 dataset or group handle. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the attribute.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the attribute value. </dd></dl>
 
 </div>
 </div>
@@ -1380,6 +1430,58 @@ template&lt;class Object_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Handle to the group. An error is raised if <code>name</code> does not refer to a dataset. </dd></dl>
+
+</div>
+</div>
+<a id="a8cbc70f0b6aa640eb12e6663cdacd4fe" name="a8cbc70f0b6aa640eb12e6663cdacd4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cbc70f0b6aa640eb12e6663cdacd4fe">&#9670;&#160;</a></span>open_scalar_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class H5Object_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">H5::Attribute ritsuko::hdf5::open_scalar_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5Object_ &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Object_</td><td>Type of the HDF5 handle, usually a <code>DataSet</code> or <code>Group</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>HDF5 dataset or group handle. </td></tr>
+    <tr><td class="paramname">name</td><td>Name of the attribute.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Attribute handle. An error is raised if <code>name</code> does not refer to a scalar attribute. </dd></dl>
 
 </div>
 </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/open.hpp File Reference</title>
+<title>ritsuko: ritsuko/hdf5/miscellaneous.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -78,40 +78,47 @@ $(function() {
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">open.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">miscellaneous.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Convenience functions to safely open HDF5 handles.  
+<p>Miscellaneous functions for user convenience.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &quot;H5Cpp.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="open_8hpp_source.html">open.hpp</a>&quot;</code><br />
+<code>#include &quot;load_attribute.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for open.hpp:</div>
+Include dependency graph for miscellaneous.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="open_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2open_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2open_8hpp" id="aritsuko_2hdf5_2open_8hpp">
-<area shape="rect" title="Convenience functions to safely open HDF5 handles." alt="" coords="120,5,267,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,77,104"/>
-<area shape="rect" title=" " alt="" coords="101,79,181,104"/>
-<area shape="rect" title=" " alt="" coords="206,79,285,104"/>
-<area shape="rect" title=" " alt="" coords="309,79,363,104"/>
+<div class="center"><img src="miscellaneous_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2miscellaneous_8hpp" alt=""/></div>
+<map name="aritsuko_2hdf5_2miscellaneous_8hpp" id="aritsuko_2hdf5_2miscellaneous_8hpp">
+<area shape="rect" title="Miscellaneous functions for user convenience." alt="" coords="269,5,471,31"/>
+<area shape="rect" title=" " alt="" coords="179,152,233,177"/>
+<area shape="rect" title=" " alt="" coords="427,225,499,251"/>
+<area shape="rect" href="open_8hpp.html" title="Convenience functions to safely open HDF5 handles." alt="" coords="103,79,178,104"/>
+<area shape="rect" href="load__attribute_8hpp_source.html" title=" " alt="" coords="360,79,484,104"/>
+<area shape="rect" title=" " alt="" coords="23,152,103,177"/>
+<area shape="rect" title=" " alt="" coords="115,225,193,251"/>
+<area shape="rect" title=" " alt="" coords="577,152,635,177"/>
+<area shape="rect" href="get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="257,152,384,177"/>
+<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="711,152,880,177"/>
+<area shape="rect" href="__strings_8hpp_source.html" title=" " alt="" coords="460,152,552,177"/>
+<area shape="rect" title=" " alt="" coords="706,225,789,251"/>
+<area shape="rect" title=" " alt="" coords="813,225,874,251"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="open_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2open_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2open_8hppdep" id="aritsuko_2hdf5_2open_8hppdep">
-<area shape="rect" title="Convenience functions to safely open HDF5 handles." alt="" coords="5,5,152,31"/>
-<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="7,152,150,177"/>
-<area shape="rect" href="miscellaneous_8hpp.html" title="Miscellaneous functions for user convenience." alt="" coords="47,79,249,104"/>
+<div class="center"><img src="miscellaneous_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2miscellaneous_8hppdep" alt=""/></div>
+<map name="aritsuko_2hdf5_2miscellaneous_8hppdep" id="aritsuko_2hdf5_2miscellaneous_8hppdep">
+<area shape="rect" title="Miscellaneous functions for user convenience." alt="" coords="5,5,207,31"/>
+<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="35,79,177,104"/>
 </map>
 </div>
 </div>
-<p><a href="open_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="miscellaneous_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -124,18 +131,15 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a74e80e9c2e77530752c2dee29af5c9b4"><td class="memItemLeft" align="right" valign="top">H5::H5File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4">ritsuko::hdf5::open_file</a> (const std::filesystem::path &amp;path)</td></tr>
-<tr class="separator:a74e80e9c2e77530752c2dee29af5c9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3fb91fb20b959eaf04fcc30087ba9e8"><td class="memItemLeft" align="right" valign="top">H5::Group&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">ritsuko::hdf5::open_group</a> (const H5::Group &amp;handle, const char *name)</td></tr>
-<tr class="separator:ab3fb91fb20b959eaf04fcc30087ba9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b0c6485fc47bfee5f434b8ba0931f1e"><td class="memItemLeft" align="right" valign="top">H5::DataSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">ritsuko::hdf5::open_dataset</a> (const H5::Group &amp;handle, const char *name)</td></tr>
-<tr class="separator:a5b0c6485fc47bfee5f434b8ba0931f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2562d2fa77b38f6ba2412f4ee3fce3b4"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
-<tr class="memitem:a2562d2fa77b38f6ba2412f4ee3fce3b4"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">ritsuko::hdf5::open_attribute</a> (const Object_ &amp;handle, const char *name)</td></tr>
-<tr class="separator:a2562d2fa77b38f6ba2412f4ee3fce3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memTemplParams" colspan="2">template&lt;class H5Object_ &gt; </td></tr>
+<tr class="memitem:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8cbc70f0b6aa640eb12e6663cdacd4fe">ritsuko::hdf5::open_scalar_attribute</a> (const H5Object_ &amp;handle, const char *name)</td></tr>
+<tr class="separator:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb3d656e2411662328752690d008e87"><td class="memTemplParams" colspan="2">template&lt;class H5Object_ &gt; </td></tr>
+<tr class="memitem:afcb3d656e2411662328752690d008e87"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#afcb3d656e2411662328752690d008e87">ritsuko::hdf5::open_and_load_scalar_string_attribute</a> (const H5Object_ &amp;handle, const char *name)</td></tr>
+<tr class="separator:afcb3d656e2411662328752690d008e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Convenience functions to safely open HDF5 handles. </p>
+<div class="textblock"><p >Miscellaneous functions for user convenience. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
