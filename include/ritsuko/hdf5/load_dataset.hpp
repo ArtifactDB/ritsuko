@@ -42,6 +42,24 @@ inline std::string load_scalar_string_dataset(const H5::DataSet& handle) {
     }
 }
 
+inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length, hsize_t buffer_size) {
+    auto dtype = handle.getDataType();
+    if (!dtype.isVariableStr()) {
+        return;
+    }
+
+    hsize_t block_size = pick_1d_block_size(ptr->getCreatePlist(), full_length, buffer_size);
+    for (
+        ptr->read(var_buffer.data(), dtype, mspace, dspace);
+        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), var_buffer.data());
+        available = std::min(full_length - last_loaded, block_size);
+
+        for (hsize_t i = 0; i < full_length; ++i) {
+            
+        }
+    }
+}
+
 }
 
 }
