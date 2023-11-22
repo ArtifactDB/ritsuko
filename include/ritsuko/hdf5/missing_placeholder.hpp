@@ -6,6 +6,8 @@
 
 #include "as_numeric_datatype.hpp"
 #include "load_attribute.hpp"
+#include "get_1d_length.hpp"
+#include "get_name.hpp"
 
 /**
  * @file missing_placeholder.hpp
@@ -17,35 +19,34 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * Open a handle to a missing placeholder's attribute.
- * It is assumed that the caller has already checked `handle` for the existence of the attribute at `attr_name`;
- * this function will only perform additional checks for the shape and type of the attribute.
- *
- * @param handle Dataset handle.
- * @param attr_name Name of the attribute containing the missing value placeholder.
- * @param type_class_only Whether to only require identical type classes for the placeholder.
- * By default, we require identity in the types themselves.
- * 
- * @return Handle to the attribute.
+ * Check the validity of a missing placeholder attribute on a dataset.
  * An error is raised if the attribute is not a scalar or has a different type (or type class, if `type_class_only_ = true`) to the dataset.
+ *
+ * @param dset Dataset handle.
+ * @param attr Handle for the missing placeholder, typically as an attribute on `dset`.
+ * @param type_class_only Whether to only require identical type classes for the placeholder.
+ * If 0, this is false, and the types between `dset` and `attr` must be identical.
+ * If 1, this is true, and `dset` and `attr` just need to have the same type class.
+ * If -1 (default), this is true for all string types and false for all numeric types.
  */
-inline H5::Attribute open_missing_placeholder_attribute(const H5::DataSet& handle, const char* attr_name, bool type_class_only = false) {
-    auto attr = handle.openAttribute(attr_name);
-    if (attr.getSpace().getSimpleExtentNdims() != 0) {
-        throw std::runtime_error("expected the '" + std::string(attr_name) + "' attribute to be a scalar");
+inline void check_missing_placeholder_attribute(const H5::DataSet& dset, const H5::Attribute& attr, int type_class_only = -1) {
+    if (!is_scalar(attr)) {
+        throw std::runtime_error("expected the '" + get_name(attr) + "' attribute to be a scalar");
     }
 
-    if (type_class_only) {
-        if (attr.getTypeClass() != handle.getTypeClass()) {
-            throw std::runtime_error("expected the '" + std::string(attr_name) + "' attribute to have the same type class as its dataset");
+    if (type_class_only == -1) {
+        type_class_only = (dset.getTypeClass() == H5T_STRING);
+    }
+
+    if (type_class_only == 1) {
+        if (attr.getTypeClass() != dset.getTypeClass()) {
+            throw std::runtime_error("expected the '" + get_name(attr) + "' attribute to have the same type class as its dataset");
         }
     } else {
-        if (attr.getDataType() != handle.getDataType()) {
-            throw std::runtime_error("expected the '" + std::string(attr_name) + "' attribute to have the same type as its dataset");
+        if (attr.getDataType() != dset.getDataType()) {
+            throw std::runtime_error("expected the '" + get_name(attr) + "' attribute to have the same type as its dataset");
         }
     }
-
-    return attr;
 }
 
 /**
@@ -63,29 +64,27 @@ std::pair<bool, Type_> load_numeric_missing_placeholder(const H5::DataSet& handl
         return output;
     }
     output.first = true;
-    auto ahandle = open_missing_placeholder_attribute(handle, attr_name, /* type_class_only = */ false);
+    auto ahandle = handle.openAttribute(attr_name);
+    check_missing_placeholder_attribute(handle, ahandle);
     ahandle.read(as_numeric_datatype<Type_>(), &(output.second));
     return output;
 }
 
 /**
  * Load a missing string placeholder by calling `open_missing_placeholder_attribute()`.
- * Note the difference in the default for `type_class_only`.
  *
  * @param handle Dataset handle.
  * @param attr_name Name of the attribute containing the missing value placeholder.
- * @param type_class_only Whether to only require identical type classes for the placeholder.
- * This is set to `true` as all strings are ultimately treated as null-terminated byte arrays.
- *
  * @return Pair containing (i) a boolean indicating whether the placeholder attribute was present, and (ii) the value of the placeholder if the first element is `true`.
  */
-inline std::pair<bool, std::string> load_string_missing_placeholder(const H5::DataSet& handle, const char* attr_name, bool type_class_only = true) {
+inline std::pair<bool, std::string> load_string_missing_placeholder(const H5::DataSet& handle, const char* attr_name) {
     std::pair<bool, std::string> output(false, "");
     if (!handle.attrExists(attr_name)) {
         return output;
     }
     output.first = true;
-    auto ahandle = open_missing_placeholder_attribute(handle, attr_name, type_class_only);
+    auto ahandle = handle.openAttribute(attr_name);
+    check_missing_placeholder_attribute(handle, ahandle);
     output.second = load_scalar_string_attribute(ahandle);
     return output;
 }
