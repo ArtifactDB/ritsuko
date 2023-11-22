@@ -12,6 +12,7 @@
 #include "missing_placeholder.hpp"
 #include "open.hpp"
 #include "pick_1d_block_size.hpp"
+#include "validate_string.hpp"
 
 /**
  * @file hdf5.hpp
