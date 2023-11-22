@@ -40,7 +40,27 @@ TEST(Hdf5LoadAttribute, ScalarString) {
         auto ahandle = ghandle.openAttribute(attr_name);
         EXPECT_EQ(ritsuko::hdf5::load_scalar_string_attribute(ahandle), attr_val);
     }
-}
+
+    {
+        {
+            H5::H5File handle(path, H5F_ACC_TRUNC);
+            auto ghandle = handle.createGroup("whee");
+            ghandle.createAttribute("stuff", H5::StrType(0, H5T_VARIABLE), H5S_SCALAR);
+        }
+
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto dhandle = handle.openGroup("whee");
+        auto ahandle = dhandle.openAttribute("stuff");
+        EXPECT_ANY_THROW({
+            try {
+                ritsuko::hdf5::load_scalar_string_attribute(ahandle);
+            } catch (std::exception& e) {
+                EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+                throw;
+            }
+        });
+    }
+ }
 
 TEST(Hdf5LoadAttribute, Fixed1d) {
     const char* path = "TEST-1d-attr.h5";

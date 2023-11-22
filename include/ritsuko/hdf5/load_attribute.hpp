@@ -25,9 +25,28 @@ namespace hdf5 {
  * @return The attribute as a string.
  */
 inline std::string load_scalar_string_attribute(const H5::Attribute& attr) {
-    std::string output;
-    attr.read(attr.getStrType(), output);
-    return output;
+    auto dtype = attr.getDataType();
+
+    // Unfortunately, we can't just do 'std::string output; attr.read(dtype, output);', 
+    // as we need to catch NULL pointers in the variable case.
+
+    if (dtype.isVariableStr()) {
+        auto mspace = attr.getSpace();
+        char* buffer;
+        attr.read(dtype, &buffer);
+        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), &buffer);
+        if (buffer == NULL) {
+            throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
+        }
+        return std::string(buffer);
+
+    } else {
+        size_t len = dtype.getSize();
+        std::vector<char> buffer(len);
+        attr.read(dtype, buffer.data());
+        auto ptr = buffer.data();
+        return std::string(ptr, ptr + find_string_length(ptr, len));
+    }
 }
 
 /**
