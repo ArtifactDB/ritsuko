@@ -8,6 +8,7 @@
 
 #include "get_1d_length.hpp"
 #include "as_numeric_datatype.hpp"
+#include "_strings.hpp"
 
 /**
  * @file load_scalar_string_attribute.hpp
@@ -45,10 +46,13 @@ inline std::vector<std::string> load_1d_string_attribute(const H5::Attribute& at
     if (dtype.isVariableStr()) {
         std::vector<char*> buffer(full_length);
         attr.read(dtype, buffer.data());
+        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), buffer.data());
         for (hsize_t i = 0; i < full_length; ++i) {
+            if (buffer[i] == NULL) {
+                throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
+            }
             output.emplace_back(buffer[i]);
         }
-        H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, buffer.data());
 
     } else {
         size_t len = dtype.getSize();
@@ -56,9 +60,7 @@ inline std::vector<std::string> load_1d_string_attribute(const H5::Attribute& at
         attr.read(dtype, buffer.data());
         auto ptr = buffer.data();
         for (size_t i = 0; i < full_length; ++i, ptr += len) {
-            size_t j = 0;
-            for (; j < len && ptr[j] != '\0'; ++j) {}
-            output.emplace_back(ptr, ptr + j);
+            output.emplace_back(ptr, ptr + find_string_length(ptr, len));
         }
     }
 

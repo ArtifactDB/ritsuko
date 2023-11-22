@@ -11,6 +11,7 @@
 #include "get_1d_length.hpp"
 #include "get_name.hpp"
 #include "as_numeric_datatype.hpp"
+#include "_strings.hpp"
 
 /**
  * @file Stream1dStringDataset.hpp
@@ -139,22 +140,23 @@ private:
 
         if (is_variable) {
             ptr->read(var_buffer.data(), dtype, mspace, dspace);
+            [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), var_buffer.data());
             for (hsize_t i = 0; i < block_size; ++i) {
+                if (var_buffer[i] == NULL) {
+                    throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(*ptr) + "'");
+                }
                 auto& curstr = final_buffer[i];
                 curstr.clear();
                 curstr.insert(0, var_buffer[i]);
             }
-            H5Dvlen_reclaim(dtype.getId(), mspace.getId(), H5P_DEFAULT, var_buffer.data());
 
         } else {
             auto bptr = fix_buffer.data();
             ptr->read(bptr, dtype, mspace, dspace);
             for (size_t i = 0; i < available; ++i, bptr += fixed_length) {
-                size_t j = 0;
-                for (; j < fixed_length && bptr[j] != '\0'; ++j) {}
                 auto& curstr = final_buffer[i];
                 curstr.clear();
-                curstr.insert(curstr.end(), bptr, bptr + j);
+                curstr.insert(curstr.end(), bptr, bptr + find_string_length(bptr, fixed_length));
             }
         }
 
