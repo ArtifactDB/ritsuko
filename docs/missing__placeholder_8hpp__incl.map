@@ -1,13 +1,14 @@
 <map id="ritsuko/hdf5/missing_placeholder.hpp" name="ritsuko/hdf5/missing_placeholder.hpp">
-<area shape="rect" id="node1" title="Get the missing placeholder attribute." alt="" coords="216,5,355,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="233,240,305,265"/>
-<area shape="rect" id="node3" title=" " alt="" coords="658,167,713,192"/>
-<area shape="rect" id="node4" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="11,167,181,192"/>
-<area shape="rect" id="node7" href="$load__attribute_8hpp_source.html" title=" " alt="" coords="291,93,415,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="91,240,173,265"/>
-<area shape="rect" id="node6" title=" " alt="" coords="5,240,67,265"/>
-<area shape="rect" id="node8" title=" " alt="" coords="575,167,633,192"/>
-<area shape="rect" id="node9" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="423,167,550,192"/>
-<area shape="rect" id="node11" href="$__strings_8hpp_source.html" title=" " alt="" coords="307,167,399,192"/>
-<area shape="rect" id="node10" title=" " alt="" coords="447,240,526,265"/>
+<area shape="rect" id="node1" title="Get the missing placeholder attribute." alt="" coords="357,5,496,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="367,240,439,265"/>
+<area shape="rect" id="node3" title=" " alt="" coords="582,167,637,192"/>
+<area shape="rect" id="node4" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="19,167,189,192"/>
+<area shape="rect" id="node7" href="$load__attribute_8hpp_source.html" title=" " alt="" coords="415,93,539,119"/>
+<area shape="rect" id="node9" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="213,167,339,192"/>
+<area shape="rect" id="node12" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="633,93,735,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,240,88,265"/>
+<area shape="rect" id="node6" title=" " alt="" coords="112,240,173,265"/>
+<area shape="rect" id="node8" title=" " alt="" coords="661,167,720,192"/>
+<area shape="rect" id="node11" href="$__strings_8hpp_source.html" title=" " alt="" coords="466,167,558,192"/>
+<area shape="rect" id="node10" title=" " alt="" coords="237,240,315,265"/>
 </map>

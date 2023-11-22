@@ -86,62 +86,71 @@ $(function() {
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;load_attribute.hpp&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span>hdf5 {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="get__1d__length_8hpp.html">get_1d_length.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="get__name_8hpp.html">get_name.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a241b4bf5af6c150f70445a3389da2d1d">   32</a></span><span class="keyword">inline</span> H5::Attribute <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a241b4bf5af6c150f70445a3389da2d1d">open_missing_placeholder_attribute</a>(<span class="keyword">const</span> H5::DataSet&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* attr_name, <span class="keywordtype">bool</span> type_class_only = <span class="keyword">false</span>) {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">auto</span> attr = handle.openAttribute(attr_name);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">if</span> (attr.getSpace().getSimpleExtentNdims() != 0) {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected the &#39;&quot;</span> + std::string(attr_name) + <span class="stringliteral">&quot;&#39; attribute to be a scalar&quot;</span>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (type_class_only) {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">if</span> (attr.getTypeClass() != handle.getTypeClass()) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected the &#39;&quot;</span> + std::string(attr_name) + <span class="stringliteral">&quot;&#39; attribute to have the same type class as its dataset&quot;</span>);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">if</span> (attr.getDataType() != handle.getDataType()) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected the &#39;&quot;</span> + std::string(attr_name) + <span class="stringliteral">&quot;&#39; attribute to have the same type as its dataset&quot;</span>);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">return</span> attr;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">   60</a></span>std::pair&lt;bool, Type_&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">load_numeric_missing_placeholder</a>(<span class="keyword">const</span> H5::DataSet&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* attr_name) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    std::pair&lt;bool, Type_&gt; output(<span class="keyword">false</span>, 0);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (!handle.attrExists(attr_name)) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    output.first = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">auto</span> ahandle = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a241b4bf5af6c150f70445a3389da2d1d">open_missing_placeholder_attribute</a>(handle, attr_name, <span class="comment">/* type_class_only = */</span> <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    ahandle.read(as_numeric_datatype&lt;Type_&gt;(), &amp;(output.second));</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#aa57f8d748c97ee5b469dd48f3182f7d7">   82</a></span><span class="keyword">inline</span> std::pair&lt;bool, std::string&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#aa57f8d748c97ee5b469dd48f3182f7d7">load_string_missing_placeholder</a>(<span class="keyword">const</span> H5::DataSet&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* attr_name, <span class="keywordtype">bool</span> type_class_only = <span class="keyword">true</span>) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    std::pair&lt;bool, std::string&gt; output(<span class="keyword">false</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">if</span> (!handle.attrExists(attr_name)) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    output.first = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">auto</span> ahandle = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a241b4bf5af6c150f70445a3389da2d1d">open_missing_placeholder_attribute</a>(handle, attr_name, type_class_only);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    output.second = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(ahandle);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span>hdf5 {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">   32</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">check_missing_placeholder_attribute</a>(<span class="keyword">const</span> H5::DataSet&amp; dset, <span class="keyword">const</span> H5::Attribute&amp; attr, <span class="keywordtype">int</span> type_class_only = -1) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a5a84cbdad4bec1bd7d61f34a6a13db70">is_scalar</a>(attr)) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected the &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a>(attr) + <span class="stringliteral">&quot;&#39; attribute to be a scalar&quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (type_class_only == -1) {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        type_class_only = (dset.getTypeClass() == H5T_STRING);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> (type_class_only == 1) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">if</span> (attr.getTypeClass() != dset.getTypeClass()) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected the &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a>(attr) + <span class="stringliteral">&quot;&#39; attribute to have the same type class as its dataset&quot;</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">if</span> (attr.getDataType() != dset.getDataType()) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected the &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a>(attr) + <span class="stringliteral">&quot;&#39; attribute to have the same type as its dataset&quot;</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">   61</a></span>std::pair&lt;bool, Type_&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">load_numeric_missing_placeholder</a>(<span class="keyword">const</span> H5::DataSet&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* attr_name) {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::pair&lt;bool, Type_&gt; output(<span class="keyword">false</span>, 0);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">if</span> (!handle.attrExists(attr_name)) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    output.first = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">auto</span> ahandle = handle.openAttribute(attr_name);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">check_missing_placeholder_attribute</a>(handle, ahandle);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    ahandle.read(as_numeric_datatype&lt;Type_&gt;(), &amp;(output.second));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#acbac5f1829b88a3c9f313a4f75f0376e">   80</a></span><span class="keyword">inline</span> std::pair&lt;bool, std::string&gt; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#acbac5f1829b88a3c9f313a4f75f0376e">load_string_missing_placeholder</a>(<span class="keyword">const</span> H5::DataSet&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* attr_name) {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::pair&lt;bool, std::string&gt; output(<span class="keyword">false</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (!handle.attrExists(attr_name)) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    output.first = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">auto</span> ahandle = handle.openAttribute(attr_name);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">check_missing_placeholder_attribute</a>(handle, ahandle);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    output.second = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">load_scalar_string_attribute</a>(ahandle);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aas__numeric__datatype_8hpp_html"><div class="ttname"><a href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a241b4bf5af6c150f70445a3389da2d1d"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a241b4bf5af6c150f70445a3389da2d1d">ritsuko::hdf5::open_missing_placeholder_attribute</a></div><div class="ttdeci">H5::Attribute open_missing_placeholder_attribute(const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=false)</div><div class="ttdef"><b>Definition:</b> missing_placeholder.hpp:32</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a66d6708bd994a0370e1089caee64bb31"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">ritsuko::hdf5::load_numeric_missing_placeholder</a></div><div class="ttdeci">std::pair&lt; bool, Type_ &gt; load_numeric_missing_placeholder(const H5::DataSet &amp;handle, const char *attr_name)</div><div class="ttdef"><b>Definition:</b> missing_placeholder.hpp:60</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_aa57f8d748c97ee5b469dd48f3182f7d7"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#aa57f8d748c97ee5b469dd48f3182f7d7">ritsuko::hdf5::load_string_missing_placeholder</a></div><div class="ttdeci">std::pair&lt; bool, std::string &gt; load_string_missing_placeholder(const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=true)</div><div class="ttdef"><b>Definition:</b> missing_placeholder.hpp:82</div></div>
+<div class="ttc" id="aget__1d__length_8hpp_html"><div class="ttname"><a href="get__1d__length_8hpp.html">get_1d_length.hpp</a></div><div class="ttdoc">Get the length of a 1-dimensional HDF5 dataset.</div></div>
+<div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a13912457e34944fb0e3c9e462a60b414"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">ritsuko::hdf5::check_missing_placeholder_attribute</a></div><div class="ttdeci">void check_missing_placeholder_attribute(const H5::DataSet &amp;dset, const H5::Attribute &amp;attr, int type_class_only=-1)</div><div class="ttdef"><b>Definition:</b> missing_placeholder.hpp:32</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a199d4e8292ebb954ab9f505764ebf2d9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Handle_ &amp;handle)</div><div class="ttdef"><b>Definition:</b> get_name.hpp:24</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a5a84cbdad4bec1bd7d61f34a6a13db70"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a5a84cbdad4bec1bd7d61f34a6a13db70">ritsuko::hdf5::is_scalar</a></div><div class="ttdeci">bool is_scalar(const H5::DataSpace &amp;space)</div><div class="ttdef"><b>Definition:</b> get_1d_length.hpp:70</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a66d6708bd994a0370e1089caee64bb31"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a66d6708bd994a0370e1089caee64bb31">ritsuko::hdf5::load_numeric_missing_placeholder</a></div><div class="ttdeci">std::pair&lt; bool, Type_ &gt; load_numeric_missing_placeholder(const H5::DataSet &amp;handle, const char *attr_name)</div><div class="ttdef"><b>Definition:</b> missing_placeholder.hpp:61</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_acbac5f1829b88a3c9f313a4f75f0376e"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#acbac5f1829b88a3c9f313a4f75f0376e">ritsuko::hdf5::load_string_missing_placeholder</a></div><div class="ttdeci">std::pair&lt; bool, std::string &gt; load_string_missing_placeholder(const H5::DataSet &amp;handle, const char *attr_name)</div><div class="ttdef"><b>Definition:</b> missing_placeholder.hpp:80</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ae09b2aaf282ec0809b610528f4bf87b3"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">ritsuko::hdf5::load_scalar_string_attribute</a></div><div class="ttdeci">std::string load_scalar_string_attribute(const H5::Attribute &amp;attr)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:27</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> choose_missing_placeholder.hpp:15</div></div>
 </div><!-- fragment --></div><!-- contents -->

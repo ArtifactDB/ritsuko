@@ -1,8 +1,9 @@
 <map id="ritsuko/hdf5/get_name.hpp" name="ritsuko/hdf5/get_name.hpp">
-<area shape="rect" id="node1" title="Get the name of a HDF5 object." alt="" coords="284,5,459,31"/>
+<area shape="rect" id="node1" title="Get the name of a HDF5 object." alt="" coords="348,5,523,31"/>
 <area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,167,204,207"/>
-<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="196,255,339,280"/>
+<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="221,255,364,280"/>
 <area shape="rect" id="node4" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="279,79,463,119"/>
 <area shape="rect" id="node5" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="330,174,522,199"/>
-<area shape="rect" id="node6" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="538,79,677,119"/>
+<area shape="rect" id="node6" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="546,167,685,207"/>
+<area shape="rect" id="node7" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="589,79,727,119"/>
 </map>
