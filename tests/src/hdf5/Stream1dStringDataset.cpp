@@ -83,3 +83,26 @@ TEST(Hdf5Stream1dStringDataset, Variable) {
         }
     }
 }
+
+TEST(Hdf5Stream1dStringDataset, VariableNullFail) {
+    const char* path = "TEST-load-string.h5";
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        hsize_t len = 10;
+        H5::DataSpace dspace(1, &len);
+        handle.createDataSet("foobar", H5::StrType(0, H5T_VARIABLE), dspace);
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    auto dhandle = handle.openDataSet("foobar");
+    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, 100);
+    EXPECT_ANY_THROW({
+        try {
+            stream.get();
+        } catch (std::exception& e) {
+            EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+            throw;
+        }
+    });
+}

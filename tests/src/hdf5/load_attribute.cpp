@@ -84,33 +84,57 @@ TEST(Hdf5LoadAttribute, Fixed1d) {
 TEST(Hdf5LoadAttribute, Variable1d) {
     const char* path = "TEST-1d-attr.h5";
 
-    std::vector<std::string> example(19);
-    for (size_t i = 0; i < example.size(); ++i) {
-        example[i] = std::to_string(i);
+    {
+        std::vector<std::string> example(19);
+        for (size_t i = 0; i < example.size(); ++i) {
+            example[i] = std::to_string(i);
+        }
+
+        {
+            std::vector<const char*> ptrs;
+            ptrs.reserve(example.size());
+            for (const auto& v : example) {
+                ptrs.push_back(v.c_str());
+            }
+
+            H5::H5File handle(path, H5F_ACC_TRUNC);
+            auto ghandle = handle.createGroup("whee");
+            H5::StrType stype(0, H5T_VARIABLE);
+            hsize_t dim = example.size();
+            H5::DataSpace dspace(1, &dim);
+            auto ahandle = ghandle.createAttribute("foo", stype, dspace);
+            ahandle.write(stype, ptrs.data());
+        }
+
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto dhandle = handle.openGroup("whee");
+        auto ahandle = dhandle.openAttribute("foo");
+        auto counterexample = ritsuko::hdf5::load_1d_string_attribute(ahandle);
+
+        EXPECT_EQ(example, counterexample);
     }
 
     {
-        std::vector<const char*> ptrs;
-        ptrs.reserve(example.size());
-        for (const auto& v : example) {
-            ptrs.push_back(v.c_str());
+        {
+            H5::H5File handle(path, H5F_ACC_TRUNC);
+            auto ghandle = handle.createGroup("whee");
+            hsize_t len = 10;
+            H5::DataSpace dspace(1, &len);
+            ghandle.createAttribute("stuff", H5::StrType(0, H5T_VARIABLE), dspace);
         }
 
-        H5::H5File handle(path, H5F_ACC_TRUNC);
-        auto ghandle = handle.createGroup("whee");
-        H5::StrType stype(0, H5T_VARIABLE);
-        hsize_t dim = example.size();
-        H5::DataSpace dspace(1, &dim);
-        auto ahandle = ghandle.createAttribute("foo", stype, dspace);
-        ahandle.write(stype, ptrs.data());
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto dhandle = handle.openGroup("whee");
+        auto ahandle = dhandle.openAttribute("stuff");
+        EXPECT_ANY_THROW({
+            try {
+                ritsuko::hdf5::load_1d_string_attribute(ahandle);
+            } catch (std::exception& e) {
+                EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+                throw;
+            }
+        });
     }
-
-    H5::H5File handle(path, H5F_ACC_RDONLY);
-    auto dhandle = handle.openGroup("whee");
-    auto ahandle = dhandle.openAttribute("foo");
-    auto counterexample = ritsuko::hdf5::load_1d_string_attribute(ahandle);
-
-    EXPECT_EQ(example, counterexample);
 }
 
 TEST(Hdf5LoadAttribute, ScalarNumeric) {
