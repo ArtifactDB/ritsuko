@@ -96,6 +96,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:acebebc191f52b433c65ff69fb04a0701"><td class="memItemLeft" align="right" valign="top"><a id="acebebc191f52b433c65ff69fb04a0701" name="acebebc191f52b433c65ff69fb04a0701"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>find_string_length</b> (const char *ptr, size_t max)</td></tr>
+<tr class="separator:acebebc191f52b433c65ff69fb04a0701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
 <tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplItemLeft" align="right" valign="top">H5::PredType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype</a> ()</td></tr>
 <tr class="separator:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +142,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a9ceb2994c6a2a0ff2d5c551ff2b874b5"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
 <tr class="memitem:a9ceb2994c6a2a0ff2d5c551ff2b874b5"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a9ceb2994c6a2a0ff2d5c551ff2b874b5">load_1d_numeric_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
 <tr class="separator:a9ceb2994c6a2a0ff2d5c551ff2b874b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18754ed04d8c1c4079d46f3a16e6736f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a18754ed04d8c1c4079d46f3a16e6736f">load_scalar_string_dataset</a> (const H5::DataSet &amp;handle)</td></tr>
+<tr class="separator:a18754ed04d8c1c4079d46f3a16e6736f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfdd3aa0655fe3d96988574f71699298"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#abfdd3aa0655fe3d96988574f71699298">load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size)</td></tr>
+<tr class="separator:abfdd3aa0655fe3d96988574f71699298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aefbca763dcac9ad4b93ace181cdb78a6">load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
+<tr class="separator:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a241b4bf5af6c150f70445a3389da2d1d"><td class="memItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a241b4bf5af6c150f70445a3389da2d1d">open_missing_placeholder_attribute</a> (const H5::DataSet &amp;handle, const char *attr_name, bool type_class_only=false)</td></tr>
 <tr class="separator:a241b4bf5af6c150f70445a3389da2d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66d6708bd994a0370e1089caee64bb31"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
@@ -157,6 +166,18 @@ Functions</h2></td></tr>
 <tr class="separator:a2562d2fa77b38f6ba2412f4ee3fce3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size</a> (const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</td></tr>
 <tr class="separator:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd2bebfc32a06fd02078a95c29c0c483"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#abd2bebfc32a06fd02078a95c29c0c483">validate_scalar_string_dataset</a> (const H5::DataSet &amp;handle)</td></tr>
+<tr class="separator:abd2bebfc32a06fd02078a95c29c0c483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57de47214743d83160929e6a86a03c22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a57de47214743d83160929e6a86a03c22">validate_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size)</td></tr>
+<tr class="separator:a57de47214743d83160929e6a86a03c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a47c273026b1161b1ac3c7802b630a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a7a47c273026b1161b1ac3c7802b630a2">validate_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
+<tr class="separator:a7a47c273026b1161b1ac3c7802b630a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93db4d46fb9c99c155d179f5ba3ca820"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a93db4d46fb9c99c155d179f5ba3ca820">validate_scalar_string_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:a93db4d46fb9c99c155d179f5ba3ca820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c585a1063e05eec5385db435d1dfd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a99c585a1063e05eec5385db435d1dfd1">validate_1d_string_attribute</a> (const H5::Attribute &amp;attr, hsize_t full_length)</td></tr>
+<tr class="separator:a99c585a1063e05eec5385db435d1dfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ec32808e5dd43113af4c51e3feb9a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a26ec32808e5dd43113af4c51e3feb9a6">validate_1d_string_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:a26ec32808e5dd43113af4c51e3feb9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Assorted helper functions for HDF5 parsing. </p>
@@ -862,6 +883,101 @@ template&lt;typename Type_ &gt; </div>
 
 </div>
 </div>
+<a id="aefbca763dcac9ad4b93ace181cdb78a6" name="aefbca763dcac9ad4b93ace181cdb78a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbca763dcac9ad4b93ace181cdb78a6">&#9670;&#160;</a></span>load_1d_string_dataset() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; ritsuko::hdf5::load_1d_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#abfdd3aa0655fe3d96988574f71699298">load_1d_string_dataset()</a></code> that determines the length via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 scalar dataset. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of strings. </dd></dl>
+
+</div>
+</div>
+<a id="abfdd3aa0655fe3d96988574f71699298" name="abfdd3aa0655fe3d96988574f71699298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfdd3aa0655fe3d96988574f71699298">&#9670;&#160;</a></span>load_1d_string_dataset() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; ritsuko::hdf5::load_1d_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>full_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Load a 1-dimensional string dataset into a vector of strings. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 scalar dataset. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of strings. </dd></dl>
+
+</div>
+</div>
 <a id="a66d6708bd994a0370e1089caee64bb31" name="a66d6708bd994a0370e1089caee64bb31"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66d6708bd994a0370e1089caee64bb31">&#9670;&#160;</a></span>load_numeric_missing_placeholder()</h2>
 
@@ -970,6 +1086,39 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The attribute as a string. </dd></dl>
+
+</div>
+</div>
+<a id="a18754ed04d8c1c4079d46f3a16e6736f" name="a18754ed04d8c1c4079d46f3a16e6736f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18754ed04d8c1c4079d46f3a16e6736f">&#9670;&#160;</a></span>load_scalar_string_dataset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ritsuko::hdf5::load_scalar_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Load a scalar string dataset into a single string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 scalar dataset. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String containing the contents of the sole dataset entry. </dd></dl>
 
 </div>
 </div>
@@ -1291,6 +1440,242 @@ template&lt;class Object_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The block size (in terms of the number of elements). </dd></dl>
+
+</div>
+</div>
+<a id="a26ec32808e5dd43113af4c51e3feb9a6" name="a26ec32808e5dd43113af4c51e3feb9a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26ec32808e5dd43113af4c51e3feb9a6">&#9670;&#160;</a></span>validate_1d_string_attribute() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_1d_string_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>attr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload for <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a99c585a1063e05eec5385db435d1dfd1">validate_1d_string_attribute()</a></code> that automatically determines its length via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string attribute. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a99c585a1063e05eec5385db435d1dfd1" name="a99c585a1063e05eec5385db435d1dfd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99c585a1063e05eec5385db435d1dfd1">&#9670;&#160;</a></span>validate_1d_string_attribute() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_1d_string_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>attr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>full_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check that a 1-dimensional string attribute is valid. Currently, this involves checking that there are no <code>NULL</code> entries for variable-length string datatypes. For fixed-width string attributes, this function is a no-op.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string attribute. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the attribute as a 1-dimensional vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7a47c273026b1161b1ac3c7802b630a2" name="a7a47c273026b1161b1ac3c7802b630a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a47c273026b1161b1ac3c7802b630a2">&#9670;&#160;</a></span>validate_1d_string_dataset() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_1d_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload for <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a57de47214743d83160929e6a86a03c22">validate_1d_string_dataset()</a></code> that automatically determines its length via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string dataset. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a57de47214743d83160929e6a86a03c22" name="a57de47214743d83160929e6a86a03c22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57de47214743d83160929e6a86a03c22">&#9670;&#160;</a></span>validate_1d_string_dataset() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_1d_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>full_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check that a 1-dimensional string dataset is valid. Currently, this involves checking that there are no <code>NULL</code> entries for variable-length string datatypes. For fixed-width string datasets, this function is a no-op.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string dataset. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a93db4d46fb9c99c155d179f5ba3ca820" name="a93db4d46fb9c99c155d179f5ba3ca820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93db4d46fb9c99c155d179f5ba3ca820">&#9670;&#160;</a></span>validate_scalar_string_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_scalar_string_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>attr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check that a scalar string attribute is valid. Currently, this involves checking that there are no <code>NULL</code> entries for variable-length string datatypes. For fixed-width string attributes, this function is a no-op.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string attribute. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abd2bebfc32a06fd02078a95c29c0c483" name="abd2bebfc32a06fd02078a95c29c0c483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd2bebfc32a06fd02078a95c29c0c483">&#9670;&#160;</a></span>validate_scalar_string_dataset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_scalar_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check that a scalar string dataset is valid. Currently, this involves checking that there are no <code>NULL</code> entries for variable-length string datatypes. For fixed-width string datasets, this function is a no-op.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string dataset. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

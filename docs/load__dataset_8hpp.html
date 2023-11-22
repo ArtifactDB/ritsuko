@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/Stream1dStringDataset.hpp File Reference</title>
+<title>ritsuko: ritsuko/hdf5/load_dataset.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,61 +76,53 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">Stream1dStringDataset.hpp File Reference</div></div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">load_dataset.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Stream a numeric 1D HDF5 dataset into memory.  
+<p>Helper functions to load datasets.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
-<code>#include &quot;<a class="el" href="pick__1d__block__size_8hpp_source.html">pick_1d_block_size.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__1d__length_8hpp_source.html">get_1d_length.hpp</a>&quot;</code><br />
+<code>#include &quot;H5Cpp.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="get__name_8hpp_source.html">get_name.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="as__numeric__datatype_8hpp_source.html">as_numeric_datatype.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Stream1dStringDataset_8hpp_source.html">Stream1dStringDataset.hpp</a>&quot;</code><br />
 <code>#include &quot;_strings.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for Stream1dStringDataset.hpp:</div>
+Include dependency graph for load_dataset.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="Stream1dStringDataset_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2Stream1dStringDataset_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2Stream1dStringDataset_8hpp" id="aritsuko_2hdf5_2Stream1dStringDataset_8hpp">
-<area shape="rect" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="243,5,427,45"/>
-<area shape="rect" title=" " alt="" coords="373,167,445,192"/>
-<area shape="rect" title=" " alt="" coords="5,167,64,192"/>
-<area shape="rect" title=" " alt="" coords="93,167,147,192"/>
-<area shape="rect" title=" " alt="" coords="589,167,667,192"/>
-<area shape="rect" href="pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="255,93,414,119"/>
-<area shape="rect" href="get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="554,93,681,119"/>
-<area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="26,93,129,119"/>
-<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="757,93,926,119"/>
-<area shape="rect" href="__strings_8hpp_source.html" title=" " alt="" coords="438,93,530,119"/>
-<area shape="rect" title=" " alt="" coords="752,167,835,192"/>
-<area shape="rect" title=" " alt="" coords="859,167,920,192"/>
+<div class="center"><img src="load__dataset_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2load__dataset_8hpp" alt=""/></div>
+<map name="aritsuko_2hdf5_2load__dataset_8hpp" id="aritsuko_2hdf5_2load__dataset_8hpp">
+<area shape="rect" title="Helper functions to load datasets." alt="" coords="217,5,409,31"/>
+<area shape="rect" title=" " alt="" coords="5,225,60,251"/>
+<area shape="rect" title=" " alt="" coords="182,225,241,251"/>
+<area shape="rect" title=" " alt="" coords="324,225,403,251"/>
+<area shape="rect" title=" " alt="" coords="647,225,719,251"/>
+<area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="71,152,173,177"/>
+<area shape="rect" href="Stream1dStringDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="362,79,543,104"/>
+<area shape="rect" href="__strings_8hpp_source.html" title=" " alt="" coords="839,152,931,177"/>
+<area shape="rect" href="pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="604,152,763,177"/>
+<area shape="rect" href="get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="401,152,528,177"/>
+<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="955,152,1124,177"/>
+<area shape="rect" title=" " alt="" coords="950,225,1033,251"/>
+<area shape="rect" title=" " alt="" coords="1057,225,1118,251"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="Stream1dStringDataset_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2Stream1dStringDataset_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2Stream1dStringDataset_8hppdep" id="aritsuko_2hdf5_2Stream1dStringDataset_8hppdep">
-<area shape="rect" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,5,189,45"/>
-<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="26,167,169,192"/>
-<area shape="rect" href="load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="68,93,260,119"/>
+<div class="center"><img src="load__dataset_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2load__dataset_8hppdep" alt=""/></div>
+<map name="aritsuko_2hdf5_2load__dataset_8hppdep" id="aritsuko_2hdf5_2load__dataset_8hppdep">
+<area shape="rect" title="Helper functions to load datasets." alt="" coords="5,5,197,31"/>
+<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="30,79,173,104"/>
 </map>
 </div>
 </div>
-<p><a href="Stream1dStringDataset_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="load__dataset_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">ritsuko::hdf5::Stream1dStringDataset</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a 1D HDF5 string dataset into memory.  <a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html">ritsuko</a></td></tr>
@@ -139,9 +131,18 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko_1_1hdf5"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html">ritsuko::hdf5</a></td></tr>
 <tr class="memdesc:namespaceritsuko_1_1hdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for HDF5 parsing. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a18754ed04d8c1c4079d46f3a16e6736f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a18754ed04d8c1c4079d46f3a16e6736f">ritsuko::hdf5::load_scalar_string_dataset</a> (const H5::DataSet &amp;handle)</td></tr>
+<tr class="separator:a18754ed04d8c1c4079d46f3a16e6736f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfdd3aa0655fe3d96988574f71699298"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#abfdd3aa0655fe3d96988574f71699298">ritsuko::hdf5::load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size)</td></tr>
+<tr class="separator:abfdd3aa0655fe3d96988574f71699298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aefbca763dcac9ad4b93ace181cdb78a6">ritsuko::hdf5::load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
+<tr class="separator:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Stream a numeric 1D HDF5 dataset into memory. </p>
+<div class="textblock"><p >Helper functions to load datasets. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
