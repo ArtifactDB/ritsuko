@@ -19,7 +19,7 @@ TEST(Hdf5MissingPlaceholder, Loading) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        auto found = ritsuko::hdf5::load_numeric_missing_placeholder<int32_t>(dhandle, "ouch");
+        auto found = ritsuko::hdf5::open_and_load_optional_numeric_missing_placeholder<int32_t>(dhandle, "ouch");
         EXPECT_TRUE(found.first);
         EXPECT_EQ(found.second, 123);
     }
@@ -35,7 +35,7 @@ TEST(Hdf5MissingPlaceholder, Loading) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        auto found = ritsuko::hdf5::load_numeric_missing_placeholder<double>(dhandle, "ouch");
+        auto found = ritsuko::hdf5::open_and_load_optional_numeric_missing_placeholder<double>(dhandle, "ouch");
         EXPECT_TRUE(found.first);
         EXPECT_EQ(found.second, 1.5);
     }
@@ -51,7 +51,7 @@ TEST(Hdf5MissingPlaceholder, Loading) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        auto found = ritsuko::hdf5::load_string_missing_placeholder(dhandle, "ouch");
+        auto found = ritsuko::hdf5::open_and_load_optional_string_missing_placeholder(dhandle, "ouch");
         EXPECT_TRUE(found.first);
         EXPECT_EQ(found.second, std::string("YAY"));
     }
@@ -64,8 +64,8 @@ TEST(Hdf5MissingPlaceholder, Loading) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        EXPECT_FALSE(ritsuko::hdf5::load_numeric_missing_placeholder<int32_t>(dhandle, "ouch").first);
-        EXPECT_FALSE(ritsuko::hdf5::load_string_missing_placeholder(dhandle, "ouch").first);
+        EXPECT_FALSE(ritsuko::hdf5::open_and_load_optional_numeric_missing_placeholder<int32_t>(dhandle, "ouch").first);
+        EXPECT_FALSE(ritsuko::hdf5::open_and_load_optional_string_missing_placeholder(dhandle, "ouch").first);
     }
 }
 

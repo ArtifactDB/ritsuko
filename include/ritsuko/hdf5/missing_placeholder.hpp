@@ -50,7 +50,8 @@ inline void check_missing_placeholder_attribute(const H5::DataSet& dset, const H
 }
 
 /**
- * Load a missing numeric placeholder by calling `open_missing_placeholder_attribute()`.
+ * Check if a missing numeric placeholder attribute is present, and if so, open it and loads it value.
+ * This will also call `check_missing_placeholder_attribute()` to validate the placeholder's properties.
  *
  * @tparam Type_ Type to use to store the data in memory, see `as_numeric_datatype()` for supported types.
  * @param handle Dataset handle.
@@ -58,7 +59,7 @@ inline void check_missing_placeholder_attribute(const H5::DataSet& dset, const H
  * @return Pair containing (i) a boolean indicating whether the placeholder attribute was present, and (ii) the value of the placeholder if the first element is `true`.
  */
 template<typename Type_>
-std::pair<bool, Type_> load_numeric_missing_placeholder(const H5::DataSet& handle, const char* attr_name) {
+std::pair<bool, Type_> open_and_load_optional_numeric_missing_placeholder(const H5::DataSet& handle, const char* attr_name) {
     std::pair<bool, Type_> output(false, 0);
     if (!handle.attrExists(attr_name)) {
         return output;
@@ -71,13 +72,14 @@ std::pair<bool, Type_> load_numeric_missing_placeholder(const H5::DataSet& handl
 }
 
 /**
- * Load a missing string placeholder by calling `open_missing_placeholder_attribute()`.
+ * Check if a missing string placeholder attribute is present, and if so, open it and loads it value.
+ * This will also call `check_missing_placeholder_attribute()` to validate the placeholder's properties.
  *
  * @param handle Dataset handle.
  * @param attr_name Name of the attribute containing the missing value placeholder.
  * @return Pair containing (i) a boolean indicating whether the placeholder attribute was present, and (ii) the value of the placeholder if the first element is `true`.
  */
-inline std::pair<bool, std::string> load_string_missing_placeholder(const H5::DataSet& handle, const char* attr_name) {
+inline std::pair<bool, std::string> open_and_load_optional_string_missing_placeholder(const H5::DataSet& handle, const char* attr_name) {
     std::pair<bool, std::string> output(false, "");
     if (!handle.attrExists(attr_name)) {
         return output;
