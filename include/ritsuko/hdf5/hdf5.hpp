@@ -8,6 +8,7 @@
 #include "get_1d_length.hpp"
 #include "get_name.hpp"
 #include "load_attribute.hpp"
+#include "load_dataset.hpp"
 #include "missing_placeholder.hpp"
 #include "open.hpp"
 #include "pick_1d_block_size.hpp"

@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "ritsuko/hdf5/Stream1dStringDataset.hpp"
+#include "ritsuko/hdf5/validate_string.hpp"
 #include "utils.h"
 #include <numeric>
 #include <string>
@@ -74,7 +75,6 @@ TEST(Hdf5Stream1dStringDataset, Variable) {
 
     // Stealing.
     for (auto buf : buffer_sizes) {
-        auto dhandle = handle.openDataSet("foobar");
         ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, buf);
         EXPECT_EQ(stream.length(), example.size());
         for (auto x : example) {
@@ -82,4 +82,42 @@ TEST(Hdf5Stream1dStringDataset, Variable) {
             stream.next();
         }
     }
+
+    // Validating.
+    for (auto buf : buffer_sizes) {
+        ritsuko::hdf5::validate_1d_string_dataset(dhandle, buf);
+    }
+}
+
+TEST(Hdf5Stream1dStringDataset, VariableNullFail) {
+    const char* path = "TEST-load-string.h5";
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        hsize_t len = 10;
+        H5::DataSpace dspace(1, &len);
+        handle.createDataSet("foobar", H5::StrType(0, H5T_VARIABLE), dspace);
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    auto dhandle = handle.openDataSet("foobar");
+
+    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, 100);
+    EXPECT_ANY_THROW({
+        try {
+            stream.get();
+        } catch (std::exception& e) {
+            EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+            throw;
+        }
+    });
+
+    EXPECT_ANY_THROW({
+        try {
+            ritsuko::hdf5::validate_1d_string_dataset(dhandle, 100);
+        } catch (std::exception& e) {
+            EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+            throw;
+        }
+    });
 }
