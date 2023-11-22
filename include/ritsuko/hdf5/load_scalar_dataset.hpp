@@ -1,5 +1,5 @@
-#ifndef RITSUKO_HDF5_LOAD_SCALAR_STRING_DATASET_HPP
-#define RITSUKO_HDF5_LOAD_SCALAR_STRING_DATASET_HPP
+#ifndef RITSUKO_HDF5_LOAD_SCALAR_DATASET_HPP
+#define RITSUKO_HDF5_LOAD_SCALAR_DATASET_HPP
 
 #include <string>
 #include <vector>
@@ -26,9 +26,9 @@ namespace hdf5 {
 inline std::string load_scalar_string_dataset(const H5::DataSet& handle) {
     auto dtype = handle.getDataType();
     if (dtype.isVariableStr()) {
-        const char* vptr;
+        char* vptr;
         handle.read(&vptr, dtype);
-        [[maybe_unused]] VariableStringCleaner(dtype.getId(), handle.getSpace().getId(), &vptr);
+        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), handle.getSpace().getId(), &vptr);
         if (vptr == NULL) {
             throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(handle) + "'");
         }
