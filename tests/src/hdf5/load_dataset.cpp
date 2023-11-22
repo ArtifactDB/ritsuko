@@ -1,8 +1,10 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "ritsuko/hdf5/load_scalar_dataset.hpp"
+#include "ritsuko/hdf5/load_dataset.hpp"
+#include "ritsuko/hdf5/validate_string.hpp"
+#include "utils.h"
 
-TEST(Hdf5LoadScalarDataset, String) {
+TEST(Hdf5LoadDataset, ScalarString) {
     const char* path = "TEST-scalar-attr.h5";
 
     // Variable.
@@ -19,6 +21,7 @@ TEST(Hdf5LoadScalarDataset, String) {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foo");
         EXPECT_EQ(ritsuko::hdf5::load_scalar_string_dataset(dhandle), value);
+        ritsuko::hdf5::validate_scalar_string_dataset(dhandle);
     }
 
     // Fixed.
@@ -36,6 +39,7 @@ TEST(Hdf5LoadScalarDataset, String) {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("UINT8");
         EXPECT_EQ(ritsuko::hdf5::load_scalar_string_dataset(dhandle), value);
+        ritsuko::hdf5::validate_scalar_string_dataset(dhandle);
     }
 
     {
@@ -54,5 +58,74 @@ TEST(Hdf5LoadScalarDataset, String) {
                 throw;
             }
         });
+
+        EXPECT_ANY_THROW({
+            try {
+                ritsuko::hdf5::validate_scalar_string_dataset(dhandle);
+            } catch (std::exception& e) {
+                EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+                throw;
+            }
+        });
     }
- }
+}
+
+TEST(Hdf5LoadDataset, String1d) {
+    const char* path = "TEST-string1d.h5";
+    std::vector<std::string> values { "kaori", "fuyuki", "shizuka", "meguru", "hiori" };
+
+    // Variable.
+    {
+        {
+            H5::H5File handle(path, H5F_ACC_TRUNC);
+            create_dataset(handle, "blah", values, true);
+        }
+
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto dhandle = handle.openDataSet("blah");
+        EXPECT_EQ(ritsuko::hdf5::load_1d_string_dataset(dhandle, 10), values);
+        ritsuko::hdf5::validate_1d_string_dataset(dhandle, 10);
+    }
+
+    // Fixed.
+    {
+        {
+            H5::H5File handle(path, H5F_ACC_TRUNC);
+            create_dataset(handle, "blah", values, false);
+        }
+
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto dhandle = handle.openDataSet("blah");
+        EXPECT_EQ(ritsuko::hdf5::load_1d_string_dataset(dhandle, 10), values);
+        ritsuko::hdf5::validate_1d_string_dataset(dhandle, 10);
+    }
+
+    {
+        {
+            H5::H5File handle(path, H5F_ACC_TRUNC);
+            hsize_t len = 99;
+            H5::DataSpace dspace(1, &len);
+            handle.createDataSet("stuff", H5::StrType(0, H5T_VARIABLE), dspace);
+        }
+
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto dhandle = handle.openDataSet("stuff");
+        EXPECT_ANY_THROW({
+            try {
+                ritsuko::hdf5::load_1d_string_dataset(dhandle, 10);
+            } catch (std::exception& e) {
+                EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+                throw;
+            }
+        });
+
+        EXPECT_ANY_THROW({
+            try {
+                ritsuko::hdf5::validate_1d_string_dataset(dhandle, 10);
+            } catch (std::exception& e) {
+                EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+                throw;
+            }
+        });
+    }
+} 

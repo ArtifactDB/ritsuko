@@ -1,17 +1,19 @@
-#ifndef RITSUKO_HDF5_LOAD_SCALAR_DATASET_HPP
-#define RITSUKO_HDF5_LOAD_SCALAR_DATASET_HPP
+#ifndef RITSUKO_HDF5_LOAD_DATASET_HPP
+#define RITSUKO_HDF5_LOAD_DATASET_HPP
 
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 #include "H5Cpp.h"
 
 #include "get_name.hpp"
+#include "Stream1dStringDataset.hpp"
 #include "_strings.hpp"
 
 /**
- * @file load_scalar_dataset.hpp
- * @brief Helper functions to load a scalar dataset.
+ * @file load_dataset.hpp
+ * @brief Helper functions to load datasets.
  */
 
 namespace ritsuko {
@@ -28,7 +30,8 @@ inline std::string load_scalar_string_dataset(const H5::DataSet& handle) {
     if (dtype.isVariableStr()) {
         char* vptr;
         handle.read(&vptr, dtype);
-        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), handle.getSpace().getId(), &vptr);
+        auto dspace = handle.getSpace(); // don't set as temporary in constructor below, otherwise it gets destroyed and the ID invalidated.
+        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), dspace.getId(), &vptr);
         if (vptr == NULL) {
             throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(handle) + "'");
         }
@@ -42,22 +45,31 @@ inline std::string load_scalar_string_dataset(const H5::DataSet& handle) {
     }
 }
 
-inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length, hsize_t buffer_size) {
-    auto dtype = handle.getDataType();
-    if (!dtype.isVariableStr()) {
-        return;
+/**
+ * Load a 1-dimensional string dataset into a vector of strings.
+ * @param handle Handle to the HDF5 scalar dataset.
+ * @param full_length Length of the dataset as a 1-dimensional vector.
+ * @param buffer_size Size of the buffer for holding loaded strings.
+ * @return Vector of strings.
+ */
+inline std::vector<std::string> load_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length, hsize_t buffer_size) {
+    Stream1dStringDataset stream(&handle, full_length, buffer_size);
+    std::vector<std::string> output;
+    output.reserve(full_length);
+    for (hsize_t i = 0; i < full_length; ++i, stream.next()) {
+        output.emplace_back(stream.steal());
     }
+    return output;
+}
 
-    hsize_t block_size = pick_1d_block_size(ptr->getCreatePlist(), full_length, buffer_size);
-    for (
-        ptr->read(var_buffer.data(), dtype, mspace, dspace);
-        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), var_buffer.data());
-        available = std::min(full_length - last_loaded, block_size);
-
-        for (hsize_t i = 0; i < full_length; ++i) {
-            
-        }
-    }
+/**
+ * Overload of `load_1d_string_dataset()` that determines the length via `get_1d_length()`.
+ * @param handle Handle to the HDF5 scalar dataset.
+ * @param buffer_size Size of the buffer for holding loaded strings.
+ * @return Vector of strings.
+ */
+inline std::vector<std::string> load_1d_string_dataset(const H5::DataSet& handle, hsize_t buffer_size) {
+    return load_1d_string_dataset(handle, get_1d_length(handle, false), buffer_size);
 }
 
 }
