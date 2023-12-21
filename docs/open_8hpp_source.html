@@ -91,53 +91,65 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span>hdf5 {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4">   24</a></span><span class="keyword">inline</span> H5::H5File <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4">open_file</a>(<span class="keyword">const</span> std::filesystem::path&amp; path) <span class="keyword">try</span> {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (!std::filesystem::exists(path)) {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;no file is present at &#39;&quot;</span> + path.string() + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same&lt;<span class="keyword">decltype</span>(path.c_str()), <span class="keyword">const</span> <span class="keywordtype">char</span>*&gt;::value) {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">// Avoid copy on POSIX...</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">return</span> H5::H5File(path.c_str(), H5F_ACC_RDONLY);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// But still get it to work on Windows...</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">return</span> H5::H5File(path.string(), H5F_ACC_RDONLY);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="keywordflow">catch</span> (H5::Exception&amp; e) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;failed to open the HDF5 file at &#39;&quot;</span> + path.string() + <span class="stringliteral">&quot;&#39;; &quot;</span> + e.getDetailMsg());</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">   46</a></span><span class="keyword">inline</span> H5::Group <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">open_group</a>(<span class="keyword">const</span> H5::Group&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (!handle.exists(name) || handle.childObjType(name) != H5O_TYPE_GROUP) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a group at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">return</span> handle.openGroup(name);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Path_&gt;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a4d5e8fd07fa63ae0cc3465d67fdbea1f">   26</a></span><span class="keyword">inline</span> H5::H5File <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4d5e8fd07fa63ae0cc3465d67fdbea1f">open_file</a>(<span class="keyword">const</span> Path_&amp; path) <span class="keyword">try</span> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> (!std::filesystem::exists(path)) {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;no file exists&quot;</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same&lt;Path_, std::filesystem::path&gt;::value) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same&lt;std::filesystem::path::value_type, char&gt;::value) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="comment">// Avoid copy on POSIX...</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">return</span> H5::H5File(path.c_str(), H5F_ACC_RDONLY);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="comment">// But still get it to work on Windows...</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keywordflow">return</span> H5::H5File(path.string(), H5F_ACC_RDONLY);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">return</span> H5::H5File(path, H5F_ACC_RDONLY);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <span class="keywordflow">catch</span> (H5::Exception&amp; e) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::string message = <span class="stringliteral">&quot;failed to open the HDF5 file at &#39;&quot;</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same&lt;Path_, std::filesystem::path&gt;::value) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        message += path.string();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        message += path;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    message += <span class="stringliteral">&quot;&#39;; &quot;</span> + e.getDetailMsg();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">throw</span> std::runtime_error(message);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">   59</a></span><span class="keyword">inline</span> H5::DataSet <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">open_dataset</a>(<span class="keyword">const</span> H5::Group&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (!handle.exists(name) || handle.childObjType(name) != H5O_TYPE_DATASET) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a dataset at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">   59</a></span><span class="keyword">inline</span> H5::Group <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">open_group</a>(<span class="keyword">const</span> H5::Group&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (!handle.exists(name) || handle.childObjType(name) != H5O_TYPE_GROUP) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a group at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> handle.openDataSet(name);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> handle.openGroup(name);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Object_&gt;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">   75</a></span>H5::Attribute <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">open_attribute</a>(<span class="keyword">const</span> Object_&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">if</span> (!handle.attrExists(name)) {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected an attribute at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">return</span> handle.openAttribute(name);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2562d2fa77b38f6ba2412f4ee3fce3b4"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">ritsuko::hdf5::open_attribute</a></div><div class="ttdeci">H5::Attribute open_attribute(const Object_ &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:75</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a5b0c6485fc47bfee5f434b8ba0931f1e"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">ritsuko::hdf5::open_dataset</a></div><div class="ttdeci">H5::DataSet open_dataset(const H5::Group &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:59</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a74e80e9c2e77530752c2dee29af5c9b4"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4">ritsuko::hdf5::open_file</a></div><div class="ttdeci">H5::H5File open_file(const std::filesystem::path &amp;path)</div><div class="ttdef"><b>Definition:</b> open.hpp:24</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ab3fb91fb20b959eaf04fcc30087ba9e8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">ritsuko::hdf5::open_group</a></div><div class="ttdeci">H5::Group open_group(const H5::Group &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:46</div></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">   72</a></span><span class="keyword">inline</span> H5::DataSet <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">open_dataset</a>(<span class="keyword">const</span> H5::Group&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (!handle.exists(name) || handle.childObjType(name) != H5O_TYPE_DATASET) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a dataset at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">return</span> handle.openDataSet(name);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Object_&gt;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">   88</a></span>H5::Attribute <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">open_attribute</a>(<span class="keyword">const</span> Object_&amp; handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* name) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">if</span> (!handle.attrExists(name)) {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected an attribute at &#39;&quot;</span> + std::string(name) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">return</span> handle.openAttribute(name);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2562d2fa77b38f6ba2412f4ee3fce3b4"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4">ritsuko::hdf5::open_attribute</a></div><div class="ttdeci">H5::Attribute open_attribute(const Object_ &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:88</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4d5e8fd07fa63ae0cc3465d67fdbea1f"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4d5e8fd07fa63ae0cc3465d67fdbea1f">ritsuko::hdf5::open_file</a></div><div class="ttdeci">H5::H5File open_file(const Path_ &amp;path)</div><div class="ttdef"><b>Definition:</b> open.hpp:26</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a5b0c6485fc47bfee5f434b8ba0931f1e"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e">ritsuko::hdf5::open_dataset</a></div><div class="ttdeci">H5::DataSet open_dataset(const H5::Group &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:72</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ab3fb91fb20b959eaf04fcc30087ba9e8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8">ritsuko::hdf5::open_group</a></div><div class="ttdeci">H5::Group open_group(const H5::Group &amp;handle, const char *name)</div><div class="ttdef"><b>Definition:</b> open.hpp:59</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> choose_missing_placeholder.hpp:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

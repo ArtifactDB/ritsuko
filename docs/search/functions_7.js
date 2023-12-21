@@ -5,7 +5,7 @@ var searchData=
   ['open_5fand_5fload_5fscalar_5fstring_5fattribute_2',['open_and_load_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#afcb3d656e2411662328752690d008e87',1,'ritsuko::hdf5']]],
   ['open_5fattribute_3',['open_attribute',['../namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4',1,'ritsuko::hdf5']]],
   ['open_5fdataset_4',['open_dataset',['../namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e',1,'ritsuko::hdf5']]],
-  ['open_5ffile_5',['open_file',['../namespaceritsuko_1_1hdf5.html#a74e80e9c2e77530752c2dee29af5c9b4',1,'ritsuko::hdf5']]],
+  ['open_5ffile_5',['open_file',['../namespaceritsuko_1_1hdf5.html#a4d5e8fd07fa63ae0cc3465d67fdbea1f',1,'ritsuko::hdf5']]],
   ['open_5fgroup_6',['open_group',['../namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8',1,'ritsuko::hdf5']]],
   ['open_5fscalar_5fattribute_7',['open_scalar_attribute',['../namespaceritsuko_1_1hdf5.html#a8cbc70f0b6aa640eb12e6663cdacd4fe',1,'ritsuko::hdf5']]],
   ['operator_21_3d_8',['operator!=',['../structritsuko_1_1Version.html#ae9589dc549fa6e1c0b56d13afdc0dd9a',1,'ritsuko::Version']]],
