@@ -15,7 +15,18 @@ TEST(Hdf5Open, File) {
         try {
             ritsuko::hdf5::open_file(path);
         } catch (std::exception& e) {
-            EXPECT_THAT(e.what(), ::testing::HasSubstr("no file is present"));
+            EXPECT_THAT(e.what(), ::testing::HasSubstr("no file exists"));
+            throw;
+        }
+    });
+
+    // Checking the error message formulation when providing a filesystem::path.
+    std::filesystem::path fpath(path);
+    EXPECT_ANY_THROW({
+        try {
+            ritsuko::hdf5::open_file(fpath);
+        } catch (std::exception& e) {
+            EXPECT_THAT(e.what(), ::testing::HasSubstr("no file exists"));
             throw;
         }
     });
@@ -23,8 +34,16 @@ TEST(Hdf5Open, File) {
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
     }
+
+    // Checking all the common options.
     {
         ritsuko::hdf5::open_file(path);
+    }
+    {
+        ritsuko::hdf5::open_file(std::string(path));
+    }
+    {
+        ritsuko::hdf5::open_file(fpath);
     }
 }
 
