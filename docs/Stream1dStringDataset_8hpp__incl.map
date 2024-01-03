@@ -1,14 +1,14 @@
 <map id="ritsuko/hdf5/Stream1dStringDataset.hpp" name="ritsuko/hdf5/Stream1dStringDataset.hpp">
-<area shape="rect" id="node1" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="243,5,427,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="373,167,445,192"/>
+<area shape="rect" id="node1" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="309,5,493,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="365,167,437,192"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,167,64,192"/>
 <area shape="rect" id="node4" title=" " alt="" coords="93,167,147,192"/>
-<area shape="rect" id="node5" title=" " alt="" coords="589,167,667,192"/>
-<area shape="rect" id="node6" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="255,93,414,119"/>
-<area shape="rect" id="node7" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="554,93,681,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="498,167,577,192"/>
+<area shape="rect" id="node6" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="205,93,363,119"/>
+<area shape="rect" id="node7" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="439,93,566,119"/>
 <area shape="rect" id="node8" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="26,93,129,119"/>
-<area shape="rect" id="node9" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="757,93,926,119"/>
-<area shape="rect" id="node12" href="$__strings_8hpp_source.html" title=" " alt="" coords="438,93,530,119"/>
-<area shape="rect" id="node10" title=" " alt="" coords="752,167,835,192"/>
-<area shape="rect" id="node11" title=" " alt="" coords="859,167,920,192"/>
+<area shape="rect" id="node9" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="642,93,811,119"/>
+<area shape="rect" id="node12" title=" " alt="" coords="835,93,927,119"/>
+<area shape="rect" id="node10" title=" " alt="" coords="637,167,720,192"/>
+<area shape="rect" id="node11" title=" " alt="" coords="744,167,805,192"/>
 </map>

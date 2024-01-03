@@ -116,8 +116,7 @@ Functions</h2></td></tr>
 <tr class="separator:ac5f8ff07715c8177a709e440eb029f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf542db46552ae71530ecfccd1f66505"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505">is_rfc3339</a> (const char *ptr, size_t len)</td></tr>
 <tr class="separator:abf542db46552ae71530ecfccd1f66505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee7609d114de23145d8d28ddde55c810"><td class="memItemLeft" align="right" valign="top"><a id="aee7609d114de23145d8d28ddde55c810" name="aee7609d114de23145d8d28ddde55c810"></a>
-<a class="el" href="structritsuko_1_1Version.html">Version</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parse_version_string</b> (const char *version_string, size_t size, bool skip_patch=false)</td></tr>
+<tr class="memitem:aee7609d114de23145d8d28ddde55c810"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structritsuko_1_1Version.html">Version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#aee7609d114de23145d8d28ddde55c810">parse_version_string</a> (const char *version_string, size_t size, bool skip_patch=false)</td></tr>
 <tr class="separator:aee7609d114de23145d8d28ddde55c810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafacebbb1cafbc7637b140730373d1d6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#aafacebbb1cafbc7637b140730373d1d6">r_missing_value</a> ()</td></tr>
 <tr class="separator:aafacebbb1cafbc7637b140730373d1d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -551,6 +550,57 @@ template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether or not the string finishes with an RFC3339-compliant timestamp. </dd></dl>
+
+</div>
+</div>
+<a id="aee7609d114de23145d8d28ddde55c810" name="aee7609d114de23145d8d28ddde55c810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee7609d114de23145d8d28ddde55c810">&#9670;&#160;</a></span>parse_version_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structritsuko_1_1Version.html">Version</a> ritsuko::parse_version_string </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>version_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>skip_patch</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">version_string</td><td>Pointer to a version string. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>Length of the <code>version_string</code>. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">skip_patch</td><td>Whether to skip the patch number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <code><a class="el" href="structritsuko_1_1Version.html" title="Version number.">Version</a></code> object containing the version number. If <code>skip_patch = true</code>, the <code>patch</code> number is always zero. </dd></dl>
 
 </div>
 </div>

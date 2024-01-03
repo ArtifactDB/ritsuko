@@ -96,9 +96,6 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acebebc191f52b433c65ff69fb04a0701"><td class="memItemLeft" align="right" valign="top"><a id="acebebc191f52b433c65ff69fb04a0701" name="acebebc191f52b433c65ff69fb04a0701"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>find_string_length</b> (const char *ptr, size_t max)</td></tr>
-<tr class="separator:acebebc191f52b433c65ff69fb04a0701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
 <tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplItemLeft" align="right" valign="top">H5::PredType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype</a> ()</td></tr>
 <tr class="separator:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -304,8 +301,7 @@ template&lt;typename Type_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Handle for a HDF5 attribute. </td></tr>
-    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
-    <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1571,7 +1567,7 @@ template&lt;class H5Object_ &gt; </div>
 </div><div class="memdoc">
 <p >Overload for <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a99c585a1063e05eec5385db435d1dfd1">validate_1d_string_attribute()</a></code> that automatically determines its length via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to the HDF5 string attribute. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1614,7 +1610,7 @@ template&lt;class H5Object_ &gt; </div>
 <p >Check that a 1-dimensional string attribute is valid. Currently, this involves checking that there are no <code>NULL</code> entries for variable-length string datatypes. For fixed-width string attributes, this function is a no-op.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to the HDF5 string attribute. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the attribute as a 1-dimensional vector. </td></tr>
   </table>
   </dd>
@@ -1742,7 +1738,7 @@ template&lt;class H5Object_ &gt; </div>
 <p >Check that a scalar string attribute is valid. Currently, this involves checking that there are no <code>NULL</code> entries for variable-length string datatypes. For fixed-width string attributes, this function is a no-op.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string attribute. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle to the HDF5 string attribute. </td></tr>
   </table>
   </dd>
 </dl>

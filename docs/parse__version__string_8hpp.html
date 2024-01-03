@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/as_numeric_datatype.hpp File Reference</title>
+<title>ritsuko: ritsuko/parse_version_string.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,68 +71,63 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li><li class="navelem"><a class="el" href="dir_29ed3d7dd90c3bc55abde691efb7e794.html">hdf5</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">as_numeric_datatype.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">parse_version_string.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Choose a HDF5 datatype.  
+<p>Parse version strings.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
-<code>#include &lt;cstdint&gt;</code><br />
-<code>#include &quot;H5Cpp.h&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for as_numeric_datatype.hpp:</div>
+Include dependency graph for parse_version_string.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="as__numeric__datatype_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2as__numeric__datatype_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2as__numeric__datatype_8hpp" id="aritsuko_2hdf5_2as__numeric__datatype_8hpp">
-<area shape="rect" title="Choose a HDF5 datatype." alt="" coords="62,5,223,45"/>
-<area shape="rect" title=" " alt="" coords="5,93,88,119"/>
-<area shape="rect" title=" " alt="" coords="112,93,173,119"/>
-<area shape="rect" title=" " alt="" coords="197,93,269,119"/>
+<div class="center"><img src="parse__version__string_8hpp__incl.png" border="0" usemap="#aritsuko_2parse__version__string_8hpp" alt=""/></div>
+<map name="aritsuko_2parse__version__string_8hpp" id="aritsuko_2parse__version__string_8hpp">
+<area shape="rect" title="Parse version strings." alt="" coords="17,5,163,45"/>
+<area shape="rect" title=" " alt="" coords="5,93,84,119"/>
+<area shape="rect" title=" " alt="" coords="108,93,163,119"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="as__numeric__datatype_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2as__numeric__datatype_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2as__numeric__datatype_8hppdep" id="aritsuko_2hdf5_2as__numeric__datatype_8hppdep">
-<area shape="rect" title="Choose a HDF5 datatype." alt="" coords="319,5,480,45"/>
-<area shape="rect" href="Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,93,204,133"/>
-<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="355,269,497,295"/>
-<area shape="rect" href="Stream1dStringDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="307,93,491,133"/>
-<area shape="rect" href="load__attribute_8hpp.html" title="Load HDF5 attributes." alt="" coords="544,101,740,126"/>
-<area shape="rect" href="missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="823,181,962,221"/>
-<area shape="rect" href="load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="330,189,522,214"/>
-<area shape="rect" href="miscellaneous_8hpp.html" title="Miscellaneous functions for user convenience." alt="" coords="597,189,799,214"/>
+<div class="center"><img src="parse__version__string_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2parse__version__string_8hppdep" alt=""/></div>
+<map name="aritsuko_2parse__version__string_8hppdep" id="aritsuko_2parse__version__string_8hppdep">
+<area shape="rect" title="Parse version strings." alt="" coords="5,5,152,45"/>
+<area shape="rect" href="ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="15,93,143,119"/>
 </map>
 </div>
 </div>
-<p><a href="as__numeric__datatype_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="parse__version__string_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1Version.html">ritsuko::Version</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structritsuko_1_1Version.html" title="Version number.">Version</a> number.  <a href="structritsuko_1_1Version.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceritsuko"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html">ritsuko</a></td></tr>
 <tr class="memdesc:namespaceritsuko"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for parsing and validation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceritsuko_1_1hdf5"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html">ritsuko::hdf5</a></td></tr>
-<tr class="memdesc:namespaceritsuko_1_1hdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for HDF5 parsing. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
-<tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplItemLeft" align="right" valign="top">H5::PredType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">ritsuko::hdf5::as_numeric_datatype</a> ()</td></tr>
-<tr class="separator:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee7609d114de23145d8d28ddde55c810"><td class="memItemLeft" align="right" valign="top">Version&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#aee7609d114de23145d8d28ddde55c810">ritsuko::parse_version_string</a> (const char *version_string, size_t size, bool skip_patch=false)</td></tr>
+<tr class="separator:aee7609d114de23145d8d28ddde55c810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Choose a HDF5 datatype. </p>
+<div class="textblock"><p >Parse version strings. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

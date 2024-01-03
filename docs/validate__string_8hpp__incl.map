@@ -1,10 +1,10 @@
 <map id="ritsuko/hdf5/validate_string.hpp" name="ritsuko/hdf5/validate_string.hpp">
-<area shape="rect" id="node1" title="Helper functions to validate strings." alt="" coords="178,5,317,45"/>
+<area shape="rect" id="node1" title="Helper functions to validate strings." alt="" coords="243,5,382,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,167,60,192"/>
 <area shape="rect" id="node3" title=" " alt="" coords="99,167,158,192"/>
-<area shape="rect" id="node4" title=" " alt="" coords="584,93,663,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="270,167,342,192"/>
+<area shape="rect" id="node4" title=" " alt="" coords="468,93,547,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="277,167,349,192"/>
 <area shape="rect" id="node6" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="107,93,209,119"/>
-<area shape="rect" id="node7" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="285,93,444,119"/>
-<area shape="rect" id="node8" href="$__strings_8hpp_source.html" title=" " alt="" coords="468,93,560,119"/>
+<area shape="rect" id="node7" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="233,93,392,119"/>
+<area shape="rect" id="node8" title=" " alt="" coords="571,93,663,119"/>
 </map>
