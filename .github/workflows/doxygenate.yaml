@@ -2,6 +2,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'tests/**'
+      - 'cmake/**'
 
 name: Build documentation
 
