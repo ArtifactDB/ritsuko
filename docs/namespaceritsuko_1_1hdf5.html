@@ -96,9 +96,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
-<tr class="memitem:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memTemplItemLeft" align="right" valign="top">H5::PredType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype</a> ()</td></tr>
-<tr class="separator:af22fcb7f30e2d00aa15c2da1ab9ed63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51dedc84e7992f1ae6a6981a83c4e8b8"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:a51dedc84e7992f1ae6a6981a83c4e8b8"><td class="memTemplItemLeft" align="right" valign="top">const H5::PredType &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype</a> ()</td></tr>
+<tr class="separator:a51dedc84e7992f1ae6a6981a83c4e8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cd65a78811faa2894a672f5ce993949"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit</a> (const H5::IntType &amp;itype, size_t precision, bool is_signed)</td></tr>
 <tr class="separator:a6cd65a78811faa2894a672f5ce993949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8101d57fbdf4a10b2297509acb1c2c0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8101d57fbdf4a10b2297509acb1c2c0f">exceeds_integer_limit</a> (const H5::DataSet &amp;handle, size_t precision, bool is_signed)</td></tr>
@@ -145,6 +145,15 @@ Functions</h2></td></tr>
 <tr class="separator:abfdd3aa0655fe3d96988574f71699298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aefbca763dcac9ad4b93ace181cdb78a6">load_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
 <tr class="separator:aefbca763dcac9ad4b93ace181cdb78a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb47cf01bb3148ecfc78966f1c0d76b9"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:acb47cf01bb3148ecfc78966f1c0d76b9"><td class="memTemplItemLeft" align="right" valign="top">Type_&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#acb47cf01bb3148ecfc78966f1c0d76b9">load_scalar_numeric_dataset</a> (const H5::DataSet &amp;handle)</td></tr>
+<tr class="separator:acb47cf01bb3148ecfc78966f1c0d76b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afad488f75f6f68b95fa2ed2765ec8d38"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:afad488f75f6f68b95fa2ed2765ec8d38"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#afad488f75f6f68b95fa2ed2765ec8d38">load_1d_numeric_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size)</td></tr>
+<tr class="separator:afad488f75f6f68b95fa2ed2765ec8d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba9d60597d250789db32ef361f0b483e"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:aba9d60597d250789db32ef361f0b483e"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aba9d60597d250789db32ef361f0b483e">load_1d_numeric_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
+<tr class="separator:aba9d60597d250789db32ef361f0b483e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memTemplParams" colspan="2">template&lt;class H5Object_ &gt; </td></tr>
 <tr class="memitem:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memTemplItemLeft" align="right" valign="top">H5::Attribute&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a8cbc70f0b6aa640eb12e6663cdacd4fe">open_scalar_attribute</a> (const H5Object_ &amp;handle, const char *name)</td></tr>
 <tr class="separator:a8cbc70f0b6aa640eb12e6663cdacd4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,8 +195,8 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Assorted helper functions for HDF5 parsing. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="af22fcb7f30e2d00aa15c2da1ab9ed63a" name="af22fcb7f30e2d00aa15c2da1ab9ed63a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af22fcb7f30e2d00aa15c2da1ab9ed63a">&#9670;&#160;</a></span>as_numeric_datatype()</h2>
+<a id="a51dedc84e7992f1ae6a6981a83c4e8b8" name="a51dedc84e7992f1ae6a6981a83c4e8b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51dedc84e7992f1ae6a6981a83c4e8b8">&#9670;&#160;</a></span>as_numeric_datatype()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +204,7 @@ Functions</h2></td></tr>
 template&lt;typename Type_ &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">H5::PredType ritsuko::hdf5::as_numeric_datatype </td>
+          <td class="memname">const H5::PredType &amp; ritsuko::hdf5::as_numeric_datatype </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -796,7 +805,7 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a">load_1d_numeric_attribute()</a></code> that determines the length of the attribute via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type_</td><td>Type for holding the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype()</a></code> for supported types. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Type for holding the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype()</a></code> for supported types. </td></tr>
   </table>
   </dd>
 </dl>
@@ -839,7 +848,7 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type_</td><td>Type for holding the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype()</a></code> for supported types. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Type for holding the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype()</a></code> for supported types. </td></tr>
   </table>
   </dd>
 </dl>
@@ -851,6 +860,101 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector containing the contents of the attribute. </dd></dl>
+
+</div>
+</div>
+<a id="aba9d60597d250789db32ef361f0b483e" name="aba9d60597d250789db32ef361f0b483e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba9d60597d250789db32ef361f0b483e">&#9670;&#160;</a></span>load_1d_numeric_dataset() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; Type_ &gt; ritsuko::hdf5::load_1d_numeric_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#afad488f75f6f68b95fa2ed2765ec8d38">load_1d_numeric_dataset()</a></code> that determines the length via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type_</td><td>Type of the number in memory. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 dataset. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of numbers. </dd></dl>
+
+</div>
+</div>
+<a id="afad488f75f6f68b95fa2ed2765ec8d38" name="afad488f75f6f68b95fa2ed2765ec8d38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afad488f75f6f68b95fa2ed2765ec8d38">&#9670;&#160;</a></span>load_1d_numeric_dataset() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; Type_ &gt; ritsuko::hdf5::load_1d_numeric_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>full_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Load a 1-dimensional numeric dataset into a vector. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type_</td><td>Type of the number in memory. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 dataset. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of numbers. </dd></dl>
 
 </div>
 </div>
@@ -972,7 +1076,7 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#abfdd3aa0655fe3d96988574f71699298">load_1d_string_dataset()</a></code> that determines the length via <code><a class="el" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">get_1d_length()</a></code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handle</td><td>Handle to the HDF5 scalar dataset. </td></tr>
+    <tr><td class="paramname">handle</td><td>Handle to the 1-dimensional HDF5 dataset. </td></tr>
     <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
   </table>
   </dd>
@@ -1022,7 +1126,7 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <p >Load a 1-dimensional string dataset into a vector of strings. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handle</td><td>Handle to the HDF5 scalar dataset. </td></tr>
+    <tr><td class="paramname">handle</td><td>Handle to the 1-dimensional HDF5 dataset. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
     <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
   </table>
@@ -1051,7 +1155,7 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type_</td><td>Type for holding the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype()</a></code> for supported types. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Type for holding the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype()</a></code> for supported types. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1062,6 +1166,39 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the attribute. </dd></dl>
+
+</div>
+</div>
+<a id="acb47cf01bb3148ecfc78966f1c0d76b9" name="acb47cf01bb3148ecfc78966f1c0d76b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb47cf01bb3148ecfc78966f1c0d76b9">&#9670;&#160;</a></span>load_scalar_numeric_dataset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Type_ ritsuko::hdf5::load_scalar_numeric_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Load a scalar numeric dataset into a single number. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type_</td><td>Type of the number in memory. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 scalar dataset. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number containing the value of the sole dataset entry. </dd></dl>
 
 </div>
 </div>
@@ -1161,7 +1298,7 @@ template&lt;typename Type_ &gt; </div>
 <p >Check if a missing numeric placeholder attribute is present, and if so, open it and loads it value. This will also call <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a13912457e34944fb0e3c9e462a60b414">check_missing_placeholder_attribute()</a></code> to validate the placeholder's properties.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type_</td><td>Type to use to store the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype()</a></code> for supported types. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Type to use to store the data in memory, see <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype()</a></code> for supported types. </td></tr>
   </table>
   </dd>
 </dl>

@@ -90,7 +90,7 @@ $(function() {
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html">   15</a></span><span class="keyword">namespace </span>hdf5 {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type_&gt;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">   26</a></span>H5::PredType <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">as_numeric_datatype</a>() {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">   26</a></span><span class="keyword">const</span> H5::PredType&amp; <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype</a>() {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same&lt;Type_, uint8_t&gt;::value) {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">return</span> H5::PredType::NATIVE_UINT8;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same&lt;Type_, int8_t&gt;::value) {</div>
@@ -120,7 +120,7 @@ $(function() {
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_af22fcb7f30e2d00aa15c2da1ab9ed63a"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#af22fcb7f30e2d00aa15c2da1ab9ed63a">ritsuko::hdf5::as_numeric_datatype</a></div><div class="ttdeci">H5::PredType as_numeric_datatype()</div><div class="ttdef"><b>Definition:</b> as_numeric_datatype.hpp:26</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a51dedc84e7992f1ae6a6981a83c4e8b8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">ritsuko::hdf5::as_numeric_datatype</a></div><div class="ttdeci">const H5::PredType &amp; as_numeric_datatype()</div><div class="ttdef"><b>Definition:</b> as_numeric_datatype.hpp:26</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition:</b> choose_missing_placeholder.hpp:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
