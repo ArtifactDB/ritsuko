@@ -21,7 +21,9 @@ add_executable(
     src/is_date_time.cpp
     src/choose_missing_placeholder.cpp
     src/parse_version_string.cpp
+
     src/hdf5/exceeds_limit.cpp
+    src/hdf5/is_utf8_string.cpp
 
     src/hdf5/load_attribute.cpp
     src/hdf5/load_dataset.cpp
