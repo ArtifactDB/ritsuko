@@ -1,10 +1,10 @@
 <map id="ritsuko/hdf5/get_1d_length.hpp" name="ritsuko/hdf5/get_1d_length.hpp">
-<area shape="rect" id="node1" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="274,5,407,45"/>
-<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="25,93,224,133"/>
-<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="236,269,379,295"/>
-<area shape="rect" id="node5" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="249,93,433,133"/>
-<area shape="rect" id="node6" href="$load__attribute_8hpp.html" title="Load HDF5 attributes." alt="" coords="457,101,653,126"/>
-<area shape="rect" id="node8" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="622,181,761,221"/>
-<area shape="rect" id="node4" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="78,189,270,214"/>
-<area shape="rect" id="node7" href="$miscellaneous_8hpp.html" title="Miscellaneous functions for user convenience." alt="" coords="345,189,547,214"/>
+<area shape="rect" id="node1" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="342,5,476,45"/>
+<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="30,93,228,133"/>
+<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="268,269,411,295"/>
+<area shape="rect" id="node5" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="253,93,437,133"/>
+<area shape="rect" id="node6" href="$load__attribute_8hpp.html" title="Load HDF5 attributes." alt="" coords="512,101,708,126"/>
+<area shape="rect" id="node7" href="$miscellaneous_8hpp.html" title="Miscellaneous functions for user convenience." alt="" coords="378,189,579,214"/>
+<area shape="rect" id="node8" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="654,181,793,221"/>
+<area shape="rect" id="node4" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="110,189,302,214"/>
 </map>

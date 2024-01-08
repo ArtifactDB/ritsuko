@@ -1,4 +1,5 @@
 <map id="ritsuko/hdf5/is_utf8_string.hpp" name="ritsuko/hdf5/is_utf8_string.hpp">
 <area shape="rect" id="node1" title="Check if a string datatype uses a UTF&#45;8 encoding." alt="" coords="10,5,143,45"/>
-<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,93,148,119"/>
+<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,167,148,192"/>
+<area shape="rect" id="node3" href="$miscellaneous_8hpp.html" title="Miscellaneous functions for user convenience." alt="" coords="45,93,247,119"/>
 </map>

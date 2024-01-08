@@ -316,11 +316,11 @@ template&lt;typename Type_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Handle for a HDF5 attribute. </td></tr>
-    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement.</td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting float type.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting integer type. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the attribute uses a datatype than cannot be represented by the limiting integer type. <code>true</code> is also returned for non-numeric attributes. </dd></dl>
 
 </div>
 </div>
@@ -358,10 +358,11 @@ template&lt;typename Type_ &gt; </div>
 </table>
 </div><div class="memdoc">
 <p >Check if a HDF5 datatype could hold values beyond the range of a limiting float type. This is used by validators to ensure that a dataset can be represented in memory by the limiting type.</p>
+<p >Note that the limiting float type is assumed to be IEEE754-compliant. If the HDF5 datatype is not also IEEE754-compliant, it will be considered out-of-range regardless of its precision. This seems unlikely, though, as all CPU-specific predefined float types in later HDF5 versions are aliases of the IEEE types.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Handle for a HDF5 dataset. </td></tr>
-    <tr><td class="paramname">precision</td><td>Number of bits in the limiting float type, assuming IEEE754 floats.</td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting float type.</td></tr>
   </table>
   </dd>
 </dl>
@@ -417,7 +418,7 @@ template&lt;typename Type_ &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting integer type. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the attribute uses a datatype than cannot be represented by the limiting integer type. </dd></dl>
 
 </div>
 </div>
@@ -521,7 +522,7 @@ template&lt;typename Type_ &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Whether the dataset uses a datatype than cannot be represented by the limiting integer type. <code>true</code> is also returned for non-integer datasets. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the datatype cannot be represented by the limiting integer type. <code>true</code> is also returned for non-integer datasets. </dd></dl>
 
 </div>
 </div>
