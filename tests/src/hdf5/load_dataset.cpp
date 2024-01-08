@@ -5,7 +5,7 @@
 #include "utils.h"
 
 TEST(Hdf5LoadDataset, ScalarString) {
-    const char* path = "TEST-scalar-attr.h5";
+    const char* path = "TEST-scalar-string.h5";
 
     // Variable.
     {
@@ -129,3 +129,49 @@ TEST(Hdf5LoadDataset, String1d) {
         });
     }
 } 
+
+TEST(Hdf5LoadDataset, ScalarNumber) {
+    const char* path = "TEST-scalar-number.h5";
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+
+        {
+            auto dhandle = handle.createDataSet("i32", H5::PredType::NATIVE_INT32, H5S_SCALAR);
+            int val = -123;
+            dhandle.write(&val, H5::PredType::NATIVE_INT);
+        }
+
+        {
+            auto dhandle = handle.createDataSet("u8", H5::PredType::NATIVE_UINT8, H5S_SCALAR);
+            int val = 53;
+            dhandle.write(&val, H5::PredType::NATIVE_INT);
+        }
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    EXPECT_EQ(-123, ritsuko::hdf5::load_scalar_numeric_dataset<int32_t>(handle.openDataSet("i32")));
+    EXPECT_EQ(53, ritsuko::hdf5::load_scalar_numeric_dataset<uint8_t>(handle.openDataSet("u8")));
+}
+
+TEST(Hdf5LoadDataset, Number1d) {
+    const char* path = "TEST-number1d.h5";
+    std::vector<int> evens { 2, 44, 666, 88888 };
+    std::vector<int> odds { -1, -3, -5, -7 };
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        create_dataset(handle, "evens", evens, H5::PredType::NATIVE_UINT32);
+        create_dataset(handle, "odds", odds, H5::PredType::NATIVE_INT8);
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    {
+        auto extracted = ritsuko::hdf5::load_1d_numeric_dataset<int32_t>(handle.openDataSet("evens"), 10);
+        EXPECT_EQ(evens, std::vector<int>(extracted.begin(), extracted.end()));
+    }
+    {
+        auto extracted = ritsuko::hdf5::load_1d_numeric_dataset<int16_t>(handle.openDataSet("odds"), 10);
+        EXPECT_EQ(odds, std::vector<int>(extracted.begin(), extracted.end()));
+    }
+}
