@@ -85,6 +85,7 @@ TEST(Hdf5ExceedsFloatLimit, Failed) {
         EXPECT_TRUE(ritsuko::hdf5::exceeds_float_limit(handle.openDataSet("UINT32"), 32)); 
         EXPECT_TRUE(ritsuko::hdf5::exceeds_float_limit(handle.openDataSet("INT64"), 64)); 
         EXPECT_TRUE(ritsuko::hdf5::exceeds_float_limit(handle.openDataSet("FLOAT64"), 32)); 
+        EXPECT_TRUE(ritsuko::hdf5::exceeds_float_limit(handle.openDataSet("FLOAT32"), 16)); 
     }
 
     {
