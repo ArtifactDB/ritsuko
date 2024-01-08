@@ -20,10 +20,10 @@ namespace hdf5 {
  * @tparam Type_ A numeric C++ type.
  * This can be any of the fixed-width integers, `float` or `double`.
  * Some of the non-fixed integer types are also supported.
- * @returns A HDF5 datatype object.
+ * @returns Reference to a HDF5 datatype object.
  */
 template<typename Type_>
-H5::PredType as_numeric_datatype() {
+const H5::PredType& as_numeric_datatype() {
     if constexpr(std::is_same<Type_, uint8_t>::value) {
         return H5::PredType::NATIVE_UINT8;
     } else if constexpr(std::is_same<Type_, int8_t>::value) {
