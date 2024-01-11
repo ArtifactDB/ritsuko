@@ -109,12 +109,14 @@ inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, size_t prec
  */
 
 /**
- * Check if a HDF5 datatype could hold values beyond the range of a limiting float type.
+ * Check if a HDF5 datatype could hold values beyond the range of a limiting (IEEE754-compliant) float type.
  * This is used by validators to ensure that a dataset can be represented in memory by the limiting type.
  *
  * Note that the limiting float type is assumed to be IEEE754-compliant.
  * If the HDF5 datatype is not also IEEE754-compliant, it will be considered out-of-range regardless of its precision.
- * This seems unlikely, though, as all CPU-specific predefined float types in later HDF5 versions are aliases of the IEEE types.
+ * This is necessary as non-IEEE754 floats could have an arbitrary split of bits between the exponent and significand,
+ * such that two float datatypes with the same number of bits could represent a different set of numbers.
+ * (Though this seems unlikely in practice, as all CPU-specific predefined float types in later HDF5 versions are already aliases of the IEEE types.)
  *
  * @param handle Handle for a HDF5 dataset.
  * @param precision Number of bits in the limiting float type.
