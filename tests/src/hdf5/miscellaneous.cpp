@@ -44,10 +44,20 @@ TEST(Hdf5Miscellaneous, OpenAndLoadScalarString) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openGroup("whee");
     EXPECT_EQ(ritsuko::hdf5::open_and_load_scalar_string_attribute(dhandle, "foo1"), "YAY");
+    EXPECT_EQ(ritsuko::hdf5::open_and_load_scalar_string_attribute(dhandle, "foo1", false), "YAY");
 
     EXPECT_ANY_THROW({
         try {
             ritsuko::hdf5::open_and_load_scalar_string_attribute(dhandle, "foo2");
+        } catch (std::exception& e) {
+            EXPECT_THAT(e.what(), ::testing::HasSubstr("string"));
+            throw;
+        }
+    });
+
+    EXPECT_ANY_THROW({
+        try {
+            ritsuko::hdf5::open_and_load_scalar_string_attribute(dhandle, "foo2", false);
         } catch (std::exception& e) {
             EXPECT_THAT(e.what(), ::testing::HasSubstr("string"));
             throw;
