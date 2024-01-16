@@ -20,17 +20,17 @@ namespace hdf5 {
  * @brief Iterate through an N-dimensional dataset by block.
  *
  * This iterates through an N-dimensional dataset in a blockwise fashion, constructing `H5::DataSpace` objects to enable callers to easily read the dataset contents at each block.
- * Block sizes are typically determined from dataset chunking via `pick_nd_block_size()`, which ensures efficient access of entire chunks at each step.
+ * Block sizes are typically determined from dataset chunking via `pick_nd_block_dimensions()`, which ensures efficient access of entire chunks at each step.
  */
 struct IterateNdDataset {
     /**
      * @param d Dataset dimensions.
-     * @param b Block dimensions, typically obtained from `pick_nd_block_size()`.
+     * @param b Block dimensions, typically obtained from `pick_nd_block_dimensions()`.
      * This should be of the same length as `d`, where each value of `b` is no greater than its counterpart in `d`.
      */
-    IterateNdDataset(const std::vector<hsize_t>& d, const std::vector<hsize_t>& b) : 
-        data_extent(d), 
-        block_extent(b), 
+    IterateNdDataset(std::vector<hsize_t> d, std::vector<hsize_t> b) : 
+        data_extent(std::move(d)), 
+        block_extent(std::move(b)), 
         ndims(data_extent.size()), 
         starts_internal(ndims), 
         counts_internal(block_extent), 
@@ -98,7 +98,7 @@ public:
      * This is usually equal to the product of the block dimensions used in the constructor,
      * except at the edges of the dataset where the current block may be truncated.
      */
-    size_t size() const {
+    size_t current_block_size() const {
         return total_size;
     }
 
@@ -127,15 +127,28 @@ public:
 
     /**
      * @return Dataspace for storing the block contents in memory.
-     * This assumes a contiguous memory space that has space for at least `total_size()` elements.
+     * This assumes a contiguous memory allocation that has space for at least `total_size()` elements.
      */
     const H5::DataSpace& memory_space() const {
         return mspace;
     }
 
+    /**
+     * @return Dimensions of the dataset, as provided in the constructor.
+     */
+    const std::vector<hsize_t>& dimensions() const {
+        return data_extent;
+    }
+
+    /**
+     * @return Dimensions of the blocks, as provided in the constructor.
+     */
+    const std::vector<hsize_t>& block_dimensions() const {
+        return block_extent;
+    }
+
 private:
-    const std::vector<hsize_t>& data_extent;
-    const std::vector<hsize_t>& block_extent;
+    std::vector<hsize_t> data_extent, block_extent;
     size_t ndims;
 
     std::vector<hsize_t> starts_internal, counts_internal;

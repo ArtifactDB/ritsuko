@@ -7,11 +7,13 @@ TEST(Hdf5IterateNdDataset, TwoDimensional) {
     std::vector<hsize_t> block { 101, 55 };
 
     ritsuko::hdf5::IterateNdDataset handler(dims, block);
+    EXPECT_EQ(handler.dimensions(), dims);
+    EXPECT_EQ(handler.block_dimensions(), block);
     size_t total_iterated = 0;
     std::vector<hsize_t> test_start(2), test_end(2), test_empty(2);
 
     while (!handler.finished()) {
-        total_iterated += handler.size();
+        total_iterated += handler.current_block_size();
 
         const auto& counts = handler.counts();
         const auto& starts = handler.starts();
@@ -25,7 +27,7 @@ TEST(Hdf5IterateNdDataset, TwoDimensional) {
         for (auto b : counts) {
             current_size *= b;
         }
-        EXPECT_EQ(handler.size(), current_size);
+        EXPECT_EQ(handler.current_block_size(), current_size);
 
         EXPECT_EQ(handler.file_space().getSelectNpoints(), current_size);
         handler.file_space().getSelectBounds(test_start.data(), test_end.data());
@@ -58,7 +60,7 @@ TEST(Hdf5IterateNdDataset, ThreeDimensional) {
     std::vector<hsize_t> test_start(3), test_end(3), test_empty(3);
 
     while (!handler.finished()) {
-        total_iterated += handler.size();
+        total_iterated += handler.current_block_size();
 
         const auto& counts = handler.counts();
         const auto& starts = handler.starts();
@@ -72,7 +74,7 @@ TEST(Hdf5IterateNdDataset, ThreeDimensional) {
         for (auto b : counts) {
             current_size *= b;
         }
-        EXPECT_EQ(handler.size(), current_size);
+        EXPECT_EQ(handler.current_block_size(), current_size);
 
         EXPECT_EQ(handler.file_space().getSelectNpoints(), current_size);
         handler.file_space().getSelectBounds(test_start.data(), test_end.data());
@@ -131,7 +133,7 @@ TEST(Hdf5IterateNdDataset, Extraction) {
     auto ptr = staging_ground.data();
     while (!iter.finished()) {
         dhandle.read(ptr, H5::PredType::NATIVE_INT, iter.memory_space(), iter.file_space());
-        ptr += iter.size();
+        ptr += iter.current_block_size();
         iter.next();
     }
 

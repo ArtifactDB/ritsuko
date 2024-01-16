@@ -110,7 +110,7 @@ inline void validate_nd_string_dataset(const H5::DataSet& handle, const std::vec
     std::vector<char*> buffer;
 
     while (!iter.finished()) {
-        buffer.resize(iter.size());
+        buffer.resize(iter.current_block_size());
 
         // Scope this to ensure that 'mspace' doesn't get changed by
         // 'iter.next()' before the destructor is called.
