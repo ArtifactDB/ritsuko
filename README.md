@@ -44,22 +44,26 @@ H5::H5File handle("some.h5", H5F_ACC_RDONLY);
 auto dhandle = handle.openDataSet("some_data");
 
 // Reading some interesting bits and pieces.
-auto len = ritsuko::hdf5::get_1d_length(dhandle, "some_data");
-auto tag = ritsuko::hdf5::load_scalar_string_attribute(dhandle, "tag", "some_data");
+auto len = ritsuko::hdf5::get_1d_length(dhandle, false);
+auto tag = ritsuko::hdf5::open_and_load_scalar_string_attribute(dhandle, "tag");
 
-// Iterating over the dataset by block.
-auto block_size = ritsuko::hdf5::pick_1d_block_size(dhandle.getCreatePlist(), len);
-std::vector<double> buffer(len);
-ritsuko::hdf5::iterate_1d_blocks(block_size, len, 
-    [&](
-        hsize_t start, 
-        hsize_t len, 
-        const H5::DataSpace& mspace, 
-        const H5::DataSpace& dspace
-    ) {
-        dhandle.read(buffer.data() + start, H5::PredType::NATIVE_DOUBLE, mspace, dspace);
-    }
-);
+// Iterating over a 1-dimensional dataset. 
+ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, len, /* buffer_size = */ 10000);
+for (hsize_t i = 0; i < len; ++i, stream.next()) {
+    auto val = stream.get();
+}
+
+// Iterating over a N-dimensional dataset.
+auto dims = ritsuko::hdf5::get_dimensions(dhandle, false);
+auto blocks = ritsuko::hdf5::pick_nd_block_dimensions(dhandle.getCreatePlist(), dims, /* buffer_size = */ 10000);
+
+ritsuko::hdf5::IterateNdDataset iter(&dims, &blocks);
+std::vector<double> buffer;
+while (!iter.finished()) {
+    buffer.resize(iter.size());
+    dhandle.read(buffer.data(), H5::PredType::NATIVE_DOUBLE, iter.memory_space(), iter.file_space());
+    iter.next();
+}
 ```
 
 Also see the [reference documentation](https://artifactdb.github.io/ritsuko) for more details.
