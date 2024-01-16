@@ -14,6 +14,8 @@
 #include "miscellaneous.hpp"
 #include "open.hpp"
 #include "pick_1d_block_size.hpp"
+#include "pick_nd_block_dimensions.hpp"
+#include "IterateNdDataset.hpp"
 #include "validate_string.hpp"
 
 /**
