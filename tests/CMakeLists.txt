@@ -29,6 +29,7 @@ add_executable(
     src/hdf5/load_dataset.cpp
 
     src/hdf5/get_1d_length.cpp
+    src/hdf5/get_dimensions.cpp
     src/hdf5/pick_1d_block_size.cpp
     src/hdf5/pick_nd_block_dimensions.cpp
 

@@ -9,6 +9,7 @@
 
 #include "get_name.hpp"
 #include "get_1d_length.hpp"
+#include "get_dimensions.hpp"
 #include "pick_1d_block_size.hpp"
 #include "pick_nd_block_dimensions.hpp"
 #include "IterateNdDataset.hpp"
@@ -134,9 +135,7 @@ inline void validate_nd_string_dataset(const H5::DataSet& handle, const std::vec
  * @param buffer_size Size of the buffer for holding loaded strings.
  */
 inline void validate_nd_string_dataset(const H5::DataSet& handle, hsize_t buffer_size) {
-    auto dspace = handle.getSpace();
-    std::vector<hsize_t> dimensions(dspace.getSimpleExtentNdims());
-    dspace.getSimpleExtentDims(dimensions.data());
+    auto dimensions = get_dimensions(handle, false);
     validate_nd_string_dataset(handle, dimensions, buffer_size);
 }
 
