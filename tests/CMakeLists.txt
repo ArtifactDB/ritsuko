@@ -38,6 +38,7 @@ add_executable(
 
     src/hdf5/open.cpp
 
+    src/hdf5/validate_string.cpp
     src/hdf5/miscellaneous.cpp
 
     src/hdf5/missing_placeholder.cpp
