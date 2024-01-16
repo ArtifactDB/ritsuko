@@ -15,7 +15,7 @@
 
 /**
  * @file Stream1dStringDataset.hpp
- * @brief Stream a numeric 1D HDF5 dataset into memory.
+ * @brief Stream a numeric 1-dimensional HDF5 dataset into memory.
  */
 
 namespace ritsuko {
@@ -23,10 +23,10 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * @brief Stream a 1D HDF5 string dataset into memory.
+ * @brief Stream a 1-dimensional HDF5 string dataset into memory.
  *
- * This streams in a HDF5 dataset in contiguous blocks, using block sizes defined by `pick_1d_block_size()`.
- * Callers can then extract one C-style string at a time.
+ * This streams in a 1-dimensional HDF5 string dataset in contiguous blocks, using block sizes defined by `pick_1d_block_size()`.
+ * Callers can then iterate over the individual strings.
  */
 class Stream1dStringDataset {
 public:
