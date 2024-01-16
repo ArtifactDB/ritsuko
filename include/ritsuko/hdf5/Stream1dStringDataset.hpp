@@ -141,7 +141,7 @@ private:
         if (is_variable) {
             ptr->read(var_buffer.data(), dtype, mspace, dspace);
             [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), var_buffer.data());
-            for (hsize_t i = 0; i < block_size; ++i) {
+            for (hsize_t i = 0; i < available; ++i) {
                 if (var_buffer[i] == NULL) {
                     throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(*ptr) + "'");
                 }
