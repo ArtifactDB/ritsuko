@@ -87,11 +87,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1hdf5_1_1IterateNdDataset.html">IterateNdDataset</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterate through an N-dimensional dataset by block.  <a href="structritsuko_1_1hdf5_1_1IterateNdDataset.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">Stream1dNumericDataset</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a numeric 1D HDF5 dataset into memory.  <a href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a numeric 1-dimensional HDF5 dataset into memory.  <a href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html">Stream1dStringDataset</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a 1D HDF5 string dataset into memory.  <a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a 1-dimensional HDF5 string dataset into memory.  <a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -185,12 +188,18 @@ Functions</h2></td></tr>
 <tr class="separator:a2562d2fa77b38f6ba2412f4ee3fce3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size</a> (const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</td></tr>
 <tr class="separator:a2e20754e74dfc5afff5d2c89db34cde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef675ae3568f50aeb0bc97d65f1a3063"><td class="memItemLeft" align="right" valign="top">std::vector&lt; hsize_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aef675ae3568f50aeb0bc97d65f1a3063">pick_nd_block_dimensions</a> (const H5::DSetCreatPropList &amp;cplist, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t buffer_size=10000)</td></tr>
+<tr class="separator:aef675ae3568f50aeb0bc97d65f1a3063"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd2bebfc32a06fd02078a95c29c0c483"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#abd2bebfc32a06fd02078a95c29c0c483">validate_scalar_string_dataset</a> (const H5::DataSet &amp;handle)</td></tr>
 <tr class="separator:abd2bebfc32a06fd02078a95c29c0c483"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57de47214743d83160929e6a86a03c22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a57de47214743d83160929e6a86a03c22">validate_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size)</td></tr>
 <tr class="separator:a57de47214743d83160929e6a86a03c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a47c273026b1161b1ac3c7802b630a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a7a47c273026b1161b1ac3c7802b630a2">validate_1d_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
 <tr class="separator:a7a47c273026b1161b1ac3c7802b630a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3dd05b2a2f7e3ad480467de60296241"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aa3dd05b2a2f7e3ad480467de60296241">validate_nd_string_dataset</a> (const H5::DataSet &amp;handle, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t buffer_size)</td></tr>
+<tr class="separator:aa3dd05b2a2f7e3ad480467de60296241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69e7a1641c152c07dc18441228a7fa5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a69e7a1641c152c07dc18441228a7fa5e">validate_nd_string_dataset</a> (const H5::DataSet &amp;handle, hsize_t buffer_size)</td></tr>
+<tr class="separator:a69e7a1641c152c07dc18441228a7fa5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93db4d46fb9c99c155d179f5ba3ca820"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a93db4d46fb9c99c155d179f5ba3ca820">validate_scalar_string_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
 <tr class="separator:a93db4d46fb9c99c155d179f5ba3ca820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99c585a1063e05eec5385db435d1dfd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a99c585a1063e05eec5385db435d1dfd1">validate_1d_string_attribute</a> (const H5::Attribute &amp;attr, hsize_t full_length)</td></tr>
@@ -1799,6 +1808,58 @@ template&lt;class H5Object_ &gt; </div>
 
 </div>
 </div>
+<a id="aef675ae3568f50aeb0bc97d65f1a3063" name="aef675ae3568f50aeb0bc97d65f1a3063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef675ae3568f50aeb0bc97d65f1a3063">&#9670;&#160;</a></span>pick_nd_block_dimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; hsize_t &gt; ritsuko::hdf5::pick_nd_block_dimensions </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DSetCreatPropList &amp;&#160;</td>
+          <td class="paramname"><em>cplist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dimensions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em> = <code>10000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Pick block dimensions to use for iteration over an N-dimensional dataset. For compressed datasets, this aims to be the smallest multiple of the chunk size that fits into a buffer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cplist</td><td>The creation property list for this dataset. </td></tr>
+    <tr><td class="paramname">dimensions</td><td>Dimensions of this dataset. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer in terms of the number of elements. Smaller values reduce peak memory usage at the cost of more iterations.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The block dimensions. </dd></dl>
+
+</div>
+</div>
 <a id="a26ec32808e5dd43113af4c51e3feb9a6" name="a26ec32808e5dd43113af4c51e3feb9a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26ec32808e5dd43113af4c51e3feb9a6">&#9670;&#160;</a></span>validate_1d_string_attribute() <span class="overload">[1/2]</span></h2>
 
@@ -1962,6 +2023,100 @@ template&lt;class H5Object_ &gt; </div>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Handle to the HDF5 string dataset. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa3dd05b2a2f7e3ad480467de60296241" name="aa3dd05b2a2f7e3ad480467de60296241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3dd05b2a2f7e3ad480467de60296241">&#9670;&#160;</a></span>validate_nd_string_dataset() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_nd_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dimensions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check that an N-dimensional string dataset is valid. Currently, this involves checking that there are no <code>NULL</code> entries for variable-length string datatypes. For fixed-width string datasets, this function is a no-op.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string dataset. </td></tr>
+    <tr><td class="paramname">dimensions</td><td>Dimensions of the dataset. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a69e7a1641c152c07dc18441228a7fa5e" name="a69e7a1641c152c07dc18441228a7fa5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69e7a1641c152c07dc18441228a7fa5e">&#9670;&#160;</a></span>validate_nd_string_dataset() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::validate_nd_string_dataset </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t&#160;</td>
+          <td class="paramname"><em>buffer_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload for <code><a class="el" href="namespaceritsuko_1_1hdf5.html#aa3dd05b2a2f7e3ad480467de60296241">validate_nd_string_dataset()</a></code> that automatically determines the dimensions. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the HDF5 string dataset. </td></tr>
     <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding loaded strings. </td></tr>
   </table>
   </dd>

@@ -1,14 +1,10 @@
 var searchData=
 [
-  ['le_0',['le',['../structritsuko_1_1Version.html#aad9ea246db4488b25dc147cd2c1fc587',1,'ritsuko::Version']]],
-  ['length_1',['length',['../classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#a67ad7086c14157221c92806738d6d80b',1,'ritsuko::hdf5::Stream1dNumericDataset::length()'],['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#acc4863e38b980a742f9364127b145a04',1,'ritsuko::hdf5::Stream1dStringDataset::length()']]],
-  ['load_5f1d_5fnumeric_5fattribute_2',['load_1d_numeric_attribute',['../namespaceritsuko_1_1hdf5.html#aa8b34e4c62bbfd6270ff97a2da35305a',1,'ritsuko::hdf5::load_1d_numeric_attribute(const H5::Attribute &amp;attr, hsize_t full_length)'],['../namespaceritsuko_1_1hdf5.html#a9ceb2994c6a2a0ff2d5c551ff2b874b5',1,'ritsuko::hdf5::load_1d_numeric_attribute(const H5::Attribute &amp;attr)']]],
-  ['load_5f1d_5fnumeric_5fdataset_3',['load_1d_numeric_dataset',['../namespaceritsuko_1_1hdf5.html#afad488f75f6f68b95fa2ed2765ec8d38',1,'ritsuko::hdf5::load_1d_numeric_dataset(const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size)'],['../namespaceritsuko_1_1hdf5.html#aba9d60597d250789db32ef361f0b483e',1,'ritsuko::hdf5::load_1d_numeric_dataset(const H5::DataSet &amp;handle, hsize_t buffer_size)']]],
-  ['load_5f1d_5fstring_5fattribute_4',['load_1d_string_attribute',['../namespaceritsuko_1_1hdf5.html#a42f0cf4323a74f92bbf90af33ebe53a0',1,'ritsuko::hdf5::load_1d_string_attribute(const H5::Attribute &amp;attr, hsize_t full_length)'],['../namespaceritsuko_1_1hdf5.html#aca68893a7c89bac80b2d394256b062b4',1,'ritsuko::hdf5::load_1d_string_attribute(const H5::Attribute &amp;attr)']]],
-  ['load_5f1d_5fstring_5fdataset_5',['load_1d_string_dataset',['../namespaceritsuko_1_1hdf5.html#abfdd3aa0655fe3d96988574f71699298',1,'ritsuko::hdf5::load_1d_string_dataset(const H5::DataSet &amp;handle, hsize_t full_length, hsize_t buffer_size)'],['../namespaceritsuko_1_1hdf5.html#aefbca763dcac9ad4b93ace181cdb78a6',1,'ritsuko::hdf5::load_1d_string_dataset(const H5::DataSet &amp;handle, hsize_t buffer_size)']]],
-  ['load_5fscalar_5fnumeric_5fattribute_6',['load_scalar_numeric_attribute',['../namespaceritsuko_1_1hdf5.html#a255147f2351c250c5e06a93a63662855',1,'ritsuko::hdf5']]],
-  ['load_5fscalar_5fnumeric_5fdataset_7',['load_scalar_numeric_dataset',['../namespaceritsuko_1_1hdf5.html#acb47cf01bb3148ecfc78966f1c0d76b9',1,'ritsuko::hdf5']]],
-  ['load_5fscalar_5fstring_5fattribute_8',['load_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3',1,'ritsuko::hdf5']]],
-  ['load_5fscalar_5fstring_5fdataset_9',['load_scalar_string_dataset',['../namespaceritsuko_1_1hdf5.html#a18754ed04d8c1c4079d46f3a16e6736f',1,'ritsuko::hdf5']]],
-  ['lt_10',['lt',['../structritsuko_1_1Version.html#a60e71e8fd3daee1ed661bdca1ff8f346',1,'ritsuko::Version']]]
+  ['is_5fdate_0',['is_date',['../namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c',1,'ritsuko']]],
+  ['is_5fdate_5fprefix_1',['is_date_prefix',['../namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8',1,'ritsuko']]],
+  ['is_5frfc3339_2',['is_rfc3339',['../namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505',1,'ritsuko']]],
+  ['is_5frfc3339_5fsuffix_3',['is_rfc3339_suffix',['../namespaceritsuko.html#ac5f8ff07715c8177a709e440eb029f30',1,'ritsuko']]],
+  ['is_5fscalar_4',['is_scalar',['../namespaceritsuko_1_1hdf5.html#a5a84cbdad4bec1bd7d61f34a6a13db70',1,'ritsuko::hdf5::is_scalar(const H5::DataSpace &amp;space)'],['../namespaceritsuko_1_1hdf5.html#a026a025a4b93f19b260168fbe0f831bc',1,'ritsuko::hdf5::is_scalar(const H5::DataSet &amp;handle)'],['../namespaceritsuko_1_1hdf5.html#adf7cac0a4cef6cbabc13f78fc78ffac3',1,'ritsuko::hdf5::is_scalar(const H5::Attribute &amp;handle)']]],
+  ['is_5futf8_5fstring_5',['is_utf8_string',['../namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a',1,'ritsuko::hdf5::is_utf8_string(const H5::StrType &amp;stype)'],['../namespaceritsuko_1_1hdf5.html#a8a2b2601417c59e611d8b9e45ec8a0e4',1,'ritsuko::hdf5::is_utf8_string(const H5::DataSet &amp;handle)'],['../namespaceritsuko_1_1hdf5.html#a9ca650001d0df185f1b5202a3aecc945',1,'ritsuko::hdf5::is_utf8_string(const H5::Attribute &amp;handle)']]],
+  ['iteratenddataset_6',['IterateNdDataset',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html#a4d0b54f81fd4b185707fb8b7b24330b9',1,'ritsuko::hdf5::IterateNdDataset']]]
 ];

@@ -1,5 +1,5 @@
 <map id="ritsuko/hdf5/Stream1dStringDataset.hpp" name="ritsuko/hdf5/Stream1dStringDataset.hpp">
-<area shape="rect" id="node1" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,5,189,45"/>
+<area shape="rect" id="node1" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="5,5,189,45"/>
 <area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="26,167,169,192"/>
 <area shape="rect" id="node3" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="68,93,260,119"/>
 </map>

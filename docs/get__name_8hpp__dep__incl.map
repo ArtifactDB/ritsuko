@@ -1,9 +1,9 @@
 <map id="ritsuko/hdf5/get_name.hpp" name="ritsuko/hdf5/get_name.hpp">
 <area shape="rect" id="node1" title="Get the name of a HDF5 object." alt="" coords="348,5,523,31"/>
-<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="5,79,204,119"/>
+<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="5,79,204,119"/>
 <area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="343,255,485,280"/>
 <area shape="rect" id="node4" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="150,174,342,199"/>
-<area shape="rect" id="node5" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1D HDF5 dataset into memory." alt="" coords="279,79,463,119"/>
+<area shape="rect" id="node5" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="279,79,463,119"/>
 <area shape="rect" id="node6" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="482,167,621,207"/>
 <area shape="rect" id="node7" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="645,167,783,207"/>
 </map>
