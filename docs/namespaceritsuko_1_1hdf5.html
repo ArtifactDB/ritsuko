@@ -124,6 +124,12 @@ Functions</h2></td></tr>
 <tr class="separator:a026a025a4b93f19b260168fbe0f831bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf7cac0a4cef6cbabc13f78fc78ffac3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#adf7cac0a4cef6cbabc13f78fc78ffac3">is_scalar</a> (const H5::Attribute &amp;handle)</td></tr>
 <tr class="separator:adf7cac0a4cef6cbabc13f78fc78ffac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7dc03efecbeae8f29724419e4911dcf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; hsize_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#af7dc03efecbeae8f29724419e4911dcf">get_dimensions</a> (const H5::DataSpace &amp;space, bool allow_scalar)</td></tr>
+<tr class="separator:af7dc03efecbeae8f29724419e4911dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265a0cebbaa2c461a5ec98d35d23eab8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; hsize_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a265a0cebbaa2c461a5ec98d35d23eab8">get_dimensions</a> (const H5::DataSet &amp;handle, bool allow_scalar)</td></tr>
+<tr class="separator:a265a0cebbaa2c461a5ec98d35d23eab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e4f01f27367b06eed56b7ed068933de"><td class="memItemLeft" align="right" valign="top">std::vector&lt; hsize_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a0e4f01f27367b06eed56b7ed068933de">get_dimensions</a> (const H5::Attribute &amp;handle, bool allow_scalar)</td></tr>
+<tr class="separator:a0e4f01f27367b06eed56b7ed068933de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a199d4e8292ebb954ab9f505764ebf2d9"><td class="memTemplParams" colspan="2">template&lt;class Handle_ &gt; </td></tr>
 <tr class="memitem:a199d4e8292ebb954ab9f505764ebf2d9"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9">get_name</a> (const Handle_ &amp;handle)</td></tr>
 <tr class="separator:a199d4e8292ebb954ab9f505764ebf2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -667,6 +673,141 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Length of the dataset, i.e., the extent of its single dimension. If <code>allow_scalar = true</code>, zero is returned in the presence of a scalar dataset, otherwise an error is raised. </dd></dl>
+
+</div>
+</div>
+<a id="a0e4f01f27367b06eed56b7ed068933de" name="a0e4f01f27367b06eed56b7ed068933de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e4f01f27367b06eed56b7ed068933de">&#9670;&#160;</a></span>get_dimensions() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; hsize_t &gt; ritsuko::hdf5::get_dimensions </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>allow_scalar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af7dc03efecbeae8f29724419e4911dcf">get_dimensions()</a></code> that accepts an attribute handle.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to a HDF5 attribute. </td></tr>
+    <tr><td class="paramname">allow_scalar</td><td>Whether to allow scalars.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Dimensions of the attribute. </dd></dl>
+
+</div>
+</div>
+<a id="a265a0cebbaa2c461a5ec98d35d23eab8" name="a265a0cebbaa2c461a5ec98d35d23eab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a265a0cebbaa2c461a5ec98d35d23eab8">&#9670;&#160;</a></span>get_dimensions() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; hsize_t &gt; ritsuko::hdf5::get_dimensions </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>allow_scalar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko_1_1hdf5.html#af7dc03efecbeae8f29724419e4911dcf">get_dimensions()</a></code> that accepts a dataset handle.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to a HDF5 dataset. </td></tr>
+    <tr><td class="paramname">allow_scalar</td><td>Whether to allow scalars.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Dimensions of the dataset. </dd></dl>
+
+</div>
+</div>
+<a id="af7dc03efecbeae8f29724419e4911dcf" name="af7dc03efecbeae8f29724419e4911dcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7dc03efecbeae8f29724419e4911dcf">&#9670;&#160;</a></span>get_dimensions() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; hsize_t &gt; ritsuko::hdf5::get_dimensions </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSpace &amp;&#160;</td>
+          <td class="paramname"><em>space</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>allow_scalar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Get the dimensions of a dataset.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">space</td><td>The data space of the dataset. </td></tr>
+    <tr><td class="paramname">allow_scalar</td><td>Whether to allow scalars.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Dimensions of the dataset. If <code>allow_scalar = true</code>, a zero-length vector is returned in the presence of a scalar dataset, otherwise an error is raised. </dd></dl>
 
 </div>
 </div>

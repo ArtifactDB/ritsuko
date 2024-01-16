@@ -86,31 +86,33 @@ $(function() {
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="exceeds__limit_8hpp.html">exceeds_limit.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="get__1d__length_8hpp.html">get_1d_length.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="get__name_8hpp.html">get_name.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="is__utf8__string_8hpp.html">is_utf8_string.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="load__attribute_8hpp.html">load_attribute.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="load__dataset_8hpp.html">load_dataset.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="missing__placeholder_8hpp.html">missing_placeholder.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="miscellaneous_8hpp.html">miscellaneous.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="open_8hpp.html">open.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="pick__1d__block__size_8hpp.html">pick_1d_block_size.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="pick__nd__block__dimensions_8hpp.html">pick_nd_block_dimensions.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="IterateNdDataset_8hpp.html">IterateNdDataset.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="validate__string_8hpp.html">validate_string.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">namespace </span>hdf5 {}</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="get__dimensions_8hpp.html">get_dimensions.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="get__name_8hpp.html">get_name.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="is__utf8__string_8hpp.html">is_utf8_string.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="load__attribute_8hpp.html">load_attribute.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="load__dataset_8hpp.html">load_dataset.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="missing__placeholder_8hpp.html">missing_placeholder.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="miscellaneous_8hpp.html">miscellaneous.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="open_8hpp.html">open.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="pick__1d__block__size_8hpp.html">pick_1d_block_size.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="pick__nd__block__dimensions_8hpp.html">pick_nd_block_dimensions.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="IterateNdDataset_8hpp.html">IterateNdDataset.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="validate__string_8hpp.html">validate_string.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span>hdf5 {}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aIterateNdDataset_8hpp_html"><div class="ttname"><a href="IterateNdDataset_8hpp.html">IterateNdDataset.hpp</a></div><div class="ttdoc">Iterate through an N-dimensional dataset by block.</div></div>
 <div class="ttc" id="aStream1dNumericDataset_8hpp_html"><div class="ttname"><a href="Stream1dNumericDataset_8hpp.html">Stream1dNumericDataset.hpp</a></div><div class="ttdoc">Stream a numeric 1-dimensional HDF5 dataset into memory.</div></div>
 <div class="ttc" id="aStream1dStringDataset_8hpp_html"><div class="ttname"><a href="Stream1dStringDataset_8hpp.html">Stream1dStringDataset.hpp</a></div><div class="ttdoc">Stream a numeric 1-dimensional HDF5 dataset into memory.</div></div>
 <div class="ttc" id="aas__numeric__datatype_8hpp_html"><div class="ttname"><a href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
 <div class="ttc" id="aexceeds__limit_8hpp_html"><div class="ttname"><a href="exceeds__limit_8hpp.html">exceeds_limit.hpp</a></div><div class="ttdoc">Check for larger-than-expected types in HDF5 datasets.</div></div>
 <div class="ttc" id="aget__1d__length_8hpp_html"><div class="ttname"><a href="get__1d__length_8hpp.html">get_1d_length.hpp</a></div><div class="ttdoc">Get the length of a 1-dimensional HDF5 dataset.</div></div>
+<div class="ttc" id="aget__dimensions_8hpp_html"><div class="ttname"><a href="get__dimensions_8hpp.html">get_dimensions.hpp</a></div><div class="ttdoc">Get the dimensions of a HDF5 dataset.</div></div>
 <div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
 <div class="ttc" id="ais__utf8__string_8hpp_html"><div class="ttname"><a href="is__utf8__string_8hpp.html">is_utf8_string.hpp</a></div><div class="ttdoc">Check if a string datatype uses a UTF-8 encoding.</div></div>
 <div class="ttc" id="aload__attribute_8hpp_html"><div class="ttname"><a href="load__attribute_8hpp.html">load_attribute.hpp</a></div><div class="ttdoc">Load HDF5 attributes.</div></div>
