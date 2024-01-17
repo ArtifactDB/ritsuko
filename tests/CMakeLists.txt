@@ -17,9 +17,12 @@ enable_testing()
 # Main test executable.
 add_executable(
     libtest 
+
     src/r_missing_value.cpp
-    src/is_date_time.cpp
     src/choose_missing_placeholder.cpp
+    src/find_extremes.cpp
+
+    src/is_date_time.cpp
     src/parse_version_string.cpp
 
     src/hdf5/exceeds_limit.cpp
