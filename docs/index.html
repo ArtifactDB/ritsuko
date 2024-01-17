@@ -107,26 +107,33 @@ $(function() {
 <div class="line"><span class="keyword">auto</span> dhandle = handle.openDataSet(<span class="stringliteral">&quot;some_data&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Reading some interesting bits and pieces.</span></div>
-<div class="line"><span class="keyword">auto</span> len = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">ritsuko::hdf5::get_1d_length</a>(dhandle, <span class="stringliteral">&quot;some_data&quot;</span>);</div>
-<div class="line"><span class="keyword">auto</span> tag = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">ritsuko::hdf5::load_scalar_string_attribute</a>(dhandle, <span class="stringliteral">&quot;tag&quot;</span>, <span class="stringliteral">&quot;some_data&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span> len = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">ritsuko::hdf5::get_1d_length</a>(dhandle, <span class="keyword">false</span>);</div>
+<div class="line"><span class="keyword">auto</span> tag = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a9bed2e21f64cc33099c5042be2d6b938">ritsuko::hdf5::open_and_load_scalar_string_attribute</a>(dhandle, <span class="stringliteral">&quot;tag&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Iterating over the dataset by block.</span></div>
-<div class="line"><span class="keyword">auto</span> block_size = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a>(dhandle.getCreatePlist(), len);</div>
-<div class="line">std::vector&lt;double&gt; buffer(len);</div>
-<div class="line">ritsuko::hdf5::iterate_1d_blocks(block_size, len, </div>
-<div class="line">    [&amp;](</div>
-<div class="line">        hsize_t start, </div>
-<div class="line">        hsize_t len, </div>
-<div class="line">        <span class="keyword">const</span> H5::DataSpace&amp; mspace, </div>
-<div class="line">        <span class="keyword">const</span> H5::DataSpace&amp; dspace</div>
-<div class="line">    ) {</div>
-<div class="line">        dhandle.read(buffer.data() + start, H5::PredType::NATIVE_DOUBLE, mspace, dspace);</div>
-<div class="line">    }</div>
-<div class="line">);</div>
+<div class="line"><span class="comment">// Iterating over a 1-dimensional dataset. </span></div>
+<div class="line"><a class="code hl_class" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset&lt;double&gt;</a> stream(&amp;dhandle, len, <span class="comment">/* buffer_size = */</span> 10000);</div>
+<div class="line"><span class="keywordflow">for</span> (hsize_t i = 0; i &lt; len; ++i, stream.next()) {</div>
+<div class="line">    <span class="keyword">auto</span> val = stream.get();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Iterating over a N-dimensional dataset.</span></div>
+<div class="line"><span class="keyword">auto</span> dims = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#af7dc03efecbeae8f29724419e4911dcf">ritsuko::hdf5::get_dimensions</a>(dhandle, <span class="keyword">false</span>);</div>
+<div class="line"><span class="keyword">auto</span> blocks = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#aef675ae3568f50aeb0bc97d65f1a3063">ritsuko::hdf5::pick_nd_block_dimensions</a>(dhandle.getCreatePlist(), dims, <span class="comment">/* buffer_size = */</span> 10000);</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structritsuko_1_1hdf5_1_1IterateNdDataset.html">ritsuko::hdf5::IterateNdDataset</a> iter(&amp;dims, &amp;blocks);</div>
+<div class="line">std::vector&lt;double&gt; buffer;</div>
+<div class="line"><span class="keywordflow">while</span> (!iter.finished()) {</div>
+<div class="line">    buffer.resize(iter.size());</div>
+<div class="line">    dhandle.read(buffer.data(), H5::PredType::NATIVE_DOUBLE, iter.memory_space(), iter.file_space());</div>
+<div class="line">    iter.next();</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dNumericDataset_html"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a></div><div class="ttdoc">Stream a numeric 1-dimensional HDF5 dataset into memory.</div><div class="ttdef"><b>Definition:</b> Stream1dNumericDataset.hpp:31</div></div>
 <div class="ttc" id="ahdf5_8hpp_html"><div class="ttname"><a href="hdf5_8hpp.html">hdf5.hpp</a></div><div class="ttdoc">Umbrella header for ritsuko's HDF5 utilities.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a2e20754e74dfc5afff5d2c89db34cde9"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">ritsuko::hdf5::pick_1d_block_size</a></div><div class="ttdeci">hsize_t pick_1d_block_size(const H5::DSetCreatPropList &amp;cplist, hsize_t full_length, hsize_t buffer_size=10000)</div><div class="ttdef"><b>Definition:</b> pick_1d_block_size.hpp:26</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a9bed2e21f64cc33099c5042be2d6b938"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a9bed2e21f64cc33099c5042be2d6b938">ritsuko::hdf5::open_and_load_scalar_string_attribute</a></div><div class="ttdeci">std::string open_and_load_scalar_string_attribute(const H5Object_ &amp;handle, const char *name, bool utf8=true)</div><div class="ttdef"><b>Definition:</b> miscellaneous.hpp:49</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ac15dcfa823155b137686519d25ccca7d"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d">ritsuko::hdf5::get_1d_length</a></div><div class="ttdeci">hsize_t get_1d_length(const H5::DataSpace &amp;space, bool allow_scalar)</div><div class="ttdef"><b>Definition:</b> get_1d_length.hpp:25</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ae09b2aaf282ec0809b610528f4bf87b3"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ae09b2aaf282ec0809b610528f4bf87b3">ritsuko::hdf5::load_scalar_string_attribute</a></div><div class="ttdeci">std::string load_scalar_string_attribute(const H5::Attribute &amp;attr)</div><div class="ttdef"><b>Definition:</b> load_attribute.hpp:27</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_aef675ae3568f50aeb0bc97d65f1a3063"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#aef675ae3568f50aeb0bc97d65f1a3063">ritsuko::hdf5::pick_nd_block_dimensions</a></div><div class="ttdeci">std::vector&lt; hsize_t &gt; pick_nd_block_dimensions(const H5::DSetCreatPropList &amp;cplist, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t buffer_size=10000)</div><div class="ttdef"><b>Definition:</b> pick_nd_block_dimensions.hpp:26</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_af7dc03efecbeae8f29724419e4911dcf"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#af7dc03efecbeae8f29724419e4911dcf">ritsuko::hdf5::get_dimensions</a></div><div class="ttdeci">std::vector&lt; hsize_t &gt; get_dimensions(const H5::DataSpace &amp;space, bool allow_scalar)</div><div class="ttdef"><b>Definition:</b> get_dimensions.hpp:25</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateNdDataset_html"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateNdDataset.html">ritsuko::hdf5::IterateNdDataset</a></div><div class="ttdoc">Iterate through an N-dimensional dataset by block.</div><div class="ttdef"><b>Definition:</b> IterateNdDataset.hpp:25</div></div>
 </div><!-- fragment --><p >Also see the <a href="https://artifactdb.github.io/ritsuko">reference documentation</a> for more details.</p>
 <h2>Building projects</h2>
 <h3>CMake with <code>FetchContent</code></h3>

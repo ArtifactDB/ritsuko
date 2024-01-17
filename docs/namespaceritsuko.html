@@ -90,6 +90,12 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1FloatExtremes.html">FloatExtremes</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extremes for float types.  <a href="structritsuko_1_1FloatExtremes.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1IntegerExtremes.html">IntegerExtremes</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extremes for integer types.  <a href="structritsuko_1_1IntegerExtremes.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1Version.html">Version</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structritsuko_1_1Version.html" title="Version number.">Version</a> number.  <a href="structritsuko_1_1Version.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +114,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
 <tr class="memitem:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; bool, Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a6039e4e9382e5e3c5ccab69df2a277ba">choose_missing_float_placeholder</a> (Iterator start, Iterator end, bool skip_nan=false)</td></tr>
 <tr class="separator:a6039e4e9382e5e3c5ccab69df2a277ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c6e27babd86a5aecba5bac407d0bab"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:ac4c6e27babd86a5aecba5bac407d0bab"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structritsuko_1_1IntegerExtremes.html">IntegerExtremes</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#ac4c6e27babd86a5aecba5bac407d0bab">find_integer_extremes</a> (Iterator start, Iterator end, Mask mask)</td></tr>
+<tr class="separator:ac4c6e27babd86a5aecba5bac407d0bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21392ec88948b3ab1cf711fd6859c73c"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:a21392ec88948b3ab1cf711fd6859c73c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structritsuko_1_1IntegerExtremes.html">IntegerExtremes</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a21392ec88948b3ab1cf711fd6859c73c">find_integer_extremes</a> (Iterator start, Iterator end)</td></tr>
+<tr class="separator:a21392ec88948b3ab1cf711fd6859c73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bea39bbb6bbd8c7231c1ad5a4dcb674"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:a7bea39bbb6bbd8c7231c1ad5a4dcb674"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structritsuko_1_1FloatExtremes.html">FloatExtremes</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a7bea39bbb6bbd8c7231c1ad5a4dcb674">find_float_extremes</a> (Iterator start, Iterator end, Mask mask, bool skip_nan)</td></tr>
+<tr class="separator:a7bea39bbb6bbd8c7231c1ad5a4dcb674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd6f2a837cf833fb145dcedb2334012"><td class="memTemplParams" colspan="2">template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </td></tr>
+<tr class="memitem:a6fd6f2a837cf833fb145dcedb2334012"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structritsuko_1_1FloatExtremes.html">FloatExtremes</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a6fd6f2a837cf833fb145dcedb2334012">find_float_extremes</a> (Iterator start, Iterator end, bool skip_nan=false)</td></tr>
+<tr class="separator:a6fd6f2a837cf833fb145dcedb2334012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8">is_date_prefix</a> (const char *ptr)</td></tr>
 <tr class="separator:a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af53ad376d532eaac211b7cd93f3dda4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c">is_date</a> (const char *ptr, size_t len)</td></tr>
@@ -382,6 +400,220 @@ template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pair containing (i) a boolean indicating whether a placeholder was successfully found, and (ii) the chosen placeholder if the previous boolean is true. </dd></dl>
+
+</div>
+</div>
+<a id="a6fd6f2a837cf833fb145dcedb2334012" name="a6fd6f2a837cf833fb145dcedb2334012"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd6f2a837cf833fb145dcedb2334012">&#9670;&#160;</a></span>find_float_extremes() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structritsuko_1_1FloatExtremes.html">FloatExtremes</a> ritsuko::find_float_extremes </td>
+          <td>(</td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>skip_nan</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko.html#a7bea39bbb6bbd8c7231c1ad5a4dcb674">find_float_extremes()</a></code> where no values are masked.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterator_</td><td>Forward iterator for float values. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Float type pointed to by <code>Iterator_</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
+    <tr><td class="paramname">end</td><td>End of the dataset. </td></tr>
+    <tr><td class="paramname">skip_nan</td><td>Whether to skip searches for NaN. Useful in frameworks like R that need special consideration of NaN payloads.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether extreme values are present in <code>[start, end)</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a7bea39bbb6bbd8c7231c1ad5a4dcb674" name="a7bea39bbb6bbd8c7231c1ad5a4dcb674"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bea39bbb6bbd8c7231c1ad5a4dcb674">&#9670;&#160;</a></span>find_float_extremes() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structritsuko_1_1FloatExtremes.html">FloatExtremes</a> ritsuko::find_float_extremes </td>
+          <td>(</td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mask&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>skip_nan</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Check for the presence of extreme values in a floating-point dataset. This can be used to choose a missing placeholder value in an online fashion, by calling this function on blocks of the dataset; if any of the extreme values are absent from all blocks, they can be used as the missing value placeholder. By contrast, <code><a class="el" href="namespaceritsuko.html#a8f0d04408fd63a41f12337d8e27b20f9">choose_missing_float_placeholder()</a></code> requires access to the full dataset.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterator_</td><td>Forward iterator for float values. </td></tr>
+    <tr><td class="paramname">Mask_</td><td>Random access iterator for mask values. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Float type pointed to by <code>Iterator_</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
+    <tr><td class="paramname">end</td><td>End of the dataset. </td></tr>
+    <tr><td class="paramname">mask</td><td>Start of the mask vector. This should have the same length as <code>end - start</code>; each entry is true if the corresponding value of the float dataset is masked, and false otherwise. </td></tr>
+    <tr><td class="paramname">skip_nan</td><td>Whether to skip searches for NaN. Useful in frameworks like R that need special consideration of NaN payloads.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether extreme values are present in <code>[start, end)</code>. If <code>skip_nan = true</code>, <code><a class="el" href="structritsuko_1_1FloatExtremes.html#a3ceaec59926636a10238dd8afae1010c">FloatExtremes::has_nan</a></code> is set to false and should be ignored. If <code>Type_</code> is not an IEEE754-compliant float, users should ignore <code><a class="el" href="structritsuko_1_1FloatExtremes.html#a3ceaec59926636a10238dd8afae1010c">FloatExtremes::has_nan</a></code>, <code><a class="el" href="structritsuko_1_1FloatExtremes.html#a8029fe3c0ec914716c1dc6c5bb1503eb">FloatExtremes::has_negative_inf</a></code> and <code><a class="el" href="structritsuko_1_1FloatExtremes.html#a5c63ec9bdeefc7cab7a74b85388f4526">FloatExtremes::has_positive_inf</a></code>. </dd></dl>
+
+</div>
+</div>
+<a id="a21392ec88948b3ab1cf711fd6859c73c" name="a21392ec88948b3ab1cf711fd6859c73c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21392ec88948b3ab1cf711fd6859c73c">&#9670;&#160;</a></span>find_integer_extremes() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structritsuko_1_1IntegerExtremes.html">IntegerExtremes</a> ritsuko::find_integer_extremes </td>
+          <td>(</td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Overload of <code><a class="el" href="namespaceritsuko.html#ac4c6e27babd86a5aecba5bac407d0bab">find_integer_extremes()</a></code> where no values are masked.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterator_</td><td>Forward iterator for integer values. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Integer type pointed to by <code>Iterator_</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
+    <tr><td class="paramname">end</td><td>End of the dataset.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether extreme values are present in <code>[start, end)</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ac4c6e27babd86a5aecba5bac407d0bab" name="ac4c6e27babd86a5aecba5bac407d0bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4c6e27babd86a5aecba5bac407d0bab">&#9670;&#160;</a></span>find_integer_extremes() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator , class Mask , class Type_  = typename std::remove_cv&lt;typename std::remove_reference&lt;decltype(*(std::declval&lt;Iterator&gt;()))&gt;::type, ::type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structritsuko_1_1IntegerExtremes.html">IntegerExtremes</a> ritsuko::find_integer_extremes </td>
+          <td>(</td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mask&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Check for the presence of extreme values in an integer dataset. This can be used to choose a missing placeholder value in an online fashion, by calling this function on blocks of the dataset; if any of the extreme values are absent from all blocks, they can be used as the missing value placeholder. By contrast, <code><a class="el" href="namespaceritsuko.html#a1e2efff2630c08b7145f28b6dd0caaac">choose_missing_integer_placeholder()</a></code> requires access to the full dataset.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterator_</td><td>Forward iterator for integer values. </td></tr>
+    <tr><td class="paramname">Mask_</td><td>Random access iterator for mask values. </td></tr>
+    <tr><td class="paramname">Type_</td><td>Integer type pointed to by <code>Iterator_</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>Start of the dataset. </td></tr>
+    <tr><td class="paramname">end</td><td>End of the dataset. </td></tr>
+    <tr><td class="paramname">mask</td><td>Start of the mask vector. This should have the same length as <code>end - start</code>; each entry is true if the corresponding value of the integer dataset is masked, and false otherwise.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether extreme values are present in <code>[start, end)</code>. If <code>Type_</code> is unsigned, <code><a class="el" href="structritsuko_1_1IntegerExtremes.html#a37b1c4e904260e685784a7736335a9ec">IntegerExtremes::has_lowest</a></code> and <code><a class="el" href="structritsuko_1_1IntegerExtremes.html#ab42cb12eaa83aa5a3e55515be5438129">IntegerExtremes::has_zero</a></code> are the same. </dd></dl>
 
 </div>
 </div>
