@@ -50,6 +50,7 @@ add_executable(
     src/hdf5/as_numeric_datatype.cpp
 
     src/hdf5/vls/define_pointer_datatype.cpp
+    src/hdf5/vls/open.cpp
 )
 
 target_link_libraries(

@@ -24,6 +24,8 @@ H5::DataSet create_dataset(const H5::Group& parent, const std::string& name, con
         dhandle.write(values.data(), H5::PredType::NATIVE_INT);
     } else if constexpr(std::is_same<T, double>::value) {
         dhandle.write(values.data(), H5::PredType::NATIVE_DOUBLE);
+    } else if constexpr(std::is_same<T, uint8_t>::value) {
+        dhandle.write(values.data(), H5::PredType::NATIVE_UINT8);
     } else {
         throw std::runtime_error("unknown type!");
     }

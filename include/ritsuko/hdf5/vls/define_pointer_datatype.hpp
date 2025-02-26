@@ -30,7 +30,7 @@ H5::CompType define_pointer_datatype() {
     return pointer_type;
 }
 
-void validate_pointer_datatype(const H5::CompType& type, size_t start_precision, size_t size_precision) {
+inline void validate_pointer_datatype(const H5::CompType& type, size_t start_precision, size_t size_precision) {
     if (type.getNmembers() != 2) {
         throw std::runtime_error("expected VLS compound datatype to have two members");
     }
