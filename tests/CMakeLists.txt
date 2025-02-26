@@ -48,6 +48,8 @@ add_executable(
     src/hdf5/missing_placeholder.cpp
     src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp
+
+    src/hdf5/vls/define_pointer_datatype.cpp
 )
 
 target_link_libraries(
