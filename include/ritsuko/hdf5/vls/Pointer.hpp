@@ -26,20 +26,24 @@ namespace vls {
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap. 
  * @tparam Length_ Unsigned integer type for the length of the string.
  *
- * Each instance of a `Pointer` defines a variable length string by referencing a range of bytes in the heap dataset, see `ritsuko::hdf5::vls` for details.
+ * Each `Pointer` instance defines a variable length string by referencing a slice of bytes on the VLS heap. 
  * It is expected that `Pointer` instances are stored as a compound datatype as defined by `define_pointer_datatype()`.
  */
 template<typename Offset_, typename Length_>
 struct Pointer {
     /**
      * Starting offset of the string on the heap, in terms of the number of bytes.
+     * This should be no greater than the length of the heap dataset.
      */
     Offset_ offset;
 
     /**
      * Maximum length of the string on the heap, in terms of the number of bytes.
+     * The sum of `offset` and `length` should be no greater than the length of the heap dataset. 
+     *
      * It is not necessary to include the null terminator when setting `length`.
-     * However, the actual length of the string may be shorter than `length` if the range of bytes `[offset, offset + length)` on the heap includes a null terminator.
+     * However, if the slice `[offset, offset + length)` on the heap includes a null terminator, the string should be terminated at the first occurrence.
+     * This allows the slice to be easily reused for shorter strings when modifying a VLS inside an existing heap.
      */
     Length_ length;
 };
@@ -67,6 +71,9 @@ H5::CompType define_pointer_datatype() {
  * - It has exactly two members.
  * - The first member is named `offset` and is of an integer datatype that is unsigned and has no more than than `offset_precision` bits.
  * - The second member is named `length` and is of an integer datatype that is unsigned and has no more than than `length_precision` bits.
+ *
+ * The constraints on the precision of each integer type ensure that the pointer dataset can be represented in memory by the associated type.
+ * For example, setting `offset_precision = 64` allows readers to safely assume that a `uint64_t` can be used for `Pointer::offset`.
  *
  * On success, the contents of the HDF5 dataset associated with `type` can be safely read into an array of appropriately parameterized `Pointer` instances.
  * Otherwise, an error is thrown.

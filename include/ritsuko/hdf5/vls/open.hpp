@@ -22,7 +22,13 @@ namespace hdf5 {
 namespace vls {
 
 /**
- * Open a HDF5 dataset containing pointers into the VLS heap, used to define the individual strings in the VLS array.
+ * Open a HDF5 dataset containing pointers into the VLS heap, used to define the individual strings in a VLS array.
+ *
+ * There are no restrictions on the ordering of entries in the pointer dataset.
+ * Slices for consecutive `Pointer`s do not have to be ordered or contiguous.
+ * This allows one or more entries in the `Pointer` dataset to be modified without invalidating other entries.
+ * Different `Pointer`s can even refer to the same or even overlapping slices, which provides some opportunities to improve compression for repeated strings.
+ *
  * An error is raised if the dataset's datatype is not compound or does not meet the expectations defined by `validate_pointer_datatype()`.
  *
  * @param handle Group containing the dataset of pointers.
@@ -47,8 +53,15 @@ inline H5::DataSet open_pointers(const H5::Group& handle, const char* name, size
 
 /**
  * Open a HDF5 dataset containing the VLS heap.
- * This is expected to be a 1-dimensional dataset of unsigned 8-bit integers,
- * representing the concatenation of bytes from all the variable length strings in the VLS array.
+ * This should be a 1-dimensional dataset of unsigned 8-bit integers, representing the concatenation of bytes from all the variable length strings in the VLS array.
+ * Ideally, all bytes are referenced by at least one `Pointer` in the associated pointer dataset, though this is not required, e.g., if a VLS is replaced with a shorter string.
+ *
+ * We use an integer datatype rather than HDF5's own string datatypes to avoid the risk of a naive incorrect interpretation of the heap as an array of fixed-width strings.
+ *
+ * When reading the heap into memory, users are advised to first load the bytes into an `unsigned char` array and then read them via an aliased `char *`.
+ * This preserves the bit patterns by avoiding a HDF5-mediated conversion between the dataset's unsigned 8-bit integer datatype and a possibly-signed `char` type.
+ * Conversely, when creating a heap dataset, we should use an aliased `unsigned char *` to access the contents C-style strings.
+ * We write this to the heap dataset by using HDF5 to trivially convert from the `NATIVE_UCHAR` memory type to the dataset's 8-bit unsigned integer datatype.
  *
  * @param handle Group containing the dataset of pointers.
  * @param name Name of the dataset of pointers.
