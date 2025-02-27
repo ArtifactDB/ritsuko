@@ -12,6 +12,31 @@
 #include "utils.h"
 #include "../utils.h"
 
+static size_t fill_pointers(const std::vector<std::string>& example, std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> >& pointers, size_t extra = 0) {
+    size_t nlen = example.size();
+    size_t count = 0;
+    for (size_t i = 0; i < nlen; ++i) {
+        pointers[i].offset = count;
+        auto ex_size = example[i].size() + extra; // possibly adding some extra stuff null terminators to the end.
+        pointers[i].length = ex_size;
+        count += ex_size;
+    }
+    return count;
+}
+
+static std::vector<unsigned char> create_heap(const std::vector<std::string>& example, size_t count, size_t extra = 0) {
+    std::vector<unsigned char> heap;
+    heap.reserve(count);
+    for (const auto& ex : example) {
+        auto ptr = reinterpret_cast<const unsigned char*>(ex.c_str());
+        heap.insert(heap.end(), ptr, ptr + ex.size());
+        if (extra) {
+            heap.insert(heap.end(), extra, '\0'); // possibly adding some extra null terminators to the end.
+        }
+    }
+    return heap;
+}
+
 TEST(VlsStream1dArray, Basic) {
     size_t nlen = 12345;
     std::vector<std::string> example(nlen);
@@ -25,22 +50,11 @@ TEST(VlsStream1dArray, Basic) {
         H5::H5File handle(path, H5F_ACC_TRUNC);
 
         std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(nlen);
-        size_t count = 0;
-        for (size_t i = 0; i < nlen; ++i) {
-            pointers[i].offset = count;
-            auto ex_size = example[i].size();
-            pointers[i].length = ex_size;
-            count += ex_size;
-        }
+        size_t count = fill_pointers(example, pointers);
         auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ 51);
 
-        std::vector<unsigned char> heap;
-        heap.reserve(count);
-        for (const auto& ex : example) {
-            auto ptr = reinterpret_cast<const unsigned char*>(ex.c_str());
-            heap.insert(heap.end(), ptr, ptr + ex.size());
-        }
+        auto heap = create_heap(example, count);
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
@@ -72,25 +86,14 @@ TEST(VlsStream1dArray, NullTerminated) {
     const std::string path = "TEST-vls-stream.h5";
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
+        size_t extra = 2;
 
         std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(nlen);
-        size_t count = 0;
-        for (size_t i = 0; i < nlen; ++i) {
-            pointers[i].offset = count;
-            auto ex_size = example[i].size() + 2; // adding some extra null terminators.
-            pointers[i].length = ex_size;
-            count += ex_size;
-        }
+        size_t count = fill_pointers(example, pointers, extra);
         auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ 17);
 
-        std::vector<unsigned char> heap;
-        heap.reserve(count);
-        for (const auto& ex : example) {
-            auto ptr = reinterpret_cast<const unsigned char*>(ex.c_str());
-            heap.insert(heap.end(), ptr, ptr + ex.size());
-            heap.insert(heap.end(), 2, '\0');
-        }
+        auto heap = create_heap(example, count, extra);
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
@@ -124,22 +127,11 @@ TEST(VlsStream1dArray, Unicode) {
         H5::H5File handle(path, H5F_ACC_TRUNC);
 
         std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(nlen);
-        size_t count = 0;
-        for (size_t i = 0; i < nlen; ++i) {
-            pointers[i].offset = count;
-            auto ex_size = example[i].size(); 
-            pointers[i].length = ex_size;
-            count += ex_size;
-        }
+        size_t count = fill_pointers(example, pointers);
         auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
-        std::vector<unsigned char> heap;
-        heap.reserve(count);
-        for (const auto& ex : example) {
-            auto ptr = reinterpret_cast<const unsigned char*>(ex.c_str());
-            heap.insert(heap.end(), ptr, ptr + ex.size());
-        }
+        auto heap = create_heap(example, count);
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
