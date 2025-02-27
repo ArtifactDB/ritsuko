@@ -153,7 +153,7 @@ private:
             hsize_t start = val.offset;
             hsize_t count = val.length;
             if (start > my_heap_full_length || start + count > my_heap_full_length) {
-                throw std::runtime_error("pointers for variable length dataset at '" + get_name(*my_pointers) + "' are out of range of the heap at '" + get_name(*my_heap) + "'");
+                throw std::runtime_error("VLS array pointers at '" + get_name(*my_pointers) + "' are out of range of the heap at '" + get_name(*my_heap) + "'");
             }
 
             auto& curstr = my_final_buffer[i];
