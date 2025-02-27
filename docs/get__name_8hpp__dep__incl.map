@@ -1,9 +1,29 @@
 <map id="ritsuko/hdf5/get_name.hpp" name="ritsuko/hdf5/get_name.hpp">
-<area shape="rect" id="node1" title="Get the name of a HDF5 object." alt="" coords="348,5,523,31"/>
-<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="5,79,204,119"/>
-<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="343,255,485,280"/>
-<area shape="rect" id="node4" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="150,174,342,199"/>
-<area shape="rect" id="node5" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="279,79,463,119"/>
-<area shape="rect" id="node6" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="482,167,621,207"/>
-<area shape="rect" id="node7" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="645,167,783,207"/>
+<area shape="rect" id="Node000001" title="Get the name of a HDF5 object." alt="" coords="436,5,611,31"/>
+<area shape="rect" id="Node000002" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="263,79,462,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="486,41,404,81,401,76,484,36"/>
+<area shape="rect" id="Node000003" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="342,256,484,282"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="515,46,421,257,416,255,510,44"/>
+<area shape="rect" id="Node000004" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="152,175,343,201"/>
+<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="421,32,320,50,279,64,254,81,242,103,240,129,247,174,241,175,234,129,237,102,250,77,277,59,318,45,421,26"/>
+<area shape="rect" id="Node000005" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="5,79,189,120"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="444,37,189,84,188,78,443,32"/>
+<area shape="rect" id="Node000006" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="480,168,618,208"/>
+<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="530,46,549,167,543,168,525,47"/>
+<area shape="rect" id="Node000007" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="642,168,781,208"/>
+<area shape="poly" id="edge12_Node000001_Node000007" title=" " alt="" coords="547,40,627,118,686,165,683,169,623,122,543,44"/>
+<area shape="rect" id="Node000008" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional VLS array into memory." alt="" coords="637,79,808,120"/>
+<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="569,35,674,76,672,81,567,40"/>
+<area shape="rect" id="Node000010" href="$vls_2open_8hpp.html" title="Open HDF5 datasets for a VLS array." alt="" coords="831,86,998,112"/>
+<area shape="poly" id="edge16_Node000001_Node000010" title=" " alt="" coords="599,32,855,83,854,89,598,37"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="375,134,412,255,407,257,370,135"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="326,131,265,177,262,173,323,127"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="288,206,389,253,387,258,286,210"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="105,134,117,173,128,191,141,206,175,223,226,238,342,257,341,263,225,243,173,228,138,210,123,194,112,175,99,136"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="146,125,228,172,225,177,143,130"/>
+<area shape="poly" id="edge11_Node000006_Node000003" title=" " alt="" coords="503,219,435,258,433,253,501,214"/>
+<area shape="poly" id="edge13_Node000007_Node000003" title=" " alt="" coords="628,214,460,258,458,253,627,209"/>
+<area shape="rect" id="Node000009" href="$vls_8hpp.html" title="Utilities for handling ritsuko&#39;s custom VLS arrays." alt="" coords="821,175,976,201"/>
+<area shape="poly" id="edge15_Node000008_Node000009" title=" " alt="" coords="777,124,875,172,873,177,775,129"/>
+<area shape="poly" id="edge17_Node000010_Node000009" title=" " alt="" coords="912,128,903,175,898,174,907,127"/>
 </map>

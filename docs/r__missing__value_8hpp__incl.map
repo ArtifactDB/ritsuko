@@ -1,5 +1,7 @@
 <map id="ritsuko/r_missing_value.hpp" name="ritsuko/r_missing_value.hpp">
-<area shape="rect" id="node1" title="Obtain R&#39;s missing value." alt="" coords="5,5,188,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="23,79,85,104"/>
-<area shape="rect" id="node3" title=" " alt="" coords="109,79,170,104"/>
+<area shape="rect" id="Node000001" title="Obtain R&#39;s missing value." alt="" coords="5,5,188,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="25,79,85,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,33,72,67,67,64,87,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="109,79,169,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="106,30,126,64,122,67,101,33"/>
 </map>

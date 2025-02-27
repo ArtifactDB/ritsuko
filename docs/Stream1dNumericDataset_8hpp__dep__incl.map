@@ -1,5 +1,8 @@
 <map id="ritsuko/hdf5/Stream1dNumericDataset.hpp" name="ritsuko/hdf5/Stream1dNumericDataset.hpp">
-<area shape="rect" id="node1" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="5,5,204,45"/>
-<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="33,167,176,192"/>
-<area shape="rect" id="node3" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="75,93,267,119"/>
+<area shape="rect" id="Node000001" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="5,5,204,46"/>
+<area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="33,168,176,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,60,66,89,64,104,66,119,79,145,95,166,91,169,74,148,61,120,58,104,61,87,75,58"/>
+<area shape="rect" id="Node000003" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="76,94,267,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="133,56,163,92,159,95,129,60"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="152,133,118,169,114,165,148,129"/>
 </map>

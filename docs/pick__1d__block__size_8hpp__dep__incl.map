@@ -1,8 +1,22 @@
 <map id="ritsuko/hdf5/pick_1d_block_size.hpp" name="ritsuko/hdf5/pick_1d_block_size.hpp">
-<area shape="rect" id="node1" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="169,5,308,45"/>
-<area shape="rect" id="node2" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="31,93,230,133"/>
-<area shape="rect" id="node3" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="147,269,290,295"/>
-<area shape="rect" id="node5" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="254,93,438,133"/>
-<area shape="rect" id="node6" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="400,181,538,221"/>
-<area shape="rect" id="node4" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="122,189,314,214"/>
+<area shape="rect" id="Node000001" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="266,5,404,46"/>
+<area shape="rect" id="Node000002" href="$Stream1dNumericDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="236,94,434,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="337,62,337,94,332,94,332,62"/>
+<area shape="rect" id="Node000003" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="130,271,273,297"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="250,36,182,44,113,56,54,73,32,84,18,96,9,114,10,133,18,153,31,172,62,204,83,221,125,249,168,268,166,273,123,254,80,225,58,208,27,175,13,155,5,134,4,113,14,92,29,79,52,68,112,51,181,38,249,30"/>
+<area shape="rect" id="Node000005" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="28,94,212,135"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="273,55,170,96,168,91,271,50"/>
+<area shape="rect" id="Node000006" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="372,183,511,223"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="404,51,429,69,448,93,456,116,457,140,450,183,445,182,452,140,451,117,443,95,425,73,401,56"/>
+<area shape="rect" id="Node000007" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional VLS array into memory." alt="" coords="518,94,688,135"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="411,49,543,91,541,96,409,54"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,151,329,188,312,225,296,241,278,254,241,273,239,268,276,250,293,237,307,222,324,187,331,150"/>
+<area shape="rect" id="Node000004" href="$load__dataset_8hpp.html" title="Helper functions to load datasets." alt="" coords="106,190,297,216"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="293,146,221,192,219,187,290,141"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="204,232,204,271,199,271,199,232"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="102,149,90,186,90,205,96,222,108,238,123,250,159,268,157,273,121,255,104,241,91,225,84,205,85,185,97,147"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="151,144,192,188,188,192,147,148"/>
+<area shape="poly" id="edge10_Node000006_Node000003" title=" " alt="" coords="368,231,239,273,238,268,367,226"/>
+<area shape="rect" id="Node000008" href="$vls_8hpp.html" title="Utilities for handling ritsuko&#39;s custom VLS arrays." alt="" coords="534,190,690,216"/>
+<area shape="poly" id="edge12_Node000007_Node000008" title=" " alt="" coords="609,150,613,190,608,190,604,151"/>
 </map>

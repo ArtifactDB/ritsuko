@@ -1,6 +1,9 @@
 <map id="ritsuko/hdf5/get_name.hpp" name="ritsuko/hdf5/get_name.hpp">
-<area shape="rect" id="node1" title="Get the name of a HDF5 object." alt="" coords="42,5,217,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,79,77,104"/>
-<area shape="rect" id="node3" title=" " alt="" coords="102,79,157,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="181,79,240,104"/>
+<area shape="rect" id="Node000001" title="Get the name of a HDF5 object." alt="" coords="40,5,215,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,77,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,34,69,71,65,67,111,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="101,79,154,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,31,130,63,125,63,125,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="179,79,236,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="143,30,185,67,181,71,139,34"/>
 </map>

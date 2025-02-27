@@ -1,5 +1,8 @@
 <map id="ritsuko/hdf5/pick_nd_block_dimensions.hpp" name="ritsuko/hdf5/pick_nd_block_dimensions.hpp">
-<area shape="rect" id="node1" title="Pick block dimensions for an N&#45;dimensional HDF5 dataset." alt="" coords="5,5,163,45"/>
-<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="13,181,155,207"/>
-<area shape="rect" id="node3" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="68,93,207,133"/>
+<area shape="rect" id="Node000001" title="Pick block dimensions for an N&#45;dimensional HDF5 dataset." alt="" coords="5,5,162,46"/>
+<area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="12,183,155,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,61,58,95,55,114,58,134,67,160,78,181,74,184,62,162,53,135,50,114,53,93,64,59"/>
+<area shape="rect" id="Node000003" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="68,94,206,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="106,58,127,92,123,95,101,61"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="117,149,94,184,90,181,113,146"/>
 </map>

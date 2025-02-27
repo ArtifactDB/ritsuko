@@ -1,5 +1,8 @@
 <map id="ritsuko/hdf5/IterateNdDataset.hpp" name="ritsuko/hdf5/IterateNdDataset.hpp">
-<area shape="rect" id="node1" title="Iterate through an N&#45;dimensional dataset by block." alt="" coords="5,5,223,31"/>
-<area shape="rect" id="node2" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="43,167,185,192"/>
-<area shape="rect" id="node3" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="98,79,237,119"/>
+<area shape="rect" id="Node000001" title="Iterate through an N&#45;dimensional dataset by block." alt="" coords="5,5,222,31"/>
+<area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="42,168,185,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,46,88,80,85,99,88,119,97,145,108,166,104,169,92,147,83,120,80,99,83,78,96,44"/>
+<area shape="rect" id="Node000003" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="98,79,236,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,42,156,77,151,80,128,45"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="147,134,124,169,120,166,143,131"/>
 </map>

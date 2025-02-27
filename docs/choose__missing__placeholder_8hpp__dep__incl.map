@@ -1,5 +1,8 @@
 <map id="ritsuko/choose_missing_placeholder.hpp" name="ritsuko/choose_missing_placeholder.hpp">
-<area shape="rect" id="node1" title="Choose a placeholder for missing values." alt="" coords="72,5,231,45"/>
-<area shape="rect" id="node2" href="$find__extremes_8hpp.html" title="Find extremes to use as missing placeholders." alt="" coords="5,93,175,119"/>
-<area shape="rect" id="node3" href="$ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="87,167,215,192"/>
+<area shape="rect" id="Node000001" title="Choose a placeholder for missing values." alt="" coords="70,5,229,46"/>
+<area shape="rect" id="Node000002" href="$find__extremes_8hpp.html" title="Find extremes to use as missing placeholders." alt="" coords="5,94,174,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,60,101,95,97,92,123,57"/>
+<area shape="rect" id="Node000003" href="$ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="86,168,213,193"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="176,58,188,88,190,104,188,120,176,147,162,169,157,166,172,145,183,119,185,104,183,89,171,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,130,141,165,137,169,107,133"/>
 </map>

@@ -1,6 +1,9 @@
 <map id="ritsuko/is_date_time.hpp" name="ritsuko/is_date_time.hpp">
-<area shape="rect" id="node1" title="Utilities to check date and time formats." alt="" coords="38,5,201,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,79,65,104"/>
-<area shape="rect" id="node3" title=" " alt="" coords="89,79,149,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="174,79,246,104"/>
+<area shape="rect" id="Node000001" title="Utilities to check date and time formats." alt="" coords="38,5,200,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,65,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,34,62,71,59,67,103,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,79,149,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,31,122,63,116,63,116,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="173,79,244,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="136,29,183,67,180,71,132,34"/>
 </map>

@@ -1,13 +1,29 @@
 <map id="ritsuko/hdf5/Stream1dNumericDataset.hpp" name="ritsuko/hdf5/Stream1dNumericDataset.hpp">
-<area shape="rect" id="node1" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="293,5,491,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="356,167,428,192"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,167,64,192"/>
-<area shape="rect" id="node4" title=" " alt="" coords="489,167,567,192"/>
-<area shape="rect" id="node5" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="195,93,354,119"/>
-<area shape="rect" id="node6" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="430,93,557,119"/>
-<area shape="rect" id="node7" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="69,93,171,119"/>
-<area shape="rect" id="node9" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="633,93,802,119"/>
-<area shape="rect" id="node8" title=" " alt="" coords="93,167,147,192"/>
-<area shape="rect" id="node10" title=" " alt="" coords="628,167,711,192"/>
-<area shape="rect" id="node11" title=" " alt="" coords="735,167,796,192"/>
+<area shape="rect" id="Node000001" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="290,5,488,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="353,168,424,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="391,46,391,152,386,152,386,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,168,63,193"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="289,38,221,47,153,59,95,75,73,85,57,96,48,108,42,123,36,153,31,152,36,121,43,105,53,92,70,80,93,70,152,54,221,41,289,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="485,168,562,193"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="489,41,532,60,550,75,566,93,571,109,568,127,549,158,544,155,563,125,566,110,561,95,546,79,529,65,487,45"/>
+<area shape="rect" id="Node000005" href="$pick__1d__block__size_8hpp.html" title="Pick a block size for a 1&#45;dimensional HDF5 dataset." alt="" coords="194,94,352,120"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="361,49,304,87,302,83,358,44"/>
+<area shape="rect" id="Node000006" href="$get__1d__length_8hpp.html" title="Get the length of a 1&#45;dimensional HDF5 dataset." alt="" coords="426,94,552,120"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="415,44,463,82,460,86,412,49"/>
+<area shape="rect" id="Node000007" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="67,94,169,120"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="322,49,175,92,174,87,320,44"/>
+<area shape="rect" id="Node000009" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="626,94,794,120"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="470,44,646,87,645,92,468,49"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="294,118,358,157,355,162,291,122"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="473,122,420,160,417,156,470,118"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="497,119,513,152,508,155,492,121"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="165,118,339,163,337,168,163,123"/>
+<area shape="poly" id="edge12_Node000007_Node000003" title=" " alt="" coords="105,122,61,159,58,155,102,118"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="91,168,145,193"/>
+<area shape="poly" id="edge11_Node000007_Node000008" title=" " alt="" coords="121,120,121,152,115,152,115,120"/>
+<area shape="poly" id="edge16_Node000009_Node000002" title=" " alt="" coords="656,123,440,171,439,165,655,118"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="621,168,703,193"/>
+<area shape="poly" id="edge14_Node000009_Node000010" title=" " alt="" coords="704,121,681,156,676,153,700,118"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="726,168,787,193"/>
+<area shape="poly" id="edge15_Node000009_Node000011" title=" " alt="" coords="720,118,743,153,738,156,715,121"/>
 </map>
