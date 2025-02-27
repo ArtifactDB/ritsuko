@@ -4,6 +4,7 @@
 #include "open.hpp"
 #include "Pointer.hpp"
 #include "Stream1dArray.hpp"
+#include "validate.hpp"
 
 /**
  * @file vls.hpp

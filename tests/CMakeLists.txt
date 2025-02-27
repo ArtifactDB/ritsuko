@@ -52,6 +52,7 @@ add_executable(
     src/hdf5/vls/Pointer.cpp
     src/hdf5/vls/open.cpp
     src/hdf5/vls/Stream1dArray.cpp
+    src/hdf5/vls/validate.cpp
 )
 
 target_link_libraries(
