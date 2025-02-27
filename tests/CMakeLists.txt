@@ -51,6 +51,7 @@ add_executable(
 
     src/hdf5/vls/define_pointer_datatype.cpp
     src/hdf5/vls/open.cpp
+    src/hdf5/vls/Stream1dDataset.cpp
 )
 
 target_link_libraries(

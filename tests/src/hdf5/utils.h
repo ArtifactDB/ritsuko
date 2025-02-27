@@ -1,9 +1,11 @@
-#ifndef RITSUKO_TEST_UTILS_H
-#define RITSUKO_TEST_UTILS_H
+#ifndef RITSUKO_HDF5_TEST_UTILS_H
+#define RITSUKO_HDF5_TEST_UTILS_H
 
 #include <vector>
 #include <type_traits>
 #include <stdexcept>
+
+#include "ritsuko/hdf5/as_numeric_datatype.hpp"
 
 template<typename T>
 H5::DataSet create_dataset(const H5::Group& parent, const std::string& name, const std::vector<T>& values, const H5::DataType& dtype, hsize_t compress_chunk = 0) {
@@ -19,17 +21,7 @@ H5::DataSet create_dataset(const H5::Group& parent, const std::string& name, con
     }
 
     auto dhandle = parent.createDataSet(name, dtype, dspace, cplist);
-
-    if constexpr(std::is_same<T, int>::value) {
-        dhandle.write(values.data(), H5::PredType::NATIVE_INT);
-    } else if constexpr(std::is_same<T, double>::value) {
-        dhandle.write(values.data(), H5::PredType::NATIVE_DOUBLE);
-    } else if constexpr(std::is_same<T, uint8_t>::value) {
-        dhandle.write(values.data(), H5::PredType::NATIVE_UINT8);
-    } else {
-        throw std::runtime_error("unknown type!");
-    }
-
+    dhandle.write(values.data(), ritsuko::hdf5::as_numeric_datatype<T>());
     return dhandle;
 }
 
