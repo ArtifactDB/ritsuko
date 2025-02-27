@@ -123,18 +123,13 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Assorted functions for handling <b>ritsuko</b>'s custom VLS arrays. </p>
-<p>One weakness of HDF5 is its inability to efficiently handle variable length string (VLS) arrays. Storing them as fixed-length strings requires padding all strings to the longest string, causing an inflation in disk usage that cannot be completely countered by compression. On the other hand, HDF5's own VLS datatype does not compress the strings themselves, only the pointers to those strings.</p>
+<p>One weakness of HDF5 is its inability to efficiently handle variable length string (VLS) arrays. Storing them as fixed-length strings requires padding all strings to the longest string, causing an inflation in disk usage that cannot be completely negated by compression. On the other hand, HDF5's own VLS datatype does not compress the strings themselves, only the pointers to those strings.</p>
 <p>To patch over this weakness in current versions of HDF5, <b>ritsuko</b> introduces its own concept of a VLS array. This is defined by two HDF5 datasets - one storing a VLS heap, and another storing pointers into that heap.</p>
 <ul>
-<li>The VLS heap is a 1-dimensional dataset of unsigned 8-bit integers, containing the concatenation of all variable length strings in the array. This is decoded by casting the integers to <code>unsigned char</code> and then reading them via an aliased <code>char *</code>.</li>
-<li>The pointer dataset is an <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$N$" src="form_0.png"/></picture>-dimensional dataset of a compound datatype defined by <code><a class="el" href="#a8648c7288f1c09d0bb882edbca9ee19e">define_pointer_datatype()</a></code>. Each entry of the pointer dataset contains the starting offset and length of a single VLS on the heap.</li>
+<li>The VLS heap is a 1-dimensional dataset of unsigned 8-bit integers, containing the concatenation of bytes from all variable length strings in the VLS array. Check out <code><a class="el" href="#a21fa0f5458d346ab7f419b16f2edd4a3">open_heap()</a></code> for details.</li>
+<li>The pointer dataset is an N-dimensional dataset of a compound datatype defined by <code><a class="el" href="#a8648c7288f1c09d0bb882edbca9ee19e">define_pointer_datatype()</a></code>. Each entry of the pointer dataset contains the starting offset and length of a single VLS on the heap. Check out <code><a class="el" href="#a4b663e90f9c0729b1336650eb230a995">open_pointers()</a></code> for details.</li>
 </ul>
-<p>The idea is to read the pointer dataset into an array of <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> instances, and then use the offset and length for each <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> to extract a slice of characters from the heap. Each slice defines a VLS without any need for a null terminator. The only restriction on the slice is that it should lie within range of the heap - otherwise, anything is allowed:</p>
-<ul>
-<li>Slices for consecutive <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code>s do not have to be ordered or contiguous. This allows one or more entries in the <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> dataset to be modified without invalidating other entries.</li>
-<li>Different <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code>s can refer to the same or even overlapping slices. This provides some opportunities to improve compression for repeated strings.</li>
-<li>If a null terminator is present in the slice, it should terminate the string before the end of the slice. This allows the slice to be reused for shorter strings when modifying a single VLS.</li>
-</ul>
+<p>The idea is to read the pointer dataset into an array of <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> instances, and then use the offset and length for each <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> to extract a slice of characters from the heap. Each slice defines the VLS corresponding to that <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code>.</p>
 <p>Typically the pointer and heap datasets for a single VLS array will be stored in their own group, where they can be opened by <code><a class="el" href="#a4b663e90f9c0729b1336650eb230a995">open_pointers()</a></code> and <code><a class="el" href="#a21fa0f5458d346ab7f419b16f2edd4a3">open_heap()</a></code>, respectively. See also <code><a class="el" href="classritsuko_1_1hdf5_1_1vls_1_1Stream1dArray.html" title="Stream a 1-dimensional VLS array into memory.">Stream1dArray</a></code> to quickly stream the contents of a VLS array. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a8648c7288f1c09d0bb882edbca9ee19e" name="a8648c7288f1c09d0bb882edbca9ee19e"></a>
@@ -191,13 +186,13 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Open a HDF5 dataset containing the VLS heap. This is expected to be a 1-dimensional dataset of unsigned 8-bit integers, representing the concatenation of bytes from all the variable length strings in the VLS array.</p>
+<p>Open a HDF5 dataset containing the VLS heap. This should be a 1-dimensional dataset of unsigned 8-bit integers, representing the concatenation of bytes from all the variable length strings in the VLS array. Ideally, all bytes are referenced by at least one <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> in the associated pointer dataset, though this is not required, e.g., if a VLS is replaced with a shorter string.</p>
+<p>We use an integer datatype rather than HDF5's own string datatypes to avoid the risk of a naive incorrect interpretation of the heap as an array of fixed-width strings.</p>
+<p>When reading the heap into memory, users are advised to first load the bytes into an <code>unsigned char</code> array and then read them via an aliased <code>char *</code>. This preserves the bit patterns by avoiding a HDF5-mediated conversion between the dataset's unsigned 8-bit integer datatype and a possibly-signed <code>char</code> type. Conversely, when creating a heap dataset, we should use an aliased <code>unsigned char *</code> to access the contents C-style strings. We write this to the heap dataset by using HDF5 to trivially convert from the <code>NATIVE_UCHAR</code> memory type to the dataset's 8-bit unsigned integer datatype.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Group containing the dataset of pointers. </td></tr>
-    <tr><td class="paramname">name</td><td>Name of the dataset of pointers. </td></tr>
-    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code>Pointer::start</code>. </td></tr>
-    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code>Pointer::size</code>.</td></tr>
+    <tr><td class="paramname">name</td><td>Name of the dataset of pointers.</td></tr>
   </table>
   </dd>
 </dl>
@@ -241,13 +236,15 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Open a HDF5 dataset containing pointers into the VLS heap, used to define the individual strings in the VLS array. An error is raised if the dataset's datatype is not compound or does not meet the expectations defined by <code><a class="el" href="#a34c6f25b96bf830612b2ce5bbddb8ef0">validate_pointer_datatype()</a></code>.</p>
+<p>Open a HDF5 dataset containing pointers into the VLS heap, used to define the individual strings in a VLS array.</p>
+<p>There are no restrictions on the ordering of entries in the pointer dataset. Slices for consecutive <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code>s do not have to be ordered or contiguous. This allows one or more entries in the <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> dataset to be modified without invalidating other entries. Different <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code>s can even refer to the same or even overlapping slices, which provides some opportunities to improve compression for repeated strings.</p>
+<p>An error is raised if the dataset's datatype is not compound or does not meet the expectations defined by <code><a class="el" href="#a34c6f25b96bf830612b2ce5bbddb8ef0">validate_pointer_datatype()</a></code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>Group containing the dataset of pointers. </td></tr>
     <tr><td class="paramname">name</td><td>Name of the dataset of pointers. </td></tr>
-    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code>Pointer::start</code>. </td></tr>
-    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code>Pointer::size</code>.</td></tr>
+    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start offset, see <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">Pointer::offset</a></code>. </td></tr>
+    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string length, see <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">Pointer::length</a></code>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -292,12 +289,13 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 <li>The first member is named <code>offset</code> and is of an integer datatype that is unsigned and has no more than than <code>offset_precision</code> bits.</li>
 <li>The second member is named <code>length</code> and is of an integer datatype that is unsigned and has no more than than <code>length_precision</code> bits.</li>
 </ul>
+<p>The constraints on the precision of each integer type ensure that the pointer dataset can be represented in memory by the associated type. For example, setting <code>offset_precision = 64</code> allows readers to safely assume that a <code>uint64_t</code> can be used for <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">Pointer::offset</a></code>.</p>
 <p>On success, the contents of the HDF5 dataset associated with <code>type</code> can be safely read into an array of appropriately parameterized <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html" title="Pointer into the VLS heap.">Pointer</a></code> instances. Otherwise, an error is thrown.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>Compound datatype, typically generated from a <code>H5::DataSet</code> instance. </td></tr>
-    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code>Pointer::start</code>. </td></tr>
-    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code>Pointer::size</code>. </td></tr>
+    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">Pointer::offset</a></code>. </td></tr>
+    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code><a class="el" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">Pointer::length</a></code>. </td></tr>
   </table>
   </dd>
 </dl>

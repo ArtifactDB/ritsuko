@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Utilities for handling ritsuko&#39;s custom VLS arrays." alt="" coords="416,5,571,31"/>
 <area shape="rect" id="Node000002" href="$vls_2open_8hpp.html" title="Open HDF5 datasets for a VLS array." alt="" coords="225,79,298,105"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="455,34,314,77,312,72,453,29"/>
-<area shape="rect" id="Node000010" href="$Pointer_8hpp_source.html" title=" " alt="" coords="450,153,537,178"/>
+<area shape="rect" id="Node000010" href="$Pointer_8hpp.html" title="Compound datatype for the VLS heap pointer." alt="" coords="450,153,537,178"/>
 <area shape="poly" id="edge25_Node000001_Node000010" title=" " alt="" coords="496,31,496,137,491,137,491,31"/>
 <area shape="rect" id="Node000015" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional VLS array into memory." alt="" coords="677,79,809,105"/>
 <area shape="poly" id="edge26_Node000001_Node000015" title=" " alt="" coords="537,29,687,72,685,77,535,34"/>

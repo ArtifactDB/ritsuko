@@ -1,0 +1,20 @@
+<map id="ritsuko/hdf5/vls/Pointer.hpp" name="ritsuko/hdf5/vls/Pointer.hpp">
+<area shape="rect" id="Node000001" title="Compound datatype for the VLS heap pointer." alt="" coords="124,5,303,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="242,153,313,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,30,254,78,274,137,269,139,250,80,220,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,153,83,178"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,26,94,33,66,44,40,60,20,80,14,94,15,109,28,139,23,141,10,110,9,93,15,78,37,55,64,39,93,28,123,21"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="187,79,240,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,31,216,63,211,63,211,31"/>
+<area shape="rect" id="Node000005" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="315,79,493,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="247,29,358,71,357,76,245,34"/>
+<area shape="rect" id="Node000008" href="$exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="29,79,163,105"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="195,34,130,73,127,68,192,29"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="384,108,313,147,311,142,381,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="350,153,431,178"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="404,105,398,138,393,137,399,104"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="455,153,516,178"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="420,103,462,140,459,144,416,107"/>
+<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="128,103,233,144,231,149,126,108"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="90,106,64,142,60,138,85,103"/>
+</map>

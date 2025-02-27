@@ -93,7 +93,7 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Pointer.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef RITSUKO_HDF5_VLS_define_pointer_datatype_HPP</span></div>
+<a href="Pointer_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef RITSUKO_HDF5_VLS_define_pointer_datatype_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define RITSUKO_HDF5_VLS_define_pointer_datatype_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;H5Cpp.h&quot;</span></div>
@@ -113,70 +113,70 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
 <div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html">   33</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html">Pointer</a> {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">   37</a></span>    Offset_ <a class="code hl_variable" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">offset</a>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">   44</a></span>    Length_ <a class="code hl_variable" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">length</a>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">   38</a></span>    Offset_ <a class="code hl_variable" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">offset</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">   48</a></span>    Length_ <a class="code hl_variable" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">length</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5_1_1vls.html#a8648c7288f1c09d0bb882edbca9ee19e">   56</a></span>H5::CompType <a class="code hl_function" href="namespaceritsuko_1_1hdf5_1_1vls.html#a8648c7288f1c09d0bb882edbca9ee19e">define_pointer_datatype</a>() {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">typedef</span> <a class="code hl_struct" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html">Pointer&lt;Offset_, Length_&gt;</a> tmp;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    H5::CompType pointer_type(<span class="keyword">sizeof</span>(tmp));</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    pointer_type.insertMember(<span class="stringliteral">&quot;offset&quot;</span>, HOFFSET(tmp, offset), <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype&lt;Offset_&gt;</a>());</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    pointer_type.insertMember(<span class="stringliteral">&quot;length&quot;</span>, HOFFSET(tmp, length), <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype&lt;Length_&gt;</a>());</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">return</span> pointer_type;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5_1_1vls.html#a8648c7288f1c09d0bb882edbca9ee19e">   60</a></span>H5::CompType <a class="code hl_function" href="namespaceritsuko_1_1hdf5_1_1vls.html#a8648c7288f1c09d0bb882edbca9ee19e">define_pointer_datatype</a>() {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">typedef</span> <a class="code hl_struct" href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html">Pointer&lt;Offset_, Length_&gt;</a> tmp;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    H5::CompType pointer_type(<span class="keyword">sizeof</span>(tmp));</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    pointer_type.insertMember(<span class="stringliteral">&quot;offset&quot;</span>, HOFFSET(tmp, offset), <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype&lt;Offset_&gt;</a>());</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    pointer_type.insertMember(<span class="stringliteral">&quot;length&quot;</span>, HOFFSET(tmp, length), <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">as_numeric_datatype&lt;Length_&gt;</a>());</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">return</span> pointer_type;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
 </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5_1_1vls.html#a34c6f25b96bf830612b2ce5bbddb8ef0">   78</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5_1_1vls.html#a34c6f25b96bf830612b2ce5bbddb8ef0">validate_pointer_datatype</a>(<span class="keyword">const</span> H5::CompType&amp; type, <span class="keywordtype">size_t</span> offset_precision, <span class="keywordtype">size_t</span> length_precision) {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> (type.getNmembers() != 2) {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected VLS compound datatype to have two members&quot;</span>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (type.getMemberName(0) != <span class="stringliteral">&quot;offset&quot;</span>) {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;first member of a VLS compound datatype should be named &#39;offset&#39;&quot;</span>);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (type.getMemberClass(0) != H5T_INTEGER) {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;first member of a VLS compound datatype should have integer type&quot;</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5_1_1vls.html#a34c6f25b96bf830612b2ce5bbddb8ef0">   85</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5_1_1vls.html#a34c6f25b96bf830612b2ce5bbddb8ef0">validate_pointer_datatype</a>(<span class="keyword">const</span> H5::CompType&amp; type, <span class="keywordtype">size_t</span> offset_precision, <span class="keywordtype">size_t</span> length_precision) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (type.getNmembers() != 2) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected VLS compound datatype to have two members&quot;</span>);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">auto</span> offset_type = type.getMemberIntType(0);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit</a>(offset_type, offset_precision, <span class="keyword">false</span>)) {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;first member of a VLS compound datatype should not exceed a &quot;</span> + std::to_string(offset_precision) + <span class="stringliteral">&quot;-bit unsigned integer&quot;</span>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (type.getMemberName(0) != <span class="stringliteral">&quot;offset&quot;</span>) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;first member of a VLS compound datatype should be named &#39;offset&#39;&quot;</span>);</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">if</span> (type.getMemberName(1) != <span class="stringliteral">&quot;length&quot;</span>) {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a VLS compound datatype should be named &#39;length&#39;&quot;</span>);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (type.getMemberClass(0) != H5T_INTEGER) {</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a VLS compound datatype should have integer type&quot;</span>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (type.getMemberClass(0) != H5T_INTEGER) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;first member of a VLS compound datatype should have integer type&quot;</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">auto</span> offset_type = type.getMemberIntType(0);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit</a>(offset_type, offset_precision, <span class="keyword">false</span>)) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;first member of a VLS compound datatype should not exceed a &quot;</span> + std::to_string(offset_precision) + <span class="stringliteral">&quot;-bit unsigned integer&quot;</span>);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">auto</span> length_type = type.getMemberIntType(1);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit</a>(length_type, length_precision, <span class="keyword">false</span>)) {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a VLS compound datatype should not exceed a &quot;</span> + std::to_string(length_precision) + <span class="stringliteral">&quot;-bit unsigned integer&quot;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (type.getMemberName(1) != <span class="stringliteral">&quot;length&quot;</span>) {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a VLS compound datatype should be named &#39;length&#39;&quot;</span>);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (type.getMemberClass(0) != H5T_INTEGER) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a VLS compound datatype should have integer type&quot;</span>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">auto</span> length_type = type.getMemberIntType(1);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">exceeds_integer_limit</a>(length_type, length_precision, <span class="keyword">false</span>)) {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a VLS compound datatype should not exceed a &quot;</span> + std::to_string(length_precision) + <span class="stringliteral">&quot;-bit unsigned integer&quot;</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
 </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif </span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#endif </span></div>
 <div class="ttc" id="aas__numeric__datatype_8hpp_html"><div class="ttname"><a href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
 <div class="ttc" id="aexceeds__limit_8hpp_html"><div class="ttname"><a href="exceeds__limit_8hpp.html">exceeds_limit.hpp</a></div><div class="ttdoc">Check for larger-than-expected types in HDF5 datasets.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_1_1vls_html_a34c6f25b96bf830612b2ce5bbddb8ef0"><div class="ttname"><a href="namespaceritsuko_1_1hdf5_1_1vls.html#a34c6f25b96bf830612b2ce5bbddb8ef0">ritsuko::hdf5::vls::validate_pointer_datatype</a></div><div class="ttdeci">void validate_pointer_datatype(const H5::CompType &amp;type, size_t offset_precision, size_t length_precision)</div><div class="ttdef"><b>Definition</b> Pointer.hpp:78</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_1_1vls_html_a8648c7288f1c09d0bb882edbca9ee19e"><div class="ttname"><a href="namespaceritsuko_1_1hdf5_1_1vls.html#a8648c7288f1c09d0bb882edbca9ee19e">ritsuko::hdf5::vls::define_pointer_datatype</a></div><div class="ttdeci">H5::CompType define_pointer_datatype()</div><div class="ttdef"><b>Definition</b> Pointer.hpp:56</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_1_1vls_html_a34c6f25b96bf830612b2ce5bbddb8ef0"><div class="ttname"><a href="namespaceritsuko_1_1hdf5_1_1vls.html#a34c6f25b96bf830612b2ce5bbddb8ef0">ritsuko::hdf5::vls::validate_pointer_datatype</a></div><div class="ttdeci">void validate_pointer_datatype(const H5::CompType &amp;type, size_t offset_precision, size_t length_precision)</div><div class="ttdef"><b>Definition</b> Pointer.hpp:85</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_1_1vls_html_a8648c7288f1c09d0bb882edbca9ee19e"><div class="ttname"><a href="namespaceritsuko_1_1hdf5_1_1vls.html#a8648c7288f1c09d0bb882edbca9ee19e">ritsuko::hdf5::vls::define_pointer_datatype</a></div><div class="ttdeci">H5::CompType define_pointer_datatype()</div><div class="ttdef"><b>Definition</b> Pointer.hpp:60</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a51dedc84e7992f1ae6a6981a83c4e8b8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">ritsuko::hdf5::as_numeric_datatype</a></div><div class="ttdeci">const H5::PredType &amp; as_numeric_datatype()</div><div class="ttdef"><b>Definition</b> as_numeric_datatype.hpp:26</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a6cd65a78811faa2894a672f5ce993949"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">ritsuko::hdf5::exceeds_integer_limit</a></div><div class="ttdeci">bool exceeds_integer_limit(const H5::IntType &amp;itype, size_t precision, bool is_signed)</div><div class="ttdef"><b>Definition</b> exceeds_limit.hpp:27</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition</b> choose_missing_placeholder.hpp:15</div></div>
 <div class="ttc" id="astructritsuko_1_1hdf5_1_1vls_1_1Pointer_html"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html">ritsuko::hdf5::vls::Pointer</a></div><div class="ttdoc">Pointer into the VLS heap.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:33</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1vls_1_1Pointer_html_a44cba7041c3f3c71ec665cc09543777d"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">ritsuko::hdf5::vls::Pointer::offset</a></div><div class="ttdeci">Offset_ offset</div><div class="ttdef"><b>Definition</b> Pointer.hpp:37</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1vls_1_1Pointer_html_a809f67cf82be6b7512531ea8822a77d8"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">ritsuko::hdf5::vls::Pointer::length</a></div><div class="ttdeci">Length_ length</div><div class="ttdef"><b>Definition</b> Pointer.hpp:44</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1vls_1_1Pointer_html_a44cba7041c3f3c71ec665cc09543777d"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d">ritsuko::hdf5::vls::Pointer::offset</a></div><div class="ttdeci">Offset_ offset</div><div class="ttdef"><b>Definition</b> Pointer.hpp:38</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1vls_1_1Pointer_html_a809f67cf82be6b7512531ea8822a77d8"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a809f67cf82be6b7512531ea8822a77d8">ritsuko::hdf5::vls::Pointer::length</a></div><div class="ttdeci">Length_ length</div><div class="ttdef"><b>Definition</b> Pointer.hpp:48</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

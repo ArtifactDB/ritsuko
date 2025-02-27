@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="98,5,239,46"/>
 <area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,94,148,120"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,58,92,95,89,91,132,54"/>
-<area shape="rect" id="Node000003" href="$Pointer_8hpp_source.html" title=" " alt="" coords="172,94,352,120"/>
+<area shape="rect" id="Node000003" href="$Pointer_8hpp.html" title="Compound datatype for the VLS heap pointer." alt="" coords="172,94,352,120"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,54,249,91,246,95,202,58"/>
 <area shape="rect" id="Node000004" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional VLS array into memory." alt="" coords="54,168,224,208"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,130,171,170,168,165,229,126"/>
