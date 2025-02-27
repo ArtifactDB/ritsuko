@@ -1,11 +1,14 @@
 <map id="ritsuko/hdf5/vls/Pointer.hpp" name="ritsuko/hdf5/vls/Pointer.hpp">
-<area shape="rect" id="Node000001" title="Compound datatype for the VLS heap pointer." alt="" coords="124,5,303,31"/>
+<area shape="rect" id="Node000001" title="Compound datatype for the VLS heap pointer." alt="" coords="184,5,363,31"/>
 <area shape="rect" id="Node000002" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional VLS array into memory." alt="" coords="5,79,176,120"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,42,122,81,119,76,180,37"/>
-<area shape="rect" id="Node000003" href="$vls_8hpp.html" title="Utilities for handling ritsuko&#39;s custom VLS arrays." alt="" coords="136,168,291,193"/>
-<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="216,46,216,167,210,167,210,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,40,137,81,135,76,230,35"/>
+<area shape="rect" id="Node000003" href="$vls_8hpp.html" title="Utilities for handling ritsuko&#39;s custom VLS arrays." alt="" coords="196,168,351,193"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="257,45,241,80,238,99,241,119,252,145,266,166,261,169,247,147,236,120,232,99,236,78,253,43"/>
 <area shape="rect" id="Node000004" href="$vls_2open_8hpp.html" title="Open HDF5 datasets for a VLS array." alt="" coords="250,86,416,112"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="245,37,316,84,313,88,242,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="135,126,196,165,193,169,132,130"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="304,123,233,169,230,165,301,118"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="293,42,326,84,322,88,289,45"/>
+<area shape="rect" id="Node000005" href="$validate_8hpp.html" title="Helper functions to validate VLS arrays." alt="" coords="440,86,624,112"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="328,33,493,83,491,88,327,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,124,246,165,244,170,149,129"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="317,126,284,169,280,166,313,123"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="478,120,314,170,312,165,477,115"/>
 </map>

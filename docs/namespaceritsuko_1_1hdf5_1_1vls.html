@@ -120,6 +120,12 @@ Functions</h2></td></tr>
 <tr class="separator:a8648c7288f1c09d0bb882edbca9ee19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34c6f25b96bf830612b2ce5bbddb8ef0" id="r_a34c6f25b96bf830612b2ce5bbddb8ef0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34c6f25b96bf830612b2ce5bbddb8ef0">validate_pointer_datatype</a> (const H5::CompType &amp;type, size_t offset_precision, size_t length_precision)</td></tr>
 <tr class="separator:a34c6f25b96bf830612b2ce5bbddb8ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37de22ece9f83e248b59239b7ad985a0" id="r_a37de22ece9f83e248b59239b7ad985a0"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
+<tr class="memitem:a37de22ece9f83e248b59239b7ad985a0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a37de22ece9f83e248b59239b7ad985a0">validate_1d_array</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t heap_length, hsize_t buffer_size)</td></tr>
+<tr class="separator:a37de22ece9f83e248b59239b7ad985a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84eed2982e1caf6e794ece894b66dabe" id="r_a84eed2982e1caf6e794ece894b66dabe"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
+<tr class="memitem:a84eed2982e1caf6e794ece894b66dabe"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a84eed2982e1caf6e794ece894b66dabe">validate_nd_array</a> (const H5::DataSet &amp;handle, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t heap_length, hsize_t buffer_size)</td></tr>
+<tr class="separator:a84eed2982e1caf6e794ece894b66dabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Assorted functions for handling <b>ritsuko</b>'s custom VLS arrays. </p>
@@ -249,6 +255,100 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An open handle into a HDF5 dataset. </dd></dl>
+
+</div>
+</div>
+<a id="a37de22ece9f83e248b59239b7ad985a0" name="a37de22ece9f83e248b59239b7ad985a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37de22ece9f83e248b59239b7ad985a0">&#9670;&#160;</a></span>validate_1d_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Offset_ , typename Length_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::vls::validate_1d_array </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>full_length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check that the pointers for a 1-dimensional VLS array is valid. An error is thrown if any pointers are out of range of the associated heap dataset.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the pointer dataset for a VLS array, see <code><a class="el" href="#a4b663e90f9c0729b1336650eb230a995">open_pointers()</a></code>. </td></tr>
+    <tr><td class="paramname">full_length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
+    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for reading pointers by block. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a84eed2982e1caf6e794ece894b66dabe" name="a84eed2982e1caf6e794ece894b66dabe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84eed2982e1caf6e794ece894b66dabe">&#9670;&#160;</a></span>validate_nd_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Offset_ , typename Length_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::hdf5::vls::validate_nd_array </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>dimensions</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check that the pointers for an N-dimensional VLS array is valid. An error is thrown if any pointers are out of range of the associated heap dataset.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Handle to the pointer dataset for a VLS array, see <code><a class="el" href="#a4b663e90f9c0729b1336650eb230a995">open_pointers()</a></code>. </td></tr>
+    <tr><td class="paramname">dimensions</td><td>Dimensions of the dataset. </td></tr>
+    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for reading pointers by block. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

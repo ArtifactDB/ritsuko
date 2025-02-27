@@ -1,15 +1,18 @@
 <map id="ritsuko/hdf5/exceeds_limit.hpp" name="ritsuko/hdf5/exceeds_limit.hpp">
-<area shape="rect" id="Node000001" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="98,5,239,46"/>
-<area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="5,94,148,120"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,58,92,95,89,91,132,54"/>
-<area shape="rect" id="Node000003" href="$Pointer_8hpp.html" title="Compound datatype for the VLS heap pointer." alt="" coords="172,94,352,120"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,54,249,91,246,95,202,58"/>
-<area shape="rect" id="Node000004" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional VLS array into memory." alt="" coords="54,168,224,208"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,130,171,170,168,165,229,126"/>
-<area shape="rect" id="Node000005" href="$vls_8hpp.html" title="Utilities for handling ritsuko&#39;s custom VLS arrays." alt="" coords="184,256,340,282"/>
-<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="264,135,264,256,259,256,259,135"/>
-<area shape="rect" id="Node000006" href="$vls_2open_8hpp.html" title="Open HDF5 datasets for a VLS array." alt="" coords="299,175,465,201"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="294,126,365,172,362,177,291,130"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="183,214,244,253,241,258,181,219"/>
-<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="353,211,282,258,279,254,350,207"/>
+<area shape="rect" id="Node000001" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="109,5,250,46"/>
+<area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="17,94,159,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,58,104,95,100,91,144,54"/>
+<area shape="rect" id="Node000003" href="$Pointer_8hpp.html" title="Compound datatype for the VLS heap pointer." alt="" coords="184,94,363,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,54,260,91,257,95,213,58"/>
+<area shape="rect" id="Node000004" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional VLS array into memory." alt="" coords="5,168,176,208"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,129,137,170,135,165,230,124"/>
+<area shape="rect" id="Node000005" href="$vls_8hpp.html" title="Utilities for handling ritsuko&#39;s custom VLS arrays." alt="" coords="196,256,351,282"/>
+<area shape="poly" id="edge9_Node000003_Node000005" title=" " alt="" coords="257,134,241,168,238,188,241,208,252,233,266,254,261,257,247,236,236,209,232,188,236,167,253,131"/>
+<area shape="rect" id="Node000006" href="$vls_2open_8hpp.html" title="Open HDF5 datasets for a VLS array." alt="" coords="250,175,416,201"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="293,130,326,173,322,176,289,134"/>
+<area shape="rect" id="Node000007" href="$validate_8hpp.html" title="Helper functions to validate VLS arrays." alt="" coords="440,175,624,201"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="328,122,493,172,491,177,327,127"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="151,212,246,253,244,258,149,217"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="317,215,284,257,280,254,313,211"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="478,208,314,258,312,253,477,203"/>
 </map>
