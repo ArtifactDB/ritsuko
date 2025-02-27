@@ -67,8 +67,8 @@ public:
      * @param buffer_size Size of the buffer for holding streamed blocks of strings.
      * Larger buffers improve speed at the cost of some memory efficiency.
      */
-    Stream1dArray(const H5::DataSet* pointers, const H5::DataSet* concatenated, hsize_t buffer_size) : 
-        Stream1dArray(pointers, concatenated, get_1d_length(pointers->getSpace(), false), buffer_size) 
+    Stream1dArray(const H5::DataSet* pointers, const H5::DataSet* heap, hsize_t buffer_size) : 
+        Stream1dArray(pointers, heap, get_1d_length(pointers->getSpace(), false), buffer_size) 
     {}
 
 public:

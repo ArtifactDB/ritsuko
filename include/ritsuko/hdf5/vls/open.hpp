@@ -27,8 +27,8 @@ namespace vls {
  *
  * @param handle Group containing the dataset of pointers.
  * @param name Name of the dataset of pointers.
- * @param offset_precision Maximum number of bits in the integer type used for the start position, see `Pointer::start`.
- * @param length_precision Maximum number of bits in the integer type used for the string size, see `Pointer::size`.
+ * @param offset_precision Maximum number of bits in the integer type used for the start offset, see `Pointer::offset`.
+ * @param length_precision Maximum number of bits in the integer type used for the string length, see `Pointer::length`.
  *
  * @return An open handle into a HDF5 dataset.
  */
@@ -52,8 +52,6 @@ inline H5::DataSet open_pointers(const H5::Group& handle, const char* name, size
  *
  * @param handle Group containing the dataset of pointers.
  * @param name Name of the dataset of pointers.
- * @param offset_precision Maximum number of bits in the integer type used for the start position, see `Pointer::start`.
- * @param length_precision Maximum number of bits in the integer type used for the string size, see `Pointer::size`.
  *
  * @return An open handle into a HDF5 dataset.
  */

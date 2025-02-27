@@ -11,7 +11,10 @@ This is generally not intended for consumption by external developers, but they 
 Functionality includes some convenience wrappers for HDF5 parsing, date/time string checking functions, a definition of R's missing value, 
 and more random stuff that is re-usable across different C++ libraries.
 
-## Quick start
+Check out the [reference documentation](https://artifactdb.github.io/ritsuko) for available functions.
+Some usage examples are shown below.
+
+## Non-HDF5 utilities
 
 For the non-HDF5-dependent utilities, we can just pull in **ritsuko**'s main header:
 
@@ -34,7 +37,9 @@ if (ritsuko::is_rfc3339(potential_time.c_str(), potential_time.size())) {
 }
 ```
 
-For HDF5, the header is a little different:
+## HDF5 utilities
+
+For the HDF5 utilities, we need to include a different header:
 
 ```cpp
 #include "ritsuko/hdf5/hdf5.hpp"
@@ -48,45 +53,62 @@ auto len = ritsuko::hdf5::get_1d_length(dhandle, false);
 auto tag = ritsuko::hdf5::open_and_load_scalar_string_attribute(dhandle, "tag");
 
 // Iterating over a 1-dimensional dataset. 
-ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, len, /* buffer_size = */ 10000);
+ritsuko::hdf5::Stream1dNumericDataset<double> stream(
+    &dhandle,
+    len,
+    /* buffer_size = */ 10000
+);
 for (hsize_t i = 0; i < len; ++i, stream.next()) {
     auto val = stream.get();
 }
 
 // Iterating over a N-dimensional dataset.
 auto dims = ritsuko::hdf5::get_dimensions(dhandle, false);
-auto blocks = ritsuko::hdf5::pick_nd_block_dimensions(dhandle.getCreatePlist(), dims, /* buffer_size = */ 10000);
+auto blocks = ritsuko::hdf5::pick_nd_block_dimensions(
+    dhandle.getCreatePlist(),
+    dims,
+    /* buffer_size = */ 10000
+);
 
 ritsuko::hdf5::IterateNdDataset iter(&dims, &blocks);
 std::vector<double> buffer;
 while (!iter.finished()) {
     buffer.resize(iter.size());
-    dhandle.read(buffer.data(), H5::PredType::NATIVE_DOUBLE, iter.memory_space(), iter.file_space());
+    dhandle.read(
+        buffer.data(),
+        H5::PredType::NATIVE_DOUBLE,
+        iter.memory_space(),
+        iter.file_space()
+    );
     iter.next();
 }
 ```
 
-For **ritsuko**'s custom variable length string (VLS) arrays, yet another array is involved:
+## Utilities for variable length string arrays
+
+For **ritsuko**'s custom variable length string (VLS) arrays for HDF5, yet another header is involved:
 
 ```cpp
 #include "ritsuko/hdf5/vls/vls.hpp"
 
-// Opening a handle to a dataset.
+// Opening handles to the VLS datasets.
 H5::H5File handle("some.h5", H5F_ACC_RDONLY);
 auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "pointers", 64, 64);
-auto hhandle = ritsuko::hdf5::vls::open_pointers(handle, "heap");
+auto hhandle = ritsuko::hdf5::vls::open_heap(handle, "heap");
 
-ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&dhandle, len, /* buffer_size = */ 1000);
+ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(
+    &dhandle,
+    len,
+    /* buffer_size = */ 1000
+);
 for (hsize_t i = 0; i < len; ++i, stream.next()) {
     auto val = stream.get();
 }
 ```
 
-Also see the [reference documentation](https://artifactdb.github.io/ritsuko) for more details.
+## Building projects
 
-### Building projects
-
-#### CMake with `FetchContent`
+### CMake with `FetchContent`
 
 If you're using CMake, you just need to add something like this to your `CMakeLists.txt`:
 
@@ -112,7 +134,7 @@ target_link_libraries(myexe ritsuko)
 target_link_libraries(mylib INTERFACE ritsuko)
 ```
 
-#### CMake with `find_package()`
+### CMake with `find_package()`
 
 You can install the library by cloning a suitable version of this repository and running the following commands:
 
@@ -131,7 +153,6 @@ target_link_libraries(mylib INTERFACE artifactdb::ritsuko)
 
 ## Further remarks
 
-This library is named after [Ritsuko Akizuki](https://myanimelist.net/character/6170/Ritsuko_Akizuki), 
-as befitting her important role in supporting the other idols in the series.
+This library is named after [Ritsuko Akizuki](https://myanimelist.net/character/6170/Ritsuko_Akizuki), as befitting her important support role.
 
 ![Ritsuko GIF](https://media.tenor.com/I0ED_9E3vnwAAAAd/ritsuko-akizuki-idolmaster.gif)

@@ -10,7 +10,7 @@
 #include "../exceeds_limit.hpp"
 
 /**
- * @file define_pointer_datatype.hpp
+ * @file Pointer.hpp
  * @brief Compound datatype for the VLS heap pointer.
  */
 
@@ -72,8 +72,8 @@ H5::CompType define_pointer_datatype() {
  * Otherwise, an error is thrown.
  *
  * @param type Compound datatype, typically generated from a `H5::DataSet` instance.
- * @param offset_precision Maximum number of bits in the integer type used for the start position, see `Pointer::start`.
- * @param length_precision Maximum number of bits in the integer type used for the string size, see `Pointer::size`.
+ * @param offset_precision Maximum number of bits in the integer type used for the start position, see `Pointer::offset`.
+ * @param length_precision Maximum number of bits in the integer type used for the string size, see `Pointer::length`.
  */
 inline void validate_pointer_datatype(const H5::CompType& type, size_t offset_precision, size_t length_precision) {
     if (type.getNmembers() != 2) {
