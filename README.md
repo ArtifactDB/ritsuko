@@ -66,6 +66,22 @@ while (!iter.finished()) {
 }
 ```
 
+For **ritsuko**'s custom variable length string (VLS) arrays, yet another array is involved:
+
+```cpp
+#include "ritsuko/hdf5/vls/vls.hpp"
+
+// Opening a handle to a dataset.
+H5::H5File handle("some.h5", H5F_ACC_RDONLY);
+auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "pointers", 64, 64);
+auto hhandle = ritsuko::hdf5::vls::open_pointers(handle, "heap");
+
+ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&dhandle, len, /* buffer_size = */ 1000);
+for (hsize_t i = 0; i < len; ++i, stream.next()) {
+    auto val = stream.get();
+}
+```
+
 Also see the [reference documentation](https://artifactdb.github.io/ritsuko) for more details.
 
 ### Building projects

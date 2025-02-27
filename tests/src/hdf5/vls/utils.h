@@ -1,14 +1,23 @@
 #ifndef RITSUKO_HDF5_VLS_TEST_UTILS_H
 #define RITSUKO_HDF5_VLS_TEST_UTILS_H
 
+#include "H5Cpp.h"
+
 #include <vector>
 #include <type_traits>
 #include <stdexcept>
+#include <string>
 
-#include "ritsuko/hdf5/vls/define_pointer_datatype.hpp"
+#include "ritsuko/hdf5/vls/Pointer.hpp"
 
 template<typename T>
-H5::DataSet create_vls_pointer_dataset(const H5::Group& parent, const std::string& name, const std::vector<ritsuko::hdf5::vls::Pointer<T, T> >& values, const H5::DataType& dtype, hsize_t compress_chunk = 0) {
+H5::DataSet create_vls_pointer_dataset(
+    const H5::Group& parent,
+    const std::string& name,
+    const std::vector<ritsuko::hdf5::vls::Pointer<T, T> >& values,
+    const H5::DataType& dtype,
+    hsize_t compress_chunk = 0)
+{
     hsize_t len = values.size();
     H5::DataSpace dspace(1, &len);
 

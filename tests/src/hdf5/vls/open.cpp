@@ -19,8 +19,8 @@ TEST(VlsOpen, Pointers) {
         size_t nlen = 10;
         std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > data(nlen);
         for (size_t i = 0; i < nlen; ++i) {
-            data[i].start = i * 1;
-            data[i].size = i * 100;
+            data[i].offset = i * 1;
+            data[i].length = i * 100;
         }
         create_vls_pointer_dataset(handle, "foo", data, dtype);
 
@@ -54,7 +54,7 @@ TEST(VlsOpen, Pointers) {
 
 TEST(VlsOpen, Concatenated) {
     // Creating a file.
-    const std::string path = "TEST-vls-concatenated.h5";
+    const std::string path = "TEST-vls-heap.h5";
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
 
@@ -68,16 +68,22 @@ TEST(VlsOpen, Concatenated) {
 
         std::vector<double> ddata(nlen);
         create_dataset(handle, "other", ddata, H5::PredType::NATIVE_DOUBLE);
+
+        {
+            std::vector<hsize_t> dims{ 77, 192 };
+            H5::DataSpace dspace(2, dims.data());
+            handle.createDataSet("more", H5::PredType::NATIVE_UINT8, dspace);
+        }
     }
 
     // Checking that it opens correctly.
     H5::H5File handle(path, H5F_ACC_RDONLY);
-    auto dhandle = ritsuko::hdf5::vls::open_concatenated(handle, "foo");
+    auto dhandle = ritsuko::hdf5::vls::open_heap(handle, "foo");
     EXPECT_TRUE(dhandle.getTypeClass() == H5T_INTEGER);
 
     EXPECT_ANY_THROW({
         try {
-            ritsuko::hdf5::vls::open_concatenated(handle, "bar");
+            ritsuko::hdf5::vls::open_heap(handle, "bar");
         } catch (std::exception& e) {
             EXPECT_THAT(e.what(), ::testing::HasSubstr("8-bit unsigned integers"));
             throw;
@@ -86,10 +92,21 @@ TEST(VlsOpen, Concatenated) {
 
     EXPECT_ANY_THROW({
         try {
-            ritsuko::hdf5::vls::open_concatenated(handle, "other");
+            ritsuko::hdf5::vls::open_heap(handle, "other");
         } catch (std::exception& e) {
             EXPECT_THAT(e.what(), ::testing::HasSubstr("expected an integer"));
             throw;
         }
     });
+
+    EXPECT_ANY_THROW({
+        try {
+            ritsuko::hdf5::vls::open_heap(handle, "more");
+        } catch (std::exception& e) {
+            EXPECT_THAT(e.what(), ::testing::HasSubstr("1-dimensional"));
+            throw;
+        }
+    });
+
+
 }

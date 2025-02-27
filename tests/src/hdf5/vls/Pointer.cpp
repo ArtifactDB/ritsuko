@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstdint>
 
-#include "ritsuko/hdf5/vls/define_pointer_datatype.hpp"
+#include "ritsuko/hdf5/vls/Pointer.hpp"
 
 #include "utils.h"
 
@@ -31,8 +31,8 @@ TEST(VlsDefinePointerDatatype, Usage) {
     size_t nlen = 10;
     std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > data(nlen);
     for (size_t i = 0; i < nlen; ++i) {
-        data[i].start = i * 1;
-        data[i].size = i * 100;
+        data[i].offset = i * 1;
+        data[i].length = i * 100;
     }
 
     // Creating a file.
@@ -53,8 +53,8 @@ TEST(VlsDefinePointerDatatype, Usage) {
         dhandle.read(roundtrip.data(), out_type);
 
         for (size_t i = 0; i < nlen; ++i) {
-            EXPECT_EQ(roundtrip[i].start, data[i].start);
-            EXPECT_EQ(roundtrip[i].size, data[i].size);
+            EXPECT_EQ(roundtrip[i].offset, data[i].offset);
+            EXPECT_EQ(roundtrip[i].length, data[i].length);
         }
     }
 
@@ -68,8 +68,8 @@ TEST(VlsDefinePointerDatatype, Usage) {
         dhandle.read(roundtrip.data(), out_type);
 
         for (size_t i = 0; i < nlen; ++i) {
-            EXPECT_EQ(roundtrip[i].start, data[i].start);
-            EXPECT_EQ(roundtrip[i].size, data[i].size);
+            EXPECT_EQ(roundtrip[i].offset, data[i].offset);
+            EXPECT_EQ(roundtrip[i].length, data[i].length);
         }
     }
 }
@@ -77,7 +77,7 @@ TEST(VlsDefinePointerDatatype, Usage) {
 TEST(VlsValidatePointerDatatype, Failure) {
     {
         H5::CompType dtype(sizeof(uint64_t));
-        dtype.insertMember("start", 0, ritsuko::hdf5::as_numeric_datatype<uint64_t>());
+        dtype.insertMember("offset", 0, ritsuko::hdf5::as_numeric_datatype<uint64_t>());
         EXPECT_ANY_THROW({
             try {
                 ritsuko::hdf5::vls::validate_pointer_datatype(dtype, 32, 32);
@@ -91,13 +91,13 @@ TEST(VlsValidatePointerDatatype, Failure) {
     {
         typedef ritsuko::hdf5::vls::Pointer<uint8_t, uint8_t> tmp;
         H5::CompType dtype(sizeof(tmp));
-        dtype.insertMember("foo", HOFFSET(tmp, start), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
-        dtype.insertMember("bar", HOFFSET(tmp, size), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
+        dtype.insertMember("foo", HOFFSET(tmp, offset), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
+        dtype.insertMember("bar", HOFFSET(tmp, length), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
         EXPECT_ANY_THROW({
             try {
                 ritsuko::hdf5::vls::validate_pointer_datatype(dtype, 32, 32);
             } catch (std::exception& e) {
-                EXPECT_THAT(e.what(), ::testing::HasSubstr("start"));
+                EXPECT_THAT(e.what(), ::testing::HasSubstr("offset"));
                 throw;
             }
         });
@@ -142,13 +142,13 @@ TEST(VlsValidatePointerDatatype, Failure) {
     {
         typedef ritsuko::hdf5::vls::Pointer<uint8_t, uint8_t> tmp;
         H5::CompType dtype(sizeof(tmp));
-        dtype.insertMember("start", HOFFSET(tmp, start), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
-        dtype.insertMember("end", HOFFSET(tmp, size), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
+        dtype.insertMember("offset", HOFFSET(tmp, offset), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
+        dtype.insertMember("size", HOFFSET(tmp, length), ritsuko::hdf5::as_numeric_datatype<uint8_t>());
         EXPECT_ANY_THROW({
             try {
                 ritsuko::hdf5::vls::validate_pointer_datatype(dtype, 32, 32);
             } catch (std::exception& e) {
-                EXPECT_THAT(e.what(), ::testing::HasSubstr("size"));
+                EXPECT_THAT(e.what(), ::testing::HasSubstr("length"));
                 throw;
             }
         });

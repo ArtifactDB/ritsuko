@@ -49,9 +49,9 @@ add_executable(
     src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp
 
-    src/hdf5/vls/define_pointer_datatype.cpp
+    src/hdf5/vls/Pointer.cpp
     src/hdf5/vls/open.cpp
-    src/hdf5/vls/Stream1dDataset.cpp
+    src/hdf5/vls/Stream1dArray.cpp
 )
 
 target_link_libraries(

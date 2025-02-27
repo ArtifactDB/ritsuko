@@ -5,14 +5,14 @@
 #include <cstdint>
 #include <random>
 
-#include "ritsuko/hdf5/vls/Stream1dDataset.hpp"
-#include "ritsuko/hdf5/vls/define_pointer_datatype.hpp"
+#include "ritsuko/hdf5/vls/Stream1dArray.hpp"
+#include "ritsuko/hdf5/vls/Pointer.hpp"
 #include "ritsuko/hdf5/vls/open.hpp"
 
 #include "utils.h"
 #include "../utils.h"
 
-TEST(VlsStream1dDataset, Basic) {
+TEST(VlsStream1dArray, Basic) {
     size_t nlen = 12345;
     std::vector<std::string> example(nlen);
     for (size_t i = 0; i < nlen; ++i) {
@@ -27,31 +27,31 @@ TEST(VlsStream1dDataset, Basic) {
         std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(nlen);
         size_t count = 0;
         for (size_t i = 0; i < nlen; ++i) {
-            pointers[i].start = count;
+            pointers[i].offset = count;
             auto ex_size = example[i].size();
-            pointers[i].size = ex_size;
+            pointers[i].length = ex_size;
             count += ex_size;
         }
         auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ 51);
 
-        std::vector<unsigned char> concatenated;
-        concatenated.reserve(count);
+        std::vector<unsigned char> heap;
+        heap.reserve(count);
         for (const auto& ex : example) {
             auto ptr = reinterpret_cast<const unsigned char*>(ex.c_str());
-            concatenated.insert(concatenated.end(), ptr, ptr + ex.size());
+            heap.insert(heap.end(), ptr, ptr + ex.size());
         }
-        create_dataset(handle, "bar", concatenated, H5::PredType::NATIVE_UINT8);
+        create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
     // Checking that the values are the same, with a few buffer sizes to check that iteration works correctly.
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "foo", 64, 64);
-    auto chandle = ritsuko::hdf5::vls::open_concatenated(handle, "bar");
+    auto chandle = ritsuko::hdf5::vls::open_heap(handle, "bar");
 
     std::vector<size_t> buffer_sizes { 10, 200, 500 };
     for (size_t buffer_size : buffer_sizes) {
-        ritsuko::hdf5::vls::Stream1dDataset<uint64_t, uint64_t> stream(&phandle, &chandle, buffer_size);
+        ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, buffer_size);
         EXPECT_EQ(stream.length(), example.size());
         for (auto x : example) {
             EXPECT_EQ(stream.get(), x);
@@ -60,7 +60,7 @@ TEST(VlsStream1dDataset, Basic) {
     }
 }
 
-TEST(VlsStream1dDataset, NullTerminated) {
+TEST(VlsStream1dArray, NullTerminated) {
     size_t nlen = 1000;
     std::vector<std::string> example(nlen);
     std::mt19937_64 rng(999);
@@ -76,41 +76,41 @@ TEST(VlsStream1dDataset, NullTerminated) {
         std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(nlen);
         size_t count = 0;
         for (size_t i = 0; i < nlen; ++i) {
-            pointers[i].start = count;
+            pointers[i].offset = count;
             auto ex_size = example[i].size() + 2; // adding some extra null terminators.
-            pointers[i].size = ex_size;
+            pointers[i].length = ex_size;
             count += ex_size;
         }
         auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ 17);
 
-        std::vector<unsigned char> concatenated;
-        concatenated.reserve(count);
+        std::vector<unsigned char> heap;
+        heap.reserve(count);
         for (const auto& ex : example) {
             auto ptr = reinterpret_cast<const unsigned char*>(ex.c_str());
-            concatenated.insert(concatenated.end(), ptr, ptr + ex.size());
-            concatenated.insert(concatenated.end(), 2, '\0');
+            heap.insert(heap.end(), ptr, ptr + ex.size());
+            heap.insert(heap.end(), 2, '\0');
         }
-        create_dataset(handle, "bar", concatenated, H5::PredType::NATIVE_UINT8);
+        create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
-    // Checking that the values are the same.
+    // Checking that the values are the same. This time we use 'steal' just to get some coverage.
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "foo", 64, 64);
-    auto chandle = ritsuko::hdf5::vls::open_concatenated(handle, "bar");
+    auto chandle = ritsuko::hdf5::vls::open_heap(handle, "bar");
 
-    std::vector<size_t> buffer_sizes { 11, 39, 71};
+    std::vector<size_t> buffer_sizes { 11, 39, 71 };
     for (size_t buffer_size : buffer_sizes) {
-        ritsuko::hdf5::vls::Stream1dDataset<uint64_t, uint64_t> stream(&phandle, &chandle, buffer_size);
+        ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, buffer_size);
         EXPECT_EQ(stream.length(), example.size());
         for (auto x : example) {
-            EXPECT_EQ(stream.get(), x);
+            EXPECT_EQ(stream.steal(), x);
             stream.next();
         }
     }
 }
 
-TEST(VlsStream1dDataset, Unicode) {
+TEST(VlsStream1dArray, Unicode) {
     std::vector<std::string> example { 
         "the value of π is around 3.1415926535",
         "alpha globulins consist of two principal fractions, α1 and α2",
@@ -126,29 +126,29 @@ TEST(VlsStream1dDataset, Unicode) {
         std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(nlen);
         size_t count = 0;
         for (size_t i = 0; i < nlen; ++i) {
-            pointers[i].start = count;
+            pointers[i].offset = count;
             auto ex_size = example[i].size(); 
-            pointers[i].size = ex_size;
+            pointers[i].length = ex_size;
             count += ex_size;
         }
         auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
-        std::vector<unsigned char> concatenated;
-        concatenated.reserve(count);
+        std::vector<unsigned char> heap;
+        heap.reserve(count);
         for (const auto& ex : example) {
             auto ptr = reinterpret_cast<const unsigned char*>(ex.c_str());
-            concatenated.insert(concatenated.end(), ptr, ptr + ex.size());
+            heap.insert(heap.end(), ptr, ptr + ex.size());
         }
-        create_dataset(handle, "bar", concatenated, H5::PredType::NATIVE_UINT8);
+        create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
     // Checking that the values are the same.
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "foo", 64, 64);
-    auto chandle = ritsuko::hdf5::vls::open_concatenated(handle, "bar");
+    auto chandle = ritsuko::hdf5::vls::open_heap(handle, "bar");
 
-    ritsuko::hdf5::vls::Stream1dDataset<uint64_t, uint64_t> stream(&phandle, &chandle, 200);
+    ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 200);
     EXPECT_EQ(stream.length(), example.size());
     for (auto x : example) {
         EXPECT_EQ(stream.get(), x);
@@ -156,7 +156,7 @@ TEST(VlsStream1dDataset, Unicode) {
     }
 }
 
-TEST(VlsStream1dDataset, Failures) {
+TEST(VlsStream1dArray, Failures) {
     const std::string path = "TEST-vls-stream.h5";
 
     // Start is out of range.
@@ -165,19 +165,19 @@ TEST(VlsStream1dDataset, Failures) {
             H5::H5File handle(path, H5F_ACC_TRUNC);
 
             std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(1);
-            pointers[0].start = 10;
-            pointers[0].size = 0;
+            pointers[0].offset = 10;
+            pointers[0].length = 0;
             auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
             create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
-            std::vector<unsigned char> concatenated;
-            create_dataset(handle, "bar", concatenated, H5::PredType::NATIVE_UINT8);
+            std::vector<unsigned char> heap;
+            create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
         }
 
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "foo", 64, 64);
-        auto chandle = ritsuko::hdf5::vls::open_concatenated(handle, "bar");
-        ritsuko::hdf5::vls::Stream1dDataset<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
+        auto chandle = ritsuko::hdf5::vls::open_heap(handle, "bar");
+        ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
         EXPECT_ANY_THROW({
             try {
                 stream.get();
@@ -194,19 +194,19 @@ TEST(VlsStream1dDataset, Failures) {
             H5::H5File handle(path, H5F_ACC_TRUNC);
 
             std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(1);
-            pointers[0].start = 0;
-            pointers[0].size = 10;
+            pointers[0].offset = 0;
+            pointers[0].length = 10;
             auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
             create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
-            std::vector<unsigned char> concatenated(5);
-            create_dataset(handle, "bar", concatenated, H5::PredType::NATIVE_UINT8);
+            std::vector<unsigned char> heap(5);
+            create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
         }
 
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "foo", 64, 64);
-        auto chandle = ritsuko::hdf5::vls::open_concatenated(handle, "bar");
-        ritsuko::hdf5::vls::Stream1dDataset<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
+        auto chandle = ritsuko::hdf5::vls::open_heap(handle, "bar");
+        ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
         EXPECT_ANY_THROW({
             try {
                 stream.get();
@@ -223,19 +223,19 @@ TEST(VlsStream1dDataset, Failures) {
             H5::H5File handle(path, H5F_ACC_TRUNC);
 
             std::vector<ritsuko::hdf5::vls::Pointer<uint32_t, uint32_t> > pointers(1);
-            pointers[0].start = 0;
-            pointers[0].size = 0;
+            pointers[0].offset = 0;
+            pointers[0].length = 0;
             auto dtype = ritsuko::hdf5::vls::define_pointer_datatype<uint32_t, uint32_t>();
             create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
-            std::vector<unsigned char> concatenated;
-            create_dataset(handle, "bar", concatenated, H5::PredType::NATIVE_UINT8);
+            std::vector<unsigned char> heap;
+            create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
         }
 
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = ritsuko::hdf5::vls::open_pointers(handle, "foo", 64, 64);
-        auto chandle = ritsuko::hdf5::vls::open_concatenated(handle, "bar");
-        ritsuko::hdf5::vls::Stream1dDataset<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
+        auto chandle = ritsuko::hdf5::vls::open_heap(handle, "bar");
+        ritsuko::hdf5::vls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
         EXPECT_EQ(stream.get(), std::string());
         stream.next();
 
