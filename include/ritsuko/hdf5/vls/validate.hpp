@@ -37,7 +37,7 @@ template<typename Offset_, typename Length_>
 inline void validate_1d_array(const H5::DataSet& handle, hsize_t full_length, hsize_t heap_length, hsize_t buffer_size) {
     hsize_t block_size = pick_1d_block_size(handle.getCreatePlist(), full_length, buffer_size);
     H5::DataSpace mspace(1, &block_size), dspace(1, &full_length);
-    std::vector<Pointer<Offset_, Length_> > buffer(buffer_size);
+    std::vector<Pointer<Offset_, Length_> > buffer(block_size);
     auto dtype = define_pointer_datatype<Offset_, Length_>();
 
     for (hsize_t i = 0; i < full_length; i += block_size) {
