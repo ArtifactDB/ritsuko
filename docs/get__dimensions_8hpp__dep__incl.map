@@ -1,8 +1,11 @@
 <map id="ritsuko/hdf5/get_dimensions.hpp" name="ritsuko/hdf5/get_dimensions.hpp">
 <area shape="rect" id="Node000001" title="Get the dimensions of a HDF5 dataset." alt="" coords="5,5,214,31"/>
-<area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="38,168,181,193"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,46,84,80,81,99,84,119,93,145,104,166,100,169,88,147,79,120,76,99,79,78,92,44"/>
+<area shape="rect" id="Node000002" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="36,256,178,282"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,46,84,80,80,130,85,180,95,224,105,255,100,257,90,225,80,181,74,130,79,78,92,44"/>
 <area shape="rect" id="Node000003" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="94,79,232,120"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,42,152,77,147,80,124,45"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="143,134,120,169,116,166,139,131"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="149,135,135,169,121,217,112,256,107,255,115,216,130,167,144,133"/>
+<area shape="rect" id="Node000004" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="144,168,283,208"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="184,132,204,166,200,169,180,135"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="177,220,125,258,122,254,174,215"/>
 </map>

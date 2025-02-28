@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['open_5fand_5fload_5foptional_5fnumeric_5fmissing_5fplaceholder_0',['open_and_load_optional_numeric_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#adedaf49be1e5a3a1312d9043894f4ad9',1,'ritsuko::hdf5']]],
-  ['open_5fand_5fload_5foptional_5fstring_5fmissing_5fplaceholder_1',['open_and_load_optional_string_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#a84eed8b0e86aebfb863ca6080ce14729',1,'ritsuko::hdf5']]],
+  ['open_5fand_5fload_5foptional_5fnumeric_5fmissing_5fplaceholder_0',['open_and_load_optional_numeric_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#a878b7398a277263abfdbe3d367cfe5fc',1,'ritsuko::hdf5']]],
+  ['open_5fand_5fload_5foptional_5fstring_5fmissing_5fplaceholder_1',['open_and_load_optional_string_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#aa438bbb6d9ed1ab2a54fb020c329829e',1,'ritsuko::hdf5']]],
   ['open_5fand_5fload_5fscalar_5fstring_5fattribute_2',['open_and_load_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#a9bed2e21f64cc33099c5042be2d6b938',1,'ritsuko::hdf5']]],
   ['open_5fattribute_3',['open_attribute',['../namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4',1,'ritsuko::hdf5']]],
   ['open_5fdataset_4',['open_dataset',['../namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e',1,'ritsuko::hdf5']]],

@@ -191,7 +191,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    H5::DataType my_pointer_dtype;</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    std::vector&lt;Pointer&lt;Offset_, Length_&gt; &gt; my_pointer_buffer;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    std::vector&lt;unsigned char&gt; my_heap_buffer;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    std::vector&lt;uint8_t&gt; my_heap_buffer;</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    std::vector&lt;std::string&gt; my_final_buffer;</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    hsize_t my_last_loaded = 0;</div>
@@ -229,24 +229,39 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                my_heap_mspace.selectAll();</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                my_heap_dspace.selectHyperslab(H5S_SELECT_SET, &amp;count, &amp;start);</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                my_heap_buffer.resize(count);</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                my_heap-&gt;read(my_heap_buffer.data(), H5::PredType::NATIVE_UCHAR, my_heap_mspace, my_heap_dspace);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                my_heap-&gt;read(my_heap_buffer.data(), H5::PredType::NATIVE_UINT8, my_heap_mspace, my_heap_dspace);</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                <span class="keyword">const</span> <span class="keywordtype">char</span>* text_ptr = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(my_heap_buffer.data());</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                curstr.insert(curstr.end(), text_ptr, text_ptr + find_string_length(text_ptr, count));</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            }</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        }</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        my_last_loaded += my_available;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    }</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>};</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                <span class="comment">/*</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">                 * Is it generally portable to reinterpret_cast the bytes in a</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">                 * uint8_t array? I think so; according to the C standard,</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">                 * uint8_t is guaranteed to be exactly 8 bits</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">                 * (https://stackoverflow.com/questions/15039077/uint8-t-8-bits-guarantee),</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">                 * so a uint8_t value should have the same bit representation</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">                 * across all implementations that define the uint8_t type. If</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">                 * we save a byte to HDF5 as a UINT8 on one machine and read it</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">                 * back into to memory on another machine, we should recover</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment">                 * the same bit pattern. Thus, the reinterpret_cast to a char*</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">                 * should yield the same bit pattern across machines, allowing</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">                 * us to portably interpret the array as a string following the</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">                 * ASCII/UTF-8 spec (which define each character in binary).</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">                 */</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            }</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        my_last_loaded += my_available;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>};</div>
 </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>}</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>}</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>}</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>}</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aPointer_8hpp_html"><div class="ttname"><a href="Pointer_8hpp.html">Pointer.hpp</a></div><div class="ttdoc">Compound datatype for the VLS heap pointer.</div></div>
 <div class="ttc" id="aclassritsuko_1_1hdf5_1_1vls_1_1Stream1dArray_html"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1vls_1_1Stream1dArray.html">ritsuko::hdf5::vls::Stream1dArray</a></div><div class="ttdoc">Stream a 1-dimensional VLS array into memory.</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:38</div></div>
 <div class="ttc" id="aclassritsuko_1_1hdf5_1_1vls_1_1Stream1dArray_html_a06a730fcc539cdba4b5d0a45103611e3"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1vls_1_1Stream1dArray.html#a06a730fcc539cdba4b5d0a45103611e3">ritsuko::hdf5::vls::Stream1dArray::length</a></div><div class="ttdeci">hsize_t length() const</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:111</div></div>
