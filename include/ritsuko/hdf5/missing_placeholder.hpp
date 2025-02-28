@@ -24,7 +24,7 @@ namespace hdf5 {
  * An error is raised if the attribute is not a scalar or has a different type (or type class, if `type_class_only = true`) to the dataset.
  *
  * @param dset Dataset handle.
- * @param attr Handle for the missing placeholder, typically as an attribute on `dset`.
+ * @param attr Handle for the attribute containing the missing placeholder, typically attached to `dset`.
  * @param type_class_only Whether to only require identical type classes for the placeholder.
  * If false, the types between `dset` and `attr` must be identical.
  */
@@ -89,7 +89,7 @@ inline void check_string_missing_placeholder_attribute_preliminary(const H5::Att
  * An error is raised if the attribute is not a scalar or has a different type class.
  * For variable length string attributes, this function will also check that the string is not NULL.
  *
- * @param attr Handle for the missing placeholder.
+ * @param attr Handle for the attribute containing the missing placeholder.
  */
 inline void check_string_missing_placeholder_attribute(const H5::Attribute& attr) {
     internal::check_string_missing_placeholder_attribute_preliminary(attr);
@@ -100,12 +100,12 @@ inline void check_string_missing_placeholder_attribute(const H5::Attribute& attr
  * Check if a missing string placeholder attribute is present, and if so, open it and loads it value.
  * This will also call `check_string_missing_placeholder_attribute()` to validate the placeholder's properties.
  *
- * @param handle Dataset or group handle.
+ * @param handle Dataset handle.
  * @param attr_name Name of the attribute containing the missing value placeholder.
  * 
  * @return Optional value of the placeholder.
  */
-inline std::optional<std::string> open_and_load_optional_string_missing_placeholder(const H5::H5Object& handle, const char* attr_name) {
+inline std::optional<std::string> open_and_load_optional_string_missing_placeholder(const H5::DataSet& handle, const char* attr_name) {
     if (!handle.attrExists(attr_name)) {
         return {};
     }
