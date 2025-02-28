@@ -58,10 +58,10 @@ inline H5::DataSet open_pointers(const H5::Group& handle, const char* name, size
  *
  * We use an integer datatype rather than HDF5's own string datatypes to avoid the risk of a naive incorrect interpretation of the heap as an array of fixed-width strings.
  *
- * When reading the heap into memory, users are advised to first load the bytes into an `unsigned char` array and then read them via an aliased `char *`.
- * This preserves the bit patterns by avoiding a HDF5-mediated conversion between the dataset's unsigned 8-bit integer datatype and a possibly-signed `char` type.
- * Conversely, when creating a heap dataset, we should use an aliased `unsigned char *` to access the contents C-style strings.
- * We write this to the heap dataset by using HDF5 to trivially convert from the `NATIVE_UCHAR` memory type to the dataset's 8-bit unsigned integer datatype.
+ * To read the heap into memory, we first read the bytes into an `uint8_t` array via `H5::DataSet::read`, and then access those bytes via an aliased `char *`.
+ * By comparison, directly reading the bytes into a `char` array is susceptible to overflow problems if HDF5 needs to convert the file's unsigned integers to a possibly-signed `char` type.
+ * Conversely, to write to the heap, we use an `unsigned char *` to alias the content of each C-style string (following C++'s strict aliasing rules).
+ * We pass this aliasing pointer to `H5::DataSet::write`, which trivially converts from `NATIVE_UCHAR` in memory to the file's 8-bit unsigned integer datatype.
  *
  * @param handle Group containing the dataset of pointers.
  * @param name Name of the dataset of pointers.
