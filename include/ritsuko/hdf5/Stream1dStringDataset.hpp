@@ -11,7 +11,7 @@
 #include "get_1d_length.hpp"
 #include "get_name.hpp"
 #include "as_numeric_datatype.hpp"
-#include "_strings.hpp"
+#include "utils_string.hpp"
 
 /**
  * @file Stream1dStringDataset.hpp

@@ -11,7 +11,7 @@
 #include "../pick_1d_block_size.hpp"
 #include "../get_1d_length.hpp"
 #include "../get_name.hpp"
-#include "../_strings.hpp"
+#include "../utils_string.hpp"
 #include "Pointer.hpp"
 
 /**
