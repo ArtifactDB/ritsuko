@@ -3,6 +3,7 @@
 
 #include "H5Cpp.h"
 #include <string>
+#include <optional>
 
 #include "as_numeric_datatype.hpp"
 #include "load_attribute.hpp"
