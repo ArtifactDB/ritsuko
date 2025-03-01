@@ -38,8 +38,8 @@ template<typename Offset_, typename Length_>
 class Stream1dArray {
 public:
     /**
-     * @param pointers Pointer to a HDF5 dataset handle containing the VLS pointers, see `open_pointers()`.
-     * @param heap Pointer to a HDF5 dataset handle containing the VLS heap, see `open_heap()`.
+     * @param pointers Pointer to a 1-dimensional HDF5 dataset containing the VLS pointers, see `open_pointers()`.
+     * @param heap Pointer to a 1-dimensional HDF5 dataset containing the VLS heap, see `open_heap()`.
      * @param length Length of the `pointers` dataset as a 1-dimensional vector.
      * @param buffer_size Size of the buffer for holding streamed blocks of strings.
      * Larger buffers improve speed at the cost of some memory efficiency.
@@ -62,8 +62,8 @@ public:
     /**
      * Overloaded constructor where the length is automatically determined.
      *
-     * @param pointers Pointer to a HDF5 dataset handle containing the VLS pointers, see `open_pointers()`.
-     * @param heap Pointer to a HDF5 dataset handle containing the VLS heap, see `open_heap()`.
+     * @param pointers Pointer to a 1-dimensional HDF5 dataset containing the VLS pointers, see `open_pointers()`.
+     * @param heap Pointer to a 1-dimensional HDF5 dataset containing the VLS heap, see `open_heap()`.
      * @param buffer_size Size of the buffer for holding streamed blocks of strings.
      * Larger buffers improve speed at the cost of some memory efficiency.
      */
