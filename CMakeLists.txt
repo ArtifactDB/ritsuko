@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 
 project(ritsuko
-    VERSION 0.6.0
+    VERSION 0.6.1
     DESCRIPTION "Helper functions for ArtifactDB libraries"
     LANGUAGES CXX)
 
@@ -55,5 +55,10 @@ configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/artifactdb_ritsukoConfig.cmake"
     INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/artifactdb_ritsuko)
 
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/artifactdb_ritsukoConfigVersion.cmake"
+    COMPATIBILITY SameMajorVersion)
+
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/artifactdb_ritsukoConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/artifactdb_ritsukoConfigVersion.cmake"
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/artifactdb_ritsuko)
