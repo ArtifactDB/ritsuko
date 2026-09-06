@@ -1,5 +1,5 @@
-#ifndef RITSUKO_HDF5_VLS_TEST_UTILS_H
-#define RITSUKO_HDF5_VLS_TEST_UTILS_H
+#ifndef RITSUKO_CVLS_TEST_UTILS_H
+#define RITSUKO_CVLS_TEST_UTILS_H
 
 #include "H5Cpp.h"
 
@@ -8,13 +8,13 @@
 #include <stdexcept>
 #include <string>
 
-#include "ritsuko/hdf5/vls/Pointer.hpp"
+#include "ritsuko/cvls/Pointer.hpp"
 
 template<typename T>
 H5::DataSet create_vls_pointer_dataset(
     const H5::Group& parent,
     const std::string& name,
-    const std::vector<ritsuko::hdf5::vls::Pointer<T, T> >& values,
+    const std::vector<ritsuko::cvls::Pointer<T, T> >& values,
     const H5::DataType& dtype,
     hsize_t compress_chunk = 0)
 {
@@ -30,7 +30,7 @@ H5::DataSet create_vls_pointer_dataset(
     }
 
     auto dhandle = parent.createDataSet(name, dtype, dspace, cplist);
-    auto input_type = ritsuko::hdf5::vls::define_pointer_datatype<T, T>();
+    auto input_type = ritsuko::cvls::define_pointer_datatype<T, T>();
     dhandle.write(values.data(), input_type);
 
     return dhandle;

@@ -1,5 +1,5 @@
-#ifndef RITSUKO_HDF5_STREAM_1D_ARRAY_HPP
-#define RITSUKO_HDF5_STREAM_1D_ARRAY_HPP
+#ifndef RITSUKO_CVLS_STREAM_1D_ARRAY_HPP
+#define RITSUKO_CVLS_STREAM_1D_ARRAY_HPP
 
 #include "H5Cpp.h"
 
@@ -8,38 +8,37 @@
 #include <stdexcept>
 #include <cstdint>
 
-#include "../pick_1d_block_size.hpp"
-#include "../get_1d_length.hpp"
-#include "../get_name.hpp"
-#include "../utils_string.hpp"
+#include "../hdf5/pick_1d_block_size.hpp"
+#include "../hdf5/get_1d_length.hpp"
+#include "../hdf5/get_name.hpp"
+#include "../hdf5/utils_string.hpp"
+
 #include "Pointer.hpp"
 
 /**
  * @file Stream1dArray.hpp
- * @brief Stream a 1-dimensional VLS array into memory.
+ * @brief Stream a 1-dimensional compressed VLS array into memory.
  */
 
 namespace ritsuko {
 
-namespace hdf5 {
-
-namespace vls {
+namespace cvls {
 
 /**
- * @brief Stream a 1-dimensional VLS array into memory.
+ * @brief Stream a 1-dimensional compressed VLS array into memory.
  *
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap. 
  * @tparam Length_ Unsigned integer type for the length of the string.
  *
- * This streams in a 1-dimensional VLS array in contiguous blocks, using block sizes defined by `pick_1d_block_size()`.
+ * This streams in a 1-dimensional compressed VLS array in contiguous blocks, using block sizes defined by `pick_1d_block_size()`.
  * Callers can then iterate over the individual strings.
  */
 template<typename Offset_, typename Length_>
 class Stream1dArray {
 public:
     /**
-     * @param pointers Pointer to a 1-dimensional HDF5 dataset containing the VLS pointers, see `open_pointers()`.
-     * @param heap Pointer to a 1-dimensional HDF5 dataset containing the VLS heap, see `open_heap()`.
+     * @param pointers Pointer to a 1-dimensional HDF5 dataset containing the compressed VLS pointers, see `open_pointers()`.
+     * @param heap Pointer to a 1-dimensional HDF5 dataset containing the compressed VLS heap, see `open_heap()`.
      * @param length Length of the `pointers` dataset as a 1-dimensional vector.
      * @param buffer_size Size of the buffer for holding streamed blocks of strings.
      * Larger buffers improve speed at the cost of some memory efficiency.
@@ -48,27 +47,26 @@ public:
         my_pointers(pointers), 
         my_heap(heap),
         my_pointer_full_length(length), 
-        my_heap_full_length(get_1d_length(my_heap->getSpace(), false)),
-        my_pointer_block_size(pick_1d_block_size(my_pointers->getCreatePlist(), my_pointer_full_length, buffer_size)),
+        my_heap_full_length(hdf5::get_1d_length(my_heap->getSpace(), false)),
+        my_pointer_block_size(hdf5::pick_1d_block_size(my_pointers->getCreatePlist(), my_pointer_full_length, buffer_size)),
         my_pointer_mspace(1, &my_pointer_block_size),
         my_pointer_dspace(1, &my_pointer_full_length),
         my_heap_dspace(1, &my_heap_full_length),
         my_pointer_dtype(define_pointer_datatype<Offset_, Length_>()),
         my_pointer_buffer(my_pointer_block_size),
         my_final_buffer(my_pointer_block_size)
-    {
-    }
+    {}
 
     /**
      * Overloaded constructor where the length is automatically determined.
      *
-     * @param pointers Pointer to a 1-dimensional HDF5 dataset containing the VLS pointers, see `open_pointers()`.
-     * @param heap Pointer to a 1-dimensional HDF5 dataset containing the VLS heap, see `open_heap()`.
+     * @param pointers Pointer to a 1-dimensional HDF5 dataset containing the compressed VLS pointers, see `open_pointers()`.
+     * @param heap Pointer to a 1-dimensional HDF5 dataset containing the compressed VLS heap, see `open_heap()`.
      * @param buffer_size Size of the buffer for holding streamed blocks of strings.
      * Larger buffers improve speed at the cost of some memory efficiency.
      */
     Stream1dArray(const H5::DataSet* pointers, const H5::DataSet* heap, hsize_t buffer_size) : 
-        Stream1dArray(pointers, heap, get_1d_length(pointers->getSpace(), false), buffer_size) 
+        Stream1dArray(pointers, heap, hdf5::get_1d_length(pointers->getSpace(), false), buffer_size) 
     {}
 
 public:
@@ -138,7 +136,7 @@ private:
 
     void load() {
         if (my_last_loaded >= my_pointer_full_length) {
-            throw std::runtime_error("requesting data beyond the end of the dataset at '" + get_name(*my_pointers) + "'");
+            throw std::runtime_error("requesting data beyond the end of the dataset at '" + hdf5::get_name(*my_pointers) + "'");
         }
         my_available = std::min(my_pointer_full_length - my_last_loaded, my_pointer_block_size);
 
@@ -153,7 +151,12 @@ private:
             hsize_t start = val.offset;
             hsize_t count = val.length;
             if (start > my_heap_full_length || start + count > my_heap_full_length) {
-                throw std::runtime_error("VLS array pointers at '" + get_name(*my_pointers) + "' are out of range of the heap at '" + get_name(*my_heap) + "'");
+                throw std::runtime_error("compressed VLS array pointers at '" + 
+                    hdf5::get_name(*my_pointers) +
+                    "' are out of range of the heap at '" +
+                    hdf5::get_name(*my_heap) +
+                    "'"
+                );
             }
 
             auto& curstr = my_final_buffer[i];
@@ -169,7 +172,7 @@ private:
                 my_heap_buffer.resize(count);
                 my_heap->read(my_heap_buffer.data(), H5::PredType::NATIVE_UINT8, my_heap_mspace, my_heap_dspace);
                 const char* text_ptr = reinterpret_cast<const char*>(my_heap_buffer.data());
-                curstr.insert(curstr.end(), text_ptr, text_ptr + find_string_length(text_ptr, count));
+                curstr.insert(curstr.end(), text_ptr, text_ptr + hdf5::find_string_length(text_ptr, count));
 
                 /*
                  * Is it generally portable to reinterpret_cast the bytes in a
@@ -191,8 +194,6 @@ private:
         my_last_loaded += my_available;
     }
 };
-
-}
 
 }
 

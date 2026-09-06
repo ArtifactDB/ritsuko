@@ -49,10 +49,10 @@ add_executable(
     src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp
 
-    src/hdf5/vls/Pointer.cpp
-    src/hdf5/vls/open.cpp
-    src/hdf5/vls/Stream1dArray.cpp
-    src/hdf5/vls/validate.cpp
+    src/cvls/CvlsPointer.cpp
+    src/cvls/open_cvls.cpp
+    src/cvls/Stream1dCvlsArray.cpp
+    src/cvls/validate_cvls_array.cpp
 )
 
 target_link_libraries(
