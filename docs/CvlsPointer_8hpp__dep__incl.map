@@ -1,0 +1,9 @@
+<map id="ritsuko/cvls/CvlsPointer.hpp" name="ritsuko/cvls/CvlsPointer.hpp">
+<area shape="rect" id="Node000001" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="200,5,383,31"/>
+<area shape="rect" id="Node000002" href="$Stream1dCvlsArray_8hpp.html" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="5,79,180,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,40,143,81,141,76,246,35"/>
+<area shape="rect" id="Node000003" href="$open__cvls_8hpp.html" title="Open HDF5 datasets for a compressed VLS array." alt="" coords="204,86,379,112"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="294,47,294,86,288,86,288,47"/>
+<area shape="rect" id="Node000004" href="$validate__cvls__array_8hpp.html" title="Helper functions to validate compressed VLS arrays." alt="" coords="402,79,540,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="334,35,427,76,425,81,332,40"/>
+</map>

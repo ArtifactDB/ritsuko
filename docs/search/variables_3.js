@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['offset_0',['offset',['../structritsuko_1_1hdf5_1_1vls_1_1Pointer.html#a44cba7041c3f3c71ec665cc09543777d',1,'ritsuko::hdf5::vls::Pointer']]]
+  ['offset_0',['offset',['../structritsuko_1_1CvlsPointer.html#a034817a9c41f91658137176821ab2400',1,'ritsuko::CvlsPointer']]]
 ];

@@ -7,5 +7,7 @@ var searchData=
   ['choose_5fmissing_5finteger_5fplaceholder_4',['choose_missing_integer_placeholder',['../namespaceritsuko.html#a1e2efff2630c08b7145f28b6dd0caaac',1,'ritsuko::choose_missing_integer_placeholder(Iterator start, Iterator end, Mask mask)'],['../namespaceritsuko.html#a50a9e4b90108738c8c487c4346d63e61',1,'ritsuko::choose_missing_integer_placeholder(Iterator start, Iterator end)']]],
   ['choose_5fmissing_5fplaceholder_2ehpp_5',['choose_missing_placeholder.hpp',['../choose__missing__placeholder_8hpp.html',1,'']]],
   ['counts_6',['counts',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html#a5d2ce64a077583401f2f5c50d85a37ec',1,'ritsuko::hdf5::IterateNdDataset']]],
-  ['current_5fblock_5fsize_7',['current_block_size',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html#acaacbe6c1f44c841840050347adc3d72',1,'ritsuko::hdf5::IterateNdDataset']]]
+  ['current_5fblock_5fsize_7',['current_block_size',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html#acaacbe6c1f44c841840050347adc3d72',1,'ritsuko::hdf5::IterateNdDataset']]],
+  ['cvlspointer_8',['CvlsPointer',['../structritsuko_1_1CvlsPointer.html',1,'ritsuko']]],
+  ['cvlspointer_2ehpp_9',['CvlsPointer.hpp',['../CvlsPointer_8hpp.html',1,'']]]
 ];
