@@ -78,7 +78,7 @@ inline bool exceeds_integer_limit(const H5::Attribute& handle, size_t precision,
  */
 inline bool exceeds_float_limit_by_integer(const H5::IntType& itype, size_t precision) {
     if (precision >= 64) {
-        return exceeds_integer_limit(itype, 52, true);
+        return exceeds_integer_limit(itype, 53, true);
     } else if (precision >= 32) {
         return exceeds_integer_limit(itype, 24, true);
     } else {
