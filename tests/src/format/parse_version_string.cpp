@@ -1,6 +1,7 @@
+#include "ritsuko/format/parse_version_string.hpp"
+
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "ritsuko/parse_version_string.hpp"
 
 auto parse(const std::string& version, bool skip_patch = false) {
     return ritsuko::parse_version_string(version.c_str(), version.size(), skip_patch);

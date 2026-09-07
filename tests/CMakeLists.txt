@@ -18,12 +18,8 @@ enable_testing()
 add_executable(
     libtest 
 
-    src/r_missing_value.cpp
-    src/choose_missing_placeholder.cpp
-    src/find_extremes.cpp
-
-    src/is_date_time.cpp
-    src/parse_version_string.cpp
+    src/format/is_date_time.cpp
+    src/format/parse_version_string.cpp
 
     src/hdf5/exceeds_limit.cpp
     src/hdf5/is_utf8_string.cpp
@@ -49,10 +45,10 @@ add_executable(
     src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp
 
-    src/cvls/CvlsPointer.cpp
-    src/cvls/open_cvls.cpp
-    src/cvls/Stream1dCvlsArray.cpp
-    src/cvls/validate_cvls_array.cpp
+    src/cvls/Pointer.cpp
+    src/cvls/open.cpp
+    src/cvls/Stream1dArray.cpp
+    src/cvls/validate_array.cpp
 )
 
 target_link_libraries(
