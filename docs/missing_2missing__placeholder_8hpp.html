@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/pick_nd_block_dimensions.hpp File Reference</title>
+<title>ritsuko: ritsuko/missing/missing_placeholder.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,7 +85,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li><li class="navelem"><a class="el" href="dir_29ed3d7dd90c3bc55abde691efb7e794.html">hdf5</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li><li class="navelem"><a class="el" href="dir_d96fcbbcc71019a5ee90043d68fe7fd7.html">missing</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -93,60 +93,67 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">pick_nd_block_dimensions.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">missing_placeholder.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Pick block dimensions for an N-dimensional HDF5 dataset.  
+<p>Get the missing placeholder attribute.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
+<code>#include &quot;as_hdf5_numeric_type.hpp&quot;</code><br />
+<code>#include &quot;load_hdf5_attribute.hpp&quot;</code><br />
+<code>#include &quot;validate_hdf5_string.hpp&quot;</code><br />
+<code>#include &quot;get_hdf5_1d_length.hpp&quot;</code><br />
+<code>#include &quot;get_hdf5_name.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for pick_nd_block_dimensions.hpp:</div>
+Include dependency graph for missing_placeholder.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="pick__nd__block__dimensions_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2pick__nd__block__dimensions_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2pick__nd__block__dimensions_8hpp" id="aritsuko_2hdf5_2pick__nd__block__dimensions_8hpp">
-<area shape="rect" title="Pick block dimensions for an N&#45;dimensional HDF5 dataset." alt="" coords="5,5,162,46"/>
-<area shape="rect" title=" " alt="" coords="48,94,119,120"/>
-<area shape="poly" title=" " alt="" coords="86,46,86,78,81,78,81,46"/>
+<div class="center"><img src="missing_2missing__placeholder_8hpp__incl.png" border="0" usemap="#aritsuko_2missing_2missing__placeholder_8hpp" alt=""/></div>
+<map name="aritsuko_2missing_2missing__placeholder_8hpp" id="aritsuko_2missing_2missing__placeholder_8hpp">
+<area shape="rect" title="Get the missing placeholder attribute." alt="" coords="372,5,531,46"/>
+<area shape="rect" title=" " alt="" coords="5,94,77,120"/>
+<area shape="poly" title=" " alt="" coords="372,43,92,96,91,91,371,38"/>
+<area shape="rect" title=" " alt="" coords="101,94,154,120"/>
+<area shape="poly" title=" " alt="" coords="373,47,170,96,169,91,371,42"/>
+<area shape="rect" title=" " alt="" coords="178,94,245,120"/>
+<area shape="poly" title=" " alt="" coords="393,49,260,92,259,87,391,44"/>
+<area shape="rect" title=" " alt="" coords="269,94,445,120"/>
+<area shape="poly" title=" " alt="" coords="430,48,385,86,381,82,427,44"/>
+<area shape="rect" title=" " alt="" coords="469,94,624,120"/>
+<area shape="poly" title=" " alt="" coords="477,44,522,82,519,86,473,48"/>
+<area shape="rect" title=" " alt="" coords="648,94,810,120"/>
+<area shape="poly" title=" " alt="" coords="522,44,672,87,671,92,520,49"/>
+<area shape="rect" title=" " alt="" coords="834,94,992,120"/>
+<area shape="poly" title=" " alt="" coords="532,38,827,88,826,93,531,43"/>
+<area shape="rect" title=" " alt="" coords="1016,94,1151,120"/>
+<area shape="poly" title=" " alt="" coords="532,33,1002,91,1001,96,531,39"/>
 </map>
 </div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="pick__nd__block__dimensions_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2pick__nd__block__dimensions_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2pick__nd__block__dimensions_8hppdep" id="aritsuko_2hdf5_2pick__nd__block__dimensions_8hppdep">
-<area shape="rect" title="Pick block dimensions for an N&#45;dimensional HDF5 dataset." alt="" coords="102,5,259,46"/>
-<area shape="rect" href="validate__array_8hpp.html" title="Helper functions to validate compressed VLS arrays." alt="" coords="5,94,143,135"/>
-<area shape="poly" title=" " alt="" coords="146,58,100,96,96,91,143,54"/>
-<area shape="rect" href="hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="160,271,302,297"/>
-<area shape="poly" title=" " alt="" coords="190,61,232,271,226,272,185,62"/>
-<area shape="rect" href="validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="218,94,356,135"/>
-<area shape="poly" title=" " alt="" coords="218,54,265,91,262,96,215,58"/>
-<area shape="poly" title=" " alt="" coords="273,150,259,184,245,232,236,271,231,270,240,231,254,182,268,148"/>
-<area shape="rect" href="hdf5_2missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="269,183,407,223"/>
-<area shape="poly" title=" " alt="" coords="309,147,329,181,324,184,304,150"/>
-<area shape="poly" title=" " alt="" coords="301,235,249,273,246,269,298,230"/>
-</map>
 </div>
-</div>
-<p><a href="pick__nd__block__dimensions_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="missing_2missing__placeholder_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html">ritsuko</a></td></tr>
 <tr class="memdesc:namespaceritsuko"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for parsing and validation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html">ritsuko::hdf5</a></td></tr>
-<tr class="memdesc:namespaceritsuko_1_1hdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for HDF5 parsing. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aef675ae3568f50aeb0bc97d65f1a3063" id="r_aef675ae3568f50aeb0bc97d65f1a3063"><td class="memItemLeft" align="right" valign="top">std::vector&lt; hsize_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aef675ae3568f50aeb0bc97d65f1a3063">ritsuko::hdf5::pick_nd_block_dimensions</a> (const H5::DSetCreatPropList &amp;cplist, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t buffer_size=10000)</td></tr>
-<tr class="separator:aef675ae3568f50aeb0bc97d65f1a3063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b9f755c41e37f63f3fb827077052c9f" id="r_a5b9f755c41e37f63f3fb827077052c9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a5b9f755c41e37f63f3fb827077052c9f">ritsuko::check_hdf5_numeric_missing_placeholder_attribute</a> (const H5::DataSet &amp;dset, const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:a5b9f755c41e37f63f3fb827077052c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a870454a192fe31b2a5ffd1436c4424dd" id="r_a870454a192fe31b2a5ffd1436c4424dd"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:a870454a192fe31b2a5ffd1436c4424dd"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a870454a192fe31b2a5ffd1436c4424dd">ritsuko::open_and_load_optional_hdf5_numeric_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
+<tr class="separator:a870454a192fe31b2a5ffd1436c4424dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9760b1b6e87b42820474394455b2c796" id="r_a9760b1b6e87b42820474394455b2c796"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a9760b1b6e87b42820474394455b2c796">ritsuko::check_hdf5_string_missing_placeholder_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:a9760b1b6e87b42820474394455b2c796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900bc87fa93a16012522b65e4bf46429" id="r_a900bc87fa93a16012522b65e4bf46429"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html#a900bc87fa93a16012522b65e4bf46429">ritsuko::open_and_load_optional_hdf5_string_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
+<tr class="separator:a900bc87fa93a16012522b65e4bf46429"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Pick block dimensions for an N-dimensional HDF5 dataset. </p>
+<div class="textblock"><p>Get the missing placeholder attribute. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

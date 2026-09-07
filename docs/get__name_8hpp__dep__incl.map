@@ -14,7 +14,7 @@
 <area shape="poly" id="edge12_Node000001_Node000007" title=" " alt="" coords="803,46,817,174,812,175,798,47"/>
 <area shape="rect" id="Node000008" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="835,79,1018,120"/>
 <area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="831,37,896,76,893,81,828,41"/>
-<area shape="rect" id="Node000009" href="$missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="1065,168,1204,208"/>
+<area shape="rect" id="Node000009" href="$hdf5_2missing__placeholder_8hpp.html" title="Get the missing placeholder attribute." alt="" coords="1065,168,1204,208"/>
 <area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="900,19,944,25,990,36,1035,53,1076,77,1097,97,1112,121,1132,166,1127,168,1108,124,1093,100,1073,81,1033,58,989,41,943,30,900,24"/>
 <area shape="rect" id="Node000010" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="1144,79,1282,120"/>
 <area shape="poly" id="edge15_Node000001_Node000010" title=" " alt="" coords="883,32,1126,76,1144,80,1143,85,1125,82,882,37"/>

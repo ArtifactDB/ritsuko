@@ -121,10 +121,88 @@ Functions</h2></td></tr>
 <tr class="separator:abf542db46552ae71530ecfccd1f66505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee7609d114de23145d8d28ddde55c810" id="r_aee7609d114de23145d8d28ddde55c810"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structritsuko_1_1Version.html">Version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee7609d114de23145d8d28ddde55c810">parse_version_string</a> (const char *version_string, size_t size, bool skip_patch=false)</td></tr>
 <tr class="separator:aee7609d114de23145d8d28ddde55c810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b9f755c41e37f63f3fb827077052c9f" id="r_a5b9f755c41e37f63f3fb827077052c9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b9f755c41e37f63f3fb827077052c9f">check_hdf5_numeric_missing_placeholder_attribute</a> (const H5::DataSet &amp;dset, const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:a5b9f755c41e37f63f3fb827077052c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a870454a192fe31b2a5ffd1436c4424dd" id="r_a870454a192fe31b2a5ffd1436c4424dd"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:a870454a192fe31b2a5ffd1436c4424dd"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a870454a192fe31b2a5ffd1436c4424dd">open_and_load_optional_hdf5_numeric_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
+<tr class="separator:a870454a192fe31b2a5ffd1436c4424dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9760b1b6e87b42820474394455b2c796" id="r_a9760b1b6e87b42820474394455b2c796"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9760b1b6e87b42820474394455b2c796">check_hdf5_string_missing_placeholder_attribute</a> (const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:a9760b1b6e87b42820474394455b2c796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900bc87fa93a16012522b65e4bf46429" id="r_a900bc87fa93a16012522b65e4bf46429"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a900bc87fa93a16012522b65e4bf46429">open_and_load_optional_hdf5_string_missing_placeholder</a> (const H5::DataSet &amp;handle, const char *attr_name)</td></tr>
+<tr class="separator:a900bc87fa93a16012522b65e4bf46429"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Assorted helper functions for parsing and validation. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a5b9f755c41e37f63f3fb827077052c9f" name="a5b9f755c41e37f63f3fb827077052c9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b9f755c41e37f63f3fb827077052c9f">&#9670;&#160;</a></span>check_hdf5_numeric_missing_placeholder_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::check_hdf5_numeric_missing_placeholder_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>dset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const H5::Attribute &amp;</td>          <td class="paramname"><span class="paramname"><em>attr</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check the validity of a missing placeholder attribute on a numeric dataset. An error is raised if the attribute is not a scalar or has a different type than the dataset.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dset</td><td>Dataset handle. </td></tr>
+    <tr><td class="paramname">attr</td><td>Handle for the attribute containing the missing placeholder, typically attached to <code>dset</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9760b1b6e87b42820474394455b2c796" name="a9760b1b6e87b42820474394455b2c796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9760b1b6e87b42820474394455b2c796">&#9670;&#160;</a></span>check_hdf5_string_missing_placeholder_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::check_hdf5_string_missing_placeholder_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const H5::Attribute &amp;</td>          <td class="paramname"><span class="paramname"><em>attr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check the validity of a missing placeholder attribute on a string dataset. An error is raised if the attribute is not a scalar or has a different type class. For variable length string attributes, this function will also check that the string is not NULL.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attr</td><td>Handle for the attribute containing the missing placeholder. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af53ad376d532eaac211b7cd93f3dda4c" name="af53ad376d532eaac211b7cd93f3dda4c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af53ad376d532eaac211b7cd93f3dda4c">&#9670;&#160;</a></span>is_date()</h2>
 
@@ -268,6 +346,82 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether or not the string finishes with an RFC3339-compliant timestamp. </dd></dl>
+
+</div>
+</div>
+<a id="a870454a192fe31b2a5ffd1436c4424dd" name="a870454a192fe31b2a5ffd1436c4424dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a870454a192fe31b2a5ffd1436c4424dd">&#9670;&#160;</a></span>open_and_load_optional_hdf5_numeric_missing_placeholder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; Type_ &gt; ritsuko::open_and_load_optional_hdf5_numeric_missing_placeholder </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>attr_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if a missing placeholder attribute is present, and if so, open it and loads it value. This will also call <code><a class="el" href="#a5b9f755c41e37f63f3fb827077052c9f">check_hdf5_numeric_missing_placeholder_attribute()</a></code> to validate the placeholder's properties.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type_</td><td>Type to use to store the data in memory, see <code>as_numeric_datatype()</code> for supported types. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
+    <tr><td class="paramname">attr_name</td><td>Name of the attribute containing the missing value placeholder.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Optional value of the placeholder. </dd></dl>
+
+</div>
+</div>
+<a id="a900bc87fa93a16012522b65e4bf46429" name="a900bc87fa93a16012522b65e4bf46429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a900bc87fa93a16012522b65e4bf46429">&#9670;&#160;</a></span>open_and_load_optional_hdf5_string_missing_placeholder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; ritsuko::open_and_load_optional_hdf5_string_missing_placeholder </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>attr_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check if a missing string placeholder attribute is present, and if so, open it and loads it value. This will also call <code><a class="el" href="#a9760b1b6e87b42820474394455b2c796">check_hdf5_string_missing_placeholder_attribute()</a></code> to validate the placeholder's properties.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>Dataset handle. </td></tr>
+    <tr><td class="paramname">attr_name</td><td>Name of the attribute containing the missing value placeholder.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Optional value of the placeholder. </dd></dl>
 
 </div>
 </div>
