@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['offset_0',['offset',['../structritsuko_1_1CvlsPointer.html#a034817a9c41f91658137176821ab2400',1,'ritsuko::CvlsPointer']]]
+  ['patch_0',['patch',['../structritsuko_1_1Version.html#ab11472e3a5b0a73724a8367bde91fafb',1,'ritsuko::Version']]]
 ];

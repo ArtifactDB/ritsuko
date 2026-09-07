@@ -105,7 +105,8 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="as__numeric__datatype_8hpp.html">../hdf5/as_numeric_datatype.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="exceeds__limit_8hpp.html">../hdf5/exceeds_limit.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespaceritsuko.html">   18</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
 <div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
@@ -158,13 +159,14 @@ $(function(){ initResizable(false); });
 </div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif </span></div>
 <div class="ttc" id="aas__numeric__datatype_8hpp_html"><div class="ttname"><a href="as__numeric__datatype_8hpp.html">as_numeric_datatype.hpp</a></div><div class="ttdoc">Choose a HDF5 datatype.</div></div>
 <div class="ttc" id="aexceeds__limit_8hpp_html"><div class="ttname"><a href="exceeds__limit_8hpp.html">exceeds_limit.hpp</a></div><div class="ttdoc">Check for larger-than-expected types in HDF5 datasets.</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a51dedc84e7992f1ae6a6981a83c4e8b8"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a51dedc84e7992f1ae6a6981a83c4e8b8">ritsuko::hdf5::as_numeric_datatype</a></div><div class="ttdeci">const H5::PredType &amp; as_numeric_datatype()</div><div class="ttdef"><b>Definition</b> as_numeric_datatype.hpp:26</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a6cd65a78811faa2894a672f5ce993949"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">ritsuko::hdf5::exceeds_integer_limit</a></div><div class="ttdeci">bool exceeds_integer_limit(const H5::IntType &amp;itype, size_t precision, bool is_signed)</div><div class="ttdef"><b>Definition</b> exceeds_limit.hpp:27</div></div>
-<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition</b> choose_missing_placeholder.hpp:15</div></div>
+<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition</b> CvlsPointer.hpp:18</div></div>
 <div class="ttc" id="anamespaceritsuko_html_a15af5afed15f9c7252a77218fa50af90"><div class="ttname"><a href="namespaceritsuko.html#a15af5afed15f9c7252a77218fa50af90">ritsuko::define_cvls_pointer_datatype</a></div><div class="ttdeci">H5::CompType define_cvls_pointer_datatype()</div><div class="ttdef"><b>Definition</b> CvlsPointer.hpp:57</div></div>
 <div class="ttc" id="anamespaceritsuko_html_a27f17ec0b817e049e1834a4f9191d69a"><div class="ttname"><a href="namespaceritsuko.html#a27f17ec0b817e049e1834a4f9191d69a">ritsuko::validate_cvls_pointer_datatype</a></div><div class="ttdeci">void validate_cvls_pointer_datatype(const H5::CompType &amp;type, const int offset_precision, const int length_precision)</div><div class="ttdef"><b>Definition</b> CvlsPointer.hpp:82</div></div>
 <div class="ttc" id="astructritsuko_1_1CvlsPointer_html"><div class="ttname"><a href="structritsuko_1_1CvlsPointer.html">ritsuko::CvlsPointer</a></div><div class="ttdoc">Pointer into the compressed VLS heap.</div><div class="ttdef"><b>Definition</b> CvlsPointer.hpp:30</div></div>

@@ -1,9 +1,9 @@
-<map id="ritsuko/is_date_time.hpp" name="ritsuko/is_date_time.hpp">
-<area shape="rect" id="Node000001" title="Utilities to check date and time formats." alt="" coords="38,5,200,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,65,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,34,62,71,59,67,103,30"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="89,79,149,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,31,122,63,116,63,116,31"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="173,79,244,105"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="136,29,183,67,180,71,132,34"/>
+<map id="ritsuko/format/is_date_time.hpp" name="ritsuko/format/is_date_time.hpp">
+<area shape="rect" id="Node000001" title="Utilities to check date and time formats." alt="" coords="45,5,193,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,65,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,48,61,85,57,81,96,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,94,149,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,46,122,78,116,78,116,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="173,94,244,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="143,44,185,82,182,86,139,48"/>
 </map>
