@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cvlspointer_0',['CvlsPointer',['../structritsuko_1_1CvlsPointer.html',1,'ritsuko']]]
+  ['iteratenddataset_0',['IterateNdDataset',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html',1,'ritsuko::hdf5']]]
 ];

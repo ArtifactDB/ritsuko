@@ -1,6 +1,6 @@
 <map id="ritsuko/hdf5/IterateNdDataset.hpp" name="ritsuko/hdf5/IterateNdDataset.hpp">
 <area shape="rect" id="Node000001" title="Iterate through an N&#45;dimensional dataset by block." alt="" coords="72,5,289,31"/>
-<area shape="rect" id="Node000002" href="$validate__cvls__array_8hpp.html" title="Helper functions to validate compressed VLS arrays." alt="" coords="5,79,143,120"/>
+<area shape="rect" id="Node000002" href="$validate__array_8hpp.html" title="Helper functions to validate compressed VLS arrays." alt="" coords="5,79,143,120"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,42,102,81,99,76,151,38"/>
 <area shape="rect" id="Node000003" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="160,256,302,282"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,46,232,255,226,257,184,47"/>

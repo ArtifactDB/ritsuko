@@ -105,33 +105,12 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1CvlsPointer.html">CvlsPointer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer into the compressed VLS heap.  <a href="structritsuko_1_1CvlsPointer.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classritsuko_1_1Stream1dCvlsArray.html">Stream1dCvlsArray</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a 1-dimensional compressed VLS array into memory.  <a href="classritsuko_1_1Stream1dCvlsArray.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1Version.html">Version</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structritsuko_1_1Version.html" title="Version number.">Version</a> number.  <a href="structritsuko_1_1Version.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a15af5afed15f9c7252a77218fa50af90" id="r_a15af5afed15f9c7252a77218fa50af90"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
-<tr class="memitem:a15af5afed15f9c7252a77218fa50af90"><td class="memTemplItemLeft" align="right" valign="top">H5::CompType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a15af5afed15f9c7252a77218fa50af90">define_cvls_pointer_datatype</a> ()</td></tr>
-<tr class="separator:a15af5afed15f9c7252a77218fa50af90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27f17ec0b817e049e1834a4f9191d69a" id="r_a27f17ec0b817e049e1834a4f9191d69a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27f17ec0b817e049e1834a4f9191d69a">validate_cvls_pointer_datatype</a> (const H5::CompType &amp;type, const int offset_precision, const int length_precision)</td></tr>
-<tr class="separator:a27f17ec0b817e049e1834a4f9191d69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fe328d998183a3cb1d92f1127c04f76" id="r_a4fe328d998183a3cb1d92f1127c04f76"><td class="memItemLeft" align="right" valign="top">H5::DataSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fe328d998183a3cb1d92f1127c04f76">open_cvls_pointers</a> (const H5::Group &amp;handle, const char *name, size_t offset_precision, size_t length_precision)</td></tr>
-<tr class="separator:a4fe328d998183a3cb1d92f1127c04f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac15b68112deeaff3cbf813b7bc2a223b" id="r_ac15b68112deeaff3cbf813b7bc2a223b"><td class="memItemLeft" align="right" valign="top">H5::DataSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac15b68112deeaff3cbf813b7bc2a223b">open_cvls_heap</a> (const H5::Group &amp;handle, const char *name)</td></tr>
-<tr class="separator:ac15b68112deeaff3cbf813b7bc2a223b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2ad1a27fdf9bf5e4ff3cb315b05b357" id="r_ac2ad1a27fdf9bf5e4ff3cb315b05b357"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
-<tr class="memitem:ac2ad1a27fdf9bf5e4ff3cb315b05b357"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac2ad1a27fdf9bf5e4ff3cb315b05b357">validate_1d_cvls_array</a> (const H5::DataSet &amp;handle, hsize_t full_length, hsize_t heap_length, hsize_t buffer_size)</td></tr>
-<tr class="separator:ac2ad1a27fdf9bf5e4ff3cb315b05b357"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72033fd21bd4a812db71684f03f17c86" id="r_a72033fd21bd4a812db71684f03f17c86"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
-<tr class="memitem:a72033fd21bd4a812db71684f03f17c86"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a72033fd21bd4a812db71684f03f17c86">validate_nd_cvls_array</a> (const H5::DataSet &amp;handle, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t heap_length, hsize_t buffer_size)</td></tr>
-<tr class="separator:a72033fd21bd4a812db71684f03f17c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dbbf9102b54e6f3f2f11bd0bdb721d8" id="r_a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dbbf9102b54e6f3f2f11bd0bdb721d8">is_date_prefix</a> (const char *ptr)</td></tr>
 <tr class="separator:a0dbbf9102b54e6f3f2f11bd0bdb721d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af53ad376d532eaac211b7cd93f3dda4c" id="r_af53ad376d532eaac211b7cd93f3dda4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af53ad376d532eaac211b7cd93f3dda4c">is_date</a> (const char *ptr, size_t len)</td></tr>
@@ -146,34 +125,6 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Assorted helper functions for parsing and validation. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a15af5afed15f9c7252a77218fa50af90" name="a15af5afed15f9c7252a77218fa50af90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15af5afed15f9c7252a77218fa50af90">&#9670;&#160;</a></span>define_cvls_pointer_datatype()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Offset_ , typename Length_ &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">H5::CompType ritsuko::define_cvls_pointer_datatype </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Define a compound datatype of a realization of a <code><a class="el" href="structritsuko_1_1CvlsPointer.html" title="Pointer into the compressed VLS heap.">CvlsPointer</a></code> type.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Offset_</td><td>Unsigned integer type of the starting offset, see <code><a class="el" href="structritsuko_1_1CvlsPointer.html#a034817a9c41f91658137176821ab2400">CvlsPointer::offset</a></code>. </td></tr>
-    <tr><td class="paramname">Length_</td><td>Unsigned integer type of the string length, see <code><a class="el" href="structritsuko_1_1CvlsPointer.html#a2cfb3dbf66660470116adbde5371074d">CvlsPointer::length</a></code>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A HDF5 compound datatype. </dd></dl>
-
-</div>
-</div>
 <a id="af53ad376d532eaac211b7cd93f3dda4c" name="af53ad376d532eaac211b7cd93f3dda4c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af53ad376d532eaac211b7cd93f3dda4c">&#9670;&#160;</a></span>is_date()</h2>
 
@@ -320,98 +271,6 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 
 </div>
 </div>
-<a id="ac15b68112deeaff3cbf813b7bc2a223b" name="ac15b68112deeaff3cbf813b7bc2a223b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac15b68112deeaff3cbf813b7bc2a223b">&#9670;&#160;</a></span>open_cvls_heap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">H5::DataSet ritsuko::open_cvls_heap </td>
-          <td>(</td>
-          <td class="paramtype">const H5::Group &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Open a HDF5 dataset containing the compressed VLS heap. This should be a 1-dimensional dataset of unsigned 8-bit integers, representing the concatenation of bytes from all the variable length strings in the compressed VLS array. Ideally, all bytes are referenced by at least one <code><a class="el" href="structritsuko_1_1CvlsPointer.html" title="Pointer into the compressed VLS heap.">CvlsPointer</a></code> in the associated pointer dataset, though this is not required, e.g., if a heap entry is replaced with a shorter string.</p>
-<p>We use an integer datatype rather than HDF5's own string datatypes to avoid the risk of a naive incorrect interpretation of the heap as an array of fixed-width strings.</p>
-<p>To read the heap into memory, we first read the bytes into an <code>uint8_t</code> array via <code>H5::DataSet::read</code>, and then access those bytes via an aliased <code>char *</code>. By comparison, directly reading the bytes into a <code>char</code> array is susceptible to overflow problems if HDF5 needs to convert the file's unsigned integers to a possibly-signed <code>char</code> type. Conversely, to write to the heap, we use an <code>unsigned char *</code> to alias the content of each C-style string (following C++'s strict aliasing rules). We pass this aliasing pointer to <code>H5::DataSet::write</code>, which trivially converts from <code>NATIVE_UCHAR</code> in memory to the file's 8-bit unsigned integer datatype.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>Group containing the dataset of pointers. </td></tr>
-    <tr><td class="paramname">name</td><td>Name of the dataset of pointers.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>An open handle into a HDF5 dataset. </dd></dl>
-
-</div>
-</div>
-<a id="a4fe328d998183a3cb1d92f1127c04f76" name="a4fe328d998183a3cb1d92f1127c04f76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fe328d998183a3cb1d92f1127c04f76">&#9670;&#160;</a></span>open_cvls_pointers()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">H5::DataSet ritsuko::open_cvls_pointers </td>
-          <td>(</td>
-          <td class="paramtype">const H5::Group &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>offset_precision</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length_precision</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Open a HDF5 dataset containing pointers into the compressed VLS heap, used to define the individual strings in a compressed VLS array.</p>
-<p>There are no restrictions on the ordering of entries in the pointer dataset. Slices for consecutive <code>ClvsPointer</code>s do not have to be ordered or contiguous. This allows one or more entries in the <code><a class="el" href="structritsuko_1_1CvlsPointer.html" title="Pointer into the compressed VLS heap.">CvlsPointer</a></code> dataset to be modified without invalidating other entries. Different <code><a class="el" href="structritsuko_1_1CvlsPointer.html" title="Pointer into the compressed VLS heap.">CvlsPointer</a></code>s can even refer to the same or even overlapping slices, which provides some opportunities to improve compression for repeated strings.</p>
-<p>An error is raised if the dataset's datatype is not compound or does not meet the expectations defined by <code><a class="el" href="#a27f17ec0b817e049e1834a4f9191d69a">validate_cvls_pointer_datatype()</a></code>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>Group containing the dataset of pointers. </td></tr>
-    <tr><td class="paramname">name</td><td>Name of the dataset of pointers. </td></tr>
-    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start offset, see <code><a class="el" href="structritsuko_1_1CvlsPointer.html#a034817a9c41f91658137176821ab2400">CvlsPointer::offset</a></code>. </td></tr>
-    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string length, see <code><a class="el" href="structritsuko_1_1CvlsPointer.html#a2cfb3dbf66660470116adbde5371074d">CvlsPointer::length</a></code>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>An open handle into a HDF5 dataset. </dd></dl>
-
-</div>
-</div>
 <a id="aee7609d114de23145d8d28ddde55c810" name="aee7609d114de23145d8d28ddde55c810"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aee7609d114de23145d8d28ddde55c810">&#9670;&#160;</a></span>parse_version_string()</h2>
 
@@ -452,150 +311,6 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <code><a class="el" href="structritsuko_1_1Version.html" title="Version number.">Version</a></code> object containing the version number. If <code>skip_patch = true</code>, the <code>patch</code> number is always zero. </dd></dl>
-
-</div>
-</div>
-<a id="ac2ad1a27fdf9bf5e4ff3cb315b05b357" name="ac2ad1a27fdf9bf5e4ff3cb315b05b357"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2ad1a27fdf9bf5e4ff3cb315b05b357">&#9670;&#160;</a></span>validate_1d_cvls_array()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Offset_ , typename Length_ &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ritsuko::validate_1d_cvls_array </td>
-          <td>(</td>
-          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>full_length</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Check that the pointers for a 1-dimensional compressed VLS array is valid. An error is thrown if any pointers are out of range of the associated heap dataset.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>Handle to the pointer dataset for a compressed VLS array, see <code><a class="el" href="#a4fe328d998183a3cb1d92f1127c04f76">open_cvls_pointers()</a></code>. </td></tr>
-    <tr><td class="paramname">full_length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
-    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
-    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for reading pointers by block. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a27f17ec0b817e049e1834a4f9191d69a" name="a27f17ec0b817e049e1834a4f9191d69a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27f17ec0b817e049e1834a4f9191d69a">&#9670;&#160;</a></span>validate_cvls_pointer_datatype()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ritsuko::validate_cvls_pointer_datatype </td>
-          <td>(</td>
-          <td class="paramtype">const H5::CompType &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>offset_precision</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>length_precision</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Validate that a compound HDF5 datatype meets the expectations for storage in a <code><a class="el" href="structritsuko_1_1CvlsPointer.html" title="Pointer into the compressed VLS heap.">CvlsPointer</a></code> instance, specifically:</p>
-<ul>
-<li>It has exactly two members.</li>
-<li>The first member is named <code>offset</code> and is of an integer datatype that is unsigned and has no more than than <code>offset_precision</code> bits.</li>
-<li>The second member is named <code>length</code> and is of an integer datatype that is unsigned and has no more than than <code>length_precision</code> bits.</li>
-</ul>
-<p>The constraints on the precision of each integer type ensure that the pointer dataset can be represented in memory by the associated type. For example, setting <code>offset_precision = 64</code> allows readers to safely assume that a <code>uint64_t</code> can be used for <code><a class="el" href="structritsuko_1_1CvlsPointer.html#a034817a9c41f91658137176821ab2400">CvlsPointer::offset</a></code>.</p>
-<p>On success, the contents of the HDF5 dataset associated with <code>type</code> can be safely read into an array of appropriately parameterized <code><a class="el" href="structritsuko_1_1CvlsPointer.html" title="Pointer into the compressed VLS heap.">CvlsPointer</a></code> instances. Otherwise, an error is thrown.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">type</td><td>Compound datatype, typically generated from a <code>H5::DataSet</code> instance. </td></tr>
-    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code><a class="el" href="structritsuko_1_1CvlsPointer.html#a034817a9c41f91658137176821ab2400">CvlsPointer::offset</a></code>. </td></tr>
-    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code><a class="el" href="structritsuko_1_1CvlsPointer.html#a2cfb3dbf66660470116adbde5371074d">CvlsPointer::length</a></code>. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a72033fd21bd4a812db71684f03f17c86" name="a72033fd21bd4a812db71684f03f17c86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72033fd21bd4a812db71684f03f17c86">&#9670;&#160;</a></span>validate_nd_cvls_array()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Offset_ , typename Length_ &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ritsuko::validate_nd_cvls_array </td>
-          <td>(</td>
-          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>dimensions</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Check that the pointers for an N-dimensional compressed VLS array is valid. An error is thrown if any pointers are out of range of the associated heap dataset.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>Handle to the pointer dataset for a compressed VLS array, see <code><a class="el" href="#a4fe328d998183a3cb1d92f1127c04f76">open_cvls_pointers()</a></code>. </td></tr>
-    <tr><td class="paramname">dimensions</td><td>Dimensions of the dataset. </td></tr>
-    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
-    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for reading pointers by block. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="394,34,235,146,232,141,391,29"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="516,226,587,252"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="468,29,518,45,572,70,623,104,644,126,662,151,666,163,665,175,653,195,630,211,603,224,600,219,627,207,649,191,660,174,661,164,657,154,640,130,619,109,569,74,516,50,467,34"/>
-<area shape="rect" id="Node000004" href="$open_8hpp.html" title="Convenience functions to safely open HDF5 handles." alt="" coords="104,79,177,105"/>
+<area shape="rect" id="Node000004" href="$hdf5_2open_8hpp.html" title="Convenience functions to safely open HDF5 handles." alt="" coords="104,79,177,105"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="365,34,193,79,192,74,364,29"/>
 <area shape="rect" id="Node000007" href="$load__attribute_8hpp.html" title="Load HDF5 attributes." alt="" coords="398,79,521,105"/>
 <area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="420,30,445,65,440,68,416,33"/>
