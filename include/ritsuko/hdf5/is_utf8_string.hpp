@@ -15,7 +15,7 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * Check if a HDF5 string datatype could represent strings that are not compatible with the UTF-8 encoding.
+ * Check if a HDF5 string datatype is compatible with the UTF-8 encoding.
  *
  * Note that this returns `true` even if the string datatype uses ASCII encoding, given that ASCII is a subset of UTF-8.
  * As a result, this function is mostly performative as all valid HDF5 strings are encoded in either ASCII or UTF-8;

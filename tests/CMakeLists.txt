@@ -23,30 +23,14 @@ add_executable(
 
     src/hdf5/exceeds_limit.cpp
     src/hdf5/is_utf8_string.cpp
-
-    src/hdf5/load_attribute.cpp
-    src/hdf5/load_dataset.cpp
-
-    src/hdf5/get_1d_length.cpp
-    src/hdf5/get_dimensions.cpp
-    src/hdf5/pick_1d_block_size.cpp
-    src/hdf5/pick_nd_block_dimensions.cpp
-
     src/hdf5/Stream1dNumericDataset.cpp
     src/hdf5/Stream1dStringDataset.cpp
-    src/hdf5/IterateNdDataset.cpp
-
-    src/hdf5/open.cpp
-
+#    src/hdf5/IterateNdDataset.cpp
     src/hdf5/validate_string.cpp
-    src/hdf5/miscellaneous.cpp
-
-    src/hdf5/missing_placeholder.cpp
     src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp
 
     src/cvls/Pointer.cpp
-    src/cvls/open.cpp
     src/cvls/Stream1dArray.cpp
     src/cvls/validate_array.cpp
 )

@@ -7,11 +7,9 @@
 #include <string>
 #include <stdexcept>
 
-#include "pick_1d_block_size.hpp"
-#include "get_1d_length.hpp"
 #include "get_name.hpp"
-#include "as_numeric_datatype.hpp"
-#include "utils_string.hpp"
+#include "strnlen.hpp"
+#include "ReclaimVlsMemory.hpp"
 
 /**
  * @file Stream1dStringDataset.hpp
@@ -25,143 +23,123 @@ namespace hdf5 {
 /**
  * @brief Stream a 1-dimensional HDF5 string dataset into memory.
  *
- * This streams in a 1-dimensional HDF5 string dataset in contiguous blocks, using block sizes defined by `pick_1d_block_size()`.
- * Callers can then iterate over the individual strings.
+ * This streams in a 1-dimensional HDF5 string dataset in a chunk-wise manner.
+ * The aim is to enable inspection of the dataset contents while minimizing memory usage.
  */
 class Stream1dStringDataset {
 public:
     /**
-     * @param ptr Pointer to a 1-dimensional HDF5 dataset. 
+     * @param ptr A 1-dimensional HDF5 string dataset. 
      * @param length Length of the dataset as a 1-dimensional vector.
-     * @param buffer_size Size of the buffer for holding streamed blocks of values.
-     * Larger buffers improve speed at the cost of some memory efficiency.
      */
-    Stream1dStringDataset(const H5::DataSet* ptr, hsize_t length, hsize_t buffer_size) : 
-        ptr(ptr), 
-        full_length(length), 
-        block_size(pick_1d_block_size(ptr->getCreatePlist(), full_length, buffer_size)),
-        mspace(1, &block_size),
-        dspace(1, &full_length),
-        dtype(ptr->getDataType()),
-        is_variable(dtype.isVariableStr())
+    Stream1dStringDataset(const H5::DataSet& data, hsize_t length) : 
+        my_data(data), 
+        my_full_length(length), 
+        my_block_size([&]{
+            const auto& plist = data.getCreatePlist();
+            if (plist.getLayout() == H5D_CHUNKED) {
+                hsize_t output;                
+                plist.getChunk(1, &output);
+                return output;
+            } else {
+                // Hard-coding the mock chunk size for contiguous datasets,
+                // not worth complicating the constructor with an extra argument.
+                return std::min(length, static_cast<hsize_t>(10000));
+            }
+        }()),
+        my_mspace(1, &my_block_size),
+        my_fspace(1, &my_full_length),
+        my_dtype(my_data.getDataType()),
+        my_is_variable(my_dtype.isVariableStr())
     {
-        if (is_variable) {
-            var_buffer.resize(block_size);
+        if (my_is_variable) {
+            my_var_buffer.resize(my_block_size);
         } else {
-            fixed_length = dtype.getSize();
-            fix_buffer.resize(fixed_length * block_size);
+            my_fixed_length = my_dtype.getSize();
+            my_fix_buffer.resize(my_fixed_length * my_block_size);
         }
-        final_buffer.resize(block_size);
+        my_final_buffer.resize(my_block_size);
     }
-
-    /**
-     * Overloaded constructor where the length is automatically determined.
-     *
-     * @param ptr Pointer to a 1-dimensional HDF5 dataset. 
-     * @param buffer_size Size of the buffer for holding streamed blocks of values.
-     */
-    Stream1dStringDataset(const H5::DataSet* ptr, hsize_t buffer_size) : 
-        Stream1dStringDataset(ptr, get_1d_length(ptr->getSpace(), false), buffer_size) 
-    {}
 
 public:
     /**
-     * @return String at the current position of the stream.
-     */
-    std::string get() {
-        while (consumed >= available) {
-            consumed -= available;
-            load(); 
-        }
-        return final_buffer[consumed];
-    }
-
-    /**
-     * @return String at the current position of the stream.
-     * Unlike `get()`, this avoids a copy by directly acquiring the string,
-     * but it invalidates all subsequent `get()` and `steal()` requests until `next()` is called.
-     */
-    std::string steal() {
-        while (consumed >= available) {
-            consumed -= available;
-            load(); 
-        }
-        return std::move(final_buffer[consumed]);
-    }
-
-    /**
-     * Advance to the next position of the stream.
+     * Load the contents of the next chunk in the dataset.
+     * On return, this is now the "current" chunk.
      *
-     * @param jump Number of positions by which to advance the stream.
+     * @return Number of elements loaded in the current chunk.
+     * If zero is returned, the dataset traversal is complete.
      */
-    void next(size_t jump = 1) {
-        consumed += jump;
-    }
-
-    /**
-     * @return Length of the dataset.
-     */
-    hsize_t length() const {
-        return full_length;
-    }
-
-    /**
-     * @return Current position on the stream.
-     */
-    hsize_t position() const {
-        return consumed + last_loaded;
-    }
-
-private:
-    const H5::DataSet* ptr;
-    hsize_t full_length, block_size;
-    H5::DataSpace mspace;
-    H5::DataSpace dspace;
-
-    H5::DataType dtype;
-    bool is_variable;
-    std::vector<char*> var_buffer;
-    size_t fixed_length = 0;
-    std::vector<char> fix_buffer;
-    std::vector<std::string> final_buffer;
-
-    hsize_t last_loaded = 0;
-    hsize_t consumed = 0;
-    hsize_t available = 0;
-
-    void load() {
-        if (last_loaded >= full_length) {
-            throw std::runtime_error("requesting data beyond the end of the dataset at '" + get_name(*ptr) + "'");
+    hsize_t load() {
+        my_last_loaded += my_available;
+        my_available = std::min(my_full_length - my_last_loaded, my_block_size);
+        if (my_available == 0) {
+            return 0;
         }
-        available = std::min(full_length - last_loaded, block_size);
-        constexpr hsize_t zero = 0;
-        mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
-        dspace.selectHyperslab(H5S_SELECT_SET, &available, &last_loaded);
 
-        if (is_variable) {
-            ptr->read(var_buffer.data(), dtype, mspace, dspace);
-            [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), var_buffer.data());
-            for (hsize_t i = 0; i < available; ++i) {
-                if (var_buffer[i] == NULL) {
-                    throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(*ptr) + "'");
+        constexpr hsize_t zero = 0;
+        my_mspace.selectHyperslab(H5S_SELECT_SET, &my_available, &zero);
+        my_fspace.selectHyperslab(H5S_SELECT_SET, &my_available, &my_last_loaded);
+
+        if (my_is_variable) {
+            my_data.read(my_var_buffer.data(), my_dtype, my_mspace, my_fspace);
+            const auto& plist = H5::DSetMemXferPropList::DEFAULT;
+            [[maybe_unused]] ReclaimVlsMemory deletor(my_dtype.getId(), my_mspace.getId(), plist.getId(), my_var_buffer.data());
+            for (hsize_t i = 0; i < my_available; ++i) {
+                if (my_var_buffer[i] == NULL) {
+                    throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(my_data) + "'");
                 }
-                auto& curstr = final_buffer[i];
+                auto& curstr = my_final_buffer[i];
                 curstr.clear();
-                curstr.insert(0, var_buffer[i]);
+                curstr.insert(0, my_var_buffer[i]);
             }
 
         } else {
-            auto bptr = fix_buffer.data();
-            ptr->read(bptr, dtype, mspace, dspace);
-            for (size_t i = 0; i < available; ++i, bptr += fixed_length) {
-                auto& curstr = final_buffer[i];
+            auto bptr = my_fix_buffer.data();
+            my_data.read(bptr, my_dtype, my_mspace, my_fspace);
+            for (size_t i = 0; i < my_available; ++i, bptr += my_fixed_length) {
+                auto& curstr = my_final_buffer[i];
                 curstr.clear();
-                curstr.insert(curstr.end(), bptr, bptr + find_string_length(bptr, fixed_length));
+                curstr.insert(curstr.end(), bptr, bptr + strnlen(bptr, my_fixed_length));
             }
         }
 
-        last_loaded += available;
+        return my_available;
     }
+
+    /**
+     * Get the contents of the current chunk.
+     * This should only be called after `load()`.
+     *
+     * @return Pointer to an array containing the contents of the current chunk.
+     * Only the first `X` elements should be accessed, where `X` is the return value of the most recent call to `load()`. 
+     * Callers can freely modify the contents of this array.
+     */
+    std::string* contents() {
+        return my_final_buffer.data();                
+    }
+
+    /**
+     * @return Start position of the current chunk, i.e., the index of the first element in the chunk. 
+     */
+    hsize_t start() const {
+        return my_last_loaded;
+    }
+
+private:
+    const H5::DataSet& my_data;
+    hsize_t my_full_length, my_block_size;
+    H5::DataSpace my_mspace;
+    H5::DataSpace my_fspace;
+
+    H5::DataType my_dtype;
+    bool my_is_variable;
+    std::vector<char*> my_var_buffer;
+    std::size_t my_fixed_length = 0;
+    std::vector<char> my_fix_buffer;
+    std::vector<std::string> my_final_buffer;
+
+    hsize_t my_last_loaded = 0;
+    hsize_t my_available = 0;
 };
 
 }

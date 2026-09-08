@@ -6,8 +6,6 @@
 #include <vector>
 #include <stdexcept>
 
-#include "pick_1d_block_size.hpp"
-#include "get_1d_length.hpp"
 #include "get_name.hpp"
 #include "as_numeric_datatype.hpp"
 
@@ -21,110 +19,88 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * @brief Stream a numeric 1-dimensional HDF5 dataset into memory.
+ * @brief Stream a 1-dimensional HDF5 numeric dataset into memory.
  * @tparam Type_ Type to represent the data in memory.
  *
- * This streams in a 1-dimensional HDF5 numeric dataset in contiguous blocks, using block sizes defined by `pick_1d_block_size()`.
- * Callers can then extract one value at a time or they can acquire the entire block.
+ * This streams in a 1-dimensional HDF5 numeric dataset in a chunk-wise manner.
+ * The aim is to enable inspection of the dataset contents while minimizing memory usage.
  */
 template<typename Type_>
 class Stream1dNumericDataset {
 public:
     /**
-     * @param ptr Pointer to a 1-dimensional HDF5 dataset.
+     * @param data A 1-dimensional HDF5 numeric dataset.
      * @param length Length of the dataset as a 1-dimensional vector.
-     * @param buffer_size Size of the buffer for holding streamed blocks of values.
-     * Larger buffers improve speed at the cost of some memory efficiency.
      */
-    Stream1dNumericDataset(const H5::DataSet* ptr, hsize_t length, hsize_t buffer_size) : 
-        ptr(ptr), 
-        full_length(length), 
-        block_size(pick_1d_block_size(ptr->getCreatePlist(), full_length, buffer_size)),
-        mspace(1, &block_size),
-        dspace(1, &full_length),
-        buffer(block_size)
-    {}
-
-    /**
-     * Overloaded constructor where the length is automatically determined.
-     *
-     * @param ptr Pointer to a 1-dimensional HDF5 dataset. 
-     * @param buffer_size Size of the buffer for holding streamed blocks of values.
-     */
-    Stream1dNumericDataset(const H5::DataSet* ptr, hsize_t buffer_size) : 
-        Stream1dNumericDataset(ptr, get_1d_length(ptr->getSpace(), false), buffer_size) 
+    Stream1dNumericDataset(const H5::DataSet& data, hsize_t length) : 
+        my_data(data), 
+        my_full_length(length), 
+        my_block_size([&]{
+            const auto& plist = my_data.getCreatePlist();
+            if (plist.getLayout() == H5D_CHUNKED) {
+                hsize_t output;
+                plist.getChunk(1, &output);
+                return output;
+            } else {
+                // Hard-coding the mock chunk size for contiguous datasets,
+                // not worth complicating the constructor with an extra argument.
+                return std::min(length, static_cast<hsize_t>(10000));
+            }
+        }()),
+        my_mspace(1, &my_block_size),
+        my_fspace(1, &my_full_length),
+        my_buffer(my_block_size)
     {}
 
 public:
     /**
-     * @return Value at the current position of the stream.
-     */
-    Type_ get() {
-        while (consumed >= available) {
-            consumed -= available;
-            load(); 
-        }
-        return buffer[consumed];
-    }
-
-    /**
-     * @return Pair containing a pointer to and the length of an array.
-     * The array holds all loaded values of the stream at its current position, up to the specified length.
-     * Note that the pointer is only valid until the next invocation of `next()`.
-     */
-    std::pair<const Type_*, size_t> get_many() {
-        while (consumed >= available) {
-            consumed -= available;
-            load();
-        }
-        return std::make_pair(buffer.data() + consumed, available - consumed);
-    }
-
-    /**
-     * Advance the position of the stream by `jump`.
+     * Load the contents of the next chunk in the dataset.
+     * On return, the loaded chunk is now the "current" chunk.
      *
-     * @param jump Number of positions by which to advance the stream.
+     * @return Number of elements loaded in the current chunk.
+     * If zero is returned, the dataset traversal is complete.
      */
-    void next(size_t jump = 1) {
-        consumed += jump;
+    hsize_t load() {
+        my_last_loaded += my_available;
+        my_available = std::min(my_full_length - my_last_loaded, my_block_size);
+        if (my_available == 0) {
+            return 0;
+        }
+
+        constexpr hsize_t zero = 0;
+        my_mspace.selectHyperslab(H5S_SELECT_SET, &my_available, &zero);
+        my_fspace.selectHyperslab(H5S_SELECT_SET, &my_available, &my_last_loaded);
+        my_data.read(my_buffer.data(), as_numeric_datatype<Type_>(), my_mspace, my_fspace);
+        return my_available;
     }
 
     /**
-     * @return Length of the dataset.
+     * Get the contents of the current chunk.
+     * This should only be called after `load()`.
+     *
+     * @return Pointer to an array containing the contents of the current chunk.
+     * Only the first `X` elements should be accessed, where `X` is the return value of the most recent call to `load()`. 
+     * Callers can freely modify the contents of this array.
      */
-    hsize_t length() const {
-        return full_length;
+    Type_* contents() {
+        return my_buffer.data();                
     }
 
     /**
-     * @return Current position on the stream.
+     * @return Start position of the current chunk, i.e., the index of the first element in the chunk. 
      */
-    hsize_t position() const {
-        return consumed + last_loaded;
+    hsize_t start() const {
+        return my_last_loaded;
     }
 
 private:
-    const H5::DataSet* ptr;
-    hsize_t full_length, block_size;
-    H5::DataSpace mspace;
-    H5::DataSpace dspace;
-    std::vector<Type_> buffer;
-
-    hsize_t last_loaded = 0;
-    hsize_t consumed = 0;
-    hsize_t available = 0;
-
-    void load() {
-        if (last_loaded >= full_length) {
-            throw std::runtime_error("requesting data beyond the end of the dataset at '" + get_name(*ptr) + "'");
-        }
-        available = std::min(full_length - last_loaded, block_size);
-        constexpr hsize_t zero = 0;
-        mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
-        dspace.selectHyperslab(H5S_SELECT_SET, &available, &last_loaded);
-        ptr->read(buffer.data(), as_numeric_datatype<Type_>(), mspace, dspace);
-        last_loaded += available;
-    }
+    const H5::DataSet& my_data;
+    hsize_t my_full_length, my_block_size;
+    H5::DataSpace my_mspace;
+    H5::DataSpace my_fspace;
+    std::vector<Type_> my_buffer;
+    hsize_t my_last_loaded = 0;
+    hsize_t my_available = 0;
 };
 
 }

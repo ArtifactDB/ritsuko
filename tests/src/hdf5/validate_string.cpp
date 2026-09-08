@@ -26,7 +26,7 @@ TEST(ValidateString, FixedNdimensional) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::validate_nd_string_dataset(dhandle, 100);
+        ritsuko::hdf5::validate_nd_string_dataset(dhandle, dims);
     }
 }
 
@@ -49,13 +49,10 @@ TEST(ValidateString, VariableNdimensional) {
         dhandle.write(ptrs.data(), stype);
     }
 
-    std::vector<size_t> buffer_sizes { 100, 1000, 10000, 100000 };
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        for (auto buf : buffer_sizes) {
-            ritsuko::hdf5::validate_nd_string_dataset(dhandle, buf);
-        }
+        ritsuko::hdf5::validate_nd_string_dataset(dhandle, dims);
     }
 
     // Injecting a NULL at every corner and checking that the validator can find it.
@@ -72,17 +69,14 @@ TEST(ValidateString, VariableNdimensional) {
 
             H5::H5File handle(path, H5F_ACC_RDONLY);
             auto dhandle = handle.openDataSet("foobar");
-            for (auto buf : buffer_sizes) {
-                EXPECT_ANY_THROW({
-                    try {
-                        ritsuko::hdf5::validate_nd_string_dataset(dhandle, buf);
-                    } catch (std::exception& e) {
-                        EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
-                        throw;
-                    }
-                });
-            }
-
+            EXPECT_ANY_THROW({
+                try {
+                    ritsuko::hdf5::validate_nd_string_dataset(dhandle, dims);
+                } catch (std::exception& e) {
+                    EXPECT_THAT(e.what(), ::testing::HasSubstr("NULL pointer"));
+                    throw;
+                }
+            });
             ptrs[offset] = placeholder;
         }
     }
