@@ -1,5 +1,5 @@
-#ifndef RITSUKO_CVLS_VALIDATE_ARRAY_HPP
-#define RITSUKO_CVLS_VALIDATE_ARRAY_HPP
+#ifndef RITSUKO_CVLS_VALIDATE_HPP
+#define RITSUKO_CVLS_VALIDATE_HPP
 
 #include <string>
 #include <vector>
@@ -15,8 +15,8 @@
 #include "Pointer.hpp"
 
 /**
- * @file validate_array.hpp
- * @brief Helper functions to validate compressed VLS arrays.
+ * @file validate.hpp
+ * @brief Helper functions to validate compressed VLS datasets.
  */
 
 namespace ritsuko {

@@ -32,7 +32,7 @@ add_executable(
 
     src/cvls/Pointer.cpp
     src/cvls/Stream1dArray.cpp
-    src/cvls/validate_array.cpp
+    src/cvls/validate.cpp
 )
 
 target_link_libraries(

@@ -29,7 +29,7 @@ namespace hdf5 {
  * @param handle Handle to a scalar HDF5 string dataset.
  * 
  */
-inline void validate_scalar_string_dataset(const H5::DataSet& handle) {
+inline void validate_scalar_string(const H5::DataSet& handle) {
     auto dtype = handle.getDataType();
     if (!dtype.isVariableStr()) {
         return;
@@ -55,7 +55,7 @@ inline void validate_scalar_string_dataset(const H5::DataSet& handle) {
  * @param handle Handle to the HDF5 string dataset.
  * @param full_length Length of the dataset as a 1-dimensional vector.
  */
-inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length) {
+inline void validate_1d_strings(const H5::DataSet& handle, hsize_t full_length) {
     auto dtype = handle.getDataType();
     if (!dtype.isVariableStr()) {
         return;
@@ -96,7 +96,7 @@ inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t full_l
  * @param handle Handle to the HDF5 string dataset.
  * @param dimensions Dimensions of the dataset.
  */
-inline void validate_nd_string_dataset(const H5::DataSet& handle, const std::vector<hsize_t>& dimensions) {
+inline void validate_nd_strings(const H5::DataSet& handle, const std::vector<hsize_t>& dimensions) {
     auto stype = handle.getDataType();
     if (!stype.isVariableStr()) {
         return;
