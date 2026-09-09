@@ -28,8 +28,8 @@ TEST_P(Hdf5Stream1dStringDatasetTest, Fixed) {
 
     hsize_t total = 0;
     while (true) {
-        EXPECT_EQ(total, stream.start());
         hsize_t loaded = stream.load();
+        EXPECT_EQ(total, stream.start());
         if (loaded == 0) {
             break;
         }

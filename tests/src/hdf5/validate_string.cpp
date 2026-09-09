@@ -5,7 +5,7 @@
 #include <numeric>
 #include <string>
 
-TEST(ValidateString, FixedNdimensional) {
+TEST(Hdf5ValidateString, FixedNdimensional) {
     const char* path = "TEST-validate-string.h5";
 
     std::vector<hsize_t> dims{ 77, 192 };
@@ -30,7 +30,7 @@ TEST(ValidateString, FixedNdimensional) {
     }
 }
 
-TEST(ValidateString, VariableNdimensional) {
+TEST(Hdf5ValidateString, VariableNdimensional) {
     const char* path = "TEST-validate-string.h5";
 
     std::vector<hsize_t> dims{ 131, 211 };

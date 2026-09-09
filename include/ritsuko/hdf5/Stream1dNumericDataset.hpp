@@ -87,7 +87,10 @@ public:
     }
 
     /**
-     * @return Start position of the current chunk, i.e., the index of the first element in the chunk. 
+     * Get the start position of the current chunk, i.e., the index of the first element in the chunk. 
+     * This should only be called after `load()`.
+     *
+     * @return Start position of the current chunk.
      */
     hsize_t start() const {
         return my_last_loaded;

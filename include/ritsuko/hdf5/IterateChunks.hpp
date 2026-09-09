@@ -61,7 +61,7 @@ struct IterateChunks {
      * If false, the iteration has finished.
      */
     bool advance() {
-        if (!my_finished) {
+        if (my_finished) {
             return false;
         }
 
