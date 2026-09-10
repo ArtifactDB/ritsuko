@@ -163,6 +163,128 @@ INSTANTIATE_TEST_SUITE_P(
     ::testing::Values(false, true)
 );
 
+TEST(CvlsValidatePointers, OneDimError) {
+    const std::string path = "TEST-vls-validate.h5";
+    hsize_t nlen = 103; 
+    hsize_t heap = 100;
+
+    auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        H5::DataSpace dspace(1, &nlen);
+        auto dhandle = handle.createDataSet("foobar", dtype, dspace);
+    }
+
+    std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > data(nlen);
+    for (size_t i = 0; i < nlen; ++i) {
+        data[i].offset = 0;
+        data[i].length = 10;
+    }
+
+    // Injecting errors at different locations to check that we actually iterate through the entire dataset.
+    for (int scenario = 0; scenario < 3; ++scenario) {
+        std::size_t loc; 
+        if (scenario == 0) {
+            loc = 0;
+        } else if (scenario == 1) {
+            loc = nlen / 2;
+        } else {
+            loc = nlen - 1;
+        }
+
+        // Trying different failure modes.
+        auto previous = data[loc];
+        if (scenario == 0) {
+            // End above the limit.
+            data[loc].offset = heap - 1;
+        } else {
+            // Start above the limit.
+            data[loc].offset = heap + 1;
+        }
+
+        {
+            H5::H5File handle(path, H5F_ACC_RDWR);
+            auto dhandle = handle.openDataSet("foobar");
+            dhandle.write(data.data(), dtype);
+        }
+
+        {
+            H5::H5File handle(path, H5F_ACC_RDONLY);
+            auto dhandle = handle.openDataSet("foobar");
+            std::string msg;
+            try {
+                ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, heap);
+            } catch (std::exception& e) {
+                msg = e.what();
+            }
+            EXPECT_THAT(msg, ::testing::HasSubstr("out of range"));
+        }
+
+        data[loc] = previous;
+    }
+}
+
+TEST(CvlsValidatePointers, NDimErrors) {
+    const std::string path = "TEST-vls-validate.h5";
+    std::vector<hsize_t> dims{ 78, 51 };
+    hsize_t nlen = dims[0] * dims[1];
+    hsize_t heap = 100;
+
+    auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        H5::DataSpace dspace(2, dims.data());
+        auto dhandle = handle.createDataSet("foobar", dtype, dspace);
+    }
+
+    std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > data(nlen);
+    for (size_t i = 0; i < nlen; ++i) {
+        data[i].offset = 0;
+        data[i].length = 10;
+    }
+
+    // Injecting errors at different locations to check that we actually iterate through the entire dataset.
+    for (int scenario = 0; scenario < 3; ++scenario) {
+        std::size_t loc; 
+        if (scenario == 0) {
+            loc = 0;
+        } else if (scenario == 1) {
+            loc = nlen / 2;
+        } else {
+            loc = nlen - 1;
+        }
+
+        auto previous = data[loc];
+        if (scenario == 0) {
+            // Start above the limit.
+            data[loc].offset = heap + 1;
+        } else {
+            // End above the limit.
+            data[loc].offset = heap - 1;
+        }
+
+        {
+            H5::H5File handle(path, H5F_ACC_RDWR);
+            auto dhandle = handle.openDataSet("foobar");
+            dhandle.write(data.data(), dtype);
+        }
+
+        {
+            H5::H5File handle(path, H5F_ACC_RDONLY);
+            auto dhandle = handle.openDataSet("foobar");
+            std::string msg;
+            try {
+                ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, heap);
+            } catch (std::exception& e) {
+                msg = e.what();
+            }
+            EXPECT_THAT(msg, ::testing::HasSubstr("out of range"));
+        }
+
+        data[loc] = previous;
+    }
+}
+
 TEST(CvlsValidatePointers, Scalar) {
     const std::string path = "TEST-vls-validate.h5";
 

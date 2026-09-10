@@ -71,7 +71,6 @@ inline void validate_scalar_pointer(const H5::DataSet& handle, hsize_t heap_leng
     }
 }
 
-
 /**
  * Validate the pointer dataset for a 1-dimensional compressed VLS array. 
  * An error is thrown if the datatype is not consistent with the expected precision of the `Pointer` types,
