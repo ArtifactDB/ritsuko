@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include <cassert>
 
 #include "H5Cpp.h"
 
@@ -26,10 +27,14 @@ namespace hdf5 {
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to a scalar HDF5 string dataset.
- * 
+ * @param handle Handle to a HDF5 dataset.
+ * It is assumed that this dataset is scalar.
+ * It is also assumed that its datatype is of the string class.
  */
 inline void validate_scalar_string(const H5::DataSet& handle) {
+    assert(handle.getSpace().getSimpleExtentNdims() == 0);
+    assert(handle.getDataType().getClass() == H5T_STRING);
+
     auto dtype = handle.getDataType();
     if (!dtype.isVariableStr()) {
         return;
@@ -38,7 +43,7 @@ inline void validate_scalar_string(const H5::DataSet& handle) {
     char* vptr = NULL;
     handle.read(&vptr, dtype);
 
-    const auto& dspace = handle.getSpace(); // don't set as temporary in constructor below, otherwise it gets destroyed and the ID invalidated.
+    const auto& dspace = handle.getSpace();
     const auto& plist = H5::DSetMemXferPropList::DEFAULT;
     [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), dspace.getId(), plist.getId(), &vptr);
 
@@ -52,10 +57,15 @@ inline void validate_scalar_string(const H5::DataSet& handle) {
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to the HDF5 string dataset.
- * @param full_length Length of the dataset as a 1-dimensional vector.
+ * @param handle Handle to a HDF5 dataset.
+ * It is assumed that this dataset is 1-dimensional.
+ * It is also assumed that its datatype is of the string class.
+ * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
  */
 inline void validate_1d_strings(const H5::DataSet& handle, hsize_t full_length) {
+    assert(handle.getSpace().getSimpleExtentNdims() == 1);
+    assert(handle.getDataType().getClass() == H5T_STRING);
+
     auto dtype = handle.getDataType();
     if (!dtype.isVariableStr()) {
         return;
@@ -93,10 +103,15 @@ inline void validate_1d_strings(const H5::DataSet& handle, hsize_t full_length) 
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to the HDF5 string dataset.
+ * @param handle Handle to a HDF5 dataset.
+ * It is assumed that this dataset has at least 1 dimension.
+ * It is also assumed that its datatype is of the string class.
  * @param dimensions Dimensions of the dataset.
  */
 inline void validate_nd_strings(const H5::DataSet& handle, const std::vector<hsize_t>& dimensions) {
+    assert(handle.getSpace().getSimpleExtentNdims() > 0);
+    assert(handle.getDataType().getClass() == H5T_STRING);
+
     auto stype = handle.getDataType();
     if (!stype.isVariableStr()) {
         return;
@@ -142,9 +157,14 @@ inline void validate_nd_strings(const H5::DataSet& handle, const std::vector<hsi
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string attributes, this function is a no-op.
  *
- * @param attr Handle to the HDF5 string attribute.
+ * @param attr Handle to a HDF5 attribute.
+ * It is assumed that this attribute is scalar.
+ * It is also assumed that its datatype is of the string class.
  */
 inline void validate_scalar_string_attribute(const H5::Attribute& attr) {
+    assert(attr.getSpace().getSimpleExtentNdims() == 0);
+    assert(attr.getDataType().getClass() == H5T_STRING);
+
     auto dtype = attr.getDataType();
     if (!dtype.isVariableStr()) {
         return;
@@ -165,9 +185,14 @@ inline void validate_scalar_string_attribute(const H5::Attribute& attr) {
  * For fixed-width string attributes, this function is a no-op.
  *
  * @param attr Handle to the HDF5 string attribute.
- * @param full_length Length of the attribute as a 1-dimensional vector.
+ * It is assumed that this attribute is 1-dimensional.
+ * It is also assumed that its datatype is of the string class.
+ * @param full_length Length of the attribute, i.e., the extent of its sole dimension.
  */
 inline void validate_1d_string_attribute(const H5::Attribute& attr, hsize_t full_length) {
+    assert(attr.getSpace().getSimpleExtentNdims() == 1);
+    assert(attr.getDataType().getClass() == H5T_STRING);
+
     auto dtype = attr.getDataType();
     if (!dtype.isVariableStr()) {
         return;

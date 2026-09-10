@@ -53,7 +53,8 @@ inline void validate_pointers(const H5::DataSet& handle) {
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap, see `Pointer::offset`.
  * @tparam Length_ Unsigned integer type for the length of the string, see `Pointer::length`.
  *
- * @param handle Handle to a scalar HDF5 dataset. 
+ * @param handle Handle to a HDF5 dataset. 
+ * It is assumed that this dataset is scalar.
  * @param heap_length Length of the heap dataset. 
  */
 template<typename Offset_, typename Length_>
@@ -79,8 +80,9 @@ inline void validate_scalar_pointer(const H5::DataSet& handle, hsize_t heap_leng
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap, see `Pointer::offset`.
  * @tparam Length_ Unsigned integer type for the length of the string, see `Pointer::length`.
  *
- * @param handle Handle to a 1-dimensional HDF5 dataset. 
- * @param full_length Length of the dataset as a 1-dimensional vector.
+ * @param handle Handle to a HDF5 dataset. 
+ * It is assumed that this dataset is 1-dimensional.
+ * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
  * @param heap_length Length of the heap dataset. 
  */
 template<typename Offset_, typename Length_>
@@ -130,6 +132,7 @@ inline void validate_1d_pointers(const H5::DataSet& handle, hsize_t full_length,
  * @tparam Length_ Unsigned integer type for the length of the string, see `Pointer::length`.
  *
  * @param handle Handle to a non-scalar HDF5 dataset. 
+ * It is assumed that this dataset has at least 1 dimension.
  * @param dimensions Dimensions of the dataset. 
  * This should be non-empty.
  * @param heap_length Length of the heap dataset. 
@@ -178,6 +181,7 @@ void validate_nd_pointers(const H5::DataSet& handle, const std::vector<hsize_t>&
  * An error is thrown if the dataset is not 1-dimensional or does not contain unsigned 8-bit integers.
  *
  * @param handle Handle to a HDF5 dataset.
+ * It have any shape and its datatype may be of any class.
  */
 inline void validate_heap(const H5::DataSet& handle) {
     if (handle.getTypeClass() != H5T_INTEGER) {

@@ -25,7 +25,8 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * @param handle Handle to the HDF5 scalar dataset.
+ * @param handle Handle to a HDF5 dataset.
+ * It is assumed that this dataset is scalar and that its datatype is of the string class.
  * @return String containing the contents of the sole dataset entry.
  */
 inline std::string read_scalar_string(const H5::DataSet& handle) {
@@ -54,7 +55,8 @@ inline std::string read_scalar_string(const H5::DataSet& handle) {
 }
 
 /**
- * @param attr Handle to a scalar string attribute.
+ * @param attr Handle to a HDF5 attribute.
+ * It is assumed that this attribute is scalar and that its datatype is of the string class.
  * @return The attribute as a string.
  */
 inline std::string read_scalar_string(const H5::Attribute& attr) {

@@ -27,10 +27,11 @@ namespace hdf5 {
 inline std::vector<hsize_t> mock_contiguous_chunks(const std::vector<hsize_t>& dimensions, hsize_t chunk_size) {
     const auto ndims = dimensions.size();
     std::vector<hsize_t> output(ndims, 1);
+    // Starting from the end, as this is the fastest-changing.
     for (hsize_t i = ndims; i > 0; --i) {
         const auto d = i - 1;
         if (dimensions[d] == 0) {
-            break;            
+            continue;
         }
         if (chunk_size <= dimensions[d]) {
             output[d] = chunk_size;

@@ -43,7 +43,8 @@ inline bool exceeds_integer_limit(const H5::IntType& itype, size_t precision, bo
 /**
  * Overload of `exceeds_integer_limit()` that accepts a HDF5 dataset handle.
  *
- * @param handle Handle for a HDF5 dataset.
+ * @param handle Handle to a HDF5 dataset.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting integer type, assuming 2's complement.
  * @param is_signed Whether the limiting integer type is signed.
  *
@@ -60,7 +61,8 @@ inline bool exceeds_integer_limit(const H5::DataSet& handle, size_t precision, b
 /**
  * Overload of `exceeds_integer_limit()` that accepts a HDF5 attribute handle.
  *
- * @param handle Handle for a HDF5 attribute.
+ * @param handle Handle to a HDF5 attribute.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting integer type, assuming 2's complement.
  * @param is_signed Whether the limiting integer type is signed.
  *
@@ -118,7 +120,8 @@ inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, size_t prec
  * such that two float datatypes with the same number of bits could represent a different set of numbers.
  * (Though this seems unlikely in practice, as all CPU-specific predefined float types in later HDF5 versions are already aliases of the IEEE types.)
  *
- * @param handle Handle for a HDF5 dataset.
+ * @param handle Handle to a HDF5 dataset.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting float type.
  *
  * @return Whether the dataset uses a datatype than cannot be represented by the limiting float type.
@@ -138,7 +141,8 @@ inline bool exceeds_float_limit(const H5::DataSet& handle, size_t precision) {
 /**
  * Overload of `exceeds_float_limit()` that accepts a HDF5 attribute handle.
  *
- * @param handle Handle for a HDF5 attribute.
+ * @param handle Handle to a HDF5 attribute.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting float type. 
  *
  * @return Whether the attribute uses a datatype than cannot be represented by the limiting integer type.

@@ -26,6 +26,7 @@ add_executable(
     src/hdf5/Stream1dNumericDataset.cpp
     src/hdf5/Stream1dStringDataset.cpp
     src/hdf5/IterateChunks.cpp
+    src/hdf5/mock_contiguous_chunks.cpp
     src/hdf5/validate_string.cpp
     src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp

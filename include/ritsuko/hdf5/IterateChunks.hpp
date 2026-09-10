@@ -19,8 +19,9 @@ namespace hdf5 {
 /**
  * @brief Iterate through an high-dimensional dataspace by chunk.
  *
- * This iterates through an N-dimensional dataspace in a chunkwise fashion,
- * typically to stream a chunked HDF5 dataset into memory.
+ * This class iterates through an N-dimensional dataspace in a chunk-by-chunk manner.
+ * It optimizes access to the HDF5 file given that the HDF5 library will always read/write an entire chunk.
+ * It is typically used to stream a chunked HDF5 dataset into memory, where we can reduce memory usage by reading only one chunk at a time.
  */
 struct IterateChunks {
     /**

@@ -35,11 +35,12 @@ template<typename Offset_, typename Length_>
 class Stream1dArray {
 public:
     /**
-     * @param pointers Pointer to a 1-dimensional HDF5 dataset containing the compressed VLS pointers.
-     * This dataset should satisfy `validate_1d_pointers()`.
-     * @param length Length of the `pointers` dataset. 
-     * @param heap Pointer to a 1-dimensional HDF5 dataset containing the compressed VLS heap.
-     * This dataset should satisfy `validate_heap()`.
+     * @param pointers Handle to a HDF5 dataset containing the compressed VLS pointers.
+     * It is assumed that this dataset already satisfies `validate_1d_pointers()`.
+     * It is also assumed that this dataset is 1-dimensional.
+     * @param length Length of the `pointers` dataset, i.e., the extent of its sole dimension.
+     * @param heap Pointer to a HDF5 dataset containing the compressed VLS heap.
+     * It is assumed that this dataset already satisfies `validate_heap()`.
      */
     Stream1dArray(const H5::DataSet& pointers, hsize_t length, const H5::DataSet& heap) : 
         my_pointers(pointers), 

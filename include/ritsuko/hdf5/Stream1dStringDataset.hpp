@@ -29,8 +29,11 @@ namespace hdf5 {
 class Stream1dStringDataset {
 public:
     /**
-     * @param ptr A 1-dimensional HDF5 string dataset. 
-     * @param length Length of the dataset as a 1-dimensional vector.
+     * @param ptr Handle to a HDF5 dataset. 
+     * It is assumed that this dataset is 1-dimensional.
+     * It is also assumed that its datatype is an integer or float. 
+     * The lifetime of `data` is expected to be no shorter than the lifetime of this `Stream1dStringDataset` instance.
+     * @param length Length of the dataset, i.e., the extent of its sole dimension.
      */
     Stream1dStringDataset(const H5::DataSet& data, hsize_t length) : 
         my_data(data), 

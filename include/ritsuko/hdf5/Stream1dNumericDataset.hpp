@@ -29,8 +29,11 @@ template<typename Type_>
 class Stream1dNumericDataset {
 public:
     /**
-     * @param data A 1-dimensional HDF5 numeric dataset.
-     * @param length Length of the dataset as a 1-dimensional vector.
+     * @param data Handle to a HDF5 dataset.
+     * It is assumed that this dataset is 1-dimensional.
+     * It is also assumed that its datatype is an integer or float. 
+     * The lifetime of `data` is expected to be no shorter than the lifetime of this `Stream1dNumericDataset` instance.
+     * @param length Length of the dataset, i.e., the extent of its sole dimension. 
      */
     Stream1dNumericDataset(const H5::DataSet& data, hsize_t length) : 
         my_data(data), 
