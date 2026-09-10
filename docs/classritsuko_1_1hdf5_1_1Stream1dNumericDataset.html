@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko::hdf5::Stream1dNumericDataset&lt; Type_ &gt; Class Template Reference</title>
+<title>ritsuko: ritsuko::hdf5::Stream1dNumericDataset&lt; Type_, DataSetPointer_ &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,68 +93,58 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">ritsuko::hdf5::Stream1dNumericDataset&lt; Type_ &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">ritsuko::hdf5::Stream1dNumericDataset&lt; Type_, DataSetPointer_ &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Stream a numeric 1-dimensional HDF5 dataset into memory.  
+<p>Stream a 1-dimensional HDF5 numeric dataset into memory.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Stream1dNumericDataset_8hpp_source.html">Stream1dNumericDataset.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adc9860ef9871ee31a037583b6925bbaa" id="r_adc9860ef9871ee31a037583b6925bbaa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc9860ef9871ee31a037583b6925bbaa">Stream1dNumericDataset</a> (const H5::DataSet *ptr, hsize_t <a class="el" href="#a67ad7086c14157221c92806738d6d80b">length</a>, hsize_t buffer_size)</td></tr>
-<tr class="separator:adc9860ef9871ee31a037583b6925bbaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b28013dd9fa54bac56cfba6d215128f" id="r_a0b28013dd9fa54bac56cfba6d215128f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b28013dd9fa54bac56cfba6d215128f">Stream1dNumericDataset</a> (const H5::DataSet *ptr, hsize_t buffer_size)</td></tr>
-<tr class="separator:a0b28013dd9fa54bac56cfba6d215128f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c0ea0f1344667a3236d14793a6194c7" id="r_a8c0ea0f1344667a3236d14793a6194c7"><td class="memItemLeft" align="right" valign="top">Type_&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c0ea0f1344667a3236d14793a6194c7">get</a> ()</td></tr>
-<tr class="separator:a8c0ea0f1344667a3236d14793a6194c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a190d29c940ddcf71ad14e8270712a6" id="r_a7a190d29c940ddcf71ad14e8270712a6"><td class="memItemLeft" align="right" valign="top">std::pair&lt; const Type_ *, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a190d29c940ddcf71ad14e8270712a6">get_many</a> ()</td></tr>
-<tr class="separator:a7a190d29c940ddcf71ad14e8270712a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ed3c6351d6b10dc83a7a87e479a6502" id="r_a9ed3c6351d6b10dc83a7a87e479a6502"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ed3c6351d6b10dc83a7a87e479a6502">next</a> (size_t jump=1)</td></tr>
-<tr class="separator:a9ed3c6351d6b10dc83a7a87e479a6502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67ad7086c14157221c92806738d6d80b" id="r_a67ad7086c14157221c92806738d6d80b"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67ad7086c14157221c92806738d6d80b">length</a> () const</td></tr>
-<tr class="separator:a67ad7086c14157221c92806738d6d80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e5f8c40852735dfdd76ec01494d881d" id="r_a9e5f8c40852735dfdd76ec01494d881d"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e5f8c40852735dfdd76ec01494d881d">position</a> () const</td></tr>
-<tr class="separator:a9e5f8c40852735dfdd76ec01494d881d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7df49cc52f305139ffd0395fe58fa2e0" id="r_a7df49cc52f305139ffd0395fe58fa2e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7df49cc52f305139ffd0395fe58fa2e0">Stream1dNumericDataset</a> (DataSetPointer_ data_ptr, hsize_t length)</td></tr>
+<tr class="separator:a7df49cc52f305139ffd0395fe58fa2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad37d0df38ebc2e3964c7fd94de6b8d2" id="r_aad37d0df38ebc2e3964c7fd94de6b8d2"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad37d0df38ebc2e3964c7fd94de6b8d2">chunk_size</a> () const</td></tr>
+<tr class="separator:aad37d0df38ebc2e3964c7fd94de6b8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae4d2d55246597f418978f45492fd166" id="r_aae4d2d55246597f418978f45492fd166"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae4d2d55246597f418978f45492fd166">load</a> (Type_ *buffer)</td></tr>
+<tr class="separator:aae4d2d55246597f418978f45492fd166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a45d60fd061d00b3dffc441e703818a" id="r_a7a45d60fd061d00b3dffc441e703818a"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a45d60fd061d00b3dffc441e703818a">start</a> () const</td></tr>
+<tr class="separator:a7a45d60fd061d00b3dffc441e703818a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Type_&gt;<br />
-class ritsuko::hdf5::Stream1dNumericDataset&lt; Type_ &gt;</div><p>Stream a numeric 1-dimensional HDF5 dataset into memory. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Type_, class DataSetPointer_ = const H5::DataSet*&gt;<br />
+class ritsuko::hdf5::Stream1dNumericDataset&lt; Type_, DataSetPointer_ &gt;</div><p>Stream a 1-dimensional HDF5 numeric dataset into memory. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type_</td><td>Type to represent the data in memory.</td></tr>
+    <tr><td class="paramname">Type_</td><td>Numeric type to represent the data in memory. </td></tr>
+    <tr><td class="paramname">DataSetPointer_</td><td>Class of a pointer to a <code>H5::DataSet</code>. This can be raw or smart depending on the caller's management of its lifetime.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This streams in a 1-dimensional HDF5 numeric dataset in contiguous blocks, using block sizes defined by <code><a class="el" href="namespaceritsuko_1_1hdf5.html#a2e20754e74dfc5afff5d2c89db34cde9">pick_1d_block_size()</a></code>. Callers can then extract one value at a time or they can acquire the entire block. </p>
+<p>This streams in a 1-dimensional HDF5 numeric dataset in a chunk-wise manner. The aim is to enable inspection of the dataset contents while minimizing memory usage. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="adc9860ef9871ee31a037583b6925bbaa" name="adc9860ef9871ee31a037583b6925bbaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc9860ef9871ee31a037583b6925bbaa">&#9670;&#160;</a></span>Stream1dNumericDataset() <span class="overload">[1/2]</span></h2>
+<a id="a7df49cc52f305139ffd0395fe58fa2e0" name="a7df49cc52f305139ffd0395fe58fa2e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7df49cc52f305139ffd0395fe58fa2e0">&#9670;&#160;</a></span>Stream1dNumericDataset()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
+template&lt;typename Type_ , class DataSetPointer_  = const H5::DataSet*&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_ &gt;::Stream1dNumericDataset </td>
+          <td class="memname"><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_, DataSetPointer_ &gt;::Stream1dNumericDataset </td>
           <td>(</td>
-          <td class="paramtype">const H5::DataSet *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span>, </td>
+          <td class="paramtype">DataSetPointer_</td>          <td class="paramname"><span class="paramname"><em>data_ptr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span>&#160;)</td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -165,48 +155,13 @@ template&lt;typename Type_ &gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to a 1-dimensional HDF5 dataset. </td></tr>
-    <tr><td class="paramname">length</td><td>Length of the dataset as a 1-dimensional vector. </td></tr>
-    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding streamed blocks of values. Larger buffers improve speed at the cost of some memory efficiency. </td></tr>
+    <tr><td class="paramname">data_ptr</td><td>Pointer to a HDF5 dataset. It is assumed that this dataset is 1-dimensional. It is also assumed that its datatype is an integer or float.</td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a0b28013dd9fa54bac56cfba6d215128f" name="a0b28013dd9fa54bac56cfba6d215128f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b28013dd9fa54bac56cfba6d215128f">&#9670;&#160;</a></span>Stream1dNumericDataset() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_ &gt;::Stream1dNumericDataset </td>
-          <td>(</td>
-          <td class="paramtype">const H5::DataSet *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Overloaded constructor where the length is automatically determined.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>If <code>data_ptr</code> is a raw pointer, it should not be deleted before the last call to any methods of this <code><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html" title="Stream a 1-dimensional HDF5 numeric dataset into memory.">Stream1dNumericDataset</a></code> instance. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to a 1-dimensional HDF5 dataset. </td></tr>
-    <tr><td class="paramname">buffer_size</td><td>Size of the buffer for holding streamed blocks of values. </td></tr>
+    <tr><td class="paramname">length</td><td>Length of the dataset, i.e., the extent of its sole dimension. </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,75 +169,19 @@ template&lt;typename Type_ &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8c0ea0f1344667a3236d14793a6194c7" name="a8c0ea0f1344667a3236d14793a6194c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c0ea0f1344667a3236d14793a6194c7">&#9670;&#160;</a></span>get()</h2>
+<a id="aad37d0df38ebc2e3964c7fd94de6b8d2" name="aad37d0df38ebc2e3964c7fd94de6b8d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad37d0df38ebc2e3964c7fd94de6b8d2">&#9670;&#160;</a></span>chunk_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
+template&lt;typename Type_ , class DataSetPointer_  = const H5::DataSet*&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Type_ <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_ &gt;::get </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Value at the current position of the stream. </dd></dl>
-
-</div>
-</div>
-<a id="a7a190d29c940ddcf71ad14e8270712a6" name="a7a190d29c940ddcf71ad14e8270712a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a190d29c940ddcf71ad14e8270712a6">&#9670;&#160;</a></span>get_many()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::pair&lt; const Type_ *, size_t &gt; <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_ &gt;::get_many </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Pair containing a pointer to and the length of an array. The array holds all loaded values of the stream at its current position, up to the specified length. Note that the pointer is only valid until the next invocation of <code><a class="el" href="#a9ed3c6351d6b10dc83a7a87e479a6502">next()</a></code>. </dd></dl>
-
-</div>
-</div>
-<a id="a67ad7086c14157221c92806738d6d80b" name="a67ad7086c14157221c92806738d6d80b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67ad7086c14157221c92806738d6d80b">&#9670;&#160;</a></span>length()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">hsize_t <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_ &gt;::length </td>
+          <td class="memname">hsize_t <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_, DataSetPointer_ &gt;::chunk_size </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -294,25 +193,25 @@ template&lt;typename Type_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Length of the dataset. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Size of each chunk, in terms of the number of elements. </dd></dl>
 
 </div>
 </div>
-<a id="a9ed3c6351d6b10dc83a7a87e479a6502" name="a9ed3c6351d6b10dc83a7a87e479a6502"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ed3c6351d6b10dc83a7a87e479a6502">&#9670;&#160;</a></span>next()</h2>
+<a id="aae4d2d55246597f418978f45492fd166" name="aae4d2d55246597f418978f45492fd166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae4d2d55246597f418978f45492fd166">&#9670;&#160;</a></span>load()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
+template&lt;typename Type_ , class DataSetPointer_  = const H5::DataSet*&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_ &gt;::next </td>
+          <td class="memname">hsize_t <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_, DataSetPointer_ &gt;::load </td>
           <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>jump</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span></td><td>)</td>
+          <td class="paramtype">Type_ *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -322,29 +221,30 @@ template&lt;typename Type_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Advance the position of the stream by <code>jump</code>.</p>
+<p>Load the contents of the next chunk in the dataset.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">jump</td><td>Number of positions by which to advance the stream. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to an array of <code><a class="el" href="#aad37d0df38ebc2e3964c7fd94de6b8d2">chunk_size()</a></code>. On output, this contains the contents of the current chunk in its first <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$X$" src="form_0.png"/></picture> elements, where <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$X$" src="form_0.png"/></picture> is the return value of this method.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of elements loaded in the current chunk. If zero is returned, the dataset traversal is complete. </dd></dl>
 
 </div>
 </div>
-<a id="a9e5f8c40852735dfdd76ec01494d881d" name="a9e5f8c40852735dfdd76ec01494d881d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e5f8c40852735dfdd76ec01494d881d">&#9670;&#160;</a></span>position()</h2>
+<a id="a7a45d60fd061d00b3dffc441e703818a" name="a7a45d60fd061d00b3dffc441e703818a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a45d60fd061d00b3dffc441e703818a">&#9670;&#160;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type_ &gt; </div>
+template&lt;typename Type_ , class DataSetPointer_  = const H5::DataSet*&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">hsize_t <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_ &gt;::position </td>
+          <td class="memname">hsize_t <a class="el" href="classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html">ritsuko::hdf5::Stream1dNumericDataset</a>&lt; Type_, DataSetPointer_ &gt;::start </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -356,7 +256,8 @@ template&lt;typename Type_ &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Current position on the stream. </dd></dl>
+<p>Get the start position of the current chunk, i.e., the index of the first element in the chunk. That is, <code>buffer[j]</code> corresponds to the <code><a class="el" href="#a7a45d60fd061d00b3dffc441e703818a">start()</a> + j</code>-th element of the dataset. This should only be called after <code><a class="el" href="#aae4d2d55246597f418978f45492fd166">load()</a></code>.</p>
+<dl class="section return"><dt>Returns</dt><dd>Start position of the current chunk. </dd></dl>
 
 </div>
 </div>

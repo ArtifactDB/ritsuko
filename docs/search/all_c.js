@@ -1,23 +1,11 @@
 var searchData=
 [
-  ['offset_0',['offset',['../structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44',1,'ritsuko::cvls::Pointer']]],
-  ['open_2ehpp_1',['open.hpp',['../cvls_2open_8hpp.html',1,'(Global Namespace)'],['../hdf5_2open_8hpp.html',1,'(Global Namespace)']]],
-  ['open_5fand_5fload_5foptional_5fhdf5_5fnumeric_5fmissing_5fplaceholder_2',['open_and_load_optional_hdf5_numeric_missing_placeholder',['../namespaceritsuko.html#a870454a192fe31b2a5ffd1436c4424dd',1,'ritsuko']]],
-  ['open_5fand_5fload_5foptional_5fhdf5_5fstring_5fmissing_5fplaceholder_3',['open_and_load_optional_hdf5_string_missing_placeholder',['../namespaceritsuko.html#a900bc87fa93a16012522b65e4bf46429',1,'ritsuko']]],
-  ['open_5fand_5fload_5foptional_5fnumeric_5fmissing_5fplaceholder_4',['open_and_load_optional_numeric_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#a878b7398a277263abfdbe3d367cfe5fc',1,'ritsuko::hdf5']]],
-  ['open_5fand_5fload_5foptional_5fstring_5fmissing_5fplaceholder_5',['open_and_load_optional_string_missing_placeholder',['../namespaceritsuko_1_1hdf5.html#aa438bbb6d9ed1ab2a54fb020c329829e',1,'ritsuko::hdf5']]],
-  ['open_5fand_5fload_5fscalar_5fstring_5fattribute_6',['open_and_load_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#a9bed2e21f64cc33099c5042be2d6b938',1,'ritsuko::hdf5']]],
-  ['open_5fattribute_7',['open_attribute',['../namespaceritsuko_1_1hdf5.html#a2562d2fa77b38f6ba2412f4ee3fce3b4',1,'ritsuko::hdf5']]],
-  ['open_5fdataset_8',['open_dataset',['../namespaceritsuko_1_1hdf5.html#a5b0c6485fc47bfee5f434b8ba0931f1e',1,'ritsuko::hdf5']]],
-  ['open_5ffile_9',['open_file',['../namespaceritsuko_1_1hdf5.html#a4d5e8fd07fa63ae0cc3465d67fdbea1f',1,'ritsuko::hdf5']]],
-  ['open_5fgroup_10',['open_group',['../namespaceritsuko_1_1hdf5.html#ab3fb91fb20b959eaf04fcc30087ba9e8',1,'ritsuko::hdf5']]],
-  ['open_5fheap_11',['open_heap',['../cvls_2open_8hpp.html#a71b9df8575058ef409d93befc1680d1c',1,'ritsuko::cvls']]],
-  ['open_5fpointers_12',['open_pointers',['../cvls_2open_8hpp.html#a4cea933198ba643d93009459aa09c2f3',1,'ritsuko::cvls']]],
-  ['open_5fscalar_5fattribute_13',['open_scalar_attribute',['../namespaceritsuko_1_1hdf5.html#a8cbc70f0b6aa640eb12e6663cdacd4fe',1,'ritsuko::hdf5']]],
-  ['operator_21_3d_14',['operator!=',['../structritsuko_1_1Version.html#ae9589dc549fa6e1c0b56d13afdc0dd9a',1,'ritsuko::Version']]],
-  ['operator_3c_15',['operator&lt;',['../structritsuko_1_1Version.html#ace04f21a572ba2dce8825b38c9bb94c8',1,'ritsuko::Version']]],
-  ['operator_3c_3d_16',['operator&lt;=',['../structritsuko_1_1Version.html#a51aac8210920ab34b637f8d443366fc7',1,'ritsuko::Version']]],
-  ['operator_3d_3d_17',['operator==',['../structritsuko_1_1Version.html#a5e3761b0f6740ab7d1d9fe4d2e96d2a9',1,'ritsuko::Version']]],
-  ['operator_3e_18',['operator&gt;',['../structritsuko_1_1Version.html#a2533ff64d845d296993e33eae7f9fa0d',1,'ritsuko::Version']]],
-  ['operator_3e_3d_19',['operator&gt;=',['../structritsuko_1_1Version.html#a322331b6e57da64690a3016c5f9ad173',1,'ritsuko::Version']]]
+  ['read_5fscalar_5fstring_0',['read_scalar_string',['../namespaceritsuko_1_1hdf5.html#a6c30575af3d92242718dd1ca4489a525',1,'ritsuko::hdf5::read_scalar_string(const H5::DataSet &amp;data)'],['../namespaceritsuko_1_1hdf5.html#a75511764ce7ee2832375efbcf31222d8',1,'ritsuko::hdf5::read_scalar_string(const H5::Attribute &amp;attr)']]],
+  ['read_5fscalar_5fstring_2ehpp_1',['read_scalar_string.hpp',['../read__scalar__string_8hpp.html',1,'']]],
+  ['reclaimvlsmemory_2',['ReclaimVlsMemory',['../classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html',1,'ritsuko::hdf5::ReclaimVlsMemory&lt; DataTypePointer_, DataSpacePointer_, DSetMemXferPropListPointer_ &gt;'],['../classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html#a2acb220da57223ed6ad4c4777a3a36d5',1,'ritsuko::hdf5::ReclaimVlsMemory::ReclaimVlsMemory()']]],
+  ['reclaimvlsmemory_2ehpp_3',['ReclaimVlsMemory.hpp',['../ReclaimVlsMemory_8hpp.html',1,'']]],
+  ['ritsuko_4',['ritsuko',['../namespaceritsuko.html',1,'']]],
+  ['ritsuko_2ehpp_5',['ritsuko.hpp',['../ritsuko_8hpp.html',1,'']]],
+  ['ritsuko_3a_3acvls_6',['cvls',['../namespaceritsuko_1_1cvls.html',1,'ritsuko']]],
+  ['ritsuko_3a_3ahdf5_7',['hdf5',['../namespaceritsuko_1_1hdf5.html',1,'ritsuko']]]
 ];

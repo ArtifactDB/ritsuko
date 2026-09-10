@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['ge_0',['ge',['../structritsuko_1_1Version.html#a4ee512218afbabd3ac432f3ae324169e',1,'ritsuko::Version']]],
-  ['get_1',['get',['../classritsuko_1_1cvls_1_1Stream1dArray.html#a1fd64255b88ea811bb2e9bf9f93b94b0',1,'ritsuko::cvls::Stream1dArray::get()'],['../classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#a8c0ea0f1344667a3236d14793a6194c7',1,'ritsuko::hdf5::Stream1dNumericDataset::get()'],['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adc2692eaebfee12f00edc96a99d99052',1,'ritsuko::hdf5::Stream1dStringDataset::get()']]],
-  ['get_5f1d_5flength_2',['get_1d_length',['../namespaceritsuko_1_1hdf5.html#ac15dcfa823155b137686519d25ccca7d',1,'ritsuko::hdf5::get_1d_length(const H5::DataSpace &amp;space, bool allow_scalar)'],['../namespaceritsuko_1_1hdf5.html#a6e3dc741e1d0dbc0a3bdb322518952f6',1,'ritsuko::hdf5::get_1d_length(const H5::DataSet &amp;handle, bool allow_scalar)'],['../namespaceritsuko_1_1hdf5.html#aaced545e3e4462762f49cc39f2678803',1,'ritsuko::hdf5::get_1d_length(const H5::Attribute &amp;handle, bool allow_scalar)']]],
-  ['get_5f1d_5flength_2ehpp_3',['get_1d_length.hpp',['../get__1d__length_8hpp.html',1,'']]],
-  ['get_5fdimensions_4',['get_dimensions',['../namespaceritsuko_1_1hdf5.html#af7dc03efecbeae8f29724419e4911dcf',1,'ritsuko::hdf5::get_dimensions(const H5::DataSpace &amp;space, bool allow_scalar)'],['../namespaceritsuko_1_1hdf5.html#a265a0cebbaa2c461a5ec98d35d23eab8',1,'ritsuko::hdf5::get_dimensions(const H5::DataSet &amp;handle, bool allow_scalar)'],['../namespaceritsuko_1_1hdf5.html#a0e4f01f27367b06eed56b7ed068933de',1,'ritsuko::hdf5::get_dimensions(const H5::Attribute &amp;handle, bool allow_scalar)']]],
-  ['get_5fdimensions_2ehpp_5',['get_dimensions.hpp',['../get__dimensions_8hpp.html',1,'']]],
-  ['get_5fmany_6',['get_many',['../classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#a7a190d29c940ddcf71ad14e8270712a6',1,'ritsuko::hdf5::Stream1dNumericDataset']]],
-  ['get_5fname_7',['get_name',['../namespaceritsuko_1_1hdf5.html#a199d4e8292ebb954ab9f505764ebf2d9',1,'ritsuko::hdf5']]],
-  ['get_5fname_2ehpp_8',['get_name.hpp',['../get__name_8hpp.html',1,'']]],
-  ['gt_9',['gt',['../structritsuko_1_1Version.html#a957cd60b32aa1a42f8590355ba23b4d2',1,'ritsuko::Version']]]
+  ['is_5fdate_0',['is_date',['../namespaceritsuko.html#af53ad376d532eaac211b7cd93f3dda4c',1,'ritsuko']]],
+  ['is_5fdate_5fprefix_1',['is_date_prefix',['../namespaceritsuko.html#a0dbbf9102b54e6f3f2f11bd0bdb721d8',1,'ritsuko']]],
+  ['is_5fdate_5ftime_2ehpp_2',['is_date_time.hpp',['../is__date__time_8hpp.html',1,'']]],
+  ['is_5frfc3339_3',['is_rfc3339',['../namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505',1,'ritsuko']]],
+  ['is_5frfc3339_5fsuffix_4',['is_rfc3339_suffix',['../namespaceritsuko.html#ac5f8ff07715c8177a709e440eb029f30',1,'ritsuko']]],
+  ['is_5futf8_5fstring_5',['is_utf8_string',['../namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a',1,'ritsuko::hdf5::is_utf8_string(const H5::StrType &amp;stype)'],['../namespaceritsuko_1_1hdf5.html#abb640ca5a6816733631a41238c59fbab',1,'ritsuko::hdf5::is_utf8_string(const H5::DataSet &amp;data)'],['../namespaceritsuko_1_1hdf5.html#af4ec3b78b2341db4641a2eff0533c090',1,'ritsuko::hdf5::is_utf8_string(const H5::Attribute &amp;attr)']]],
+  ['is_5futf8_5fstring_2ehpp_6',['is_utf8_string.hpp',['../is__utf8__string_8hpp.html',1,'']]],
+  ['iteratechunks_7',['IterateChunks',['../structritsuko_1_1hdf5_1_1IterateChunks.html',1,'ritsuko::hdf5::IterateChunks'],['../structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567',1,'ritsuko::hdf5::IterateChunks::IterateChunks()']]],
+  ['iteratechunks_2ehpp_8',['IterateChunks.hpp',['../IterateChunks_8hpp.html',1,'']]]
 ];

@@ -138,13 +138,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Pointer_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2cvls_2Pointer_8hppdep" alt=""/></div>
 <map name="aritsuko_2cvls_2Pointer_8hppdep" id="aritsuko_2cvls_2Pointer_8hppdep">
-<area shape="rect" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="225,5,382,31"/>
-<area shape="rect" href="Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="5,86,208,112"/>
-<area shape="poly" title=" " alt="" coords="260,40,138,88,136,84,258,35"/>
-<area shape="rect" href="cvls_2open_8hpp.html" title="Open HDF5 datasets for a compressed VLS array." alt="" coords="232,86,376,112"/>
-<area shape="poly" title=" " alt="" coords="306,47,306,86,301,86,301,47"/>
-<area shape="rect" href="validate__array_8hpp.html" title="Helper functions to validate compressed VLS arrays." alt="" coords="400,79,538,120"/>
-<area shape="poly" title=" " alt="" coords="344,36,429,76,427,81,342,40"/>
+<area shape="rect" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="166,5,324,31"/>
+<area shape="rect" href="Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="5,79,208,105"/>
+<area shape="poly" title=" " alt="" coords="209,41,131,81,129,76,207,36"/>
+<area shape="rect" href="ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="182,153,309,178"/>
+<area shape="poly" title=" " alt="" coords="248,47,248,152,242,152,242,47"/>
+<area shape="rect" href="validate_8hpp.html" title="Helper functions to validate compressed VLS datasets." alt="" coords="283,79,444,105"/>
+<area shape="poly" title=" " alt="" coords="280,37,345,76,342,81,277,42"/>
+<area shape="poly" title=" " alt="" coords="145,110,223,150,220,154,142,115"/>
+<area shape="poly" title=" " alt="" coords="332,115,267,154,264,150,329,111"/>
 </map>
 </div>
 </div>
@@ -159,99 +161,23 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko.html">ritsuko</a></td></tr>
-<tr class="memdesc:namespaceritsuko"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assorted helper functions for parsing and validation. <br /></td></tr>
+<tr class="memdesc:namespaceritsuko"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper functions for ArtifactDB parsing and validation. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1cvls.html">ritsuko::cvls</a></td></tr>
+<tr class="memdesc:namespaceritsuko_1_1cvls"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilities for reading and validating compressed VLS arrays. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab2f108342f0b595b891d6f61166bca63" id="r_ab2f108342f0b595b891d6f61166bca63"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
-<tr class="memitem:ab2f108342f0b595b891d6f61166bca63"><td class="memTemplItemLeft" align="right" valign="top">H5::CompType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab2f108342f0b595b891d6f61166bca63">ritsuko::cvls::define_pointer_datatype</a> ()</td></tr>
+<tr class="memitem:ab2f108342f0b595b891d6f61166bca63"><td class="memTemplItemLeft" align="right" valign="top">H5::CompType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">ritsuko::cvls::define_pointer_datatype</a> ()</td></tr>
 <tr class="separator:ab2f108342f0b595b891d6f61166bca63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a644674df96b20adb0dda470e12c54496" id="r_a644674df96b20adb0dda470e12c54496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a644674df96b20adb0dda470e12c54496">ritsuko::cvls::validate_pointer_datatype</a> (const H5::CompType &amp;type, const std::size_t offset_precision, const std::size_t length_precision)</td></tr>
+<tr class="memitem:a644674df96b20adb0dda470e12c54496" id="r_a644674df96b20adb0dda470e12c54496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">ritsuko::cvls::validate_pointer_datatype</a> (const H5::CompType &amp;type, const std::size_t offset_precision, const std::size_t length_precision)</td></tr>
 <tr class="separator:a644674df96b20adb0dda470e12c54496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Compound datatype of the compresed VLS heap pointer. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="ab2f108342f0b595b891d6f61166bca63" name="ab2f108342f0b595b891d6f61166bca63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2f108342f0b595b891d6f61166bca63">&#9670;&#160;</a></span>define_pointer_datatype()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Offset_ , typename Length_ &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">H5::CompType ritsuko::cvls::define_pointer_datatype </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Define a compound datatype of a realization of a <code>Pointer</code> type.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Offset_</td><td>Unsigned integer type of the starting offset, see <code>Pointer::offset</code>. </td></tr>
-    <tr><td class="paramname">Length_</td><td>Unsigned integer type of the string length, see <code>Pointer::length</code>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A HDF5 compound datatype. </dd></dl>
-
-</div>
-</div>
-<a id="a644674df96b20adb0dda470e12c54496" name="a644674df96b20adb0dda470e12c54496"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a644674df96b20adb0dda470e12c54496">&#9670;&#160;</a></span>validate_pointer_datatype()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ritsuko::cvls::validate_pointer_datatype </td>
-          <td>(</td>
-          <td class="paramtype">const H5::CompType &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>offset_precision</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>length_precision</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Validate that a compound HDF5 datatype meets the expectations for storage in a <code>Pointer</code> instance, specifically:</p>
-<ul>
-<li>It has exactly two members.</li>
-<li>The first member is named <code>offset</code> and is of an integer datatype that is unsigned and has no more than than <code>offset_precision</code> bits.</li>
-<li>The second member is named <code>length</code> and is of an integer datatype that is unsigned and has no more than than <code>length_precision</code> bits.</li>
-</ul>
-<p>The constraints on the precision of each integer type ensure that the pointer dataset can be represented in memory by the associated type. For example, setting <code>offset_precision = 64</code> allows readers to safely assume that a <code>uint64_t</code> can be used for <code>Pointer::offset</code>.</p>
-<p>On success, the contents of the HDF5 dataset associated with <code>type</code> can be safely read into an array of appropriately parameterized <code>Pointer</code> instances. Otherwise, an error is thrown.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">type</td><td>Compound datatype, typically generated from a <code>H5::DataSet</code> instance. </td></tr>
-    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code>Pointer::offset</code>. </td></tr>
-    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code>Pointer::length</code>. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

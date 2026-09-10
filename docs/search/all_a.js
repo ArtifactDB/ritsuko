@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['major_0',['major',['../structritsuko_1_1Version.html#a37246955fe4b871ea90d04f3bab26aa9',1,'ritsuko::Version']]],
-  ['memory_5fspace_1',['memory_space',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html#a59fd37e95d96f3b66fd378c932037e0d',1,'ritsuko::hdf5::IterateNdDataset']]],
-  ['minor_2',['minor',['../structritsuko_1_1Version.html#a78d16b15d3c78d26cd68a686ef49426c',1,'ritsuko::Version']]],
-  ['miscellaneous_2ehpp_3',['miscellaneous.hpp',['../miscellaneous_8hpp.html',1,'']]],
-  ['missing_5fplaceholder_2ehpp_4',['missing_placeholder.hpp',['../hdf5_2missing__placeholder_8hpp.html',1,'(Global Namespace)'],['../missing_2missing__placeholder_8hpp.html',1,'(Global Namespace)']]]
+  ['offset_0',['offset',['../structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44',1,'ritsuko::cvls::Pointer']]],
+  ['operator_21_3d_1',['operator!=',['../structritsuko_1_1Version.html#ae9589dc549fa6e1c0b56d13afdc0dd9a',1,'ritsuko::Version']]],
+  ['operator_3c_2',['operator&lt;',['../structritsuko_1_1Version.html#ace04f21a572ba2dce8825b38c9bb94c8',1,'ritsuko::Version']]],
+  ['operator_3c_3d_3',['operator&lt;=',['../structritsuko_1_1Version.html#a51aac8210920ab34b637f8d443366fc7',1,'ritsuko::Version']]],
+  ['operator_3d_3d_4',['operator==',['../structritsuko_1_1Version.html#a5e3761b0f6740ab7d1d9fe4d2e96d2a9',1,'ritsuko::Version']]],
+  ['operator_3e_5',['operator&gt;',['../structritsuko_1_1Version.html#a2533ff64d845d296993e33eae7f9fa0d',1,'ritsuko::Version']]],
+  ['operator_3e_3d_6',['operator&gt;=',['../structritsuko_1_1Version.html#a322331b6e57da64690a3016c5f9ad173',1,'ritsuko::Version']]]
 ];

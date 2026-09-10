@@ -111,31 +111,31 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
 </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a8a2b2601417c59e611d8b9e45ec8a0e4">   37</a></span><span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(<span class="keyword">const</span> H5::DataSet&amp; handle) {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (handle.getTypeClass() != H5T_STRING) {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(H5::StrType(handle));</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#abb640ca5a6816733631a41238c59fbab">   39</a></span><span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(<span class="keyword">const</span> H5::DataSet&amp; data) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> (data.getTypeClass() != H5T_STRING) {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(H5::StrType(data));</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#a9ca650001d0df185f1b5202a3aecc945">   49</a></span><span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(<span class="keyword">const</span> H5::Attribute&amp; handle) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">if</span> (handle.getTypeClass() != H5T_STRING) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(handle.getStrType());</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
-</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1hdf5.html#af4ec3b78b2341db4641a2eff0533c090">   53</a></span><span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(<span class="keyword">const</span> H5::Attribute&amp; attr) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (attr.getTypeClass() != H5T_STRING) {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a>(attr.getStrType());</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a188b248f678ed8edd7564193e54fa44a"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">ritsuko::hdf5::is_utf8_string</a></div><div class="ttdeci">bool is_utf8_string(const H5::StrType &amp;stype)</div><div class="ttdef"><b>Definition</b> is_utf8_string.hpp:27</div></div>
-<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Assorted helper functions for parsing and validation.</div><div class="ttdef"><b>Definition</b> open.hpp:20</div></div>
+<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,15 @@
+<map id="ritsuko/hdf5/strnlen.hpp" name="ritsuko/hdf5/strnlen.hpp">
+<area shape="rect" id="Node000001" title="Determine the length of a fixed&#45;size string." alt="" coords="231,5,387,31"/>
+<area shape="rect" id="Node000002" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="5,175,208,201"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,42,228,81,121,177,117,173,225,77,278,38"/>
+<area shape="rect" id="Node000003" href="$ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="207,256,334,282"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="291,45,273,80,264,130,263,180,271,256,266,256,258,180,259,129,268,78,287,42"/>
+<area shape="rect" id="Node000004" href="$Stream1dStringDataset_8hpp.html" title="Stream a numeric 1&#45;dimensional HDF5 dataset into memory." alt="" coords="283,79,466,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="331,41,360,77,356,80,327,45"/>
+<area shape="rect" id="Node000005" href="$read__scalar__string_8hpp.html" title="Convenience functions to read scalar strings." alt="" coords="333,168,493,208"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="404,28,446,46,465,60,481,78,486,90,488,102,479,127,462,150,441,169,438,165,458,146,474,125,482,102,481,91,476,80,461,64,443,51,402,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="147,206,247,253,244,258,144,210"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="350,133,323,169,297,217,278,257,273,255,292,215,319,166,346,130"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="392,133,407,166,402,168,387,135"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="366,218,294,258,291,253,363,214"/>
+</map>

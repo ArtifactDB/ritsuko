@@ -1,13 +1,14 @@
 <map id="ritsuko/hdf5/exceeds_limit.hpp" name="ritsuko/hdf5/exceeds_limit.hpp">
-<area shape="rect" id="Node000001" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="320,5,461,46"/>
-<area shape="rect" id="Node000002" href="$Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="225,94,382,120"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="360,59,319,95,315,91,356,55"/>
-<area shape="rect" id="Node000006" href="$hdf5_8hpp.html" title="Umbrella header for ritsuko&#39;s HDF5 utilities." alt="" coords="406,94,548,120"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="425,55,466,91,462,95,421,59"/>
-<area shape="rect" id="Node000003" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="5,175,208,201"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="260,128,138,177,136,172,258,123"/>
-<area shape="rect" id="Node000004" href="$cvls_2open_8hpp.html" title="Open HDF5 datasets for a compressed VLS array." alt="" coords="232,175,376,201"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="306,135,306,175,301,175,301,135"/>
-<area shape="rect" id="Node000005" href="$validate__array_8hpp.html" title="Helper functions to validate compressed VLS arrays." alt="" coords="400,168,538,208"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="344,124,429,165,427,169,342,129"/>
+<area shape="rect" id="Node000001" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="293,5,434,46"/>
+<area shape="rect" id="Node000002" href="$Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="226,94,384,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="342,60,316,95,312,92,338,57"/>
+<area shape="rect" id="Node000004" href="$ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="240,241,368,267"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="403,55,432,84,457,119,466,138,470,157,468,176,459,195,441,215,419,230,369,248,367,242,416,225,438,211,455,192,463,175,464,158,461,140,453,122,428,87,399,58"/>
+<area shape="rect" id="Node000003" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="5,168,208,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,128,141,170,139,165,256,123"/>
+<area shape="poly" id="edge6_Node000002_Node000004" title=" " alt="" coords="289,134,273,168,272,188,277,207,296,240,292,242,272,209,267,189,268,167,285,131"/>
+<area shape="rect" id="Node000005" href="$validate_8hpp.html" title="Helper functions to validate compressed VLS datasets." alt="" coords="283,168,444,193"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="327,130,356,165,352,169,323,133"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="155,196,271,238,269,243,153,201"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="346,207,316,243,312,239,342,203"/>
 </map>

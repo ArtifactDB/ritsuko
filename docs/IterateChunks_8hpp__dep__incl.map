@@ -1,0 +1,11 @@
+<map id="ritsuko/hdf5/IterateChunks.hpp" name="ritsuko/hdf5/IterateChunks.hpp">
+<area shape="rect" id="Node000001" title="Iterate through a dataspace by chunk." alt="" coords="106,5,304,31"/>
+<area shape="rect" id="Node000002" href="$validate_8hpp.html" title="Helper functions to validate compressed VLS datasets." alt="" coords="5,86,167,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,42,106,88,103,84,172,38"/>
+<area shape="rect" id="Node000003" href="$ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="141,168,268,193"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="207,46,207,167,202,167,202,46"/>
+<area shape="rect" id="Node000004" href="$validate__string_8hpp.html" title="Helper functions to validate strings." alt="" coords="242,79,380,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="234,38,287,76,283,81,231,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="118,119,188,165,185,169,115,123"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="275,131,223,169,220,165,272,127"/>
+</map>

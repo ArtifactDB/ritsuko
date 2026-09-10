@@ -1,11 +1,17 @@
 var searchData=
 [
-  ['starts_0',['starts',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html#a6b7caa9d63a74977c029dfeff07f5bf3',1,'ritsuko::hdf5::IterateNdDataset']]],
-  ['steal_1',['steal',['../classritsuko_1_1cvls_1_1Stream1dArray.html#a069918b58048a8b185e63ad40d627732',1,'ritsuko::cvls::Stream1dArray::steal()'],['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9e40c14e62d86993228346f2e8596f68',1,'ritsuko::hdf5::Stream1dStringDataset::steal()']]],
-  ['stream1darray_2',['Stream1dArray',['../classritsuko_1_1cvls_1_1Stream1dArray.html',1,'ritsuko::cvls::Stream1dArray&lt; Offset_, Length_ &gt;'],['../classritsuko_1_1cvls_1_1Stream1dArray.html#a6e82e798d46e2dc775a947b868b5df0c',1,'ritsuko::cvls::Stream1dArray::Stream1dArray(const H5::DataSet *pointers, const H5::DataSet *heap, hsize_t length, hsize_t buffer_size)'],['../classritsuko_1_1cvls_1_1Stream1dArray.html#afe78bc7c19ac15ef0b4debbd7396a779',1,'ritsuko::cvls::Stream1dArray::Stream1dArray(const H5::DataSet *pointers, const H5::DataSet *heap, hsize_t buffer_size)']]],
-  ['stream1darray_2ehpp_3',['Stream1dArray.hpp',['../Stream1dArray_8hpp.html',1,'']]],
-  ['stream1dnumericdataset_4',['Stream1dNumericDataset',['../classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html',1,'ritsuko::hdf5::Stream1dNumericDataset&lt; Type_ &gt;'],['../classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#adc9860ef9871ee31a037583b6925bbaa',1,'ritsuko::hdf5::Stream1dNumericDataset::Stream1dNumericDataset(const H5::DataSet *ptr, hsize_t length, hsize_t buffer_size)'],['../classritsuko_1_1hdf5_1_1Stream1dNumericDataset.html#a0b28013dd9fa54bac56cfba6d215128f',1,'ritsuko::hdf5::Stream1dNumericDataset::Stream1dNumericDataset(const H5::DataSet *ptr, hsize_t buffer_size)']]],
-  ['stream1dnumericdataset_2ehpp_5',['Stream1dNumericDataset.hpp',['../Stream1dNumericDataset_8hpp.html',1,'']]],
-  ['stream1dstringdataset_6',['Stream1dStringDataset',['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html',1,'ritsuko::hdf5::Stream1dStringDataset'],['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a9ac9df0e3a6fa101ff6839e8914ddfe5',1,'ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset(const H5::DataSet *ptr, hsize_t length, hsize_t buffer_size)'],['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a413ab75071bdf53cceac7c642370e9b5',1,'ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset(const H5::DataSet *ptr, hsize_t buffer_size)']]],
-  ['stream1dstringdataset_2ehpp_7',['Stream1dStringDataset.hpp',['../Stream1dStringDataset_8hpp.html',1,'']]]
+  ['validate_2ehpp_0',['validate.hpp',['../validate_8hpp.html',1,'']]],
+  ['validate_5f1d_5fpointers_1',['validate_1d_pointers',['../namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0',1,'ritsuko::cvls']]],
+  ['validate_5f1d_5fstring_5fattribute_2',['validate_1d_string_attribute',['../namespaceritsuko_1_1hdf5.html#a99c585a1063e05eec5385db435d1dfd1',1,'ritsuko::hdf5']]],
+  ['validate_5f1d_5fstrings_3',['validate_1d_strings',['../namespaceritsuko_1_1hdf5.html#ab34d95856e364d1d26539a100b360576',1,'ritsuko::hdf5']]],
+  ['validate_5fheap_4',['validate_heap',['../namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad',1,'ritsuko::cvls']]],
+  ['validate_5fnd_5fpointers_5',['validate_nd_pointers',['../namespaceritsuko_1_1cvls.html#a8575dc2c8283fd17c3439e5ebe2c47ea',1,'ritsuko::cvls']]],
+  ['validate_5fnd_5fstrings_6',['validate_nd_strings',['../namespaceritsuko_1_1hdf5.html#ae3110b30fa3ea0fcd8a775ced2f66828',1,'ritsuko::hdf5']]],
+  ['validate_5fpointer_5fdatatype_7',['validate_pointer_datatype',['../namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496',1,'ritsuko::cvls']]],
+  ['validate_5fscalar_5fpointer_8',['validate_scalar_pointer',['../namespaceritsuko_1_1cvls.html#a85ae1bea23d03cefafe86ec507e19d84',1,'ritsuko::cvls']]],
+  ['validate_5fscalar_5fstring_9',['validate_scalar_string',['../namespaceritsuko_1_1hdf5.html#ae5215e0cac9f009ec0c09d8e59794004',1,'ritsuko::hdf5']]],
+  ['validate_5fscalar_5fstring_5fattribute_10',['validate_scalar_string_attribute',['../namespaceritsuko_1_1hdf5.html#a93db4d46fb9c99c155d179f5ba3ca820',1,'ritsuko::hdf5']]],
+  ['validate_5fstring_2ehpp_11',['validate_string.hpp',['../validate__string_8hpp.html',1,'']]],
+  ['validation_12',['C++ utilities for parsing and validation',['../index.html',1,'']]],
+  ['version_13',['Version',['../structritsuko_1_1Version.html',1,'ritsuko']]]
 ];

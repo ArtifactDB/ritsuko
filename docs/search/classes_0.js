@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iteratenddataset_0',['IterateNdDataset',['../structritsuko_1_1hdf5_1_1IterateNdDataset.html',1,'ritsuko::hdf5']]]
+  ['iteratechunks_0',['IterateChunks',['../structritsuko_1_1hdf5_1_1IterateChunks.html',1,'ritsuko::hdf5']]]
 ];
