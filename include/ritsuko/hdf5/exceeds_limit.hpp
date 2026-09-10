@@ -41,36 +41,38 @@ inline bool exceeds_integer_limit(const H5::IntType& itype, size_t precision, bo
 }
 
 /**
- * Overload of `exceeds_integer_limit()` that accepts a HDF5 dataset handle.
+ * Overload of `exceeds_integer_limit()` that accepts a HDF5 dataset.
  *
- * @param handle Handle for a HDF5 dataset.
+ * @param data A HDF5 dataset.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting integer type, assuming 2's complement.
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the dataset uses a datatype than cannot be represented by the limiting integer type.
  */
-inline bool exceeds_integer_limit(const H5::DataSet& handle, size_t precision, bool is_signed) {
-    if (handle.getTypeClass() != H5T_INTEGER) {
+inline bool exceeds_integer_limit(const H5::DataSet& data, size_t precision, bool is_signed) {
+    if (data.getTypeClass() != H5T_INTEGER) {
         return true;
     }
-    H5::IntType itype(handle);
+    H5::IntType itype(data);
     return exceeds_integer_limit(itype, precision, is_signed);
 }
 
 /**
- * Overload of `exceeds_integer_limit()` that accepts a HDF5 attribute handle.
+ * Overload of `exceeds_integer_limit()` that accepts a HDF5 attribute.
  *
- * @param handle Handle for a HDF5 attribute.
+ * @param attr A HDF5 attribute.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting integer type, assuming 2's complement.
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the attribute uses a datatype than cannot be represented by the limiting integer type.
  */
-inline bool exceeds_integer_limit(const H5::Attribute& handle, size_t precision, bool is_signed) {
-    if (handle.getTypeClass() != H5T_INTEGER) {
+inline bool exceeds_integer_limit(const H5::Attribute& attr, size_t precision, bool is_signed) {
+    if (attr.getTypeClass() != H5T_INTEGER) {
         return true;
     }
-    return exceeds_integer_limit(handle.getIntType(), precision, is_signed);
+    return exceeds_integer_limit(attr.getIntType(), precision, is_signed);
 }
 
 /**
@@ -118,38 +120,40 @@ inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, size_t prec
  * such that two float datatypes with the same number of bits could represent a different set of numbers.
  * (Though this seems unlikely in practice, as all CPU-specific predefined float types in later HDF5 versions are already aliases of the IEEE types.)
  *
- * @param handle Handle for a HDF5 dataset.
+ * @param data A HDF5 dataset.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting float type.
  *
  * @return Whether the dataset uses a datatype than cannot be represented by the limiting float type.
  * `true` is also returned for non-numeric datasets.
  */
-inline bool exceeds_float_limit(const H5::DataSet& handle, size_t precision) {
-    auto tclass = handle.getTypeClass();
+inline bool exceeds_float_limit(const H5::DataSet& data, size_t precision) {
+    auto tclass = data.getTypeClass();
     if (tclass == H5T_INTEGER) {
-        return exceeds_float_limit_by_integer(H5::IntType(handle), precision);
+        return exceeds_float_limit_by_integer(H5::IntType(data), precision);
     } else if (tclass == H5T_FLOAT) {
-        return exceeds_float_limit_by_float(H5::FloatType(handle), precision);
+        return exceeds_float_limit_by_float(H5::FloatType(data), precision);
     } else {
         return true;
     }
 }
 
 /**
- * Overload of `exceeds_float_limit()` that accepts a HDF5 attribute handle.
+ * Overload of `exceeds_float_limit()` that accepts a HDF5 attribute.
  *
- * @param handle Handle for a HDF5 attribute.
+ * @param attr A HDF5 attribute.
+ * Its datatype may be of any class.
  * @param precision Number of bits in the limiting float type. 
  *
  * @return Whether the attribute uses a datatype than cannot be represented by the limiting integer type.
  * `true` is also returned for non-numeric attributes.
  */
-inline bool exceeds_float_limit(const H5::Attribute& handle, size_t precision) {
-    auto tclass = handle.getTypeClass();
+inline bool exceeds_float_limit(const H5::Attribute& attr, size_t precision) {
+    auto tclass = attr.getTypeClass();
     if (tclass == H5T_INTEGER) {
-        return exceeds_float_limit_by_integer(handle.getIntType(), precision);
+        return exceeds_float_limit_by_integer(attr.getIntType(), precision);
     } else if (tclass == H5T_FLOAT) {
-        return exceeds_float_limit_by_float(handle.getFloatType(), precision);
+        return exceeds_float_limit_by_float(attr.getFloatType(), precision);
     } else {
         return true;
     }

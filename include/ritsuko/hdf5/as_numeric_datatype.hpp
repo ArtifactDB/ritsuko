@@ -1,9 +1,10 @@
 #ifndef RITSUKO_AS_NUMERIC_DATATYPE_HPP
 #define RITSUKO_AS_NUMERIC_DATATYPE_HPP
 
+#include "H5Cpp.h"
+
 #include <type_traits>
 #include <cstdint>
-#include "H5Cpp.h"
 
 /**
  * @file as_numeric_datatype.hpp
@@ -24,21 +25,21 @@ namespace hdf5 {
  */
 template<typename Type_>
 const H5::PredType& as_numeric_datatype() {
-    if constexpr(std::is_same<Type_, uint8_t>::value) {
+    if constexpr(std::is_same<Type_, std::uint8_t>::value) {
         return H5::PredType::NATIVE_UINT8;
-    } else if constexpr(std::is_same<Type_, int8_t>::value) {
+    } else if constexpr(std::is_same<Type_, std::int8_t>::value) {
         return H5::PredType::NATIVE_INT8;
-    } else if constexpr(std::is_same<Type_, uint16_t>::value) {
+    } else if constexpr(std::is_same<Type_, std::uint16_t>::value) {
         return H5::PredType::NATIVE_UINT16;
-    } else if constexpr(std::is_same<Type_, int16_t>::value) {
+    } else if constexpr(std::is_same<Type_, std::int16_t>::value) {
         return H5::PredType::NATIVE_INT16;
-    } else if constexpr(std::is_same<Type_, uint32_t>::value) {
+    } else if constexpr(std::is_same<Type_, std::uint32_t>::value) {
         return H5::PredType::NATIVE_UINT32;
-    } else if constexpr(std::is_same<Type_, int32_t>::value) {
+    } else if constexpr(std::is_same<Type_, std::int32_t>::value) {
         return H5::PredType::NATIVE_INT32;
-    } else if constexpr(std::is_same<Type_, uint64_t>::value) {
+    } else if constexpr(std::is_same<Type_, std::uint64_t>::value) {
         return H5::PredType::NATIVE_UINT64;
-    } else if constexpr(std::is_same<Type_, int64_t>::value) {
+    } else if constexpr(std::is_same<Type_, std::int64_t>::value) {
         return H5::PredType::NATIVE_INT64;
 
     } else if constexpr(std::is_same<Type_, char>::value) {

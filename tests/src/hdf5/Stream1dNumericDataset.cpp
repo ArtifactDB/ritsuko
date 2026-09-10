@@ -4,69 +4,72 @@
 #include "utils.h"
 #include <numeric>
 
-TEST(Hdf5Stream1dNumericDataset, Basic) {
+class Hdf5Stream1dNumericDatasetTest : public ::testing::TestWithParam<bool> {};
+
+TEST_P(Hdf5Stream1dNumericDatasetTest, Integer) {
     const char* path = "TEST-iterate.h5";
+    const bool chunked = GetParam();
 
     std::vector<int> example(29726);
     std::iota(example.begin(), example.end(), 0);
 
-    hsize_t block_size = 471;
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
-        create_dataset(handle, "foobar", example, H5::PredType::NATIVE_INT, block_size);
+        create_dataset(handle, "foobar", example, H5::PredType::NATIVE_INT, (chunked ? 471 : 0));
     }
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    std::vector<int> buffer_sizes { 100, 1000, 10000, 100000 };
+    ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, example.size());
 
-    // One value at a time.
-    for (auto buf : buffer_sizes) {
-        ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, buf);
-        EXPECT_EQ(stream.length(), example.size());
-        for (auto x : example) {
-            EXPECT_EQ(stream.get(), x);
-            stream.next();
+    std::vector<int> chunk(stream.chunk_size());
+    hsize_t total = 0;
+    while (true) {
+        hsize_t loaded = stream.load(chunk.data());
+        EXPECT_EQ(total, stream.start());
+        if (loaded == 0) {
+            break;
         }
+        for (hsize_t i = 0; i < loaded; ++i) {
+            EXPECT_EQ(example[i + stream.start()], chunk[i]);
+        }
+        total += loaded;
     }
 
-    // Fetching a data block.
-    for (auto buf : buffer_sizes) {
-        ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, buf);
-
-        size_t start = 0;
-        while (start < example.size()) {
-            auto many = stream.get_many();
-            for (size_t i = 0; i < many.second; ++i) {
-                EXPECT_EQ(example[i + start], many.first[i]);
-            }
-            start += many.second;
-            stream.next(many.second);
-        }
-
-        EXPECT_EQ(start, example.size());
-    }
+    EXPECT_EQ(total, example.size());
 }
 
-TEST(Hdf5Stream1dNumericDataset, Floats) {
+TEST_P(Hdf5Stream1dNumericDatasetTest, Float) {
     const char* path = "TEST-iterate.h5";
+    const bool chunked = GetParam();
 
     // Works with floating-point data.
     std::vector<double> example(10000);
     std::iota(example.begin(), example.end(), 0.5);
-    hsize_t block_size = 57;
+
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
-        create_dataset(handle, "foobar", example, H5::PredType::NATIVE_DOUBLE, block_size);
+        create_dataset(handle, "foobar", example, H5::PredType::NATIVE_DOUBLE, (chunked ? 57 : 0));
     }
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, 100);
-    EXPECT_EQ(stream.length(), example.size());
+    ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, example.size());
 
-    for (auto x : example) {
-        EXPECT_EQ(stream.get(), x);
-        stream.next();
+    std::vector<double> chunk(stream.chunk_size());
+    while (true) {
+        hsize_t loaded = stream.load(chunk.data());
+        if (loaded == 0) {
+            break;
+        }
+        for (hsize_t i = 0; i < loaded; ++i) {
+            EXPECT_EQ(example[i + stream.start()], chunk[i]);
+        }
     }
 }
+
+INSTANTIATE_TEST_SUITE_P(
+    Hdf5Stream1dNumericDataset,
+    Hdf5Stream1dNumericDatasetTest,
+    ::testing::Values(false, true)
+);

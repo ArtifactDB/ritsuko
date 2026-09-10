@@ -4,16 +4,14 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include <cassert>
 
 #include "H5Cpp.h"
 
 #include "get_name.hpp"
-#include "get_1d_length.hpp"
-#include "get_dimensions.hpp"
-#include "pick_1d_block_size.hpp"
-#include "pick_nd_block_dimensions.hpp"
-#include "IterateNdDataset.hpp"
-#include "utils_string.hpp"
+#include "mock_contiguous_chunks.hpp"
+#include "IterateChunks.hpp"
+#include "ReclaimVlsMemory.hpp"
 
 /**
  * @file validate_string.hpp
@@ -29,20 +27,28 @@ namespace hdf5 {
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to the HDF5 string dataset.
+ * @param data A HDF5 dataset.
+ * It is assumed that this dataset is scalar.
+ * It is also assumed that its datatype is of the string class.
  */
-inline void validate_scalar_string_dataset(const H5::DataSet& handle) {
-    auto dtype = handle.getDataType();
+inline void validate_scalar_string(const H5::DataSet& data) {
+    assert(data.getSpace().getSimpleExtentNdims() == 0);
+    assert(data.getDataType().getClass() == H5T_STRING);
+
+    auto dtype = data.getDataType();
     if (!dtype.isVariableStr()) {
         return;
     }
 
-    auto dspace = handle.getSpace(); // don't set as temporary in constructor below, otherwise it gets destroyed and the ID invalidated.
     char* vptr = NULL;
-    handle.read(&vptr, dtype);
-    [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), dspace.getId(), &vptr);
+    data.read(&vptr, dtype);
+
+    const auto& dspace = data.getSpace();
+    const auto& plist = H5::DSetMemXferPropList::DEFAULT;
+    [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &dspace, &plist, &vptr);
+
     if (vptr == NULL) {
-        throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(handle) + "'");
+        throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
     }
 }
 
@@ -51,17 +57,26 @@ inline void validate_scalar_string_dataset(const H5::DataSet& handle) {
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to the HDF5 string dataset.
- * @param full_length Length of the dataset as a 1-dimensional vector.
- * @param buffer_size Size of the buffer for holding loaded strings.
+ * @param data A HDF5 dataset.
+ * It is assumed that this dataset is 1-dimensional.
+ * It is also assumed that its datatype is of the string class.
+ * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
  */
-inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t full_length, hsize_t buffer_size) {
-    auto dtype = handle.getDataType();
+inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
+    assert(data.getSpace().getSimpleExtentNdims() == 1);
+    assert(data.getDataType().getClass() == H5T_STRING);
+
+    auto dtype = data.getDataType();
     if (!dtype.isVariableStr()) {
         return;
     }
 
-    hsize_t block_size = pick_1d_block_size(handle.getCreatePlist(), full_length, buffer_size);
+    hsize_t block_size = 10000;
+    const auto& plist = data.getCreatePlist();
+    if (plist.getLayout() == H5D_CHUNKED) {
+        plist.getChunk(1, &block_size);
+    }
+
     H5::DataSpace mspace(1, &block_size), dspace(1, &full_length);
     std::vector<char*> buffer(block_size);
 
@@ -71,23 +86,16 @@ inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t full_l
         mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
         dspace.selectHyperslab(H5S_SELECT_SET, &available, &i);
 
-        handle.read(buffer.data(), dtype, mspace, dspace);
-        [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), buffer.data());
+        data.read(buffer.data(), dtype, mspace, dspace);
+
+        const auto& plist = H5::DSetMemXferPropList::DEFAULT;
+        [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
         for (hsize_t j = 0; j < available; ++j) {
             if (buffer[j] == NULL) {
-                throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(handle) + "'");
+                throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
             }
         }
     }
-}
-
-/**
- * Overload for `validate_1d_string_dataset()` that automatically determines its length via `get_1d_length()`.
- * @param handle Handle to the HDF5 string dataset.
- * @param buffer_size Size of the buffer for holding loaded strings.
- */
-inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t buffer_size) {
-    validate_1d_string_dataset(handle, get_1d_length(handle, false), buffer_size);
 }
 
 /**
@@ -95,48 +103,53 @@ inline void validate_1d_string_dataset(const H5::DataSet& handle, hsize_t buffer
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to the HDF5 string dataset.
+ * @param data A HDF5 dataset.
+ * It is assumed that this dataset has at least 1 dimension.
+ * It is also assumed that its datatype is of the string class.
  * @param dimensions Dimensions of the dataset.
- * @param buffer_size Size of the buffer for holding loaded strings.
  */
-inline void validate_nd_string_dataset(const H5::DataSet& handle, const std::vector<hsize_t>& dimensions, hsize_t buffer_size) {
-    auto stype = handle.getDataType();
+inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize_t>& dimensions) {
+    assert(data.getSpace().getSimpleExtentNdims() > 0);
+    assert(data.getDataType().getClass() == H5T_STRING);
+
+    auto stype = data.getDataType();
     if (!stype.isVariableStr()) {
         return;
     }
 
-    auto blocks = pick_nd_block_dimensions(handle.getCreatePlist(), dimensions, buffer_size);
-    IterateNdDataset iter(dimensions, blocks);
-    std::vector<char*> buffer;
+    std::vector<hsize_t> chunk_dims;
+    const auto& plist = data.getCreatePlist();
+    if (plist.getLayout() == H5D_CHUNKED) {
+        chunk_dims.resize(dimensions.size());
+        plist.getChunk(dimensions.size(), chunk_dims.data());
+    } else {
+        // Hard-coding this to save ourselves an argument.
+        chunk_dims = mock_contiguous_chunks(dimensions, 10000);
+    }
 
-    while (!iter.finished()) {
-        buffer.resize(iter.current_block_size());
+    IterateChunks iter(dimensions, chunk_dims);
 
-        // Scope this to ensure that 'mspace' doesn't get changed by
-        // 'iter.next()' before the destructor is called.
-        {
-            const auto& mspace = iter.memory_space();
-            [[maybe_unused]] VariableStringCleaner stream(stype.getId(), mspace.getId(), buffer.data());
-            handle.read(buffer.data(), stype, mspace, iter.file_space());
-            for (auto x : buffer) {
-                if (x == NULL) {
-                    throw std::runtime_error("detected NULL pointer in a variable-length string dataset");
-                }
+    const auto ndim = dimensions.size();
+    H5::DataSpace fspace(ndim, dimensions.data());
+    H5::DataSpace mspace(ndim, iter.chunk_dimensions().data());
+    std::vector<char*> buffer(mspace.getSimpleExtentNpoints());
+
+    while (iter.advance()) {
+        const auto& curcount = iter.counts();
+        mspace.setExtentSimple(ndim, curcount.data());
+        fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.starts().data());
+
+        data.read(buffer.data(), stype, mspace, fspace);
+        const auto& plist = H5::DSetMemXferPropList::DEFAULT;
+        [[maybe_unused]] ReclaimVlsMemory deleter(&stype, &mspace, &plist, buffer.data());
+
+        const std::size_t npts = mspace.getSimpleExtentNpoints();
+        for (std::size_t i = 0; i < npts; ++i) {
+            if (buffer[i] == NULL) {
+                throw std::runtime_error("detected NULL pointer in a variable-length string dataset");
             }
         }
-
-        iter.next();
     }
-}
-
-/**
- * Overload for `validate_nd_string_dataset()` that automatically determines the dimensions.
- * @param handle Handle to the HDF5 string dataset.
- * @param buffer_size Size of the buffer for holding loaded strings.
- */
-inline void validate_nd_string_dataset(const H5::DataSet& handle, hsize_t buffer_size) {
-    auto dimensions = get_dimensions(handle, false);
-    validate_nd_string_dataset(handle, dimensions, buffer_size);
 }
 
 /**
@@ -144,18 +157,24 @@ inline void validate_nd_string_dataset(const H5::DataSet& handle, hsize_t buffer
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string attributes, this function is a no-op.
  *
- * @param attr Handle to the HDF5 string attribute.
+ * @param attr A HDF5 attribute.
+ * It is assumed that this attribute is scalar.
+ * It is also assumed that its datatype is of the string class.
  */
 inline void validate_scalar_string_attribute(const H5::Attribute& attr) {
+    assert(attr.getSpace().getSimpleExtentNdims() == 0);
+    assert(attr.getDataType().getClass() == H5T_STRING);
+
     auto dtype = attr.getDataType();
     if (!dtype.isVariableStr()) {
         return;
     }
 
-    auto mspace = attr.getSpace();
+    const auto& mspace = attr.getSpace();
+    const auto& plist = H5::DSetMemXferPropList::DEFAULT; // yes, even H5Aread uses H5P_DATASET_XFER_DEFAULT.
     char* buffer;
     attr.read(dtype, &buffer);
-    [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), &buffer);
+    [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, &buffer);
     if (buffer == NULL) {
         throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
     }
@@ -167,31 +186,29 @@ inline void validate_scalar_string_attribute(const H5::Attribute& attr) {
  * For fixed-width string attributes, this function is a no-op.
  *
  * @param attr Handle to the HDF5 string attribute.
- * @param full_length Length of the attribute as a 1-dimensional vector.
+ * It is assumed that this attribute is 1-dimensional.
+ * It is also assumed that its datatype is of the string class.
+ * @param full_length Length of the attribute, i.e., the extent of its sole dimension.
  */
 inline void validate_1d_string_attribute(const H5::Attribute& attr, hsize_t full_length) {
+    assert(attr.getSpace().getSimpleExtentNdims() == 1);
+    assert(attr.getDataType().getClass() == H5T_STRING);
+
     auto dtype = attr.getDataType();
     if (!dtype.isVariableStr()) {
         return;
     }
 
-    auto mspace = attr.getSpace();
+    const auto& mspace = attr.getSpace();
+    const auto& plist = H5::DSetMemXferPropList::DEFAULT; // yes, even H5Aread uses H5P_DATASET_XFER_DEFAULT.
     std::vector<char*> buffer(full_length);
     attr.read(dtype, buffer.data());
-    [[maybe_unused]] VariableStringCleaner deletor(dtype.getId(), mspace.getId(), buffer.data());
+    [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
     for (hsize_t i = 0; i < full_length; ++i) {
         if (buffer[i] == NULL) {
             throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
         }
     }
-}
-
-/**
- * Overload for `validate_1d_string_attribute()` that automatically determines its length via `get_1d_length()`.
- * @param attr Handle to the HDF5 string attribute.
- */
-inline void validate_1d_string_attribute(const H5::Attribute& attr) {
-    validate_1d_string_attribute(attr, get_1d_length(attr, false));
 }
 
 }

@@ -15,7 +15,7 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * Check if a HDF5 string datatype could represent strings that are not compatible with the UTF-8 encoding.
+ * Check if a HDF5 string datatype is compatible with the UTF-8 encoding.
  *
  * Note that this returns `true` even if the string datatype uses ASCII encoding, given that ASCII is a subset of UTF-8.
  * As a result, this function is mostly performative as all valid HDF5 strings are encoded in either ASCII or UTF-8;
@@ -30,27 +30,31 @@ inline bool is_utf8_string(const H5::StrType& stype) {
 }
 
 /**
- * Overload of `is_utf8_string()` that accepts a HDF5 dataset handle.
- * @param handle Handle for a HDF5 dataset.
+ * Overload of `is_utf8_string()` that accepts a HDF5 dataset.
+ * @param data A HDF5 dataset.
+ * Its datatype may be of any class.
  * @return Whether the dataset holds strings that use UTF-8 (or ASCII) encoding.
+ * This returns false if its datatype's class is not string.
  */
-inline bool is_utf8_string(const H5::DataSet& handle) {
-    if (handle.getTypeClass() != H5T_STRING) {
+inline bool is_utf8_string(const H5::DataSet& data) {
+    if (data.getTypeClass() != H5T_STRING) {
         return false;
     }
-    return is_utf8_string(H5::StrType(handle));
+    return is_utf8_string(H5::StrType(data));
 }
 
 /**
- * Overload of `is_utf8_string()` that accepts a HDF5 attribute handle.
- * @param handle Handle for a HDF5 attribute.
+ * Overload of `is_utf8_string()` that accepts a HDF5 attribute.
+ * @param attr A HDF5 attribute.
+ * Its datatype may be of any class.
  * @return Whether the attribute holds strings that use UTF-8 (or ASCII) encoding.
+ * This returns false if its datatype's class is not string.
  */
-inline bool is_utf8_string(const H5::Attribute& handle) {
-    if (handle.getTypeClass() != H5T_STRING) {
+inline bool is_utf8_string(const H5::Attribute& attr) {
+    if (attr.getTypeClass() != H5T_STRING) {
         return false;
     }
-    return is_utf8_string(handle.getStrType());
+    return is_utf8_string(attr.getStrType());
 }
 
 }

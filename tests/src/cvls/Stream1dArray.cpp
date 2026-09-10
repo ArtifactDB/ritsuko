@@ -7,7 +7,6 @@
 
 #include "ritsuko/cvls/Stream1dArray.hpp"
 #include "ritsuko/cvls/Pointer.hpp"
-#include "ritsuko/cvls/open.hpp"
 
 #include "utils.h"
 #include "../hdf5/utils.h"
@@ -37,7 +36,10 @@ static std::vector<unsigned char> create_heap(const std::vector<std::string>& ex
     return heap;
 }
 
-TEST(CvlsStream1dArray, Basic) {
+class CvlsStream1dArrayTest : public ::testing::TestWithParam<bool> {};
+
+TEST_P(CvlsStream1dArrayTest, Basic) {
+    const bool chunked = GetParam();
     size_t nlen = 12345;
     std::vector<std::string> example(nlen);
     for (size_t i = 0; i < nlen; ++i) {
@@ -52,27 +54,40 @@ TEST(CvlsStream1dArray, Basic) {
         std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > pointers(nlen);
         size_t count = fill_pointers(example, pointers);
         auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
-        create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ 51);
+        create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ (chunked ? 51 : 0));
 
         auto heap = create_heap(example, count);
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
-    // Checking that the values are the same, with a few buffer sizes to check that iteration works correctly.
+    // Checking that the values are the same.
     H5::H5File handle(path, H5F_ACC_RDONLY);
-    auto phandle = ritsuko::cvls::open_pointers(handle, "foo", 64, 64);
-    auto chandle = ritsuko::cvls::open_heap(handle, "bar");
+    auto phandle = handle.openDataSet("foo");
+    auto chandle = handle.openDataSet("bar");
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
 
-    std::vector<size_t> buffer_sizes { 10, 200, 500 };
-    for (size_t buffer_size : buffer_sizes) {
-        ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, buffer_size);
-        EXPECT_EQ(stream.length(), example.size());
-        for (auto x : example) {
-            EXPECT_EQ(stream.get(), x);
-            stream.next();
+    std::vector<std::string> chunk(stream.chunk_size());
+    hsize_t total = 0;
+    while (true) {
+        hsize_t loaded = stream.load(chunk.data());
+        EXPECT_EQ(total, stream.start());
+        if (loaded == 0) {
+            break;
         }
+        for (hsize_t i = 0; i < loaded; ++i) {
+            EXPECT_EQ(example[i + stream.start()], chunk[i]);
+        }
+        total += loaded;
     }
+
+    EXPECT_EQ(total, nlen);
 }
+
+INSTANTIATE_TEST_SUITE_P(
+    CvlsStream1dArray,
+    CvlsStream1dArrayTest,
+    ::testing::Values(false, true)
+);
 
 TEST(CvlsStream1dArray, NullTerminated) {
     size_t nlen = 1000;
@@ -86,9 +101,9 @@ TEST(CvlsStream1dArray, NullTerminated) {
     const std::string path = "TEST-vls-stream.h5";
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
-        size_t extra = 2;
+        size_t extra = 2; // injecting some extra null terminators, to check that we respect the first null.
 
-        std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > pointers(nlen);
+        std::vector<ritsuko::cvls::Pointer<std::uint32_t, std::uint32_t> > pointers(nlen);
         size_t count = fill_pointers(example, pointers, extra);
         auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ 17);
@@ -97,18 +112,19 @@ TEST(CvlsStream1dArray, NullTerminated) {
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
-    // Checking that the values are the same. This time we use 'steal' just to get some coverage.
     H5::H5File handle(path, H5F_ACC_RDONLY);
-    auto phandle = ritsuko::cvls::open_pointers(handle, "foo", 64, 64);
-    auto chandle = ritsuko::cvls::open_heap(handle, "bar");
+    auto phandle = handle.openDataSet("foo");
+    auto chandle = handle.openDataSet("bar");
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
 
-    std::vector<size_t> buffer_sizes { 11, 39, 71 };
-    for (size_t buffer_size : buffer_sizes) {
-        ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, buffer_size);
-        EXPECT_EQ(stream.length(), example.size());
-        for (auto x : example) {
-            EXPECT_EQ(stream.steal(), x);
-            stream.next();
+    std::vector<std::string> chunk(stream.chunk_size());
+    while (true) {
+        hsize_t loaded = stream.load(chunk.data());
+        if (loaded == 0) {
+            break;
+        }
+        for (hsize_t i = 0; i < loaded; ++i) {
+            EXPECT_EQ(example[i + stream.start()], chunk[i]);
         }
     }
 }
@@ -119,16 +135,16 @@ TEST(CvlsStream1dArray, Unicode) {
         "alpha globulins consist of two principal fractions, α1 and α2",
         "😀😄😆🤣"
     };
-    size_t nlen = example.size();
+    const auto nlen = example.size();
 
     // Creating a file.
     const std::string path = "TEST-vls-stream.h5";
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
 
-        std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > pointers(nlen);
+        std::vector<ritsuko::cvls::Pointer<std::uint32_t, std::uint32_t> > pointers(nlen);
         size_t count = fill_pointers(example, pointers);
-        auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
+        auto dtype = ritsuko::cvls::define_pointer_datatype<std::uint32_t, std::uint32_t>();
         create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
         auto heap = create_heap(example, count);
@@ -137,14 +153,19 @@ TEST(CvlsStream1dArray, Unicode) {
 
     // Checking that the values are the same.
     H5::H5File handle(path, H5F_ACC_RDONLY);
-    auto phandle = ritsuko::cvls::open_pointers(handle, "foo", 64, 64);
-    auto chandle = ritsuko::cvls::open_heap(handle, "bar");
+    auto phandle = handle.openDataSet("foo");
+    auto chandle = handle.openDataSet("bar");
+    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, nlen, &chandle);
 
-    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 200);
-    EXPECT_EQ(stream.length(), example.size());
-    for (auto x : example) {
-        EXPECT_EQ(stream.get(), x);
-        stream.next();
+    std::vector<std::string> chunk(stream.chunk_size());
+    while (true) {
+        hsize_t loaded = stream.load(chunk.data());
+        if (loaded == 0) {
+            break;
+        }
+        for (hsize_t i = 0; i < loaded; ++i) {
+            EXPECT_EQ(example[i + stream.start()], chunk[i]);
+        }
     }
 }
 
@@ -156,10 +177,10 @@ TEST(CvlsStream1dArray, Failures) {
         {
             H5::H5File handle(path, H5F_ACC_TRUNC);
 
-            std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > pointers(1);
+            std::vector<ritsuko::cvls::Pointer<std::uint32_t, std::uint32_t> > pointers(1);
             pointers[0].offset = 10;
             pointers[0].length = 0;
-            auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
+            auto dtype = ritsuko::cvls::define_pointer_datatype<std::uint32_t, std::uint32_t>();
             create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
             std::vector<unsigned char> heap;
@@ -167,17 +188,18 @@ TEST(CvlsStream1dArray, Failures) {
         }
 
         H5::H5File handle(path, H5F_ACC_RDONLY);
-        auto phandle = ritsuko::cvls::open_pointers(handle, "foo", 64, 64);
-        auto chandle = ritsuko::cvls::open_heap(handle, "bar");
-        ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
-        EXPECT_ANY_THROW({
-            try {
-                stream.get();
-            } catch (std::exception& e) {
-                EXPECT_THAT(e.what(), ::testing::HasSubstr("out of range"));
-                throw;
-            }
-        });
+        auto phandle = handle.openDataSet("foo");
+        auto chandle = handle.openDataSet("bar");
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
+
+        std::vector<std::string> chunk(stream.chunk_size());
+        std::string msg;
+        try {
+            stream.load(chunk.data());
+        } catch (std::exception& e) {
+            msg = e.what();
+        }
+        EXPECT_THAT(msg, ::testing::HasSubstr("out of range"));
     }
 
     // End is out of range.
@@ -185,10 +207,10 @@ TEST(CvlsStream1dArray, Failures) {
         {
             H5::H5File handle(path, H5F_ACC_TRUNC);
 
-            std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > pointers(1);
+            std::vector<ritsuko::cvls::Pointer<std::uint32_t, std::uint32_t> > pointers(1);
             pointers[0].offset = 0;
             pointers[0].length = 10;
-            auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
+            auto dtype = ritsuko::cvls::define_pointer_datatype<std::uint32_t, std::uint32_t>();
             create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
             std::vector<unsigned char> heap(5);
@@ -196,48 +218,17 @@ TEST(CvlsStream1dArray, Failures) {
         }
 
         H5::H5File handle(path, H5F_ACC_RDONLY);
-        auto phandle = ritsuko::cvls::open_pointers(handle, "foo", 64, 64);
-        auto chandle = ritsuko::cvls::open_heap(handle, "bar");
-        ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
-        EXPECT_ANY_THROW({
-            try {
-                stream.get();
-            } catch (std::exception& e) {
-                EXPECT_THAT(e.what(), ::testing::HasSubstr("out of range"));
-                throw;
-            }
-        });
-    }
+        auto phandle = handle.openDataSet("foo");
+        auto chandle = handle.openDataSet("bar");
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
 
-    // Too many requests.
-    {
-        {
-            H5::H5File handle(path, H5F_ACC_TRUNC);
-
-            std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > pointers(1);
-            pointers[0].offset = 0;
-            pointers[0].length = 0;
-            auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
-            create_vls_pointer_dataset(handle, "foo", pointers, dtype);
-
-            std::vector<unsigned char> heap;
-            create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
+        std::vector<std::string> chunk(stream.chunk_size());
+        std::string msg;
+        try {
+            stream.load(chunk.data());
+        } catch (std::exception& e) {
+            msg = e.what();
         }
-
-        H5::H5File handle(path, H5F_ACC_RDONLY);
-        auto phandle = ritsuko::cvls::open_pointers(handle, "foo", 64, 64);
-        auto chandle = ritsuko::cvls::open_heap(handle, "bar");
-        ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, &chandle, 100);
-        EXPECT_EQ(stream.get(), std::string());
-        stream.next();
-
-        EXPECT_ANY_THROW({
-            try {
-                stream.get();
-            } catch (std::exception& e) {
-                EXPECT_THAT(e.what(), ::testing::HasSubstr("beyond the end"));
-                throw;
-            }
-        });
+        EXPECT_THAT(msg, ::testing::HasSubstr("out of range"));
     }
 }

@@ -16,8 +16,8 @@ H5::DataSet create_vls_pointer_dataset(
     const std::string& name,
     const std::vector<ritsuko::cvls::Pointer<T, T> >& values,
     const H5::DataType& dtype,
-    hsize_t compress_chunk = 0)
-{
+    hsize_t compress_chunk = 0
+) {
     hsize_t len = values.size();
     H5::DataSpace dspace(1, &len);
 
