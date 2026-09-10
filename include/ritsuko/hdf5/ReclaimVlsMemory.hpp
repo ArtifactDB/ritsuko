@@ -15,6 +15,13 @@ namespace hdf5 {
 /**
  * @brief Reclaim memory for HDF5's variable length strings.
  *
+ * @tparam DataTypePointer_ Class of a pointer to a `H5::DataType`.
+ * This can be raw or smart depending on the caller's management of its lifetime.
+ * @tparam DataSpacePointer_ Class of a pointer to a `H5::DataSpace`.
+ * This can be raw or smart depending on the caller's management of its lifetime.
+ * @tparam DSetMemXferPropListPointer_ Class of a pointer to a `H5::DSetMemXferPropList`.
+ * This can be raw or smart depending on the caller's management of its lifetime.
+ *
  * This provides an RAII interface for HDF5's variable length strings.
  * The idea is to create an instance of this class immediately after the `H5::DataSet::read()` call.
  * The allocated memory for each string is then reclaimed once the instance goes out of scope.
@@ -31,7 +38,7 @@ public:
      * If `type_ptr` is a raw pointer, it should not be deleted before this `ReclaimVlsMemory` instance is destroyed.
      * @param space_ptr Pointer to the HDF5 dataspace used to read the strings.
      * If `space_ptr` is a raw pointer, it should not be deleted before this `ReclaimVlsMemory` instance is destroyed.
-     * @param plist_ptr Pointer to the memory transfer property list used to read the strings, `H5::DSetMemXferPropList::H5P_DEFAULT`.
+     * @param plist_ptr Pointer to the memory transfer property list used to read the strings, typically a reference to `H5::DSetMemXferPropList::H5P_DEFAULT`.
      * If `plist_ptr` is a raw pointer, it should not be deleted before this `ReclaimVlsMemory` instance is destroyed.
      * @param buffer Array of C-style strings allocated by `H5::DataSet::read()` with the specified datatype, dataspace and property list.
      */ 
