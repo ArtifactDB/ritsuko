@@ -27,33 +27,35 @@ namespace cvls {
  *
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap, see `Pointer::offset`.
  * @tparam Length_ Unsigned integer type for the length of the string, see `Pointer::length`.
+ * @tparam DataSetPointer_ Class of a pointer to a `H5::DataSet`.
+ * This can be raw or smart depending on the caller's management of its lifetime.
  *
  * This streams in a 1-dimensional compressed VLS array in chunks.
  * Callers can then iterate over the individual strings.
  */
-template<typename Offset_, typename Length_>
+template<typename Offset_, typename Length_, typename DataSetPointer_ = const H5::DataSet*>
 class Stream1dArray {
 public:
     /**
-     * @param pointers Handle to a HDF5 dataset containing the compressed VLS pointers.
+     * @param pointers_ptr Pointer to a HDF5 dataset containing the compressed VLS pointers.
      * It is assumed that this dataset already satisfies `validate_1d_pointers()`.
      * It is also assumed that this dataset is 1-dimensional.
-     * @param length Length of the `pointers` dataset, i.e., the extent of its sole dimension.
-     * @param heap Pointer to a HDF5 dataset containing the compressed VLS heap.
+     * @param length Length of the `pointers_ptr` dataset, i.e., the extent of its sole dimension.
+     * @param heap_ptr Pointer to a HDF5 dataset containing the compressed VLS heap.
      * It is assumed that this dataset already satisfies `validate_heap()`.
      */
-    Stream1dArray(const H5::DataSet& pointers, hsize_t length, const H5::DataSet& heap) : 
-        my_pointers(pointers), 
-        my_heap(heap),
+    Stream1dArray(DataSetPointer_ pointers_ptr, hsize_t length, DataSetPointer_ heap_ptr) : 
+        my_pointers_ptr(std::move(pointers_ptr)), 
+        my_heap_ptr(std::move(heap_ptr)),
         my_pointer_full_length(length), 
         my_heap_full_length([&]{
             hsize_t output;
-            my_heap.getSpace().getSimpleExtentDims(&output);
+            my_heap_ptr->getSpace().getSimpleExtentDims(&output);
             return output;
         }()),
         my_pointer_block_size([&]{
             hsize_t output;
-            const auto& plist = pointers.getCreatePlist();
+            const auto& plist = my_pointers_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {
                 plist.getChunk(1, &output);
             } else {
@@ -88,7 +90,7 @@ public:
         my_pointer_mspace.selectHyperslab(H5S_SELECT_SET, &my_available, &zero);
         my_pointer_dspace.selectHyperslab(H5S_SELECT_SET, &my_available, &my_last_loaded);
         my_heap_dspace.selectNone();
-        my_pointers.read(my_pointer_buffer.data(), my_pointer_dtype, my_pointer_mspace, my_pointer_dspace);
+        my_pointers_ptr->read(my_pointer_buffer.data(), my_pointer_dtype, my_pointer_mspace, my_pointer_dspace);
 
         for (size_t i = 0; i < my_available; ++i) {
             const auto& val = my_pointer_buffer[i];
@@ -96,9 +98,9 @@ public:
             hsize_t count = val.length;
             if (start > my_heap_full_length || start + count > my_heap_full_length) {
                 throw std::runtime_error("compressed VLS array pointers at '" + 
-                    hdf5::get_name(my_pointers) +
+                    hdf5::get_name(*my_pointers_ptr) +
                     "' are out of range of the heap at '" +
-                    hdf5::get_name(my_heap) +
+                    hdf5::get_name(*my_heap_ptr) +
                     "'"
                 );
             }
@@ -114,7 +116,7 @@ public:
                 my_heap_mspace.selectAll();
                 my_heap_dspace.selectHyperslab(H5S_SELECT_SET, &count, &start);
                 my_heap_buffer.resize(count);
-                my_heap.read(my_heap_buffer.data(), H5::PredType::NATIVE_UINT8, my_heap_mspace, my_heap_dspace);
+                my_heap_ptr->read(my_heap_buffer.data(), H5::PredType::NATIVE_UINT8, my_heap_mspace, my_heap_dspace);
                 const char* text_ptr = reinterpret_cast<const char*>(my_heap_buffer.data());
                 curstr.insert(curstr.end(), text_ptr, text_ptr + hdf5::strnlen(text_ptr, count));
 
@@ -161,8 +163,8 @@ public:
     }
 
 private:
-    const H5::DataSet& my_pointers;
-    const H5::DataSet& my_heap;
+    DataSetPointer_ my_pointers_ptr;
+    DataSetPointer_ my_heap_ptr;
     hsize_t my_pointer_full_length, my_heap_full_length;
     hsize_t my_pointer_block_size;
     H5::DataSpace my_pointer_mspace, my_pointer_dspace;

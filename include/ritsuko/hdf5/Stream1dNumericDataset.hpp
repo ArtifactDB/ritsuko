@@ -20,26 +20,29 @@ namespace hdf5 {
 
 /**
  * @brief Stream a 1-dimensional HDF5 numeric dataset into memory.
- * @tparam Type_ Type to represent the data in memory.
+ * @tparam Type_ Numeric type to represent the data in memory.
+ * @tparam DataSetPointer_ Class of a pointer to a `H5::DataSet`.
+ * This can be raw or smart depending on the caller's management of its lifetime.
  *
  * This streams in a 1-dimensional HDF5 numeric dataset in a chunk-wise manner.
  * The aim is to enable inspection of the dataset contents while minimizing memory usage.
  */
-template<typename Type_>
+template<typename Type_, class DataSetPointer_ = const H5::DataSet*>
 class Stream1dNumericDataset {
 public:
     /**
-     * @param data Handle to a HDF5 dataset.
+     * @param data_ptr Pointer to a HDF5 dataset.
      * It is assumed that this dataset is 1-dimensional.
      * It is also assumed that its datatype is an integer or float. 
-     * The lifetime of `data` is expected to be no shorter than the lifetime of this `Stream1dNumericDataset` instance.
+     *
+     * If `data_ptr` is a raw pointer, it should not be deleted before the last call to any methods of this `Stream1dNumericDataset` instance. 
      * @param length Length of the dataset, i.e., the extent of its sole dimension. 
      */
-    Stream1dNumericDataset(const H5::DataSet& data, hsize_t length) : 
-        my_data(data), 
+    Stream1dNumericDataset(DataSetPointer_ data_ptr, hsize_t length) : 
+        my_data_ptr(std::move(data_ptr)), 
         my_full_length(length), 
         my_block_size([&]{
-            const auto& plist = my_data.getCreatePlist();
+            const auto& plist = my_data_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {
                 hsize_t output;
                 plist.getChunk(1, &output);
@@ -73,7 +76,7 @@ public:
         constexpr hsize_t zero = 0;
         my_mspace.selectHyperslab(H5S_SELECT_SET, &my_available, &zero);
         my_fspace.selectHyperslab(H5S_SELECT_SET, &my_available, &my_last_loaded);
-        my_data.read(my_buffer.data(), as_numeric_datatype<Type_>(), my_mspace, my_fspace);
+        my_data_ptr->read(my_buffer.data(), as_numeric_datatype<Type_>(), my_mspace, my_fspace);
         return my_available;
     }
 
@@ -100,7 +103,7 @@ public:
     }
 
 private:
-    const H5::DataSet& my_data;
+    DataSetPointer_ my_data_ptr;
     hsize_t my_full_length, my_block_size;
     H5::DataSpace my_mspace;
     H5::DataSpace my_fspace;

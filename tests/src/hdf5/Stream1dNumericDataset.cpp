@@ -21,7 +21,7 @@ TEST_P(Hdf5Stream1dNumericDatasetTest, Integer) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
 
-    ritsuko::hdf5::Stream1dNumericDataset<int> stream(dhandle, example.size());
+    ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, example.size());
     hsize_t total = 0;
     while (true) {
         hsize_t loaded = stream.load();
@@ -56,7 +56,7 @@ TEST_P(Hdf5Stream1dNumericDatasetTest, Float) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
 
-    ritsuko::hdf5::Stream1dNumericDataset<double> stream(dhandle, example.size());
+    ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, example.size());
     while (true) {
         hsize_t loaded = stream.load();
         if (loaded == 0) {

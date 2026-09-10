@@ -65,7 +65,7 @@ TEST_P(CvlsStream1dArrayTest, Basic) {
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
 
-    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(phandle, nlen, chandle);
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
     hsize_t total = 0;
     while (true) {
         hsize_t loaded = stream.load();
@@ -117,7 +117,7 @@ TEST(CvlsStream1dArray, NullTerminated) {
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
 
-    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(phandle, nlen, chandle);
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
     while (true) {
         hsize_t loaded = stream.load();
         if (loaded == 0) {
@@ -157,7 +157,7 @@ TEST(CvlsStream1dArray, Unicode) {
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
 
-    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(phandle, nlen, chandle);
+    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, nlen, &chandle);
     while (true) {
         hsize_t loaded = stream.load();
         if (loaded == 0) {
@@ -191,7 +191,7 @@ TEST(CvlsStream1dArray, Failures) {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = handle.openDataSet("foo");
         auto chandle = handle.openDataSet("bar");
-        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(phandle, 1, chandle);
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
 
         std::string msg;
         try {
@@ -220,7 +220,7 @@ TEST(CvlsStream1dArray, Failures) {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = handle.openDataSet("foo");
         auto chandle = handle.openDataSet("bar");
-        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(phandle, 1, chandle);
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
 
         std::string msg;
         try {

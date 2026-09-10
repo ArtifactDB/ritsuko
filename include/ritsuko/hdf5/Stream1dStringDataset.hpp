@@ -22,24 +22,28 @@ namespace hdf5 {
 
 /**
  * @brief Stream a 1-dimensional HDF5 string dataset into memory.
+ * @tparam DataSetPointer_ Class of a pointer to a `H5::DataSet`.
+ * This can be raw or smart depending on the caller's management of its lifetime.
  *
  * This streams in a 1-dimensional HDF5 string dataset in a chunk-wise manner.
  * The aim is to enable inspection of the dataset contents while minimizing memory usage.
  */
+template<class DataSetPointer_ = const H5::DataSet*>
 class Stream1dStringDataset {
 public:
     /**
-     * @param ptr Handle to a HDF5 dataset. 
+     * @param data_ptr Pointer to a HDF5 dataset. 
      * It is assumed that this dataset is 1-dimensional.
      * It is also assumed that its datatype is an integer or float. 
-     * The lifetime of `data` is expected to be no shorter than the lifetime of this `Stream1dStringDataset` instance.
+     *
+     * If `data_ptr` is a raw pointer, it should not be deleted before the last call to any methods of this `Stream1dStringDataset` instance. 
      * @param length Length of the dataset, i.e., the extent of its sole dimension.
      */
-    Stream1dStringDataset(const H5::DataSet& data, hsize_t length) : 
-        my_data(data), 
+    Stream1dStringDataset(DataSetPointer_ ptr, hsize_t length) : 
+        my_data_ptr(std::move(ptr)), 
         my_full_length(length), 
         my_block_size([&]{
-            const auto& plist = data.getCreatePlist();
+            const auto& plist = my_data_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {
                 hsize_t output;                
                 plist.getChunk(1, &output);
@@ -52,7 +56,7 @@ public:
         }()),
         my_mspace(1, &my_block_size),
         my_fspace(1, &my_full_length),
-        my_dtype(my_data.getDataType()),
+        my_dtype(my_data_ptr->getDataType()),
         my_is_variable(my_dtype.isVariableStr())
     {
         if (my_is_variable) {
@@ -84,12 +88,12 @@ public:
         my_fspace.selectHyperslab(H5S_SELECT_SET, &my_available, &my_last_loaded);
 
         if (my_is_variable) {
-            my_data.read(my_var_buffer.data(), my_dtype, my_mspace, my_fspace);
+            my_data_ptr->read(my_var_buffer.data(), my_dtype, my_mspace, my_fspace);
             const auto& plist = H5::DSetMemXferPropList::DEFAULT;
             [[maybe_unused]] ReclaimVlsMemory deletor(my_dtype.getId(), my_mspace.getId(), plist.getId(), my_var_buffer.data());
             for (hsize_t i = 0; i < my_available; ++i) {
                 if (my_var_buffer[i] == NULL) {
-                    throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(my_data) + "'");
+                    throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(*my_data_ptr) + "'");
                 }
                 auto& curstr = my_final_buffer[i];
                 curstr.clear();
@@ -98,7 +102,7 @@ public:
 
         } else {
             auto bptr = my_fix_buffer.data();
-            my_data.read(bptr, my_dtype, my_mspace, my_fspace);
+            my_data_ptr->read(bptr, my_dtype, my_mspace, my_fspace);
             for (size_t i = 0; i < my_available; ++i, bptr += my_fixed_length) {
                 auto& curstr = my_final_buffer[i];
                 curstr.clear();
@@ -132,7 +136,7 @@ public:
     }
 
 private:
-    const H5::DataSet& my_data;
+    DataSetPointer_ my_data_ptr;
     hsize_t my_full_length, my_block_size;
     H5::DataSpace my_mspace;
     H5::DataSpace my_fspace;
