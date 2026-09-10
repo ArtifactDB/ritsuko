@@ -26,15 +26,14 @@ TEST_P(Hdf5Stream1dStringDatasetTest, Fixed) {
     auto dhandle = handle.openDataSet("foobar");
     ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, example.size());
 
+    std::vector<std::string> chunk(stream.chunk_size());
     hsize_t total = 0;
     while (true) {
-        hsize_t loaded = stream.load();
+        hsize_t loaded = stream.load(chunk.data());
         EXPECT_EQ(total, stream.start());
         if (loaded == 0) {
             break;
         }
-
-        auto chunk = stream.contents();
         for (hsize_t i = 0; i < loaded; ++i) {
             EXPECT_EQ(example[i + stream.start()], chunk[i]);
         }
@@ -62,12 +61,12 @@ TEST_P(Hdf5Stream1dStringDatasetTest, Variable) {
     auto dhandle = handle.openDataSet("foobar");
     ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, example.size());
 
+    std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
-        hsize_t loaded = stream.load();
+        hsize_t loaded = stream.load(chunk.data());
         if (loaded == 0) {
             break;
         }
-        auto chunk = stream.contents();
         for (hsize_t i = 0; i < loaded; ++i) {
             EXPECT_EQ(example[i + stream.start()], chunk[i]);
         }
@@ -93,9 +92,11 @@ TEST(Hdf5Stream1dStringDataset, VariableNullFail) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
     ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, 10);
+
+    std::vector<std::string> chunk(stream.chunk_size());
     std::string msg;
     try {
-        stream.load();
+        stream.load(chunk.data());
     } catch (std::exception& e) {
         msg = e.what();
     }

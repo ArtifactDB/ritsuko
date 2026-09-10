@@ -65,18 +65,27 @@ public:
             my_fixed_length = my_dtype.getSize();
             my_fix_buffer.resize(my_fixed_length * my_block_size);
         }
-        my_final_buffer.resize(my_block_size);
     }
 
 public:
     /**
+     * @return Size of each chunk, in terms of the number of elements.
+     */
+    hsize_t chunk_size() const {
+        return my_block_size;
+    }
+
+    /**
      * Load the contents of the next chunk in the dataset.
-     * On return, this is now the "current" chunk.
+     *
+     * @param[out] buffer Pointer to an array of `chunk_size()`, where each entry is a valid `std::string`.
+     * On output, this contains the contents of the current chunk in its first \f$X\f$ elements,
+     * where \f$X\f$ is the return value of this method.
      *
      * @return Number of elements loaded in the current chunk.
      * If zero is returned, the dataset traversal is complete.
      */
-    hsize_t load() {
+    hsize_t load(std::string* buffer) {
         my_last_loaded += my_available;
         my_available = std::min(my_full_length - my_last_loaded, my_block_size);
         if (my_available == 0) {
@@ -95,7 +104,7 @@ public:
                 if (my_var_buffer[i] == NULL) {
                     throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(*my_data_ptr) + "'");
                 }
-                auto& curstr = my_final_buffer[i];
+                auto& curstr = buffer[i];
                 curstr.clear();
                 curstr.insert(0, my_var_buffer[i]);
             }
@@ -104,7 +113,7 @@ public:
             auto bptr = my_fix_buffer.data();
             my_data_ptr->read(bptr, my_dtype, my_mspace, my_fspace);
             for (size_t i = 0; i < my_available; ++i, bptr += my_fixed_length) {
-                auto& curstr = my_final_buffer[i];
+                auto& curstr = buffer[i];
                 curstr.clear();
                 curstr.insert(curstr.end(), bptr, bptr + strnlen(bptr, my_fixed_length));
             }
@@ -114,19 +123,8 @@ public:
     }
 
     /**
-     * Get the contents of the current chunk.
-     * This should only be called after `load()`.
-     *
-     * @return Pointer to an array containing the contents of the current chunk.
-     * Only the first `X` elements should be accessed, where `X` is the return value of the most recent call to `load()`. 
-     * Callers can freely modify the contents of this array.
-     */
-    std::string* contents() {
-        return my_final_buffer.data();                
-    }
-
-    /**
      * Get the start position of the current chunk, i.e., the index of the first element in the chunk. 
+     * That is, `buffer[j]` corresponds to the `start() + j`-th element of the dataset.
      * This should only be called after `load()`.
      *
      * @return Start position of the current chunk.
@@ -146,7 +144,6 @@ private:
     std::vector<char*> my_var_buffer;
     std::size_t my_fixed_length = 0;
     std::vector<char> my_fix_buffer;
-    std::vector<std::string> my_final_buffer;
 
     hsize_t my_last_loaded = 0;
     hsize_t my_available = 0;

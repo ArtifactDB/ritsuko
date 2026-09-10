@@ -54,19 +54,28 @@ public:
             }
         }()),
         my_mspace(1, &my_block_size),
-        my_fspace(1, &my_full_length),
-        my_buffer(my_block_size)
+        my_fspace(1, &my_full_length)
     {}
 
 public:
     /**
+     * @return Size of each chunk, in terms of the number of elements.
+     */
+    hsize_t chunk_size() const {
+        return my_block_size;
+    }
+
+    /**
      * Load the contents of the next chunk in the dataset.
-     * On return, the loaded chunk is now the "current" chunk.
+     *
+     * @param[out] buffer Pointer to an array of `chunk_size()`.
+     * On output, this contains the contents of the current chunk in its first \f$X\f$ elements,
+     * where \f$X\f$ is the return value of this method.
      *
      * @return Number of elements loaded in the current chunk.
      * If zero is returned, the dataset traversal is complete.
      */
-    hsize_t load() {
+    hsize_t load(Type_* buffer) {
         my_last_loaded += my_available;
         my_available = std::min(my_full_length - my_last_loaded, my_block_size);
         if (my_available == 0) {
@@ -76,24 +85,13 @@ public:
         constexpr hsize_t zero = 0;
         my_mspace.selectHyperslab(H5S_SELECT_SET, &my_available, &zero);
         my_fspace.selectHyperslab(H5S_SELECT_SET, &my_available, &my_last_loaded);
-        my_data_ptr->read(my_buffer.data(), as_numeric_datatype<Type_>(), my_mspace, my_fspace);
+        my_data_ptr->read(buffer, as_numeric_datatype<Type_>(), my_mspace, my_fspace);
         return my_available;
     }
 
     /**
-     * Get the contents of the current chunk.
-     * This should only be called after `load()`.
-     *
-     * @return Pointer to an array containing the contents of the current chunk.
-     * Only the first `X` elements should be accessed, where `X` is the return value of the most recent call to `load()`. 
-     * Callers can freely modify the contents of this array.
-     */
-    Type_* contents() {
-        return my_buffer.data();                
-    }
-
-    /**
      * Get the start position of the current chunk, i.e., the index of the first element in the chunk. 
+     * That is, `buffer[j]` corresponds to the `start() + j`-th element of the dataset.
      * This should only be called after `load()`.
      *
      * @return Start position of the current chunk.
@@ -107,7 +105,6 @@ private:
     hsize_t my_full_length, my_block_size;
     H5::DataSpace my_mspace;
     H5::DataSpace my_fspace;
-    std::vector<Type_> my_buffer;
     hsize_t my_last_loaded = 0;
     hsize_t my_available = 0;
 };

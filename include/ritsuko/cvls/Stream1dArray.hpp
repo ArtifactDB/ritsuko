@@ -67,19 +67,28 @@ public:
         my_pointer_dspace(1, &my_pointer_full_length),
         my_heap_dspace(1, &my_heap_full_length),
         my_pointer_dtype(define_pointer_datatype<Offset_, Length_>()),
-        my_pointer_buffer(my_pointer_block_size),
-        my_final_buffer(my_pointer_block_size)
+        my_pointer_buffer(my_pointer_block_size)
     {}
 
 public:
     /**
+     * @return Size of each chunk, in terms of the number of elements.
+     */
+    hsize_t chunk_size() const {
+        return my_pointer_block_size;
+    }
+
+    /**
      * Load the contents of the next chunk in the dataset.
-     * On return, this is now the "current" chunk.
+     *
+     * @param[out] buffer Pointer to an array of `chunk_size()`, where each entry is a valid `std::string`.
+     * On output, this contains the contents of the current chunk in its first \f$X\f$ elements,
+     * where \f$X\f$ is the return value of this method.
      *
      * @return Number of elements loaded in the current chunk.
      * If zero is returned, the dataset traversal is complete.
      */
-    hsize_t load() {
+    hsize_t load(std::string* buffer) {
         my_last_loaded += my_available;
         my_available = std::min(my_pointer_full_length - my_last_loaded, my_pointer_block_size);
         if (my_available == 0) {
@@ -105,7 +114,7 @@ public:
                 );
             }
 
-            auto& curstr = my_final_buffer[i];
+            auto& curstr = buffer[i];
             curstr.clear();
 
             if (count) {
@@ -141,19 +150,8 @@ public:
     }
 
     /**
-     * Get the contents of the current chunk.
-     * This should only be called after `load()`.
-     *
-     * @return Pointer to an array containing the contents of the current chunk.
-     * Only the first `X` elements should be accessed, where `X` is the return value of the most recent call to `load()`. 
-     * Callers can freely modify the contents of this array.
-     */
-    std::string* contents() {
-        return my_final_buffer.data();                
-    }
-
-    /**
      * Get the start position of the current chunk, i.e., the index of the first element in the chunk. 
+     * That is, `buffer[j]` corresponds to the `start() + j`-th element of the dataset.
      * This should only be called after `load()`.
      *
      * @return Start position of the current chunk.
@@ -173,7 +171,6 @@ private:
     H5::DataType my_pointer_dtype;
     std::vector<Pointer<Offset_, Length_> > my_pointer_buffer;
     std::vector<std::uint8_t> my_heap_buffer;
-    std::vector<std::string> my_final_buffer;
 
     hsize_t my_last_loaded = 0;
     hsize_t my_available = 0;

@@ -64,17 +64,16 @@ TEST_P(CvlsStream1dArrayTest, Basic) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-
     ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
+
+    std::vector<std::string> chunk(stream.chunk_size());
     hsize_t total = 0;
     while (true) {
-        hsize_t loaded = stream.load();
+        hsize_t loaded = stream.load(chunk.data());
         EXPECT_EQ(total, stream.start());
         if (loaded == 0) {
             break;
         }
-
-        auto chunk = stream.contents();
         for (hsize_t i = 0; i < loaded; ++i) {
             EXPECT_EQ(example[i + stream.start()], chunk[i]);
         }
@@ -116,14 +115,14 @@ TEST(CvlsStream1dArray, NullTerminated) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-
     ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
+
+    std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
-        hsize_t loaded = stream.load();
+        hsize_t loaded = stream.load(chunk.data());
         if (loaded == 0) {
             break;
         }
-        auto chunk = stream.contents();
         for (hsize_t i = 0; i < loaded; ++i) {
             EXPECT_EQ(example[i + stream.start()], chunk[i]);
         }
@@ -156,14 +155,14 @@ TEST(CvlsStream1dArray, Unicode) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-
     ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, nlen, &chandle);
+
+    std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
-        hsize_t loaded = stream.load();
+        hsize_t loaded = stream.load(chunk.data());
         if (loaded == 0) {
             break;
         }
-        auto chunk = stream.contents();
         for (hsize_t i = 0; i < loaded; ++i) {
             EXPECT_EQ(example[i + stream.start()], chunk[i]);
         }
@@ -193,9 +192,10 @@ TEST(CvlsStream1dArray, Failures) {
         auto chandle = handle.openDataSet("bar");
         ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
 
+        std::vector<std::string> chunk(stream.chunk_size());
         std::string msg;
         try {
-            stream.load();
+            stream.load(chunk.data());
         } catch (std::exception& e) {
             msg = e.what();
         }
@@ -222,9 +222,10 @@ TEST(CvlsStream1dArray, Failures) {
         auto chandle = handle.openDataSet("bar");
         ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
 
+        std::vector<std::string> chunk(stream.chunk_size());
         std::string msg;
         try {
-            stream.load();
+            stream.load(chunk.data());
         } catch (std::exception& e) {
             msg = e.what();
         }
