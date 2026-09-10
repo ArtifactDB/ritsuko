@@ -19,31 +19,48 @@ namespace hdf5 {
  * The idea is to create an instance of this class immediately after the `H5::DataSet::read()` call.
  * The allocated memory for each string is then reclaimed once the instance goes out of scope.
  */
+template<
+    class DataTypePointer_ = H5::DataType*,
+    class DataSpacePointer_ = H5::DataSpace*,
+    class DSetMemXferPropListPointer_ = H5::DSetMemXferPropList*
+>
 class ReclaimVlsMemory  {
 public:
     /**
-     * @param tid ID for the HDF5 datatype for the in-memory strings.
-     * The lifetime of this datatype should exceed that of this `ReclaimVlsMemory` instance.
-     * @param sid ID for the HDF5 dataspace for the in-memory strings.
-     * The lifetime of this dataspace should exceed that of this `ReclaimVlsMemory` instance.
-     * @param pid ID for the memory transfer property list, typically `H5P_DEFAULT`. 
-     * The lifetime of this property list should exceed that of this `ReclaimVlsMemory` instance.
+     * @param type_ptr Pointer to the HDF5 datatype used to read the strings.
+     * If `type_ptr` is a raw pointer, it should not be deleted before this `ReclaimVlsMemory` instance is destroyed.
+     * @param space_ptr Pointer to the HDF5 dataspace used to read the strings.
+     * If `space_ptr` is a raw pointer, it should not be deleted before this `ReclaimVlsMemory` instance is destroyed.
+     * @param plist_ptr Pointer to the memory transfer property list used to read the strings, `H5::DSetMemXferPropList::H5P_DEFAULT`.
+     * If `plist_ptr` is a raw pointer, it should not be deleted before this `ReclaimVlsMemory` instance is destroyed.
      * @param buffer Array of C-style strings allocated by `H5::DataSet::read()` with the specified datatype, dataspace and property list.
      */ 
-    ReclaimVlsMemory(hid_t tid, hid_t sid, hid_t pid, char** buffer) : my_tid(tid), my_sid(sid), my_pid(pid), my_buffer(buffer) {}
+    ReclaimVlsMemory(
+        DataTypePointer_ type_ptr,
+        DataSpacePointer_ space_ptr,
+        DSetMemXferPropListPointer_ plist_ptr,
+        char** buffer
+    ) : 
+        my_type_ptr(std::move(type_ptr)),
+        my_space_ptr(std::move(space_ptr)),
+        my_plist_ptr(std::move(plist_ptr)),
+        my_buffer(buffer)
+    {}
 
     /**
      * @cond
      */
     ~ReclaimVlsMemory() {
-        H5Dvlen_reclaim(my_tid, my_sid, my_pid, my_buffer);
+        H5Dvlen_reclaim(my_type_ptr->getId(), my_space_ptr->getId(), my_plist_ptr->getId(), my_buffer);
     }
     /**
      * @endcond
      */
 
 private:
-    hid_t my_tid, my_sid, my_pid;
+    DataTypePointer_ my_type_ptr;
+    DataSpacePointer_ my_space_ptr;
+    DSetMemXferPropListPointer_ my_plist_ptr;
     char** my_buffer; 
 };
 

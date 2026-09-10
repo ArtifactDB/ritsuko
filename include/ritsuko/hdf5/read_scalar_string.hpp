@@ -35,11 +35,11 @@ inline std::string read_scalar_string(const H5::DataSet& data) {
     assert(data.getSpace().getSimpleExtentNdims() == 0);
 
     if (dtype.isVariableStr()) {
-        const auto& dspace = data.getSpace(); // don't set as temporary in Reclaim constructor below, otherwise it gets destroyed and the ID invalidated.
+        const auto& dspace = data.getSpace();
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
         char* vptr;
         data.read(&vptr, dtype);
-        [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), dspace.getId(), plist.getId(), &vptr);
+        [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &dspace, &plist, &vptr);
         if (vptr == NULL) {
             throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
         }
@@ -68,10 +68,11 @@ inline std::string read_scalar_string(const H5::Attribute& attr) {
     // as we need to catch NULL pointers in the variable case.
 
     if (dtype.isVariableStr()) {
-        auto mspace = attr.getSpace(); // don't set as a temporary in the Reclaim constructor, as it will be deleted and its ID invalidated.
+        const auto& dspace = attr.getSpace();
+        const auto& plist = H5::DSetMemXferPropList::DEFAULT; // yes, even H5Aread uses H5P_DATASET_XFER_DEFAULT.
         char* buffer = NULL;
         attr.read(dtype, &buffer);
-        [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), mspace.getId(), H5P_DEFAULT, &buffer);
+        [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &dspace, &plist, &buffer);
         if (buffer == NULL) {
             throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
         }

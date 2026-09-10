@@ -45,7 +45,7 @@ inline void validate_scalar_string(const H5::DataSet& data) {
 
     const auto& dspace = data.getSpace();
     const auto& plist = H5::DSetMemXferPropList::DEFAULT;
-    [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), dspace.getId(), plist.getId(), &vptr);
+    [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &dspace, &plist, &vptr);
 
     if (vptr == NULL) {
         throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
@@ -89,7 +89,7 @@ inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
         data.read(buffer.data(), dtype, mspace, dspace);
 
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
-        [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), mspace.getId(), plist.getId(), buffer.data());
+        [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
         for (hsize_t j = 0; j < available; ++j) {
             if (buffer[j] == NULL) {
                 throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
@@ -141,7 +141,7 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
 
         data.read(buffer.data(), stype, mspace, fspace);
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
-        [[maybe_unused]] ReclaimVlsMemory deleter(stype.getId(), mspace.getId(), plist.getId(), buffer.data());
+        [[maybe_unused]] ReclaimVlsMemory deleter(&stype, &mspace, &plist, buffer.data());
 
         const std::size_t npts = mspace.getSimpleExtentNpoints();
         for (std::size_t i = 0; i < npts; ++i) {
@@ -170,10 +170,11 @@ inline void validate_scalar_string_attribute(const H5::Attribute& attr) {
         return;
     }
 
-    auto mspace = attr.getSpace();
+    const auto& mspace = attr.getSpace();
+    const auto& plist = H5::DSetMemXferPropList::DEFAULT; // yes, even H5Aread uses H5P_DATASET_XFER_DEFAULT.
     char* buffer;
     attr.read(dtype, &buffer);
-    [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), mspace.getId(), H5P_DEFAULT, &buffer);
+    [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, &buffer);
     if (buffer == NULL) {
         throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
     }
@@ -198,10 +199,11 @@ inline void validate_1d_string_attribute(const H5::Attribute& attr, hsize_t full
         return;
     }
 
-    auto mspace = attr.getSpace();
+    const auto& mspace = attr.getSpace();
+    const auto& plist = H5::DSetMemXferPropList::DEFAULT; // yes, even H5Aread uses H5P_DATASET_XFER_DEFAULT.
     std::vector<char*> buffer(full_length);
     attr.read(dtype, buffer.data());
-    [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), mspace.getId(), H5P_DEFAULT, buffer.data());
+    [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
     for (hsize_t i = 0; i < full_length; ++i) {
         if (buffer[i] == NULL) {
             throw std::runtime_error("detected a NULL pointer for a variable length string attribute");

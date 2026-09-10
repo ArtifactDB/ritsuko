@@ -90,7 +90,7 @@ public:
         if (my_is_variable) {
             my_data_ptr->read(my_var_buffer.data(), my_dtype, my_mspace, my_fspace);
             const auto& plist = H5::DSetMemXferPropList::DEFAULT;
-            [[maybe_unused]] ReclaimVlsMemory deletor(my_dtype.getId(), my_mspace.getId(), plist.getId(), my_var_buffer.data());
+            [[maybe_unused]] ReclaimVlsMemory deletor(&my_dtype, &my_mspace, &plist, my_var_buffer.data());
             for (hsize_t i = 0; i < my_available; ++i) {
                 if (my_var_buffer[i] == NULL) {
                     throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(*my_data_ptr) + "'");
