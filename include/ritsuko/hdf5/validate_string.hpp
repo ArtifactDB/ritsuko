@@ -27,28 +27,28 @@ namespace hdf5 {
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to a HDF5 dataset.
+ * @param data A HDF5 dataset.
  * It is assumed that this dataset is scalar.
  * It is also assumed that its datatype is of the string class.
  */
-inline void validate_scalar_string(const H5::DataSet& handle) {
-    assert(handle.getSpace().getSimpleExtentNdims() == 0);
-    assert(handle.getDataType().getClass() == H5T_STRING);
+inline void validate_scalar_string(const H5::DataSet& data) {
+    assert(data.getSpace().getSimpleExtentNdims() == 0);
+    assert(data.getDataType().getClass() == H5T_STRING);
 
-    auto dtype = handle.getDataType();
+    auto dtype = data.getDataType();
     if (!dtype.isVariableStr()) {
         return;
     }
 
     char* vptr = NULL;
-    handle.read(&vptr, dtype);
+    data.read(&vptr, dtype);
 
-    const auto& dspace = handle.getSpace();
+    const auto& dspace = data.getSpace();
     const auto& plist = H5::DSetMemXferPropList::DEFAULT;
     [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), dspace.getId(), plist.getId(), &vptr);
 
     if (vptr == NULL) {
-        throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(handle) + "'");
+        throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
     }
 }
 
@@ -57,22 +57,22 @@ inline void validate_scalar_string(const H5::DataSet& handle) {
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to a HDF5 dataset.
+ * @param data A HDF5 dataset.
  * It is assumed that this dataset is 1-dimensional.
  * It is also assumed that its datatype is of the string class.
  * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
  */
-inline void validate_1d_strings(const H5::DataSet& handle, hsize_t full_length) {
-    assert(handle.getSpace().getSimpleExtentNdims() == 1);
-    assert(handle.getDataType().getClass() == H5T_STRING);
+inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
+    assert(data.getSpace().getSimpleExtentNdims() == 1);
+    assert(data.getDataType().getClass() == H5T_STRING);
 
-    auto dtype = handle.getDataType();
+    auto dtype = data.getDataType();
     if (!dtype.isVariableStr()) {
         return;
     }
 
     hsize_t block_size = 10000;
-    const auto& plist = handle.getCreatePlist();
+    const auto& plist = data.getCreatePlist();
     if (plist.getLayout() == H5D_CHUNKED) {
         plist.getChunk(1, &block_size);
     }
@@ -86,13 +86,13 @@ inline void validate_1d_strings(const H5::DataSet& handle, hsize_t full_length) 
         mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
         dspace.selectHyperslab(H5S_SELECT_SET, &available, &i);
 
-        handle.read(buffer.data(), dtype, mspace, dspace);
+        data.read(buffer.data(), dtype, mspace, dspace);
 
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
         [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), mspace.getId(), plist.getId(), buffer.data());
         for (hsize_t j = 0; j < available; ++j) {
             if (buffer[j] == NULL) {
-                throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(handle) + "'");
+                throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
             }
         }
     }
@@ -103,22 +103,22 @@ inline void validate_1d_strings(const H5::DataSet& handle, hsize_t full_length) 
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
  *
- * @param handle Handle to a HDF5 dataset.
+ * @param data A HDF5 dataset.
  * It is assumed that this dataset has at least 1 dimension.
  * It is also assumed that its datatype is of the string class.
  * @param dimensions Dimensions of the dataset.
  */
-inline void validate_nd_strings(const H5::DataSet& handle, const std::vector<hsize_t>& dimensions) {
-    assert(handle.getSpace().getSimpleExtentNdims() > 0);
-    assert(handle.getDataType().getClass() == H5T_STRING);
+inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize_t>& dimensions) {
+    assert(data.getSpace().getSimpleExtentNdims() > 0);
+    assert(data.getDataType().getClass() == H5T_STRING);
 
-    auto stype = handle.getDataType();
+    auto stype = data.getDataType();
     if (!stype.isVariableStr()) {
         return;
     }
 
     std::vector<hsize_t> chunk_dims;
-    const auto& plist = handle.getCreatePlist();
+    const auto& plist = data.getCreatePlist();
     if (plist.getLayout() == H5D_CHUNKED) {
         chunk_dims.resize(dimensions.size());
         plist.getChunk(dimensions.size(), chunk_dims.data());
@@ -139,7 +139,7 @@ inline void validate_nd_strings(const H5::DataSet& handle, const std::vector<hsi
         mspace.setExtentSimple(ndim, curcount.data());
         fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.starts().data());
 
-        handle.read(buffer.data(), stype, mspace, fspace);
+        data.read(buffer.data(), stype, mspace, fspace);
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
         [[maybe_unused]] ReclaimVlsMemory deleter(stype.getId(), mspace.getId(), plist.getId(), buffer.data());
 
@@ -157,7 +157,7 @@ inline void validate_nd_strings(const H5::DataSet& handle, const std::vector<hsi
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string attributes, this function is a no-op.
  *
- * @param attr Handle to a HDF5 attribute.
+ * @param attr A HDF5 attribute.
  * It is assumed that this attribute is scalar.
  * It is also assumed that its datatype is of the string class.
  */

@@ -27,18 +27,18 @@ namespace cvls {
  * @cond
  */
 template<typename Offset_, typename Length_>
-inline void validate_pointers(const H5::DataSet& handle) {
+inline void validate_pointers(const H5::DataSet& data) {
     static_assert(std::is_integral<Offset_>::value);
     static_assert(std::is_integral<Length_>::value);
 
-    if (handle.getTypeClass() != H5T_COMPOUND) {
-        throw std::runtime_error("expected a compound datatype for a compressed VLS pointer dataset at '" + hdf5::get_name(handle) + "'");
+    if (data.getTypeClass() != H5T_COMPOUND) {
+        throw std::runtime_error("expected a compound datatype for a compressed VLS pointer dataset at '" + hdf5::get_name(data) + "'");
     }
 
     try {
-        validate_pointer_datatype(handle.getCompType(), std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
+        validate_pointer_datatype(data.getCompType(), std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
     } catch (std::exception& e) {
-        throw std::runtime_error("incorrect type for a compressed VLS pointer dataset at '" + hdf5::get_name(handle) + "; " + std::string(e.what()));
+        throw std::runtime_error("incorrect type for a compressed VLS pointer dataset at '" + hdf5::get_name(data) + "; " + std::string(e.what()));
     }
 }
 /**
@@ -53,22 +53,22 @@ inline void validate_pointers(const H5::DataSet& handle) {
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap, see `Pointer::offset`.
  * @tparam Length_ Unsigned integer type for the length of the string, see `Pointer::length`.
  *
- * @param handle Handle to a HDF5 dataset. 
+ * @param data A HDF5 dataset. 
  * It is assumed that this dataset is scalar.
  * @param heap_length Length of the heap dataset. 
  */
 template<typename Offset_, typename Length_>
-inline void validate_scalar_pointer(const H5::DataSet& handle, hsize_t heap_length) {
-    validate_pointers<Offset_, Length_>(handle);
+inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length) {
+    validate_pointers<Offset_, Length_>(data);
 
     auto dtype = define_pointer_datatype<Offset_, Length_>();
     Pointer<Offset_, Length_> val;
-    handle.read(&val, dtype);
+    data.read(&val, dtype);
 
     hsize_t start = val.offset;
     hsize_t count = val.length;
     if (start > heap_length || start + count > heap_length) {
-        throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(handle) + "' are out of range of the heap");
+        throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
     }
 }
 
@@ -80,16 +80,16 @@ inline void validate_scalar_pointer(const H5::DataSet& handle, hsize_t heap_leng
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap, see `Pointer::offset`.
  * @tparam Length_ Unsigned integer type for the length of the string, see `Pointer::length`.
  *
- * @param handle Handle to a HDF5 dataset. 
+ * @param data A HDF5 dataset. 
  * It is assumed that this dataset is 1-dimensional.
  * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
  * @param heap_length Length of the heap dataset. 
  */
 template<typename Offset_, typename Length_>
-inline void validate_1d_pointers(const H5::DataSet& handle, hsize_t full_length, hsize_t heap_length) {
-    validate_pointers<Offset_, Length_>(handle);
+inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, hsize_t heap_length) {
+    validate_pointers<Offset_, Length_>(data);
 
-    const auto& plist = handle.getCreatePlist();
+    const auto& plist = data.getCreatePlist();
     hsize_t block_size = 0;
     if (plist.getLayout() == H5D_CHUNKED) {
         plist.getChunk(1, &block_size);
@@ -109,13 +109,13 @@ inline void validate_1d_pointers(const H5::DataSet& handle, hsize_t full_length,
         mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
         dspace.selectHyperslab(H5S_SELECT_SET, &available, &i);
 
-        handle.read(buffer.data(), dtype, mspace, dspace);
+        data.read(buffer.data(), dtype, mspace, dspace);
         for (hsize_t j = 0; j < available; ++j) {
             const auto& val = buffer[j];
             hsize_t start = val.offset;
             hsize_t count = val.length;
             if (start > heap_length || start + count > heap_length) {
-                throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(handle) + "' are out of range of the heap");
+                throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
             }
         }
 
@@ -131,19 +131,19 @@ inline void validate_1d_pointers(const H5::DataSet& handle, hsize_t full_length,
  * @tparam Offset_ Unsigned integer type for the starting offset on the heap, see `Pointer::offset`.
  * @tparam Length_ Unsigned integer type for the length of the string, see `Pointer::length`.
  *
- * @param handle Handle to a non-scalar HDF5 dataset. 
+ * @param data A non-scalar HDF5 dataset. 
  * It is assumed that this dataset has at least 1 dimension.
  * @param dimensions Dimensions of the dataset. 
  * This should be non-empty.
  * @param heap_length Length of the heap dataset. 
  */
 template<typename Offset_, typename Length_>
-void validate_nd_pointers(const H5::DataSet& handle, const std::vector<hsize_t>& dimensions, hsize_t heap_length) {
-    validate_pointers<Offset_, Length_>(handle);
+void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length) {
+    validate_pointers<Offset_, Length_>(data);
 
     std::vector<hsize_t> chunk_dims;
     const auto ndim = dimensions.size();
-    const auto& plist = handle.getCreatePlist();
+    const auto& plist = data.getCreatePlist();
     if (plist.getLayout() == H5D_CHUNKED) {
         chunk_dims.resize(dimensions.size());
         plist.getChunk(ndim, chunk_dims.data());
@@ -165,12 +165,12 @@ void validate_nd_pointers(const H5::DataSet& handle, const std::vector<hsize_t>&
         fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.starts().data());
         buffer.resize(mspace.getSimpleExtentNpoints());
 
-        handle.read(buffer.data(), dtype, mspace, fspace);
+        data.read(buffer.data(), dtype, mspace, fspace);
         for (const auto& val : buffer) {
             hsize_t start = val.offset;
             hsize_t count = val.length;
             if (start > heap_length || start + count > heap_length) {
-                throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(handle) + "' are out of range of the heap");
+                throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
             }
         }
     }
@@ -180,18 +180,18 @@ void validate_nd_pointers(const H5::DataSet& handle, const std::vector<hsize_t>&
  * Validate a HDF5 dataset containing the compressed VLS heap.
  * An error is thrown if the dataset is not 1-dimensional or does not contain unsigned 8-bit integers.
  *
- * @param handle Handle to a HDF5 dataset.
+ * @param data A HDF5 dataset.
  * It have any shape and its datatype may be of any class.
  */
-inline void validate_heap(const H5::DataSet& handle) {
-    if (handle.getTypeClass() != H5T_INTEGER) {
-        throw std::runtime_error("expected an integer datatype for the compressed VLS heap at '" + hdf5::get_name(handle) + "'");
+inline void validate_heap(const H5::DataSet& data) {
+    if (data.getTypeClass() != H5T_INTEGER) {
+        throw std::runtime_error("expected an integer datatype for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
     }
-    if (hdf5::exceeds_integer_limit(handle.getIntType(), 8, false)) {
-        throw std::runtime_error("expected 8-bit unsigned integers for the compressed VLS heap at '" + hdf5::get_name(handle) + "'");
+    if (hdf5::exceeds_integer_limit(data.getIntType(), 8, false)) {
+        throw std::runtime_error("expected 8-bit unsigned integers for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
     }
-    if (handle.getSpace().getSimpleExtentNdims() != 1) {
-        throw std::runtime_error("expected a 1-dimensional dataset for the compressed VLS heap at '" + hdf5::get_name(handle) + "'");
+    if (data.getSpace().getSimpleExtentNdims() != 1) {
+        throw std::runtime_error("expected a 1-dimensional dataset for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
     }
 }
 

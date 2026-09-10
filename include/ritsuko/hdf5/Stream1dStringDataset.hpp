@@ -39,8 +39,8 @@ public:
      * If `data_ptr` is a raw pointer, it should not be deleted before the last call to any methods of this `Stream1dStringDataset` instance. 
      * @param length Length of the dataset, i.e., the extent of its sole dimension.
      */
-    Stream1dStringDataset(DataSetPointer_ ptr, hsize_t length) : 
-        my_data_ptr(std::move(ptr)), 
+    Stream1dStringDataset(DataSetPointer_ data_ptr, hsize_t length) :
+        my_data_ptr(std::move(data_ptr)), 
         my_full_length(length), 
         my_block_size([&]{
             const auto& plist = my_data_ptr->getCreatePlist();

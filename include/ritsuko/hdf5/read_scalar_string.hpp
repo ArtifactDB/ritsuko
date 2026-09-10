@@ -25,23 +25,23 @@ namespace ritsuko {
 namespace hdf5 {
 
 /**
- * @param handle Handle to a HDF5 dataset.
+ * @param data A HDF5 dataset.
  * It is assumed that this dataset is scalar and that its datatype is of the string class.
  * @return String containing the contents of the sole dataset entry.
  */
-inline std::string read_scalar_string(const H5::DataSet& handle) {
-    auto dtype = handle.getDataType();
+inline std::string read_scalar_string(const H5::DataSet& data) {
+    auto dtype = data.getDataType();
     assert(dtype.getClass() == H5T_STRING);
-    assert(handle.getSpace().getSimpleExtentNdims() == 0);
+    assert(data.getSpace().getSimpleExtentNdims() == 0);
 
     if (dtype.isVariableStr()) {
-        const auto& dspace = handle.getSpace(); // don't set as temporary in Reclaim constructor below, otherwise it gets destroyed and the ID invalidated.
+        const auto& dspace = data.getSpace(); // don't set as temporary in Reclaim constructor below, otherwise it gets destroyed and the ID invalidated.
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
         char* vptr;
-        handle.read(&vptr, dtype);
+        data.read(&vptr, dtype);
         [[maybe_unused]] ReclaimVlsMemory deletor(dtype.getId(), dspace.getId(), plist.getId(), &vptr);
         if (vptr == NULL) {
-            throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(handle) + "'");
+            throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
         }
         std::string output(vptr);
         return output;
@@ -49,20 +49,20 @@ inline std::string read_scalar_string(const H5::DataSet& handle) {
     } else {
         size_t fixed_length = dtype.getSize();
         std::vector<char> buffer(fixed_length);
-        handle.read(buffer.data(), dtype);
+        data.read(buffer.data(), dtype);
         return std::string(buffer.begin(), buffer.begin() + strnlen(buffer.data(), fixed_length));
     }
 }
 
 /**
- * @param attr Handle to a HDF5 attribute.
+ * @param attr A HDF5 attribute.
  * It is assumed that this attribute is scalar and that its datatype is of the string class.
  * @return The attribute as a string.
  */
 inline std::string read_scalar_string(const H5::Attribute& attr) {
     auto dtype = attr.getDataType();
     assert(dtype.getClass() == H5T_STRING);
-    assert(handle.getSpace().getSimpleExtentNdims() == 0);
+    assert(attr.getSpace().getSimpleExtentNdims() == 0);
 
     // Unfortunately, we can't just do 'std::string output; attr.read(dtype, output);', 
     // as we need to catch NULL pointers in the variable case.
