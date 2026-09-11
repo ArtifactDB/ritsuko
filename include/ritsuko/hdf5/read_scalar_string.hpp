@@ -79,8 +79,7 @@ inline std::string read_scalar_string(const H5::Attribute& attr) {
         const auto len = dtype.getSize();
         auto buffer = sanisizer::create<std::vector<char> >(len);
         attr.read(dtype, buffer.data());
-        auto ptr = buffer.data();
-        return std::string(ptr, ptr + find_string_length(ptr, len));
+        return std::string(buffer.begin(), buffer.begin() + strnlen(buffer.data(), len));
     }
 }
 
