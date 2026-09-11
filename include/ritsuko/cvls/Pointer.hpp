@@ -40,10 +40,6 @@ struct Pointer {
     /**
      * Maximum length of the string on the heap, in terms of the number of bytes.
      * The sum of `offset` and `length` should be no greater than the length of the heap dataset. 
-     *
-     * It is not necessary to include the null terminator when setting `length`.
-     * However, if the slice `[offset, offset + length)` on the heap includes a null terminator, the string should be terminated at the first occurrence.
-     * This allows the slice to be easily reused for shorter strings when modifying a string entry inside an existing heap.
      */
     Length_ length;
 };
@@ -71,12 +67,6 @@ H5::CompType define_pointer_datatype() {
  * - It has exactly two members.
  * - The first member is named `offset` and is of an integer datatype that is unsigned and has no more than than `offset_precision` bits.
  * - The second member is named `length` and is of an integer datatype that is unsigned and has no more than than `length_precision` bits.
- *
- * The constraints on the precision of each integer type ensure that the pointer dataset can be represented in memory by the associated type.
- * For example, setting `offset_precision = 64` allows readers to safely assume that a `uint64_t` can be used for `Pointer::offset`.
- *
- * On success, the contents of the HDF5 dataset associated with `type` can be safely read into an array of appropriately parameterized `Pointer` instances.
- * Otherwise, an error is thrown.
  *
  * @param type Compound datatype, typically generated from a `H5::DataSet` instance.
  * @param offset_precision Maximum number of bits in the integer type used for the start position, see `Pointer::offset`.

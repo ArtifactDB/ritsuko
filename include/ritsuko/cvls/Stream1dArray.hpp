@@ -137,21 +137,6 @@ public:
                 my_heap_ptr->read(my_heap_buffer.data(), H5::PredType::NATIVE_UINT8, my_heap_mspace, my_heap_dspace);
                 const char* text_ptr = reinterpret_cast<const char*>(my_heap_buffer.data());
                 curstr.insert(curstr.end(), text_ptr, text_ptr + hdf5::strnlen(text_ptr, count));
-
-                /*
-                 * Is it generally portable to reinterpret_cast the bytes in a
-                 * uint8_t array? I think so; according to the C standard,
-                 * uint8_t is guaranteed to be exactly 8 bits
-                 * (https://stackoverflow.com/questions/15039077/uint8-t-8-bits-guarantee),
-                 * so a uint8_t value should have the same bit representation
-                 * across all implementations that define the uint8_t type. If
-                 * we save a byte to HDF5 as a UINT8 on one machine and read it
-                 * back into to memory on another machine, we should recover
-                 * the same bit pattern. Thus, the reinterpret_cast to a char*
-                 * should yield the same bit pattern across machines, allowing
-                 * us to portably interpret the array as a string following the
-                 * ASCII/UTF-8 spec (which define each character in binary).
-                 */
             }
         }
 
