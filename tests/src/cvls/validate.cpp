@@ -274,7 +274,7 @@ TEST(CvlsValidatePointers, NDimErrors) {
             auto dhandle = handle.openDataSet("foobar");
             std::string msg;
             try {
-                ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, heap);
+                ritsuko::cvls::validate_nd_pointers<std::uint64_t, std::uint64_t>(dhandle, dims, heap);
             } catch (std::exception& e) {
                 msg = e.what();
             }

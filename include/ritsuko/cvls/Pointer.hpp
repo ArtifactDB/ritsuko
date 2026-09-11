@@ -101,7 +101,7 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
     if (type.getMemberName(1) != "length") {
         throw std::runtime_error("second member of a compressed VLS compound datatype should be named 'length'");
     }
-    if (type.getMemberClass(0) != H5T_INTEGER) {
+    if (type.getMemberClass(1) != H5T_INTEGER) {
         throw std::runtime_error("second member of a compressed VLS compound datatype should have integer type");
     }
     auto length_type = type.getMemberIntType(1);

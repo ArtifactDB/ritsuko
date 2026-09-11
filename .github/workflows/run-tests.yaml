@@ -68,7 +68,7 @@ jobs:
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 
     - name: Configure Ubuntu debug build with coverage
-      if: ${{ matrix.config.release }}
+      if: ${{ matrix.config.cov }}
       run: |
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
 
