@@ -162,17 +162,16 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keyword">const</span> <span class="keyword">auto</span> len = dtype.getSize();</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keyword">auto</span> buffer = sanisizer::create&lt;std::vector&lt;char&gt; &gt;(len);</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        attr.read(dtype, buffer.data());</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keyword">auto</span> ptr = buffer.data();</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">return</span> std::string(ptr, ptr + find_string_length(ptr, len));</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> std::string(buffer.begin(), buffer.begin() + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ab50df338dbb7fed71795d0f0772d7307">strnlen</a>(buffer.data(), len));</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aReclaimVlsMemory_8hpp_html"><div class="ttname"><a href="ReclaimVlsMemory_8hpp.html">ReclaimVlsMemory.hpp</a></div><div class="ttdoc">Reclaim memory allocated to HDF5's variable length strings.</div></div>
 <div class="ttc" id="aclassritsuko_1_1hdf5_1_1ReclaimVlsMemory_html"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html">ritsuko::hdf5::ReclaimVlsMemory</a></div><div class="ttdoc">Reclaim memory for HDF5's variable length strings.</div><div class="ttdef"><b>Definition</b> ReclaimVlsMemory.hpp:34</div></div>
 <div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>

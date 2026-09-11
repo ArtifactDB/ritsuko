@@ -152,7 +152,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (type.getMemberName(1) != <span class="stringliteral">&quot;length&quot;</span>) {</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a compressed VLS compound datatype should be named &#39;length&#39;&quot;</span>);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (type.getMemberClass(0) != H5T_INTEGER) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (type.getMemberClass(1) != H5T_INTEGER) {</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;second member of a compressed VLS compound datatype should have integer type&quot;</span>);</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">auto</span> length_type = type.getMemberIntType(1);</div>
