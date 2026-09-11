@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
+#include <cassert>
 
 #include "get_name.hpp"
 #include "strnlen.hpp"
@@ -43,6 +44,7 @@ public:
         my_data_ptr(std::move(data_ptr)), 
         my_full_length(length), 
         my_block_size([&]{
+            assert(my_data_ptr->getSpace().getSimpleExtentNdims() == 1);
             hsize_t output;
             const auto& plist = my_data_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {
@@ -59,6 +61,7 @@ public:
         my_dtype(my_data_ptr->getDataType()),
         my_is_variable(my_dtype.isVariableStr())
     {
+        assert(my_dtype.getClass() == H5T_STRING);
         if (my_is_variable) {
             sanisizer::resize(my_var_buffer, my_block_size);
         } else {

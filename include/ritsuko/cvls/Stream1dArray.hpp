@@ -5,6 +5,7 @@
 #include <string>
 #include <stdexcept>
 #include <cstdint>
+#include <cassert>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -55,6 +56,7 @@ public:
             return output;
         }()),
         my_pointer_block_size([&]{
+            assert(my_pointers_ptr->getSpace().getSimpleExtentNdims() == 1);
             hsize_t output;
             const auto& plist = my_pointers_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {

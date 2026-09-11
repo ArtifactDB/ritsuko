@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <stdexcept>
+#include <cassert>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -43,6 +44,7 @@ public:
         my_data_ptr(std::move(data_ptr)), 
         my_full_length(length), 
         my_block_size([&]{
+            assert(my_data_ptr->getSpace().getSimpleExtentNdims() == 1);
             hsize_t output;
             const auto& plist = my_data_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {
@@ -56,7 +58,12 @@ public:
         }()),
         my_mspace(1, &my_block_size),
         my_fspace(1, &my_full_length)
-    {}
+    {
+        assert([&]{
+            const auto cls = my_data_ptr->getDataType().getClass();
+            return cls == H5T_INTEGER || cls == H5T_FLOAT;
+        }());
+    }
 
 public:
     /**

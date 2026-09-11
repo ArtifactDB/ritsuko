@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdexcept>
 #include <limits>
+#include <cassert>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -62,6 +63,8 @@ template<typename Offset_, typename Length_>
 inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length) {
     validate_pointers<Offset_, Length_>(data);
 
+    assert(data.getSpace().getSimpleExtentNdims() == 0);
+
     auto dtype = define_pointer_datatype<Offset_, Length_>();
     Pointer<Offset_, Length_> val;
     data.read(&val, dtype);
@@ -87,6 +90,8 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
 template<typename Offset_, typename Length_>
 inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, hsize_t heap_length) {
     validate_pointers<Offset_, Length_>(data);
+
+    assert(data.getSpace().getSimpleExtentNdims() == 1);
 
     const auto& plist = data.getCreatePlist();
     hsize_t block_size = 0;
@@ -139,6 +144,8 @@ template<typename Offset_, typename Length_>
 void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length) {
     validate_pointers<Offset_, Length_>(data);
 
+    assert(data.getSpace().getSimpleExtentNdims() > 0);
+
     // Cast of 'ndim' to 'int' is implicitly safe if the assertion holds.
     const auto ndim = dimensions.size();
     assert(sanisizer::is_equal(ndim, data.getSpace().getSimpleExtentNdims()));
@@ -179,7 +186,7 @@ void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& d
  * An error is thrown if the dataset is not 1-dimensional or does not contain unsigned 8-bit integers.
  *
  * @param data A HDF5 dataset.
- * It have any shape and its datatype may be of any class.
+ * It may have any shape and its datatype may be of any class.
  */
 inline void validate_heap(const H5::DataSet& data) {
     if (data.getTypeClass() != H5T_INTEGER) {
