@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <cmath>
 
+#include "../utils.hpp"
+
 /**
  * @file IterateChunks.hpp
  * @brief Iterate through a dataspace by chunk.
@@ -33,14 +35,14 @@ struct IterateChunks {
     IterateChunks(std::vector<hsize_t> data_dimensions, std::vector<hsize_t> chunk_dimensions) : 
         my_data_extent(std::move(data_dimensions)), 
         my_chunk_extent(std::move(chunk_dimensions)), 
-        my_starts(my_data_extent.size()), 
+        my_starts(my_data_extent.size()), // no need to sanisizer::cast as the types are the same.
         my_counts(my_data_extent.size())
     {
         const auto ndims = my_data_extent.size();
         assert(ndims == my_chunk_extent.size());
 
-        std::size_t num_empty = 0;
-        for (std::size_t d = 0; d < ndims; ++d) {
+        I<decltype(ndims)> num_empty = 0;
+        for (I<decltype(ndims)> d = 0; d < ndims; ++d) {
             my_chunk_extent[d] = std::min(my_data_extent[d], my_chunk_extent[d]);
             my_counts[d] = my_chunk_extent[d];
             num_empty += (my_chunk_extent[d] == 0); 
@@ -49,7 +51,7 @@ struct IterateChunks {
         if (ndims == 0 || num_empty) {
             my_finished = true;
         } else {
-            // So first advance has no effect.
+            // Ensure that the first advance() call has no effect.
             my_counts.back() = 0;
         }
     }

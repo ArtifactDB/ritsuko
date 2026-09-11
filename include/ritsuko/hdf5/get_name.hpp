@@ -1,9 +1,13 @@
 #ifndef RITSUKO_HDF5_GET_NAME_HPP
 #define RITSUKO_HDF5_GET_NAME_HPP
 
-#include "H5Cpp.h"
 #include <string>
 #include <vector>
+
+#include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
+
+#include "../utils.hpp"
 
 /**
  * @file get_name.hpp
@@ -27,9 +31,9 @@ std::string get_name(const Object_& obj) {
         obj.getName(name);
         return name;
     } else {
-        size_t len = H5Iget_name(obj.getId(), NULL, 0);
-        std::vector<char> buffer(len + 1);
-        H5Iget_name(obj.getId(), buffer.data(), buffer.size());
+        const auto len = H5Iget_name(obj.getId(), NULL, 0);
+        std::vector<char> buffer(sanisizer::sum<typename std::vector<char>::size_type>(len, 1));
+        H5Iget_name(obj.getId(), buffer.data(), sanisizer::cast<std::size_t>(buffer.size()));
         return std::string(buffer.begin(), buffer.begin() + len);
     }
 }

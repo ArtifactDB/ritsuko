@@ -1,7 +1,10 @@
 #ifndef RITSUKO_HDF5_MOCK_CONTIGUOUS_CHUNKS_HPP
 #define RITSUKO_HDF5_MOCK_CONTIGUOUS_CHUNKS_HPP
 
+#include <vector>
+
 #include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 /**
  * @file mock_contiguous_chunks.hpp
@@ -26,9 +29,9 @@ namespace hdf5 {
  */
 inline std::vector<hsize_t> mock_contiguous_chunks(const std::vector<hsize_t>& dimensions, hsize_t chunk_size) {
     const auto ndims = dimensions.size();
-    std::vector<hsize_t> output(ndims, 1);
+    auto output = sanisizer::create<std::vector<hsize_t> >(ndims, 1);
     // Starting from the end, as this is the fastest-changing.
-    for (hsize_t i = ndims; i > 0; --i) {
+    for (auto i = ndims; i > 0; --i) {
         const auto d = i - 1;
         if (dimensions[d] == 0) {
             continue;

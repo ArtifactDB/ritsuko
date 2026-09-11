@@ -7,6 +7,7 @@
 #include <limits>
 
 #include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include "../hdf5/get_name.hpp"
 #include "../hdf5/IterateChunks.hpp"
@@ -65,10 +66,8 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
     Pointer<Offset_, Length_> val;
     data.read(&val, dtype);
 
-    hsize_t start = val.offset;
-    hsize_t count = val.length;
-    if (start > heap_length || start + count > heap_length) {
-        throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
+    if (is_pointer_out_of_range(val.offset, val.length, heap_length)) {
+        throw std::runtime_error("VLS array pointer at '" + hdf5::get_name(data) + "' is out of range of the heap");
     }
 }
 
@@ -94,27 +93,26 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
     if (plist.getLayout() == H5D_CHUNKED) {
         plist.getChunk(1, &block_size);
     } else {
-        // Hard-coding the mock chunk size for non-chunked datasets.
-        block_size = std::min(full_length, static_cast<hsize_t>(10000));
+        // Hard-coding the mock chunk size for non-chunked datasets,
+        // it's not worth requiring an extra function argument to customize this.
+        block_size = sanisizer::min(full_length, 10000);
     }
 
     H5::DataSpace mspace(1, &block_size), dspace(1, &full_length);
-    std::vector<Pointer<Offset_, Length_> > buffer(block_size);
+    auto buffer = sanisizer::create<std::vector<Pointer<Offset_, Length_> > >(block_size);
     auto dtype = define_pointer_datatype<Offset_, Length_>();
 
     hsize_t i = 0;
     while (i < full_length) {
-        auto available = std::min(full_length - i, block_size);
+        const auto available = sanisizer::min(full_length - i, block_size);
         constexpr hsize_t zero = 0;
         mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
         dspace.selectHyperslab(H5S_SELECT_SET, &available, &i);
 
         data.read(buffer.data(), dtype, mspace, dspace);
-        for (hsize_t j = 0; j < available; ++j) {
+        for (I<decltype(available)> j = 0; j < available; ++j) {
             const auto& val = buffer[j];
-            hsize_t start = val.offset;
-            hsize_t count = val.length;
-            if (start > heap_length || start + count > heap_length) {
+            if (is_pointer_out_of_range(val.offset, val.length, heap_length)) {
                 throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
             }
         }
@@ -141,35 +139,35 @@ template<typename Offset_, typename Length_>
 void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length) {
     validate_pointers<Offset_, Length_>(data);
 
-    std::vector<hsize_t> chunk_dims;
+    // Cast of 'ndim' to 'int' is implicitly safe if the assertion holds.
     const auto ndim = dimensions.size();
+    assert(sanisizer::is_equal(ndim, data.getSpace().getSimpleExtentNdims()));
+
+    std::vector<hsize_t> chunk_dims;
     const auto& plist = data.getCreatePlist();
     if (plist.getLayout() == H5D_CHUNKED) {
-        chunk_dims.resize(dimensions.size());
+        chunk_dims.resize(ndim); // No need to check this, dimensions is of the same type as chunk_dims.
         plist.getChunk(ndim, chunk_dims.data());
     } else {
-        // Hard-coding this to save ourselves an argument.
-        chunk_dims = hdf5::mock_contiguous_chunks(dimensions, 10000);
+        chunk_dims = hdf5::mock_contiguous_chunks(dimensions, 10000); // Hard-coding the upper bound to save ourselves an argument.
     }
 
     hdf5::IterateChunks iter(dimensions, chunk_dims);
     H5::DataSpace fspace(ndim, dimensions.data());
     H5::DataSpace mspace(ndim, iter.chunk_dimensions().data());
-
-    std::vector<Pointer<Offset_, Length_> > buffer;
+    auto buffer = sanisizer::create<std::vector<Pointer<Offset_, Length_> > >(mspace.getSimpleExtentNpoints());
     auto dtype = define_pointer_datatype<Offset_, Length_>();
 
     while (iter.advance()) {
         const auto& curcount = iter.counts();
         mspace.setExtentSimple(ndim, curcount.data());
         fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.starts().data());
-        buffer.resize(mspace.getSimpleExtentNpoints());
 
         data.read(buffer.data(), dtype, mspace, fspace);
-        for (const auto& val : buffer) {
-            hsize_t start = val.offset;
-            hsize_t count = val.length;
-            if (start > heap_length || start + count > heap_length) {
+        const auto available = mspace.getSimpleExtentNpoints();
+        for (I<decltype(available)> i = 0; i < available; ++i) {
+            const auto& val = buffer[i];
+            if (is_pointer_out_of_range(val.offset, val.length, heap_length)) {
                 throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
             }
         }

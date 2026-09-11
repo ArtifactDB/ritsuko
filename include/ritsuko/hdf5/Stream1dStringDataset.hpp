@@ -43,16 +43,16 @@ public:
         my_data_ptr(std::move(data_ptr)), 
         my_full_length(length), 
         my_block_size([&]{
+            hsize_t output;
             const auto& plist = my_data_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {
-                hsize_t output;                
                 plist.getChunk(1, &output);
-                return output;
             } else {
                 // Hard-coding the mock chunk size for contiguous datasets,
                 // not worth complicating the constructor with an extra argument.
-                return std::min(length, static_cast<hsize_t>(10000));
+                output = sanisizer::min(length, 10000);
             }
+            return output;
         }()),
         my_mspace(1, &my_block_size),
         my_fspace(1, &my_full_length),
@@ -60,10 +60,10 @@ public:
         my_is_variable(my_dtype.isVariableStr())
     {
         if (my_is_variable) {
-            my_var_buffer.resize(my_block_size);
+            sanisizer::resize(my_var_buffer, my_block_size);
         } else {
             my_fixed_length = my_dtype.getSize();
-            my_fix_buffer.resize(my_fixed_length * my_block_size);
+            my_fix_buffer.resize(sanisizer::product<I<decltype(my_fix_buffer.size())> >(my_fixed_length, my_block_size));
         }
     }
 
@@ -87,7 +87,7 @@ public:
      */
     hsize_t load(std::string* buffer) {
         my_last_loaded += my_available;
-        my_available = std::min(my_full_length - my_last_loaded, my_block_size);
+        my_available = sanisizer::min(my_full_length - my_last_loaded, my_block_size);
         if (my_available == 0) {
             return 0;
         }
@@ -110,11 +110,11 @@ public:
             }
 
         } else {
-            auto bptr = my_fix_buffer.data();
-            my_data_ptr->read(bptr, my_dtype, my_mspace, my_fspace);
-            for (size_t i = 0; i < my_available; ++i, bptr += my_fixed_length) {
+            my_data_ptr->read(my_fix_buffer.data(), my_dtype, my_mspace, my_fspace);
+            for (I<decltype(my_available)> i = 0; i < my_available; ++i) {
                 auto& curstr = buffer[i];
                 curstr.clear();
+                auto bptr = my_fix_buffer.data() + sanisizer::product_unsafe<std::size_t>(i, my_fixed_length);
                 curstr.insert(curstr.end(), bptr, bptr + strnlen(bptr, my_fixed_length));
             }
         }

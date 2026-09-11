@@ -1,10 +1,11 @@
 #ifndef RITSUKO_HDF5_STREAM_1D_NUMERIC_DATASET_HPP
 #define RITSUKO_HDF5_STREAM_1D_NUMERIC_DATASET_HPP
 
-#include "H5Cpp.h"
-
 #include <vector>
 #include <stdexcept>
+
+#include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include "get_name.hpp"
 #include "as_numeric_datatype.hpp"
@@ -42,16 +43,16 @@ public:
         my_data_ptr(std::move(data_ptr)), 
         my_full_length(length), 
         my_block_size([&]{
+            hsize_t output;
             const auto& plist = my_data_ptr->getCreatePlist();
             if (plist.getLayout() == H5D_CHUNKED) {
-                hsize_t output;
                 plist.getChunk(1, &output);
-                return output;
             } else {
                 // Hard-coding the mock chunk size for contiguous datasets,
                 // not worth complicating the constructor with an extra argument.
-                return std::min(length, static_cast<hsize_t>(10000));
+                output = sanisizer::min(length, 10000);
             }
+            return output;
         }()),
         my_mspace(1, &my_block_size),
         my_fspace(1, &my_full_length)

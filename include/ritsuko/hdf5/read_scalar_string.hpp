@@ -9,9 +9,6 @@
 #include <cassert>
 
 #include "get_name.hpp"
-#include "Stream1dStringDataset.hpp"
-#include "Stream1dNumericDataset.hpp"
-#include "as_numeric_datatype.hpp"
 #include "strnlen.hpp"
 #include "ReclaimVlsMemory.hpp"
 
@@ -30,7 +27,7 @@ namespace hdf5 {
  * @return String containing the contents of the sole dataset entry.
  */
 inline std::string read_scalar_string(const H5::DataSet& data) {
-    auto dtype = data.getDataType();
+    const auto& dtype = data.getDataType();
     assert(dtype.getClass() == H5T_STRING);
     assert(data.getSpace().getSimpleExtentNdims() == 0);
 
@@ -47,8 +44,8 @@ inline std::string read_scalar_string(const H5::DataSet& data) {
         return output;
 
     } else {
-        size_t fixed_length = dtype.getSize();
-        std::vector<char> buffer(fixed_length);
+        const auto fixed_length = dtype.getSize();
+        auto buffer = sanisizer::create<std::vector<char> >(fixed_length);
         data.read(buffer.data(), dtype);
         return std::string(buffer.begin(), buffer.begin() + strnlen(buffer.data(), fixed_length));
     }
@@ -60,7 +57,7 @@ inline std::string read_scalar_string(const H5::DataSet& data) {
  * @return The attribute as a string.
  */
 inline std::string read_scalar_string(const H5::Attribute& attr) {
-    auto dtype = attr.getDataType();
+    const auto& dtype = attr.getDataType();
     assert(dtype.getClass() == H5T_STRING);
     assert(attr.getSpace().getSimpleExtentNdims() == 0);
 
@@ -79,8 +76,8 @@ inline std::string read_scalar_string(const H5::Attribute& attr) {
         return std::string(buffer);
 
     } else {
-        size_t len = dtype.getSize();
-        std::vector<char> buffer(len);
+        const auto len = dtype.getSize();
+        auto buffer = sanisizer::create<std::vector<char> >(len);
         attr.read(dtype, buffer.data());
         auto ptr = buffer.data();
         return std::string(ptr, ptr + find_string_length(ptr, len));

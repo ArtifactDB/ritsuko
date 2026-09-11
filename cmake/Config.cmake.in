@@ -1,6 +1,7 @@
 @PACKAGE_INIT@
 
 include(CMakeFindDependencyMacro)
+find_dependency(ltla_sanisizer 0.2.0 CONFIG)
 
 if(@RITSUKO_FIND_HDF5@)
     find_package(HDF5 COMPONENTS C CXX)

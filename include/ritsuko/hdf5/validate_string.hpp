@@ -7,6 +7,7 @@
 #include <cassert>
 
 #include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include "get_name.hpp"
 #include "mock_contiguous_chunks.hpp"
@@ -78,10 +79,10 @@ inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
     }
 
     H5::DataSpace mspace(1, &block_size), dspace(1, &full_length);
-    std::vector<char*> buffer(block_size);
+    auto buffer = sanisizer::create<std::vector<char*> >(block_size);
 
     for (hsize_t i = 0; i < full_length; i += block_size) {
-        auto available = std::min(full_length - i, block_size);
+        const hsize_t available = sanisizer::min(full_length - i, block_size);
         constexpr hsize_t zero = 0;
         mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
         dspace.selectHyperslab(H5S_SELECT_SET, &available, &i);
@@ -117,10 +118,14 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
         return;
     }
 
+    // Cast of 'ndims' to 'int' is implicitly safe if the assertion holds.
+    const auto ndims = dimensions.size();
+    assert(sanisizer::is_equal(ndims, data.getSpace().getSimpleExtentNdims()));
+
     std::vector<hsize_t> chunk_dims;
     const auto& plist = data.getCreatePlist();
     if (plist.getLayout() == H5D_CHUNKED) {
-        chunk_dims.resize(dimensions.size());
+        chunk_dims.resize(ndims); // this is safe as 'dimensions' and 'chunk_dims' have the same size_type.
         plist.getChunk(dimensions.size(), chunk_dims.data());
     } else {
         // Hard-coding this to save ourselves an argument.
@@ -132,7 +137,7 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
     const auto ndim = dimensions.size();
     H5::DataSpace fspace(ndim, dimensions.data());
     H5::DataSpace mspace(ndim, iter.chunk_dimensions().data());
-    std::vector<char*> buffer(mspace.getSimpleExtentNpoints());
+    auto buffer = sanisizer::create<std::vector<char*> >(mspace.getSimpleExtentNpoints());
 
     while (iter.advance()) {
         const auto& curcount = iter.counts();
@@ -143,8 +148,8 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
         [[maybe_unused]] ReclaimVlsMemory deleter(&stype, &mspace, &plist, buffer.data());
 
-        const std::size_t npts = mspace.getSimpleExtentNpoints();
-        for (std::size_t i = 0; i < npts; ++i) {
+        const auto npts = mspace.getSimpleExtentNpoints();
+        for (I<decltype(npts)> i = 0; i < npts; ++i) {
             if (buffer[i] == NULL) {
                 throw std::runtime_error("detected NULL pointer in a variable-length string dataset");
             }
@@ -201,7 +206,7 @@ inline void validate_1d_string_attribute(const H5::Attribute& attr, hsize_t full
 
     const auto& mspace = attr.getSpace();
     const auto& plist = H5::DSetMemXferPropList::DEFAULT; // yes, even H5Aread uses H5P_DATASET_XFER_DEFAULT.
-    std::vector<char*> buffer(full_length);
+    auto buffer = sanisizer::create<std::vector<char*> >(full_length);
     attr.read(dtype, buffer.data());
     [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
     for (hsize_t i = 0; i < full_length; ++i) {

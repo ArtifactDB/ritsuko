@@ -1,11 +1,12 @@
 #ifndef RITSUKO_CVLS_POINTER_HPP
 #define RITSUKO_CVLS_POINTER_HPP
 
-#include "H5Cpp.h"
-
 #include <stdexcept>
 #include <string>
 #include <cstddef>
+
+#include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include "../hdf5/as_numeric_datatype.hpp"
 #include "../hdf5/exceeds_limit.hpp"
@@ -108,6 +109,18 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
         throw std::runtime_error("second member of a VLS compound datatype should not exceed a " + std::to_string(length_precision) + "-bit unsigned integer");
     }
 }
+
+/**
+ * @cond
+ */
+template<typename Offset_, typename Length_>
+bool is_pointer_out_of_range(const Offset_ offset, const Length_ length, const hsize_t heap_length) {
+    // Some finesse is required here to avoid computing offset + length, as that might overflow.
+    return sanisizer::is_greater_than(offset, heap_length) || sanisizer::is_greater_than(length, heap_length - offset);
+}
+/**
+ * @endcond
+ */
 
 }
 

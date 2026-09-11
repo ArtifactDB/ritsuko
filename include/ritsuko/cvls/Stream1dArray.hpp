@@ -1,12 +1,13 @@
 #ifndef RITSUKO_CVLS_STREAM_1D_ARRAY_HPP
 #define RITSUKO_CVLS_STREAM_1D_ARRAY_HPP
 
-#include "H5Cpp.h"
-
 #include <vector>
 #include <string>
 #include <stdexcept>
 #include <cstdint>
+
+#include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include "../hdf5/get_name.hpp"
 #include "../hdf5/strnlen.hpp"
@@ -59,7 +60,8 @@ public:
             if (plist.getLayout() == H5D_CHUNKED) {
                 plist.getChunk(1, &output);
             } else {
-                output = std::min(static_cast<hsize_t>(10000), my_pointer_full_length);
+                // Hard-coding the upper bound to save ourselves from processing an extra argument.
+                output = sanisizer::min(my_pointer_full_length, 10000);
             }
             return output;
         }()),
@@ -67,8 +69,11 @@ public:
         my_pointer_dspace(1, &my_pointer_full_length),
         my_heap_dspace(1, &my_heap_full_length),
         my_pointer_dtype(define_pointer_datatype<Offset_, Length_>()),
-        my_pointer_buffer(my_pointer_block_size)
-    {}
+        my_pointer_buffer(sanisizer::cast<I<decltype(my_pointer_buffer.size())> >(my_pointer_block_size))
+    {
+        // Check that maximum allocation is possible, so we don't have to check casts for individual string lengths.
+        sanisizer::cast<I<decltype(my_heap_buffer.size())> >(my_heap_full_length);
+    }
 
 public:
     /**
@@ -103,9 +108,7 @@ public:
 
         for (size_t i = 0; i < my_available; ++i) {
             const auto& val = my_pointer_buffer[i];
-            hsize_t start = val.offset;
-            hsize_t count = val.length;
-            if (start > my_heap_full_length || start + count > my_heap_full_length) {
+            if (is_pointer_out_of_range(val.offset, val.length, my_heap_full_length)) {
                 throw std::runtime_error("compressed VLS array pointers at '" + 
                     hdf5::get_name(*my_pointers_ptr) +
                     "' are out of range of the heap at '" +
@@ -117,7 +120,11 @@ public:
             auto& curstr = buffer[i];
             curstr.clear();
 
-            if (count) {
+            if (val.length) {
+                // Casts are safe if the pointers are within range.
+                const hsize_t start = val.offset;
+                const hsize_t count = val.length;
+
                 // Don't attempt to batch these reads as we aren't guaranteed
                 // that they are non-overlapping or ordered. Hopefully HDF5 is
                 // keeping enough things in cache for repeated reads.
