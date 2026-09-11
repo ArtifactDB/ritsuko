@@ -102,108 +102,110 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span>hdf5 {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../utils.hpp&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceritsuko.html">ritsuko</a> {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html">   26</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structritsuko_1_1hdf5_1_1IterateChunks.html">IterateChunks</a> {</div>
-<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567">   33</a></span>    <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567">IterateChunks</a>(std::vector&lt;hsize_t&gt; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">data_dimensions</a>, std::vector&lt;hsize_t&gt; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>) : </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        my_data_extent(std::move(<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">data_dimensions</a>)), </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        my_chunk_extent(std::move(<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>)), </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        my_starts(my_data_extent.size()), </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        my_counts(my_data_extent.size())</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">const</span> <span class="keyword">auto</span> ndims = my_data_extent.size();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        assert(ndims == my_chunk_extent.size());</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::size_t num_empty = 0;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">for</span> (std::size_t d = 0; d &lt; ndims; ++d) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            my_chunk_extent[d] = std::min(my_data_extent[d], my_chunk_extent[d]);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            my_counts[d] = my_chunk_extent[d];</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            num_empty += (my_chunk_extent[d] == 0); </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (ndims == 0 || num_empty) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            my_finished = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="comment">// So first advance has no effect.</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            my_counts.back() = 0;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        }</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span>hdf5 {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html">   28</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structritsuko_1_1hdf5_1_1IterateChunks.html">IterateChunks</a> {</div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567">   35</a></span>    <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567">IterateChunks</a>(std::vector&lt;hsize_t&gt; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">data_dimensions</a>, std::vector&lt;hsize_t&gt; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>) : </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        my_data_extent(std::move(<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">data_dimensions</a>)), </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        my_chunk_extent(std::move(<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>)), </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        my_starts(my_data_extent.size()), <span class="comment">// no need to sanisizer::cast as the types are the same.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        my_counts(my_data_extent.size())</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">const</span> <span class="keyword">auto</span> ndims = my_data_extent.size();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        assert(ndims == my_chunk_extent.size());</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        I&lt;<span class="keyword">decltype</span>(ndims)&gt; num_empty = 0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(ndims)&gt; d = 0; d &lt; ndims; ++d) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            my_chunk_extent[d] = std::min(my_data_extent[d], my_chunk_extent[d]);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            my_counts[d] = my_chunk_extent[d];</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            num_empty += (my_chunk_extent[d] == 0); </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">if</span> (ndims == 0 || num_empty) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            my_finished = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="comment">// Ensure that the first advance() call has no effect.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            my_counts.back() = 0;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
 </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">   64</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">advance</a>() {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">if</span> (my_finished) {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">// Prioritizing the last dimension as this is the fastest-changing.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keyword">auto</span> ndims = my_data_extent.size();</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = ndims; i &gt; 0; --i) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keyword">const</span> <span class="keyword">auto</span> d = i - 1;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            my_starts[d] += my_counts[d];</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">if</span> (my_starts[d] &lt; my_data_extent[d]) {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                my_counts[d] = std::min(my_data_extent[d] - my_starts[d], my_chunk_extent[d]);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>; </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            my_starts[d] = 0;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            my_counts[d] = my_chunk_extent[d];</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        my_finished = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">   66</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">advance</a>() {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">if</span> (my_finished) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment">// Prioritizing the last dimension as this is the fastest-changing.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keyword">const</span> <span class="keyword">auto</span> ndims = my_data_extent.size();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = ndims; i &gt; 0; --i) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keyword">const</span> <span class="keyword">auto</span> d = i - 1;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            my_starts[d] += my_counts[d];</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">if</span> (my_starts[d] &lt; my_data_extent[d]) {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                my_counts[d] = std::min(my_data_extent[d] - my_starts[d], my_chunk_extent[d]);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>; </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            my_starts[d] = 0;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            my_counts[d] = my_chunk_extent[d];</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        my_finished = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">   93</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">starts</a> ()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">return</span> my_starts;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">   95</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">starts</a> ()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">return</span> my_starts;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
 </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">  104</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">counts</a> ()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">return</span> my_counts;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">  106</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">counts</a> ()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">return</span> my_counts;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
 </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">  111</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">data_dimensions</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> my_data_extent;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">  113</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">data_dimensions</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span> my_data_extent;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
 </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">  120</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">return</span> my_chunk_extent;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">  122</a></span>    <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; <a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">return</span> my_chunk_extent;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
 </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    std::vector&lt;hsize_t&gt; my_data_extent, my_chunk_extent;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    std::vector&lt;hsize_t&gt; my_starts, my_counts;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">bool</span> my_finished = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>};</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    std::vector&lt;hsize_t&gt; my_data_extent, my_chunk_extent;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    std::vector&lt;hsize_t&gt; my_starts, my_counts;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">bool</span> my_finished = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>};</div>
 </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:18</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html">ritsuko::hdf5::IterateChunks</a></div><div class="ttdoc">Iterate through an high-dimensional dataspace by chunk.</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:26</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a12d1f892b3757c2e75f215adfd5d42d3"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">ritsuko::hdf5::IterateChunks::chunk_dimensions</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; chunk_dimensions() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:120</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a491f6acefc5ddf66c6724e3a70d5f722"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">ritsuko::hdf5::IterateChunks::data_dimensions</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; data_dimensions() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:111</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a8df6cf49559ca6c16b013455894b2a35"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">ritsuko::hdf5::IterateChunks::advance</a></div><div class="ttdeci">bool advance()</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:64</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a94cc3b40952aeee5e43122da5ac87232"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">ritsuko::hdf5::IterateChunks::starts</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; starts() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:93</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_ac182ffa1b89beee84fe225346a137720"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">ritsuko::hdf5::IterateChunks::counts</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; counts() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:104</div></div>
-<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_ae68b8d871b3ce26ef8488a2ce7df6567"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567">ritsuko::hdf5::IterateChunks::IterateChunks</a></div><div class="ttdeci">IterateChunks(std::vector&lt; hsize_t &gt; data_dimensions, std::vector&lt; hsize_t &gt; chunk_dimensions)</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:33</div></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:19</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html">ritsuko::hdf5::IterateChunks</a></div><div class="ttdoc">Iterate through an high-dimensional dataspace by chunk.</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:28</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a12d1f892b3757c2e75f215adfd5d42d3"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">ritsuko::hdf5::IterateChunks::chunk_dimensions</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; chunk_dimensions() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:122</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a491f6acefc5ddf66c6724e3a70d5f722"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a491f6acefc5ddf66c6724e3a70d5f722">ritsuko::hdf5::IterateChunks::data_dimensions</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; data_dimensions() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:113</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a8df6cf49559ca6c16b013455894b2a35"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">ritsuko::hdf5::IterateChunks::advance</a></div><div class="ttdeci">bool advance()</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:66</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a94cc3b40952aeee5e43122da5ac87232"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">ritsuko::hdf5::IterateChunks::starts</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; starts() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:95</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_ac182ffa1b89beee84fe225346a137720"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">ritsuko::hdf5::IterateChunks::counts</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; counts() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:106</div></div>
+<div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_ae68b8d871b3ce26ef8488a2ce7df6567"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567">ritsuko::hdf5::IterateChunks::IterateChunks</a></div><div class="ttdeci">IterateChunks(std::vector&lt; hsize_t &gt; data_dimensions, std::vector&lt; hsize_t &gt; chunk_dimensions)</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

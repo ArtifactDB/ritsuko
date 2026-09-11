@@ -119,16 +119,16 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        my_data_ptr(std::move(data_ptr)), </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        my_full_length(length), </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        my_block_size([&amp;]{</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keyword">const</span> <span class="keyword">auto</span>&amp; plist = my_data_ptr-&gt;getCreatePlist();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">if</span> (plist.getLayout() == H5D_CHUNKED) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                hsize_t output;                </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            hsize_t output;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keyword">const</span> <span class="keyword">auto</span>&amp; plist = my_data_ptr-&gt;getCreatePlist();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">if</span> (plist.getLayout() == H5D_CHUNKED) {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                plist.getChunk(1, &amp;output);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                return output;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="comment">// Hard-coding the mock chunk size for contiguous datasets,</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                <span class="comment">// not worth complicating the constructor with an extra argument.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                return std::min(length, static_cast&lt;hsize_t&gt;(10000));</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                <span class="comment">// Hard-coding the mock chunk size for contiguous datasets,</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="comment">// not worth complicating the constructor with an extra argument.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                output = sanisizer::min(length, 10000);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> output;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }()),</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        my_mspace(1, &amp;my_block_size),</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        my_fspace(1, &amp;my_full_length),</div>
@@ -136,10 +136,10 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        my_is_variable(my_dtype.isVariableStr())</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">if</span> (my_is_variable) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            my_var_buffer.resize(my_block_size);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            sanisizer::resize(my_var_buffer, my_block_size);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            my_fixed_length = my_dtype.getSize();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            my_fix_buffer.resize(my_fixed_length * my_block_size);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            my_fix_buffer.resize(sanisizer::product&lt;I&lt;<span class="keyword">decltype</span>(my_fix_buffer.size())&gt; &gt;(my_fixed_length, my_block_size));</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
 </div>
@@ -154,7 +154,7 @@ $(function(){ initResizable(false); });
 <div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a96db7a8b796513773dc77d99f20137b1">   88</a></span>    hsize_t <a class="code hl_function" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a96db7a8b796513773dc77d99f20137b1">load</a>(std::string* buffer) {</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        my_last_loaded += my_available;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        my_available = std::min(my_full_length - my_last_loaded, my_block_size);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        my_available = sanisizer::min(my_full_length - my_last_loaded, my_block_size);</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (my_available == 0) {</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
@@ -177,11 +177,11 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            }</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keyword">auto</span> bptr = my_fix_buffer.data();</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            my_data_ptr-&gt;read(bptr, my_dtype, my_mspace, my_fspace);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; my_available; ++i, bptr += my_fixed_length) {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                <span class="keyword">auto</span>&amp; curstr = buffer[i];</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                curstr.clear();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            my_data_ptr-&gt;read(my_fix_buffer.data(), my_dtype, my_mspace, my_fspace);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(my_available)&gt; i = 0; i &lt; my_available; ++i) {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                <span class="keyword">auto</span>&amp; curstr = buffer[i];</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                curstr.clear();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                <span class="keyword">auto</span> bptr = my_fix_buffer.data() + sanisizer::product_unsafe&lt;std::size_t&gt;(i, my_fixed_length);</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                curstr.insert(curstr.end(), bptr, bptr + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#ab50df338dbb7fed71795d0f0772d7307">strnlen</a>(bptr, my_fixed_length));</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            }</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
@@ -226,9 +226,9 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_adb2510252d5e72f3379d0d41a5318829"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#adb2510252d5e72f3379d0d41a5318829">ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset</a></div><div class="ttdeci">Stream1dStringDataset(DataSetPointer_ data_ptr, hsize_t length)</div><div class="ttdef"><b>Definition</b> Stream1dStringDataset.hpp:42</div></div>
 <div class="ttc" id="aclassritsuko_1_1hdf5_1_1Stream1dStringDataset_html_af782821f4d38888e4ee156d12ed9e64d"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#af782821f4d38888e4ee156d12ed9e64d">ritsuko::hdf5::Stream1dStringDataset::chunk_size</a></div><div class="ttdeci">hsize_t chunk_size() const</div><div class="ttdef"><b>Definition</b> Stream1dStringDataset.hpp:74</div></div>
 <div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:24</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:28</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ab50df338dbb7fed71795d0f0772d7307"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ab50df338dbb7fed71795d0f0772d7307">ritsuko::hdf5::strnlen</a></div><div class="ttdeci">std::size_t strnlen(const char *ptr, std::size_t max)</div><div class="ttdef"><b>Definition</b> strnlen.hpp:25</div></div>
-<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:18</div></div>
+<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:19</div></div>
 <div class="ttc" id="astrnlen_8hpp_html"><div class="ttname"><a href="strnlen_8hpp.html">strnlen.hpp</a></div><div class="ttdoc">Determine the length of a fixed-size string.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
