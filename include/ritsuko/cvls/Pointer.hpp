@@ -10,6 +10,7 @@
 
 #include "../hdf5/as_numeric_datatype.hpp"
 #include "../hdf5/exceeds_limit.hpp"
+#include "../hdf5/get_name.hpp"
 
 /**
  * @file Pointer.hpp
@@ -97,6 +98,29 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
     auto length_type = type.getMemberIntType(1);
     if (hdf5::exceeds_integer_limit(length_type, length_precision, false)) {
         throw std::runtime_error("second member of a VLS compound datatype should not exceed a " + std::to_string(length_precision) + "-bit unsigned integer");
+    }
+}
+
+/**
+ * Overload of `validate_pointer_datatype()` that accepts a HDF5 dataset.
+ * This will throw an error if the HDF5 dataset does not use a compound datatype that satisfies `validate_pointer_datatype()`.
+ *
+ * @param type A HDF5 dataset.
+ * This may have any datatype.
+ * @param offset_precision Maximum number of bits in the integer type used for the start position, see `Pointer::offset`.
+ * @param length_precision Maximum number of bits in the integer type used for the string size, see `Pointer::length`.
+ */
+inline void validate_pointer_datatype(const H5::DataSet& data, const std::size_t offset_precision, const std::size_t length_precision) {
+    if (data.getTypeClass() != H5T_COMPOUND) {
+        throw std::runtime_error("expected a compound datatype for a compressed VLS pointer dataset at '" + hdf5::get_name(data) + "'");
+    }
+
+    try {
+        validate_pointer_datatype(data.getCompType(), offset_precision, length_precision);
+    } catch (std::exception& e) {
+        std::string msg = e.what();
+        msg += " in '" + hdf5::get_name(data) + "'";
+        throw std::runtime_error(msg.c_str());
     }
 }
 

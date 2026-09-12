@@ -40,7 +40,7 @@ class Stream1dArray {
 public:
     /**
      * @param pointers_ptr Pointer to a HDF5 dataset containing the compressed VLS pointers.
-     * It is assumed that this dataset already satisfies `validate_1d_pointers()`.
+     * It is assumed that this dataset satisfies `validate_pointer_datatype()`.
      * It is also assumed that this dataset is 1-dimensional.
      * @param length Length of the `pointers_ptr` dataset, i.e., the extent of its sole dimension.
      * @param heap_ptr Pointer to a HDF5 dataset containing the compressed VLS heap.

@@ -26,28 +26,6 @@ namespace ritsuko {
 namespace cvls {
 
 /**
- * @cond
- */
-template<typename Offset_, typename Length_>
-inline void validate_pointers(const H5::DataSet& data) {
-    static_assert(std::is_integral<Offset_>::value);
-    static_assert(std::is_integral<Length_>::value);
-
-    if (data.getTypeClass() != H5T_COMPOUND) {
-        throw std::runtime_error("expected a compound datatype for a compressed VLS pointer dataset at '" + hdf5::get_name(data) + "'");
-    }
-
-    try {
-        validate_pointer_datatype(data.getCompType(), std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
-    } catch (std::exception& e) {
-        throw std::runtime_error("incorrect type for a compressed VLS pointer dataset at '" + hdf5::get_name(data) + "; " + std::string(e.what()));
-    }
-}
-/**
- * @endcond
- */
-
-/**
  * Validate the pointer dataset for a compressed VLS scalar. 
  * An error is thrown if the datatype is not consistent with the expected precision of the `Pointer` types, 
  * or if the pointer is out of range of the associated heap dataset.
@@ -61,8 +39,7 @@ inline void validate_pointers(const H5::DataSet& data) {
  */
 template<typename Offset_, typename Length_>
 inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length) {
-    validate_pointers<Offset_, Length_>(data);
-
+    validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
     assert(data.getSpace().getSimpleExtentNdims() == 0);
 
     auto dtype = define_pointer_datatype<Offset_, Length_>();
@@ -89,8 +66,7 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
  */
 template<typename Offset_, typename Length_>
 inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, hsize_t heap_length) {
-    validate_pointers<Offset_, Length_>(data);
-
+    validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
     assert(data.getSpace().getSimpleExtentNdims() == 1);
 
     const auto& plist = data.getCreatePlist();
@@ -142,8 +118,7 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
  */
 template<typename Offset_, typename Length_>
 void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length) {
-    validate_pointers<Offset_, Length_>(data);
-
+    validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
     assert(data.getSpace().getSimpleExtentNdims() > 0);
 
     // Cast of 'ndim' to 'int' is implicitly safe if the assertion holds.

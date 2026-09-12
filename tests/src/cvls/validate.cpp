@@ -36,7 +36,7 @@ TEST(CvlsValidatePointers, GeneralErrors) {
         std::string msg;
         auto xhandle = handle.openDataSet("bar");
         try {
-            ritsuko::cvls::validate_pointers<std::uint32_t, std::uint32_t>(xhandle);
+            ritsuko::cvls::validate_pointer_datatype(xhandle, 32, 32);
         } catch (std::exception& e) {
             msg = e.what();
         }
@@ -48,11 +48,11 @@ TEST(CvlsValidatePointers, GeneralErrors) {
         std::string msg;
         auto xhandle = handle.openDataSet("foo");
         try {
-            ritsuko::cvls::validate_pointers<std::int32_t, std::uint32_t>(xhandle);
+            ritsuko::cvls::validate_pointer_datatype(xhandle, 31, 32);
         } catch (std::exception& e) {
             msg = e.what();
         }
-        EXPECT_THAT(msg, ::testing::HasSubstr("incorrect type"));
+        EXPECT_THAT(msg, ::testing::HasSubstr("first member"));
     }
 }
 
@@ -98,7 +98,7 @@ TEST_P(CvlsValidatePointersTest, OneDim) {
         } catch (std::exception& e) {
             errmsg = e.what();
         }
-        EXPECT_THAT(errmsg, ::testing::HasSubstr("incorrect type"));
+        EXPECT_THAT(errmsg, ::testing::HasSubstr("first member"));
     }
 }
 
@@ -149,11 +149,11 @@ TEST_P(CvlsValidatePointersTest, NDim) {
     {
         std::string errmsg = "no_error";
         try {
-            ritsuko::cvls::validate_nd_pointers<std::uint16_t, std::uint16_t>(dhandle, dims, 20000);
+            ritsuko::cvls::validate_nd_pointers<std::uint32_t, std::uint16_t>(dhandle, dims, 20000);
         } catch (std::exception& e) {
             errmsg = e.what();
         }
-        EXPECT_THAT(errmsg, ::testing::HasSubstr("incorrect type"));
+        EXPECT_THAT(errmsg, ::testing::HasSubstr("second member"));
     }
 }
 
@@ -323,7 +323,7 @@ TEST(CvlsValidatePointers, Scalar) {
         } catch (std::exception& e) {
             errmsg = e.what();
         }
-        EXPECT_THAT(errmsg, ::testing::HasSubstr("incorrect type"));
+        EXPECT_THAT(errmsg, ::testing::HasSubstr("first member"));
     }
 }
 
