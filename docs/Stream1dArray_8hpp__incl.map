@@ -1,47 +1,48 @@
 <map id="ritsuko/cvls/Stream1dArray.hpp" name="ritsuko/cvls/Stream1dArray.hpp">
-<area shape="rect" id="Node000001" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="333,5,535,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="24,160,81,186"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,27,236,45,187,60,141,81,120,96,101,113,71,149,67,146,97,109,116,92,138,77,185,55,235,39,332,22"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="259,160,313,186"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="417,34,388,54,357,81,327,115,303,149,299,146,323,112,353,77,384,50,414,29"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="877,241,954,267"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="536,19,690,24,863,34,1010,51,1060,63,1088,77,1101,93,1111,117,1112,132,1109,150,1100,171,1085,195,1061,218,1032,235,1000,246,970,252,969,247,999,240,1030,230,1058,214,1081,192,1096,169,1104,149,1107,132,1106,118,1097,96,1084,81,1058,68,1009,56,862,40,690,29,536,24"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="204,241,264,267"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="332,27,219,44,159,59,102,81,49,109,31,126,15,154,8,174,9,182,15,192,25,201,42,210,87,225,189,244,188,250,86,230,40,215,22,205,10,195,4,184,3,174,10,152,27,123,46,104,99,77,157,54,218,38,332,21"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="367,79,431,105"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="431,32,414,66,409,64,426,30"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="701,241,772,267"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="536,19,683,25,847,35,986,52,1033,63,1060,77,1074,96,1083,121,1083,137,1079,155,1069,174,1053,195,1039,203,1015,211,945,226,788,249,787,244,944,221,1014,206,1037,198,1049,191,1065,171,1074,153,1078,136,1078,122,1069,98,1056,81,1032,68,985,57,847,41,683,30,536,25"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="337,160,488,186"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="440,31,447,64,446,105,430,148,425,146,441,104,442,65,435,32"/>
-<area shape="rect" id="Node000009" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="151,79,293,105"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="399,34,273,76,271,71,397,29"/>
-<area shape="rect" id="Node000011" href="$strnlen_8hpp.html" title="Determine the length of a fixed&#45;size string." alt="" coords="923,79,1046,105"/>
-<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="528,29,908,78,907,83,528,34"/>
-<area shape="rect" id="Node000013" href="$Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="584,79,670,105"/>
-<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="468,29,581,71,579,76,466,34"/>
-<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="197,108,94,155,93,155,91,151,91,150,194,103"/>
-<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="234,103,268,146,264,149,230,107"/>
-<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="224,105,227,148,235,172,249,191,422,214,686,244,685,250,421,219,246,196,230,174,222,149,218,105"/>
-<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="252,103,370,151,368,156,250,108"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="105,160,184,186"/>
-<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="212,107,169,151,165,147,208,103"/>
-<area shape="poly" id="edge15_Node000011_Node000007" title=" " alt="" coords="999,103,1016,121,1031,145,1039,170,1037,183,1030,195,1018,203,996,210,933,225,788,249,787,243,932,220,995,205,1016,198,1027,192,1032,182,1033,171,1026,147,1011,125,995,107"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="952,160,1017,186"/>
-<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="987,105,987,144,982,144,982,105"/>
-<area shape="poly" id="edge19_Node000013_Node000003" title=" " alt="" coords="584,101,466,119,395,135,325,155,323,156,321,151,324,150,394,130,465,114,583,95"/>
-<area shape="poly" id="edge18_Node000013_Node000004" title=" " alt="" coords="671,95,794,114,853,130,876,140,892,151,904,168,912,187,918,225,913,226,907,188,900,170,888,155,873,144,851,135,793,119,670,100"/>
-<area shape="poly" id="edge21_Node000013_Node000007" title=" " alt="" coords="638,104,722,227,718,230,633,107"/>
-<area shape="poly" id="edge22_Node000013_Node000008" title=" " alt="" coords="595,108,461,157,459,152,593,103"/>
-<area shape="poly" id="edge20_Node000013_Node000012" title=" " alt="" coords="671,97,791,117,935,150,941,152,940,157,933,155,790,122,670,102"/>
-<area shape="rect" id="Node000014" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="513,153,640,193"/>
-<area shape="poly" id="edge23_Node000013_Node000014" title=" " alt="" coords="622,107,599,141,595,138,617,104"/>
-<area shape="rect" id="Node000016" href="$exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="715,160,878,186"/>
-<area shape="poly" id="edge27_Node000013_Node000016" title=" " alt="" coords="654,103,758,151,756,156,652,108"/>
-<area shape="poly" id="edge26_Node000014_Node000005" title=" " alt="" coords="513,193,501,196,280,246,279,240,500,191,512,188"/>
-<area shape="poly" id="edge24_Node000014_Node000007" title=" " alt="" coords="618,192,700,232,697,237,615,196"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="536,241,617,267"/>
-<area shape="poly" id="edge25_Node000014_Node000015" title=" " alt="" coords="579,194,579,226,574,226,574,194"/>
-<area shape="poly" id="edge29_Node000016_Node000004" title=" " alt="" coords="816,184,886,230,883,235,813,188"/>
-<area shape="poly" id="edge28_Node000016_Node000007" title=" " alt="" coords="790,188,757,231,753,227,785,185"/>
+<area shape="rect" id="Node000001" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="341,5,543,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,241,63,267"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="341,28,254,45,210,61,169,81,128,114,94,154,67,194,48,228,44,226,63,191,90,151,124,110,166,77,208,56,252,40,340,23"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,241,150,267"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="342,34,283,49,223,73,169,107,145,129,126,154,118,171,115,190,119,226,113,227,110,190,113,170,121,151,141,125,165,103,221,68,282,44,341,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="454,241,531,267"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="444,32,441,79,441,104,460,171,483,226,478,228,454,173,435,105,435,79,438,31"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="1088,241,1148,267"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="544,24,711,42,806,57,899,76,959,87,1009,95,1032,102,1054,112,1076,128,1099,151,1110,168,1117,188,1122,225,1116,226,1112,189,1105,171,1095,154,1072,132,1051,117,1030,107,1008,100,959,93,897,82,805,62,711,47,543,29"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="1159,79,1224,105"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="544,21,815,39,978,55,1141,76,1144,77,1144,82,1140,82,977,60,814,44,544,26"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="764,241,835,267"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="543,16,637,19,735,29,820,47,852,60,875,77,885,92,890,115,885,148,867,195,852,216,833,234,829,230,848,213,862,192,880,147,885,115,880,94,871,81,850,65,819,52,735,34,637,25,543,21"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="278,241,430,267"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="440,32,366,227,361,226,435,30"/>
+<area shape="rect" id="Node000009" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="162,160,303,186"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="412,34,369,54,324,81,285,115,254,150,250,146,281,111,320,77,366,49,410,29"/>
+<area shape="rect" id="Node000011" href="$strnlen_8hpp.html" title="Determine the length of a fixed&#45;size string." alt="" coords="738,79,861,105"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="504,29,724,73,723,78,503,34"/>
+<area shape="rect" id="Node000013" href="$Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="450,79,536,105"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="453,30,478,65,473,68,448,33"/>
+<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="203,189,78,238,76,233,201,184"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="218,188,154,234,151,230,215,184"/>
+<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="304,182,748,243,747,248,303,187"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="253,184,324,231,322,235,250,188"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="174,241,254,267"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="232,187,223,227,218,225,227,186"/>
+<area shape="poly" id="edge15_Node000011_Node000007" title=" " alt="" coords="814,103,831,124,846,152,850,173,846,194,836,214,824,231,820,228,832,211,841,192,845,173,841,154,827,127,810,107"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="767,160,832,186"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="802,105,802,144,797,144,797,105"/>
+<area shape="poly" id="edge19_Node000013_Node000003" title=" " alt="" coords="449,98,374,103,285,113,204,130,173,141,152,155,140,170,132,188,126,226,120,225,127,187,135,167,148,151,171,137,203,125,284,108,373,98,449,92"/>
+<area shape="poly" id="edge18_Node000013_Node000004" title=" " alt="" coords="495,105,495,226,490,226,490,105"/>
+<area shape="poly" id="edge21_Node000013_Node000007" title=" " alt="" coords="537,96,618,114,663,129,706,150,730,168,751,188,785,227,781,231,748,191,727,172,703,155,661,134,617,119,536,101"/>
+<area shape="poly" id="edge22_Node000013_Node000008" title=" " alt="" coords="484,107,376,231,372,228,480,103"/>
+<area shape="poly" id="edge30_Node000013_Node000009" title=" " alt="" coords="453,108,288,158,287,153,452,103"/>
+<area shape="poly" id="edge20_Node000013_Node000012" title=" " alt="" coords="537,99,635,120,749,150,756,152,754,157,748,155,633,125,536,104"/>
+<area shape="rect" id="Node000014" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="957,153,1084,193"/>
+<area shape="poly" id="edge23_Node000013_Node000014" title=" " alt="" coords="537,97,942,157,941,163,536,102"/>
+<area shape="rect" id="Node000016" href="$exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="530,160,693,186"/>
+<area shape="poly" id="edge27_Node000013_Node000016" title=" " alt="" coords="512,103,582,149,579,153,509,107"/>
+<area shape="poly" id="edge26_Node000014_Node000005" title=" " alt="" coords="1046,192,1093,229,1090,233,1043,196"/>
+<area shape="poly" id="edge24_Node000014_Node000007" title=" " alt="" coords="966,196,848,238,846,233,964,191"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="980,241,1061,267"/>
+<area shape="poly" id="edge25_Node000014_Node000015" title=" " alt="" coords="1023,194,1023,226,1018,226,1018,194"/>
+<area shape="poly" id="edge29_Node000016_Node000004" title=" " alt="" coords="595,188,525,235,522,230,592,184"/>
+<area shape="poly" id="edge28_Node000016_Node000007" title=" " alt="" coords="641,184,758,233,756,238,639,189"/>
 </map>

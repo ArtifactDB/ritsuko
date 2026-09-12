@@ -134,8 +134,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Maximum length of the string on the heap, in terms of the number of bytes. The sum of <code>offset</code> and <code>length</code> should be no greater than the length of the heap dataset.</p>
-<p>It is not necessary to include the null terminator when setting <code>length</code>. However, if the slice <code>[offset, offset + length)</code> on the heap includes a null terminator, the string should be terminated at the first occurrence. This allows the slice to be easily reused for shorter strings when modifying a string entry inside an existing heap. </p>
+<p>Maximum length of the string on the heap, in terms of the number of bytes. The sum of <code>offset</code> and <code>length</code> should be no greater than the length of the heap dataset. </p>
 
 </div>
 </div>

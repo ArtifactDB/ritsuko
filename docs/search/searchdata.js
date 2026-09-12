@@ -1,12 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "acdefgilmnoprsuv",
+  0: "acdefghilmnoprsuv",
   1: "iprsv",
   2: "r",
   3: "aegimprsv",
   4: "acdegilmnoprsv",
   5: "lmop",
-  6: "acfpuv"
+  6: "acdfhimopuv"
 };
 
 var indexSectionNames =

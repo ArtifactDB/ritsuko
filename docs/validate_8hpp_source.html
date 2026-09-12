@@ -85,7 +85,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li><li class="navelem"><a class="el" href="dir_2b87a9605cc9baf41ccedd045b3e01ac.html">cvls</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_30d34e4a48c3fe2c363480a4804d0e65.html">ritsuko</a></li><li class="navelem"><a class="el" href="dir_e53991f2d333a9e9feaa0f67279085c5.html">cvls</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -115,158 +115,139 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span>cvls {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">inline</span> <span class="keywordtype">void</span> validate_pointers(<span class="keyword">const</span> H5::DataSet&amp; data) {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">static_assert</span>(std::is_integral&lt;Offset_&gt;::value);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">static_assert</span>(std::is_integral&lt;Length_&gt;::value);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">if</span> (data.getTypeClass() != H5T_COMPOUND) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a compound datatype for a compressed VLS pointer dataset at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype</a>(data.getCompType(), std::numeric_limits&lt;Offset_&gt;::digits, std::numeric_limits&lt;Length_&gt;::digits);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;incorrect type for a compressed VLS pointer dataset at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;; &quot;</span> + std::string(e.what()));</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
-<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#a85ae1bea23d03cefafe86ec507e19d84">   63</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a85ae1bea23d03cefafe86ec507e19d84">validate_scalar_pointer</a>(<span class="keyword">const</span> H5::DataSet&amp; data, hsize_t heap_length) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    validate_pointers&lt;Offset_, Length_&gt;(data);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    assert(data.getSpace().getSimpleExtentNdims() == 0);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">auto</span> dtype = <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">define_pointer_datatype&lt;Offset_, Length_&gt;</a>();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_struct" href="structritsuko_1_1cvls_1_1Pointer.html">Pointer&lt;Offset_, Length_&gt;</a> val;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    data.read(&amp;val, dtype);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#a85ae1bea23d03cefafe86ec507e19d84">   41</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a85ae1bea23d03cefafe86ec507e19d84">validate_scalar_pointer</a>(<span class="keyword">const</span> H5::DataSet&amp; data, hsize_t heap_length) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype</a>(data, std::numeric_limits&lt;Offset_&gt;::digits, std::numeric_limits&lt;Length_&gt;::digits);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    assert(data.getSpace().getSimpleExtentNdims() == 0);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">auto</span> dtype = <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">define_pointer_datatype&lt;Offset_, Length_&gt;</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_struct" href="structritsuko_1_1cvls_1_1Pointer.html">Pointer&lt;Offset_, Length_&gt;</a> val;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    data.read(&amp;val, dtype);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ad3aea60d4e5951f489b2cd4d8cca1898">is_Pointer_out_of_range</a>(val, heap_length)) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;compressed VLS array pointer at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39; is out of range of the heap&quot;</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0">   68</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0">validate_1d_pointers</a>(<span class="keyword">const</span> H5::DataSet&amp; data, hsize_t full_length, hsize_t heap_length) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype</a>(data, std::numeric_limits&lt;Offset_&gt;::digits, std::numeric_limits&lt;Length_&gt;::digits);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    assert(data.getSpace().getSimpleExtentNdims() == 1);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">if</span> (is_pointer_out_of_range(val.<a class="code hl_variable" href="structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44">offset</a>, val.<a class="code hl_variable" href="structritsuko_1_1cvls_1_1Pointer.html#a26a7642f69dfb3e853c14d3625d5e256">length</a>, heap_length)) {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VLS array pointer at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39; is out of range of the heap&quot;</span>);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; plist = data.getCreatePlist();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    hsize_t block_size = 0;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">if</span> (plist.getLayout() == H5D_CHUNKED) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        plist.getChunk(1, &amp;block_size);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// Hard-coding the mock chunk size for non-chunked datasets,</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// it&#39;s not worth requiring an extra function argument to customize this.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        block_size = sanisizer::min(full_length, 10000);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    H5::DataSpace mspace(1, &amp;block_size), dspace(1, &amp;full_length);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">auto</span> buffer = sanisizer::create&lt;std::vector&lt;Pointer&lt;Offset_, Length_&gt; &gt; &gt;(block_size);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">auto</span> dtype = <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">define_pointer_datatype&lt;Offset_, Length_&gt;</a>();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    hsize_t i = 0;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">while</span> (i &lt; full_length) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keyword">const</span> <span class="keyword">auto</span> available = sanisizer::min(full_length - i, block_size);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keyword">constexpr</span> hsize_t zero = 0;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        mspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;zero);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        dspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;i);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        data.read(buffer.data(), dtype, mspace, dspace);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(available)&gt; j = 0; j &lt; available; ++j) {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keyword">const</span> <span class="keyword">auto</span>&amp; val = buffer[j];</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ad3aea60d4e5951f489b2cd4d8cca1898">is_Pointer_out_of_range</a>(val, heap_length)) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;compressed VLS array pointers at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39; are out of range of the heap&quot;</span>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        i += available;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
 </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
-<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0">   91</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0">validate_1d_pointers</a>(<span class="keyword">const</span> H5::DataSet&amp; data, hsize_t full_length, hsize_t heap_length) {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    validate_pointers&lt;Offset_, Length_&gt;(data);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    assert(data.getSpace().getSimpleExtentNdims() == 1);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; plist = data.getCreatePlist();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    hsize_t block_size = 0;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">if</span> (plist.getLayout() == H5D_CHUNKED) {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        plist.getChunk(1, &amp;block_size);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="comment">// Hard-coding the mock chunk size for non-chunked datasets,</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="comment">// it&#39;s not worth requiring an extra function argument to customize this.</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        block_size = sanisizer::min(full_length, 10000);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    H5::DataSpace mspace(1, &amp;block_size), dspace(1, &amp;full_length);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">auto</span> buffer = sanisizer::create&lt;std::vector&lt;Pointer&lt;Offset_, Length_&gt; &gt; &gt;(block_size);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keyword">auto</span> dtype = <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">define_pointer_datatype&lt;Offset_, Length_&gt;</a>();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    hsize_t i = 0;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">while</span> (i &lt; full_length) {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keyword">const</span> <span class="keyword">auto</span> available = sanisizer::min(full_length - i, block_size);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keyword">constexpr</span> hsize_t zero = 0;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        mspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;zero);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        dspace.selectHyperslab(H5S_SELECT_SET, &amp;available, &amp;i);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        data.read(buffer.data(), dtype, mspace, dspace);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(available)&gt; j = 0; j &lt; available; ++j) {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            <span class="keyword">const</span> <span class="keyword">auto</span>&amp; val = buffer[j];</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keywordflow">if</span> (is_pointer_out_of_range(val.offset, val.length, heap_length)) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VLS array pointers at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39; are out of range of the heap&quot;</span>);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            }</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        i += available;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#a8575dc2c8283fd17c3439e5ebe2c47ea">  120</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a8575dc2c8283fd17c3439e5ebe2c47ea">validate_nd_pointers</a>(<span class="keyword">const</span> H5::DataSet&amp; data, <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; dimensions, hsize_t heap_length) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype</a>(data, std::numeric_limits&lt;Offset_&gt;::digits, std::numeric_limits&lt;Length_&gt;::digits);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    assert(data.getSpace().getSimpleExtentNdims() &gt; 0);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="comment">// Cast of &#39;ndim&#39; to &#39;int&#39; is implicitly safe if the assertion holds.</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keyword">const</span> <span class="keyword">auto</span> ndim = dimensions.size();</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    assert(sanisizer::is_equal(ndim, data.getSpace().getSimpleExtentNdims()));</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    std::vector&lt;hsize_t&gt; chunk_dims;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; plist = data.getCreatePlist();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">if</span> (plist.getLayout() == H5D_CHUNKED) {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        chunk_dims.resize(ndim); <span class="comment">// No need to check this, dimensions is of the same type as chunk_dims.</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        plist.getChunk(ndim, chunk_dims.data());</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        chunk_dims = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a193739956649ed6018a2691e0cb45d13">hdf5::mock_contiguous_chunks</a>(dimensions, 10000); <span class="comment">// Hard-coding the upper bound to save ourselves an argument.</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <a class="code hl_struct" href="structritsuko_1_1hdf5_1_1IterateChunks.html">hdf5::IterateChunks</a> iter(dimensions, chunk_dims);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    H5::DataSpace fspace(ndim, dimensions.data());</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    H5::DataSpace mspace(ndim, iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>().data());</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keyword">auto</span> buffer = sanisizer::create&lt;std::vector&lt;Pointer&lt;Offset_, Length_&gt; &gt; &gt;(mspace.getSimpleExtentNpoints());</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keyword">auto</span> dtype = <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">define_pointer_datatype&lt;Offset_, Length_&gt;</a>();</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordflow">while</span> (iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">advance</a>()) {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; curcount = iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">counts</a>();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        mspace.setExtentSimple(ndim, curcount.data());</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">starts</a>().data());</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        data.read(buffer.data(), dtype, mspace, fspace);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keyword">const</span> <span class="keyword">auto</span> available = mspace.getSimpleExtentNpoints();</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(available)&gt; i = 0; i &lt; available; ++i) {</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            <span class="keyword">const</span> <span class="keyword">auto</span>&amp; val = buffer[i];</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ad3aea60d4e5951f489b2cd4d8cca1898">is_Pointer_out_of_range</a>(val, heap_length)) {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;compressed VLS array pointers at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39; are out of range of the heap&quot;</span>);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            }</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    }</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
 </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Offset_, <span class="keyword">typename</span> Length_&gt;</div>
-<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#a8575dc2c8283fd17c3439e5ebe2c47ea">  144</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#a8575dc2c8283fd17c3439e5ebe2c47ea">validate_nd_pointers</a>(<span class="keyword">const</span> H5::DataSet&amp; data, <span class="keyword">const</span> std::vector&lt;hsize_t&gt;&amp; dimensions, hsize_t heap_length) {</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    validate_pointers&lt;Offset_, Length_&gt;(data);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    assert(data.getSpace().getSimpleExtentNdims() &gt; 0);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="comment">// Cast of &#39;ndim&#39; to &#39;int&#39; is implicitly safe if the assertion holds.</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keyword">const</span> <span class="keyword">auto</span> ndim = dimensions.size();</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    assert(sanisizer::is_equal(ndim, data.getSpace().getSimpleExtentNdims()));</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    std::vector&lt;hsize_t&gt; chunk_dims;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; plist = data.getCreatePlist();</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordflow">if</span> (plist.getLayout() == H5D_CHUNKED) {</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        chunk_dims.resize(ndim); <span class="comment">// No need to check this, dimensions is of the same type as chunk_dims.</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        plist.getChunk(ndim, chunk_dims.data());</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        chunk_dims = <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a193739956649ed6018a2691e0cb45d13">hdf5::mock_contiguous_chunks</a>(dimensions, 10000); <span class="comment">// Hard-coding the upper bound to save ourselves an argument.</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <a class="code hl_struct" href="structritsuko_1_1hdf5_1_1IterateChunks.html">hdf5::IterateChunks</a> iter(dimensions, chunk_dims);</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    H5::DataSpace fspace(ndim, dimensions.data());</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    H5::DataSpace mspace(ndim, iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">chunk_dimensions</a>().data());</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keyword">auto</span> buffer = sanisizer::create&lt;std::vector&lt;Pointer&lt;Offset_, Length_&gt; &gt; &gt;(mspace.getSimpleExtentNpoints());</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keyword">auto</span> dtype = <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">define_pointer_datatype&lt;Offset_, Length_&gt;</a>();</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">while</span> (iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">advance</a>()) {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; curcount = iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#ac182ffa1b89beee84fe225346a137720">counts</a>();</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        mspace.setExtentSimple(ndim, curcount.data());</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.<a class="code hl_function" href="structritsuko_1_1hdf5_1_1IterateChunks.html#a94cc3b40952aeee5e43122da5ac87232">starts</a>().data());</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        data.read(buffer.data(), dtype, mspace, fspace);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keyword">const</span> <span class="keyword">auto</span> available = mspace.getSimpleExtentNpoints();</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="keywordflow">for</span> (I&lt;<span class="keyword">decltype</span>(available)&gt; i = 0; i &lt; available; ++i) {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <span class="keyword">const</span> <span class="keyword">auto</span>&amp; val = buffer[i];</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            <span class="keywordflow">if</span> (is_pointer_out_of_range(val.offset, val.length, heap_length)) {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VLS array pointers at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39; are out of range of the heap&quot;</span>);</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        }</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>}</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad">  166</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad">validate_heap</a>(<span class="keyword">const</span> H5::DataSet&amp; data) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordflow">if</span> (data.getTypeClass() != H5T_INTEGER) {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected an integer datatype for the compressed VLS heap at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    }</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">hdf5::exceeds_integer_limit</a>(data.getIntType(), 8, <span class="keyword">false</span>)) {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected 8-bit unsigned integers for the compressed VLS heap at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">if</span> (data.getSpace().getSimpleExtentNdims() != 1) {</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a 1-dimensional dataset for the compressed VLS heap at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>}</div>
 </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="foldopen" id="foldopen00191" data-start="{" data-end="}">
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad">  191</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad">validate_heap</a>(<span class="keyword">const</span> H5::DataSet&amp; data) {</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordflow">if</span> (data.getTypeClass() != H5T_INTEGER) {</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected an integer datatype for the compressed VLS heap at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    }</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">hdf5::exceeds_integer_limit</a>(data.getIntType(), 8, <span class="keyword">false</span>)) {</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected 8-bit unsigned integers for the compressed VLS heap at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordflow">if</span> (data.getSpace().getSimpleExtentNdims() != 1) {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;expected a 1-dimensional dataset for the compressed VLS heap at &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">hdf5::get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>}</div>
-</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>}</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>}</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>}</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aIterateChunks_8hpp_html"><div class="ttname"><a href="IterateChunks_8hpp.html">IterateChunks.hpp</a></div><div class="ttdoc">Iterate through a dataspace by chunk.</div></div>
 <div class="ttc" id="aPointer_8hpp_html"><div class="ttname"><a href="Pointer_8hpp.html">Pointer.hpp</a></div><div class="ttdoc">Compound datatype of the compresed VLS heap pointer.</div></div>
 <div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
 <div class="ttc" id="amock__contiguous__chunks_8hpp_html"><div class="ttname"><a href="mock__contiguous__chunks_8hpp.html">mock_contiguous_chunks.hpp</a></div><div class="ttdoc">Mock chunk sizes for a contiguous HDF5 dataset.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a4bb581e32522b443a81715d9cd9667d0"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0">ritsuko::cvls::validate_1d_pointers</a></div><div class="ttdeci">void validate_1d_pointers(const H5::DataSet &amp;data, hsize_t full_length, hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> validate.hpp:91</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a644674df96b20adb0dda470e12c54496"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">ritsuko::cvls::validate_pointer_datatype</a></div><div class="ttdeci">void validate_pointer_datatype(const H5::CompType &amp;type, const std::size_t offset_precision, const std::size_t length_precision)</div><div class="ttdef"><b>Definition</b> Pointer.hpp:85</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a8575dc2c8283fd17c3439e5ebe2c47ea"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a8575dc2c8283fd17c3439e5ebe2c47ea">ritsuko::cvls::validate_nd_pointers</a></div><div class="ttdeci">void validate_nd_pointers(const H5::DataSet &amp;data, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> validate.hpp:144</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a85ae1bea23d03cefafe86ec507e19d84"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a85ae1bea23d03cefafe86ec507e19d84">ritsuko::cvls::validate_scalar_pointer</a></div><div class="ttdeci">void validate_scalar_pointer(const H5::DataSet &amp;data, hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> validate.hpp:63</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_ab2f108342f0b595b891d6f61166bca63"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">ritsuko::cvls::define_pointer_datatype</a></div><div class="ttdeci">H5::CompType define_pointer_datatype()</div><div class="ttdef"><b>Definition</b> Pointer.hpp:60</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_abc6dac5a614dbea828e079da7f2265ad"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad">ritsuko::cvls::validate_heap</a></div><div class="ttdeci">void validate_heap(const H5::DataSet &amp;data)</div><div class="ttdef"><b>Definition</b> validate.hpp:191</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a4bb581e32522b443a81715d9cd9667d0"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0">ritsuko::cvls::validate_1d_pointers</a></div><div class="ttdeci">void validate_1d_pointers(const H5::DataSet &amp;data, hsize_t full_length, hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> validate.hpp:68</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a644674df96b20adb0dda470e12c54496"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">ritsuko::cvls::validate_pointer_datatype</a></div><div class="ttdeci">void validate_pointer_datatype(const H5::CompType &amp;type, const std::size_t offset_precision, const std::size_t length_precision)</div><div class="ttdef"><b>Definition</b> Pointer.hpp:76</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a8575dc2c8283fd17c3439e5ebe2c47ea"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a8575dc2c8283fd17c3439e5ebe2c47ea">ritsuko::cvls::validate_nd_pointers</a></div><div class="ttdeci">void validate_nd_pointers(const H5::DataSet &amp;data, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> validate.hpp:120</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_a85ae1bea23d03cefafe86ec507e19d84"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#a85ae1bea23d03cefafe86ec507e19d84">ritsuko::cvls::validate_scalar_pointer</a></div><div class="ttdeci">void validate_scalar_pointer(const H5::DataSet &amp;data, hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> validate.hpp:41</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_ab2f108342f0b595b891d6f61166bca63"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">ritsuko::cvls::define_pointer_datatype</a></div><div class="ttdeci">H5::CompType define_pointer_datatype()</div><div class="ttdef"><b>Definition</b> Pointer.hpp:57</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_abc6dac5a614dbea828e079da7f2265ad"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad">ritsuko::cvls::validate_heap</a></div><div class="ttdeci">void validate_heap(const H5::DataSet &amp;data)</div><div class="ttdef"><b>Definition</b> validate.hpp:166</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_ad3aea60d4e5951f489b2cd4d8cca1898"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#ad3aea60d4e5951f489b2cd4d8cca1898">ritsuko::cvls::is_Pointer_out_of_range</a></div><div class="ttdeci">bool is_Pointer_out_of_range(const Pointer&lt; Offset_, Length_ &gt; &amp;ptr, const hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> Pointer.hpp:136</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a193739956649ed6018a2691e0cb45d13"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a193739956649ed6018a2691e0cb45d13">ritsuko::hdf5::mock_contiguous_chunks</a></div><div class="ttdeci">std::vector&lt; hsize_t &gt; mock_contiguous_chunks(const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t chunk_size)</div><div class="ttdef"><b>Definition</b> mock_contiguous_chunks.hpp:30</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:28</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a6cd65a78811faa2894a672f5ce993949"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">ritsuko::hdf5::exceeds_integer_limit</a></div><div class="ttdeci">bool exceeds_integer_limit(const H5::IntType &amp;itype, size_t precision, bool is_signed)</div><div class="ttdef"><b>Definition</b> exceeds_limit.hpp:27</div></div>
-<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:19</div></div>
-<div class="ttc" id="astructritsuko_1_1cvls_1_1Pointer_html"><div class="ttname"><a href="structritsuko_1_1cvls_1_1Pointer.html">ritsuko::cvls::Pointer</a></div><div class="ttdoc">Pointer into the compressed VLS heap.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:33</div></div>
-<div class="ttc" id="astructritsuko_1_1cvls_1_1Pointer_html_a26a7642f69dfb3e853c14d3625d5e256"><div class="ttname"><a href="structritsuko_1_1cvls_1_1Pointer.html#a26a7642f69dfb3e853c14d3625d5e256">ritsuko::cvls::Pointer::length</a></div><div class="ttdeci">Length_ length</div><div class="ttdef"><b>Definition</b> Pointer.hpp:48</div></div>
-<div class="ttc" id="astructritsuko_1_1cvls_1_1Pointer_html_aea7226605d2f6141be9367215aefff44"><div class="ttname"><a href="structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44">ritsuko::cvls::Pointer::offset</a></div><div class="ttdeci">Offset_ offset</div><div class="ttdef"><b>Definition</b> Pointer.hpp:38</div></div>
+<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:20</div></div>
+<div class="ttc" id="astructritsuko_1_1cvls_1_1Pointer_html"><div class="ttname"><a href="structritsuko_1_1cvls_1_1Pointer.html">ritsuko::cvls::Pointer</a></div><div class="ttdoc">Pointer into the compressed VLS heap.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:34</div></div>
 <div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html">ritsuko::hdf5::IterateChunks</a></div><div class="ttdoc">Iterate through an high-dimensional dataspace by chunk.</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:28</div></div>
 <div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a12d1f892b3757c2e75f215adfd5d42d3"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a12d1f892b3757c2e75f215adfd5d42d3">ritsuko::hdf5::IterateChunks::chunk_dimensions</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; &amp; chunk_dimensions() const</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:122</div></div>
 <div class="ttc" id="astructritsuko_1_1hdf5_1_1IterateChunks_html_a8df6cf49559ca6c16b013455894b2a35"><div class="ttname"><a href="structritsuko_1_1hdf5_1_1IterateChunks.html#a8df6cf49559ca6c16b013455894b2a35">ritsuko::hdf5::IterateChunks::advance</a></div><div class="ttdeci">bool advance()</div><div class="ttdef"><b>Definition</b> IterateChunks.hpp:66</div></div>

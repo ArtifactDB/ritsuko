@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['parse_5fversion_5fstring_0',['parse_version_string',['../namespaceritsuko.html#aee7609d114de23145d8d28ddde55c810',1,'ritsuko']]],
-  ['parse_5fversion_5fstring_2ehpp_1',['parse_version_string.hpp',['../parse__version__string_8hpp.html',1,'']]],
-  ['parsing_20and_20validation_2',['C++ utilities for parsing and validation',['../index.html',1,'']]],
-  ['patch_3',['patch',['../structritsuko_1_1Version.html#ab11472e3a5b0a73724a8367bde91fafb',1,'ritsuko::Version']]],
-  ['pointer_4',['Pointer',['../structritsuko_1_1cvls_1_1Pointer.html',1,'ritsuko::cvls']]],
-  ['pointer_2ehpp_5',['Pointer.hpp',['../Pointer_8hpp.html',1,'']]]
+  ['offset_0',['offset',['../structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44',1,'ritsuko::cvls::Pointer']]],
+  ['operator_21_3d_1',['operator!=',['../structritsuko_1_1Version.html#ae9589dc549fa6e1c0b56d13afdc0dd9a',1,'ritsuko::Version']]],
+  ['operator_3c_2',['operator&lt;',['../structritsuko_1_1Version.html#ace04f21a572ba2dce8825b38c9bb94c8',1,'ritsuko::Version']]],
+  ['operator_3c_3d_3',['operator&lt;=',['../structritsuko_1_1Version.html#a51aac8210920ab34b637f8d443366fc7',1,'ritsuko::Version']]],
+  ['operator_3d_3d_4',['operator==',['../structritsuko_1_1Version.html#a5e3761b0f6740ab7d1d9fe4d2e96d2a9',1,'ritsuko::Version']]],
+  ['operator_3e_5',['operator&gt;',['../structritsuko_1_1Version.html#a2533ff64d845d296993e33eae7f9fa0d',1,'ritsuko::Version']]],
+  ['operator_3e_3d_6',['operator&gt;=',['../structritsuko_1_1Version.html#a322331b6e57da64690a3016c5f9ad173',1,'ritsuko::Version']]],
+  ['organization_7',['HDF5 internal organization',['../md__2github_2workspace_2docs_2topics_2internal-organization.html',1,'']]]
 ];

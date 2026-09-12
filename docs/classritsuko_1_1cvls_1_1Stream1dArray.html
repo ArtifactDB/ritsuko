@@ -161,7 +161,7 @@ template&lt;typename Offset_ , typename Length_ , typename DataSetPointer_  = co
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointers_ptr</td><td><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html" title="Pointer into the compressed VLS heap.">Pointer</a> to a HDF5 dataset containing the compressed VLS pointers. It is assumed that this dataset already satisfies <code><a class="el" href="namespaceritsuko_1_1cvls.html#a4bb581e32522b443a81715d9cd9667d0">validate_1d_pointers()</a></code>. It is also assumed that this dataset is 1-dimensional. </td></tr>
+    <tr><td class="paramname">pointers_ptr</td><td><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html" title="Pointer into the compressed VLS heap.">Pointer</a> to a HDF5 dataset containing the compressed VLS pointers. It is assumed that this dataset satisfies <code><a class="el" href="namespaceritsuko_1_1cvls.html#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype()</a></code>. It is also assumed that this dataset is 1-dimensional. </td></tr>
     <tr><td class="paramname">length</td><td>Length of the <code>pointers_ptr</code> dataset, i.e., the extent of its sole dimension. </td></tr>
     <tr><td class="paramname">heap_ptr</td><td><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html" title="Pointer into the compressed VLS heap.">Pointer</a> to a HDF5 dataset containing the compressed VLS heap. It is assumed that this dataset already satisfies <code><a class="el" href="namespaceritsuko_1_1cvls.html#abc6dac5a614dbea828e079da7f2265ad">validate_heap()</a></code>. </td></tr>
   </table>

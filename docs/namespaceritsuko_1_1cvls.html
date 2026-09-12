@@ -116,6 +116,11 @@ Functions</h2></td></tr>
 <tr class="separator:ab2f108342f0b595b891d6f61166bca63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a644674df96b20adb0dda470e12c54496" id="r_a644674df96b20adb0dda470e12c54496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype</a> (const H5::CompType &amp;type, const std::size_t offset_precision, const std::size_t length_precision)</td></tr>
 <tr class="separator:a644674df96b20adb0dda470e12c54496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a836e42b0743f9a3c576d54749cac04fa" id="r_a836e42b0743f9a3c576d54749cac04fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a836e42b0743f9a3c576d54749cac04fa">validate_pointer_datatype</a> (const H5::DataSet &amp;data, const std::size_t offset_precision, const std::size_t length_precision)</td></tr>
+<tr class="separator:a836e42b0743f9a3c576d54749cac04fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3aea60d4e5951f489b2cd4d8cca1898" id="r_ad3aea60d4e5951f489b2cd4d8cca1898"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
+<tr class="memitem:ad3aea60d4e5951f489b2cd4d8cca1898"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad3aea60d4e5951f489b2cd4d8cca1898">is_Pointer_out_of_range</a> (const <a class="el" href="structritsuko_1_1cvls_1_1Pointer.html">Pointer</a>&lt; Offset_, Length_ &gt; &amp;ptr, const hsize_t heap_length)</td></tr>
+<tr class="separator:ad3aea60d4e5951f489b2cd4d8cca1898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85ae1bea23d03cefafe86ec507e19d84" id="r_a85ae1bea23d03cefafe86ec507e19d84"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
 <tr class="memitem:a85ae1bea23d03cefafe86ec507e19d84"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a85ae1bea23d03cefafe86ec507e19d84">validate_scalar_pointer</a> (const H5::DataSet &amp;data, hsize_t heap_length)</td></tr>
 <tr class="separator:a85ae1bea23d03cefafe86ec507e19d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,6 +161,44 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A HDF5 compound datatype. </dd></dl>
+
+</div>
+</div>
+<a id="ad3aea60d4e5951f489b2cd4d8cca1898" name="ad3aea60d4e5951f489b2cd4d8cca1898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3aea60d4e5951f489b2cd4d8cca1898">&#9670;&#160;</a></span>is_Pointer_out_of_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Offset_ , typename Length_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ritsuko::cvls::is_Pointer_out_of_range </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structritsuko_1_1cvls_1_1Pointer.html">Pointer</a>&lt; Offset_, Length_ &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Offset_</td><td>Unsigned integer type of the starting offset, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44">Pointer::offset</a></code>. </td></tr>
+    <tr><td class="paramname">Length_</td><td>Unsigned integer type of the string length, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#a26a7642f69dfb3e853c14d3625d5e256">Pointer::length</a></code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>A <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html" title="Pointer into the compressed VLS heap.">Pointer</a></code> specifying an interval on the heap. </td></tr>
+    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether <code>ptr</code> defines an interval within the heap. </dd></dl>
 
 </div>
 </div>
@@ -288,7 +331,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 </div>
 </div>
 <a id="a644674df96b20adb0dda470e12c54496" name="a644674df96b20adb0dda470e12c54496"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a644674df96b20adb0dda470e12c54496">&#9670;&#160;</a></span>validate_pointer_datatype()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a644674df96b20adb0dda470e12c54496">&#9670;&#160;</a></span>validate_pointer_datatype() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,11 +367,52 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 <li>The first member is named <code>offset</code> and is of an integer datatype that is unsigned and has no more than than <code>offset_precision</code> bits.</li>
 <li>The second member is named <code>length</code> and is of an integer datatype that is unsigned and has no more than than <code>length_precision</code> bits.</li>
 </ul>
-<p>The constraints on the precision of each integer type ensure that the pointer dataset can be represented in memory by the associated type. For example, setting <code>offset_precision = 64</code> allows readers to safely assume that a <code>uint64_t</code> can be used for <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44">Pointer::offset</a></code>.</p>
-<p>On success, the contents of the HDF5 dataset associated with <code>type</code> can be safely read into an array of appropriately parameterized <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html" title="Pointer into the compressed VLS heap.">Pointer</a></code> instances. Otherwise, an error is thrown.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>Compound datatype, typically generated from a <code>H5::DataSet</code> instance. </td></tr>
+    <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44">Pointer::offset</a></code>. </td></tr>
+    <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#a26a7642f69dfb3e853c14d3625d5e256">Pointer::length</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a836e42b0743f9a3c576d54749cac04fa" name="a836e42b0743f9a3c576d54749cac04fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a836e42b0743f9a3c576d54749cac04fa">&#9670;&#160;</a></span>validate_pointer_datatype() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::cvls::validate_pointer_datatype </td>
+          <td>(</td>
+          <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>offset_precision</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>length_precision</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Overload of <code><a class="el" href="#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype()</a></code> that accepts a HDF5 dataset. This will throw an error if the HDF5 dataset does not use a compound datatype that satisfies <code><a class="el" href="#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype()</a></code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>A HDF5 dataset. This may have any datatype. </td></tr>
     <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44">Pointer::offset</a></code>. </td></tr>
     <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#a26a7642f69dfb3e853c14d3625d5e256">Pointer::length</a></code>. </td></tr>
   </table>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/format Directory Reference</title>
+<title>ritsuko: Datatype constraints</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,36 +83,25 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_f15da645971b6d779507fac846aa3ff3.html">ritsuko</a></li><li class="navelem"><a class="el" href="dir_e3f24993b3de755e7d689a6787d77927.html">format</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div id="doc-content">
-<div class="header">
-  <div class="headertitle"><div class="title">format Directory Reference</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Datatype constraints</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Directory dependency graph for format:</div>
-<div class="dyncontent">
-<div class="center"><img src="dir_e3f24993b3de755e7d689a6787d77927_dep.png" border="0" usemap="#adir__e3f24993b3de755e7d689a6787d77927__dep" alt="ritsuko/format"/></div>
-<map name="adir__e3f24993b3de755e7d689a6787d77927__dep" id="adir__e3f24993b3de755e7d689a6787d77927__dep">
-<area shape="rect" href="dir_e3f24993b3de755e7d689a6787d77927.html" title="format" alt="" coords="27,52,85,78"/>
-<area shape="rect" href="dir_f15da645971b6d779507fac846aa3ff3.html" title="ritsuko" alt="" coords="16,16,96,89"/>
-</map>
-</div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="is__date__time_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="is__date__time_8hpp.html">is_date_time.hpp</a></td></tr>
-<tr class="memdesc:is__date__time_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilities to check date and time formats. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="parse__version__string_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse__version__string_8hpp.html">parse_version_string.hpp</a></td></tr>
-<tr class="memdesc:parse__version__string_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse version strings. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<div class="textblock"><h1>Overview</h1>
+<p>An object specification involving HDF5 files needs to define the allowed HDF5 datatypes. The general philosophy is to declare the largest datatype that can be used for a particular dataset/attribute. Implementations can then safely use the declared type to read the dataset/attribute without any overflow or other loss of precision. However, writers are still free to choose a smaller type to reduce the size of the dataset/attribute on disk.</p>
+<h1>Integers</h1>
+<p>If a HDF5 dataset/attribute contains integers, the specification should declare the largest integer datatype that can be used. This includes both the bit width and sign, assuming a two's complement representation for all integers.</p>
+<p>For example, most objects containing integers will specify that the corresponding HDF5 dataset/attribute's datatype is no larger than a 32-bit signed integer. Readers can thus safely assume that an <code>int32_t</code> is sufficient to represent all possible values. Writers may create HDF5 datasets with any integer datatype that can be fully represented by an <code>int32_t</code>, e.g., <code>H5T_NATIVE_INT8</code>, <code>H5T_NATIVE_UINT16</code>.</p>
+<h1>Floats</h1>
+<p>If a HDF5 dataset/attribute contains floating-point numbers, the specification should declare the largest float datatype that can be used. We assume that all representations are IEEE754-compliant, to ensure the faithful propagation of special values like infinity and NaN.</p>
+<p>For example, most objects containing floats will specify that the corresponding HDF5 dataset/attribute's datatype is no larger than a 64-bit IEEE754-compliant float. Readers can thus safely assume that an <code>double</code> is sufficient to represent all values in memory. Writers may create HDF5 datasets with any floating-point or integer datatype that can be exactly represented by a <code>double</code>, e.g., <code>H5T_NATIVE_FLOAT</code>, <code>H5T_NATIVE_UINT32</code>.</p>
+<h1>Strings</h1>
+<p>Representations of strings should specify the encoding(s) that can be used in the HDF5 dataset. Most objects containing strings will specify that the HDF5 dataset should contain values that can be exactly represented by UTF-8 encoded strings. This supports both ASCII and UTF-8 encodings as the former is a subset of the latter anyway.</p>
+<p>From a specification perspective, there is no difference between variable and fixed length string datatypes. In the latter, the length of the string is defined by null termination or by the fixed length if no null character is present. This interpretation is the same regardless of the choice of string padding strategy. If a string is right-padded with spaces (as in Fortran), the spaces should just be treated as part of the string. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
