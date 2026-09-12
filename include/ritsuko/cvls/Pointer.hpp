@@ -101,16 +101,18 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
 }
 
 /**
- * @cond
+ * @tparam Offset_ Unsigned integer type of the starting offset, see `Pointer::offset`.
+ * @tparam Length_ Unsigned integer type of the string length, see `Pointer::length`.
+ *
+ * @param ptr A `Pointer` specifying an interval on the heap.
+ * @param heap_length Length of the heap dataset.
+ * @return Whether `ptr` defines an interval within the heap.
  */
 template<typename Offset_, typename Length_>
-bool is_pointer_out_of_range(const Offset_ offset, const Length_ length, const hsize_t heap_length) {
+bool is_Pointer_out_of_range(const Pointer<Offset_, Length_>& ptr, const hsize_t heap_length) {
     // Some finesse is required here to avoid computing offset + length, as that might overflow.
-    return sanisizer::is_greater_than(offset, heap_length) || sanisizer::is_greater_than(length, heap_length - offset);
+    return sanisizer::is_greater_than(ptr.offset, heap_length) || sanisizer::is_greater_than(ptr.length, heap_length - ptr.offset);
 }
-/**
- * @endcond
- */
 
 }
 

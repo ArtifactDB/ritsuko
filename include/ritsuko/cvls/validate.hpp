@@ -69,8 +69,8 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
     Pointer<Offset_, Length_> val;
     data.read(&val, dtype);
 
-    if (is_pointer_out_of_range(val.offset, val.length, heap_length)) {
-        throw std::runtime_error("VLS array pointer at '" + hdf5::get_name(data) + "' is out of range of the heap");
+    if (is_Pointer_out_of_range(val, heap_length)) {
+        throw std::runtime_error("compressed VLS array pointer at '" + hdf5::get_name(data) + "' is out of range of the heap");
     }
 }
 
@@ -117,8 +117,8 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
         data.read(buffer.data(), dtype, mspace, dspace);
         for (I<decltype(available)> j = 0; j < available; ++j) {
             const auto& val = buffer[j];
-            if (is_pointer_out_of_range(val.offset, val.length, heap_length)) {
-                throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
+            if (is_Pointer_out_of_range(val, heap_length)) {
+                throw std::runtime_error("compressed VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
             }
         }
 
@@ -174,8 +174,8 @@ void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& d
         const auto available = mspace.getSimpleExtentNpoints();
         for (I<decltype(available)> i = 0; i < available; ++i) {
             const auto& val = buffer[i];
-            if (is_pointer_out_of_range(val.offset, val.length, heap_length)) {
-                throw std::runtime_error("VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
+            if (is_Pointer_out_of_range(val, heap_length)) {
+                throw std::runtime_error("compressed VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
             }
         }
     }

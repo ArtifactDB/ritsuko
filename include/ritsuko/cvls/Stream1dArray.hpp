@@ -110,7 +110,7 @@ public:
 
         for (size_t i = 0; i < my_available; ++i) {
             const auto& val = my_pointer_buffer[i];
-            if (is_pointer_out_of_range(val.offset, val.length, my_heap_full_length)) {
+            if (is_Pointer_out_of_range(val, my_heap_full_length)) {
                 throw std::runtime_error("compressed VLS array pointers at '" + 
                     hdf5::get_name(*my_pointers_ptr) +
                     "' are out of range of the heap at '" +
