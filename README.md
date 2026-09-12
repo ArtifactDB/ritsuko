@@ -13,7 +13,8 @@ Functionality includes some convenience functions for HDF5 parsing, validation o
 Check out the [reference documentation](https://artifactdb.github.io/ritsuko) for available functions.
 In addition, the following documents contain some explanations on the design decisions used in ArtifactDB:
 
-- [HDF5 datatype constraints](docs/topics/datatype-constraints.md)
+- [HDF5 internal organization](docs/topics/internal-organization.md)
+- [Datatype constraints](docs/topics/datatype-constraints.md)
 - [Missing value placeholders](docs/topics/missing-placeholder.md)
 - [Compressed variable-length strings](docs/topics/compressed-vls.md)
 
