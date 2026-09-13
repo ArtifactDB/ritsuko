@@ -74,6 +74,18 @@ TEST(CvlsDefinePointerDatatype, Usage) {
     }
 }
 
+template<typename Offset_, typename Length_>
+H5::CompType define_wrong_pointer_datatype() {
+    struct Foo {
+        Offset_ offset;
+        Length_ length;
+    };
+    H5::CompType pointer_type(sizeof(Foo));
+    pointer_type.insertMember("offset", HOFFSET(Foo, offset), ritsuko::hdf5::as_numeric_datatype<Offset_>());
+    pointer_type.insertMember("length", HOFFSET(Foo, length), ritsuko::hdf5::as_numeric_datatype<Length_>());
+    return pointer_type;
+}
+
 TEST(CvlsValidatePointerDatatype, Failure) {
     {
         H5::CompType dtype(sizeof(uint64_t));
@@ -104,7 +116,7 @@ TEST(CvlsValidatePointerDatatype, Failure) {
     }
 
     {
-        auto dtype = ritsuko::cvls::define_pointer_datatype<double, uint64_t>();
+        auto dtype = define_wrong_pointer_datatype<double, uint64_t>();
         EXPECT_ANY_THROW({
             try {
                 ritsuko::cvls::validate_pointer_datatype(dtype, 64, 64);
@@ -116,7 +128,7 @@ TEST(CvlsValidatePointerDatatype, Failure) {
     }
 
     {
-        auto dtype = ritsuko::cvls::define_pointer_datatype<int, uint64_t>();
+        auto dtype = define_wrong_pointer_datatype<int, uint64_t>();
         EXPECT_ANY_THROW({
             try {
                 ritsuko::cvls::validate_pointer_datatype(dtype, 64, 64);
@@ -155,7 +167,7 @@ TEST(CvlsValidatePointerDatatype, Failure) {
     }
 
     {
-        auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, double>();
+        auto dtype = define_wrong_pointer_datatype<uint32_t, double>();
         EXPECT_ANY_THROW({
             try {
                 ritsuko::cvls::validate_pointer_datatype(dtype, 64, 64);
@@ -167,7 +179,7 @@ TEST(CvlsValidatePointerDatatype, Failure) {
     }
 
     {
-        auto dtype = ritsuko::cvls::define_pointer_datatype<uint64_t, int>();
+        auto dtype = define_wrong_pointer_datatype<uint64_t, int>();
         EXPECT_ANY_THROW({
             try {
                 ritsuko::cvls::validate_pointer_datatype(dtype, 64, 64);

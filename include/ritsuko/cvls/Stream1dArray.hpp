@@ -169,6 +169,8 @@ private:
     hsize_t my_last_loaded = 0;
     hsize_t my_available = 0;
 
+    static_assert(std::is_base_of<H5::DataSet, I<decltype(*my_pointers_ptr)> >::value);
+    static_assert(std::is_base_of<H5::DataSet, I<decltype(*my_heap_ptr)> >::value);
 };
 
 }

@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <string>
 #include <cstddef>
+#include <limits>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -43,6 +44,17 @@ struct Pointer {
      * The sum of `offset` and `length` should be no greater than the length of the heap dataset. 
      */
     Length_ length;
+
+    /**
+     * @cond
+     */
+    static_assert(std::is_integral<Offset_>::value);
+    static_assert(std::is_unsigned<Offset_>::value);
+    static_assert(std::is_integral<Length_>::value);
+    static_assert(std::is_unsigned<Length_>::value);
+    /**
+     * @endcond
+     */
 };
 
 /**

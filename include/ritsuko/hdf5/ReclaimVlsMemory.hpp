@@ -1,6 +1,8 @@
 #ifndef RITSUKO_HDF5_RECLAIM_VLS_MEMORY_HPP
 #define RITSUKO_HDF5_RECLAIM_VLS_MEMORY_HPP
 
+#include <type_traits>
+
 #include "H5Cpp.h"
 
 /**
@@ -69,6 +71,10 @@ private:
     DataSpacePointer_ my_space_ptr;
     DSetMemXferPropListPointer_ my_plist_ptr;
     char** my_buffer; 
+
+    static_assert(std::is_base_of<H5::DataType, I<decltype(*my_type_ptr)> >::value);
+    static_assert(std::is_base_of<H5::DataSpace, I<decltype(*my_space_ptr)> >::value);
+    static_assert(std::is_base_of<H5::DSetMemXferPropList, I<decltype(*my_plist_ptr)> >::value);
 };
 
 }

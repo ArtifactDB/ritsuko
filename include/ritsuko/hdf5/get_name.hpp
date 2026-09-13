@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <type_traits>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -31,6 +32,7 @@ std::string get_name(const Object_& obj) {
         obj.getName(name);
         return name;
     } else {
+        static_assert(std::is_base_of<H5::H5Object, Object_>::value);
         const auto len = H5Iget_name(obj.getId(), NULL, 0);
         std::vector<char> buffer(sanisizer::sum<typename std::vector<char>::size_type>(len, 1));
         H5Iget_name(obj.getId(), buffer.data(), sanisizer::cast<std::size_t>(buffer.size()));

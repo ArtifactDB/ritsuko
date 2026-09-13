@@ -1,12 +1,13 @@
 #ifndef RITSUKO_HDF5_STREAM_1D_STRING_DATASET_HPP
 #define RITSUKO_HDF5_STREAM_1D_STRING_DATASET_HPP
 
-#include "H5Cpp.h"
-
 #include <vector>
 #include <string>
 #include <stdexcept>
 #include <cassert>
+#include <type_traits>
+
+#include "H5Cpp.h"
 
 #include "get_name.hpp"
 #include "strnlen.hpp"
@@ -150,6 +151,8 @@ private:
 
     hsize_t my_last_loaded = 0;
     hsize_t my_available = 0;
+
+    static_assert(std::is_base_of<H5::DataSet, I<decltype(*my_data_ptr)> >::value);
 };
 
 }

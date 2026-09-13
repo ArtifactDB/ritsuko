@@ -4,6 +4,8 @@
 #include <vector>
 #include <stdexcept>
 #include <cassert>
+#include <limits>
+#include <type_traits>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -84,6 +86,8 @@ public:
      * If zero is returned, the dataset traversal is complete.
      */
     hsize_t load(Type_* buffer) {
+        static_assert(std::is_arithmetic<Type_>::value);
+
         my_last_loaded += my_available;
         my_available = std::min(my_full_length - my_last_loaded, my_block_size);
         if (my_available == 0) {
@@ -115,6 +119,8 @@ private:
     H5::DataSpace my_fspace;
     hsize_t my_last_loaded = 0;
     hsize_t my_available = 0;
+
+    static_assert(std::is_base_of<H5::DataSet, I<decltype(*my_data_ptr)> >::value);
 };
 
 }
