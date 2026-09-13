@@ -1,7 +1,7 @@
 <map id="ritsuko/hdf5/read_scalar_string.hpp" name="ritsuko/hdf5/read_scalar_string.hpp">
 <area shape="rect" id="Node000001" title="Convenience functions to read scalar strings." alt="" coords="272,5,432,46"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="498,168,569,193"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="383,44,446,92,513,155,510,159,442,96,379,49"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="588,168,660,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="433,33,490,42,548,55,596,71,615,81,627,92,635,107,638,123,635,153,630,153,633,123,630,108,623,96,612,85,594,76,546,60,489,47,432,38"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,168,59,193"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,40,192,61,151,76,112,96,77,125,50,157,46,154,73,121,109,92,148,71,190,56,271,35"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="83,168,141,193"/>
@@ -12,19 +12,22 @@
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="366,45,387,79,383,82,362,48"/>
 <area shape="rect" id="Node000007" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="141,94,243,120"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="313,49,231,89,229,84,311,44"/>
-<area shape="rect" id="Node000010" href="$strnlen_8hpp.html" title="Determine the length of a fixed&#45;size string." alt="" coords="688,94,773,120"/>
-<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="433,41,674,91,673,96,432,46"/>
-<area shape="rect" id="Node000012" href="$ReclaimVlsMemory_8hpp.html" title="Reclaim memory allocated to HDF5&#39;s variable length strings." alt="" coords="507,94,664,120"/>
-<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="411,44,536,86,534,91,409,49"/>
-<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="244,116,483,166,482,171,243,121"/>
+<area shape="rect" id="Node000011" href="$strnlen_8hpp.html" title="Determine the length of a fixed&#45;size string." alt="" coords="688,94,773,120"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="433,41,674,91,673,96,432,46"/>
+<area shape="rect" id="Node000013" href="$ReclaimVlsMemory_8hpp.html" title="Reclaim memory allocated to HDF5&#39;s variable length strings." alt="" coords="456,94,613,120"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="399,44,494,85,492,90,397,49"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="244,115,255,117,563,165,573,167,572,172,562,170,254,122,243,120"/>
 <area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="166,123,74,163,72,159,164,118"/>
 <area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="180,122,138,159,135,155,177,118"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="164,168,316,193"/>
-<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="202,118,226,153,221,156,198,121"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="340,168,420,193"/>
-<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="225,118,335,159,333,164,223,123"/>
-<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="698,123,582,165,580,159,696,118"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="698,168,763,193"/>
-<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="733,120,733,152,728,152,728,120"/>
-<area shape="poly" id="edge16_Node000012_Node000002" title=" " alt="" coords="579,121,553,157,549,153,575,118"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="469,168,550,193"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="244,117,454,164,453,169,243,122"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="268,168,420,193"/>
+<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="219,118,305,158,303,163,217,123"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="164,168,244,193"/>
+<area shape="poly" id="edge12_Node000007_Node000010" title=" " alt="" coords="197,119,202,152,197,153,191,120"/>
+<area shape="poly" id="edge14_Node000011_Node000002" title=" " alt="" coords="714,122,656,161,653,156,711,118"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="698,168,763,193"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="733,120,733,152,728,152,728,120"/>
+<area shape="poly" id="edge18_Node000013_Node000002" title=" " alt="" coords="551,118,599,156,595,160,548,122"/>
+<area shape="poly" id="edge17_Node000013_Node000008" title=" " alt="" coords="533,121,521,154,516,152,528,119"/>
 </map>

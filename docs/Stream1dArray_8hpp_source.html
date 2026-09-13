@@ -229,14 +229,16 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    hsize_t my_last_loaded = 0;</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    hsize_t my_available = 0;</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>};</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keyword">static_assert</span>(std::is_base_of&lt;H5::DataSet, I&lt;<span class="keyword">decltype</span>(*my_pointers_ptr)&gt; &gt;::value);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keyword">static_assert</span>(std::is_base_of&lt;H5::DataSet, I&lt;<span class="keyword">decltype</span>(*my_heap_ptr)&gt; &gt;::value);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>};</div>
 </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>}</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>}</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aPointer_8hpp_html"><div class="ttname"><a href="Pointer_8hpp.html">Pointer.hpp</a></div><div class="ttdoc">Compound datatype of the compresed VLS heap pointer.</div></div>
 <div class="ttc" id="aclassritsuko_1_1cvls_1_1Stream1dArray_html"><div class="ttname"><a href="classritsuko_1_1cvls_1_1Stream1dArray.html">ritsuko::cvls::Stream1dArray</a></div><div class="ttdoc">Stream a 1-dimensional compressed VLS array into memory.</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:39</div></div>
 <div class="ttc" id="aclassritsuko_1_1cvls_1_1Stream1dArray_html_a04779d6100730f1d1da798ff8d61a008"><div class="ttname"><a href="classritsuko_1_1cvls_1_1Stream1dArray.html#a04779d6100730f1d1da798ff8d61a008">ritsuko::cvls::Stream1dArray::load</a></div><div class="ttdeci">hsize_t load(std::string *buffer)</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:98</div></div>
@@ -244,11 +246,11 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclassritsuko_1_1cvls_1_1Stream1dArray_html_ada24c79553c9f0af9d602f0646f3075c"><div class="ttname"><a href="classritsuko_1_1cvls_1_1Stream1dArray.html#ada24c79553c9f0af9d602f0646f3075c">ritsuko::cvls::Stream1dArray::Stream1dArray</a></div><div class="ttdeci">Stream1dArray(DataSetPointer_ pointers_ptr, hsize_t length, DataSetPointer_ heap_ptr)</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:49</div></div>
 <div class="ttc" id="aclassritsuko_1_1cvls_1_1Stream1dArray_html_ae1e76779e15e1a95894abd55434a08a4"><div class="ttname"><a href="classritsuko_1_1cvls_1_1Stream1dArray.html#ae1e76779e15e1a95894abd55434a08a4">ritsuko::cvls::Stream1dArray::start</a></div><div class="ttdeci">hsize_t start() const</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:153</div></div>
 <div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_ab2f108342f0b595b891d6f61166bca63"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">ritsuko::cvls::define_pointer_datatype</a></div><div class="ttdeci">H5::CompType define_pointer_datatype()</div><div class="ttdef"><b>Definition</b> Pointer.hpp:57</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1cvls_html_ad3aea60d4e5951f489b2cd4d8cca1898"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#ad3aea60d4e5951f489b2cd4d8cca1898">ritsuko::cvls::is_Pointer_out_of_range</a></div><div class="ttdeci">bool is_Pointer_out_of_range(const Pointer&lt; Offset_, Length_ &gt; &amp;ptr, const hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> Pointer.hpp:136</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:28</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_ab2f108342f0b595b891d6f61166bca63"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">ritsuko::cvls::define_pointer_datatype</a></div><div class="ttdeci">H5::CompType define_pointer_datatype()</div><div class="ttdef"><b>Definition</b> Pointer.hpp:69</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1cvls_html_ad3aea60d4e5951f489b2cd4d8cca1898"><div class="ttname"><a href="namespaceritsuko_1_1cvls.html#ad3aea60d4e5951f489b2cd4d8cca1898">ritsuko::cvls::is_Pointer_out_of_range</a></div><div class="ttdeci">bool is_Pointer_out_of_range(const Pointer&lt; Offset_, Length_ &gt; &amp;ptr, const hsize_t heap_length)</div><div class="ttdef"><b>Definition</b> Pointer.hpp:148</div></div>
+<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:29</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ab50df338dbb7fed71795d0f0772d7307"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ab50df338dbb7fed71795d0f0772d7307">ritsuko::hdf5::strnlen</a></div><div class="ttdeci">std::size_t strnlen(const char *ptr, std::size_t max)</div><div class="ttdef"><b>Definition</b> strnlen.hpp:25</div></div>
-<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:20</div></div>
+<div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:21</div></div>
 <div class="ttc" id="astrnlen_8hpp_html"><div class="ttname"><a href="strnlen_8hpp.html">strnlen.hpp</a></div><div class="ttdoc">Determine the length of a fixed-size string.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
