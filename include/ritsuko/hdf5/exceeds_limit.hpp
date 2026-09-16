@@ -2,7 +2,9 @@
 #define RITSUKO_HDF5_FORBID_LARGE_INTEGERS_HPP
 
 #include "H5Cpp.h"
+
 #include <stdexcept>
+#include <cstddef>
 
 /**
  * @file exceeds_limit.hpp
@@ -22,9 +24,8 @@ namespace hdf5 {
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the datatype cannot be represented by the limiting integer type.
- * `true` is also returned for non-integer datasets.
  */
-inline bool exceeds_integer_limit(const H5::IntType& itype, size_t precision, bool is_signed) {
+inline bool exceeds_integer_limit(const H5::IntType& itype, std::size_t precision, bool is_signed) {
     if (itype.getSign() == H5T_SGN_NONE) {
         if (is_signed) {
             return (itype.getPrecision() >= precision); // equality, as one bit of the limiting type is used for the sign.
@@ -49,8 +50,9 @@ inline bool exceeds_integer_limit(const H5::IntType& itype, size_t precision, bo
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the dataset uses a datatype than cannot be represented by the limiting integer type.
+ * This will also return `true` for non-integer datasets.
  */
-inline bool exceeds_integer_limit(const H5::DataSet& data, size_t precision, bool is_signed) {
+inline bool exceeds_integer_limit(const H5::DataSet& data, std::size_t precision, bool is_signed) {
     if (data.getTypeClass() != H5T_INTEGER) {
         return true;
     }
@@ -67,8 +69,9 @@ inline bool exceeds_integer_limit(const H5::DataSet& data, size_t precision, boo
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the attribute uses a datatype than cannot be represented by the limiting integer type.
+ * This will also return `true` for non-integer attributes.
  */
-inline bool exceeds_integer_limit(const H5::Attribute& attr, size_t precision, bool is_signed) {
+inline bool exceeds_integer_limit(const H5::Attribute& attr, std::size_t precision, bool is_signed) {
     if (attr.getTypeClass() != H5T_INTEGER) {
         return true;
     }
@@ -78,7 +81,7 @@ inline bool exceeds_integer_limit(const H5::Attribute& attr, size_t precision, b
 /**
  * @cond
  */
-inline bool exceeds_float_limit_by_integer(const H5::IntType& itype, size_t precision) {
+inline bool exceeds_float_limit_by_integer(const H5::IntType& itype, std::size_t precision) {
     if (precision >= 64) {
         return exceeds_integer_limit(itype, 53, true);
     } else if (precision >= 32) {
@@ -88,7 +91,7 @@ inline bool exceeds_float_limit_by_integer(const H5::IntType& itype, size_t prec
     }
 }
 
-inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, size_t precision) {
+inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, std::size_t precision) {
     // Only considering IEEE-compatible types here.
     if (precision >= 64) {
         return !(
@@ -111,7 +114,7 @@ inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, size_t prec
  */
 
 /**
- * Check if a HDF5 datatype could hold values beyond the range of a limiting (IEEE754-compliant) float type.
+ * Check if a HDF5 dataset's datatype could hold values beyond the range of a limiting (IEEE754-compliant) float type.
  * This is used by validators to ensure that a dataset can be represented in memory by the limiting type.
  *
  * Note that the limiting float type is assumed to be IEEE754-compliant.
@@ -120,6 +123,10 @@ inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, size_t prec
  * such that two float datatypes with the same number of bits could represent a different set of numbers.
  * (Though this seems unlikely in practice, as all CPU-specific predefined float types in later HDF5 versions are already aliases of the IEEE types.)
  *
+ * This function may return `false` for integer datasets provided that the integer datatype is small enough.
+ * Specifically, it must be small enough so that all integer values can be exactly represented in the limiting float type.
+ * For double- and single- precision IEEE754 floats, this means that the integer must be no more than 53 and 24 bits, respectively.
+ *
  * @param data A HDF5 dataset.
  * Its datatype may be of any class.
  * @param precision Number of bits in the limiting float type.
@@ -127,7 +134,7 @@ inline bool exceeds_float_limit_by_float(const H5::FloatType& ftype, size_t prec
  * @return Whether the dataset uses a datatype than cannot be represented by the limiting float type.
  * `true` is also returned for non-numeric datasets.
  */
-inline bool exceeds_float_limit(const H5::DataSet& data, size_t precision) {
+inline bool exceeds_float_limit(const H5::DataSet& data, std::size_t precision) {
     auto tclass = data.getTypeClass();
     if (tclass == H5T_INTEGER) {
         return exceeds_float_limit_by_integer(H5::IntType(data), precision);
@@ -148,7 +155,7 @@ inline bool exceeds_float_limit(const H5::DataSet& data, size_t precision) {
  * @return Whether the attribute uses a datatype than cannot be represented by the limiting integer type.
  * `true` is also returned for non-numeric attributes.
  */
-inline bool exceeds_float_limit(const H5::Attribute& attr, size_t precision) {
+inline bool exceeds_float_limit(const H5::Attribute& attr, std::size_t precision) {
     auto tclass = attr.getTypeClass();
     if (tclass == H5T_INTEGER) {
         return exceeds_float_limit_by_integer(attr.getIntType(), precision);
