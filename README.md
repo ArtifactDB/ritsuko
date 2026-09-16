@@ -8,10 +8,10 @@
 
 **ritsuko** provides common utilities for parsing and validation throughout the [ArtifactDB](https://github.com/ArtifactDB) C++ codebase.
 This is generally not intended for consumption by external developers, but they are nonetheless free to use it. 
-Functionality includes some convenience functions for HDF5 parsing, validation of compressed VLS arrays, and date/time string checking functions.jV
+Functionality includes some convenience functions for HDF5 parsing, validation of compressed VLS arrays, and date/time string checking functions.
 
 Check out the [reference documentation](https://artifactdb.github.io/ritsuko) for available functions.
-In addition, the following documents contain some explanations on the design decisions used in ArtifactDB:
+In addition, the following documents contain explanations on the design decisions used throughout ArtifactDB:
 
 - [HDF5 internal organization](docs/topics/internal-organization.md)
 - [Datatype constraints](docs/topics/datatype-constraints.md)
