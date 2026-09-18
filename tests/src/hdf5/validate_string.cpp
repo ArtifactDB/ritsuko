@@ -5,7 +5,7 @@
 #include <numeric>
 #include <string>
 
-TEST(Hdf5ValidateString, FixedScalar) {
+TEST(Hdf5ValidateString, FixedScalarDataset) {
     const char* path = "TEST-validate-string.h5";
 
     size_t strlen = 5;
@@ -24,7 +24,7 @@ TEST(Hdf5ValidateString, FixedScalar) {
     ritsuko::hdf5::validate_scalar_string(dhandle);
 }
 
-TEST(Hdf5ValidateString, Fixed1dimensional) {
+TEST(Hdf5ValidateString, Fixed1dimensionalDataset) {
     const char* path = "TEST-validate-string.h5";
 
     // Doesn't really matter if it's compressed or not, as fixed-length strings are no-ops here.
@@ -47,7 +47,7 @@ TEST(Hdf5ValidateString, Fixed1dimensional) {
     }
 }
 
-TEST(Hdf5ValidateString, FixedNdimensional) {
+TEST(Hdf5ValidateString, FixedNdimensionalDataset) {
     const char* path = "TEST-validate-string.h5";
 
     // Doesn't really matter if it's compressed or not, as fixed-length strings are no-ops here.
@@ -74,7 +74,7 @@ TEST(Hdf5ValidateString, FixedNdimensional) {
     }
 }
 
-TEST(Hdf5ValidateString, VariableScalar) {
+TEST(Hdf5ValidateString, VariableScalarDataset) {
     const char* path = "TEST-validate-string.h5";
 
     H5::StrType stype(0, H5T_VARIABLE);
@@ -113,9 +113,11 @@ TEST(Hdf5ValidateString, VariableScalar) {
     }
 }
 
+/*************************************/
+
 class Hdf5ValidateStringTest : public ::testing::TestWithParam<bool> {};
 
-TEST_P(Hdf5ValidateStringTest, Variable1dimensional) {
+TEST_P(Hdf5ValidateStringTest, Variable1dimensionalDataset) {
     const auto chunked = GetParam();
     const char* path = "TEST-validate-string.h5";
 
@@ -180,7 +182,7 @@ TEST_P(Hdf5ValidateStringTest, Variable1dimensional) {
     }
 }
 
-TEST_P(Hdf5ValidateStringTest, VariableNdimensional) {
+TEST_P(Hdf5ValidateStringTest, VariableNdimensionalDataset) {
     const auto chunked = GetParam();
     const char* path = "TEST-validate-string.h5";
 
@@ -251,3 +253,142 @@ INSTANTIATE_TEST_SUITE_P(
    Hdf5ValidateStringTest,
    ::testing::Values(false, true)
 );
+
+/*************************************/
+
+TEST(Hdf5ValidateString, FixedScalarAttribute) {
+    const char* path = "TEST-validate-string.h5";
+
+    size_t strlen = 5;
+    std::vector<char> buffer(strlen, 'x');
+    H5::StrType stype(0, strlen);
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        auto ghandle = handle.createGroup("foo");
+        auto ahandle = ghandle.createAttribute("bar", stype, H5S_SCALAR);
+        ahandle.write(stype, buffer.data());
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    auto ahandle = handle.openGroup("foo").openAttribute("bar");
+    ritsuko::hdf5::validate_scalar_string(ahandle);
+}
+
+TEST(Hdf5ValidateString, Fixed1dimensionalAttribute) {
+    const char* path = "TEST-validate-string.h5";
+
+    hsize_t dim = 77;
+    size_t strlen = 3;
+    std::vector<char> buffer(strlen * dim, 'a');
+    H5::StrType stype(0, strlen);
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        auto ghandle = handle.createGroup("foo");
+        auto ahandle = ghandle.createAttribute("bar", stype, H5::DataSpace(1, &dim));
+        ahandle.write(stype, buffer.data());
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    auto ahandle = handle.openGroup("foo").openAttribute("bar");
+    ritsuko::hdf5::validate_1d_strings(ahandle, dim);
+}
+
+TEST(Hdf5ValidateString, VariableScalarAttribute) {
+    const char* path = "TEST-validate-string.h5";
+
+    H5::StrType stype(0, H5T_VARIABLE);
+
+    // Empty dataset fails.
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        auto ghandle = handle.createGroup("foo");
+        auto ahandle = ghandle.createAttribute("bar", stype, H5S_SCALAR);
+    }
+
+    {
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto ahandle = handle.openGroup("foo").openAttribute("bar");
+        std::string msg;
+        try {
+            ritsuko::hdf5::validate_scalar_string(ahandle);
+        } catch (std::exception& e) {
+            msg = e.what();
+        }
+        EXPECT_THAT(msg, ::testing::HasSubstr("NULL pointer"));
+    }
+
+    // Passes once we fill it.
+    {
+        H5::H5File handle(path, H5F_ACC_RDWR);
+        auto ahandle = handle.openGroup("foo").openAttribute("bar");
+        std::string okay = "okay";
+        ahandle.write(stype, okay);
+    }
+
+    {
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto ahandle = handle.openGroup("foo").openAttribute("bar");
+        ritsuko::hdf5::validate_scalar_string(ahandle);
+    }
+}
+
+TEST(Hdf5ValidateString, Variable1dimensionalAttribute) {
+    const char* path = "TEST-validate-string.h5";
+
+    hsize_t dim = 97;
+    H5::DataSpace dspace(1, &dim);
+
+    const char * placeholder = "akari";
+    std::vector<const char*> ptrs(dim, placeholder);
+    H5::StrType stype(0, H5T_VARIABLE);
+
+    // Validation succeeds with valid strings.
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        auto ghandle = handle.createGroup("foo");
+        auto ahandle = ghandle.createAttribute("bar", stype, H5::DataSpace(1, &dim));
+        ahandle.write(stype, ptrs.data());
+    }
+
+    {
+        H5::H5File handle(path, H5F_ACC_RDONLY);
+        auto ahandle = handle.openGroup("foo").openAttribute("bar");
+        ritsuko::hdf5::validate_1d_strings(ahandle, dim);
+    }
+
+    // Now injecting a NULL at some key places and checking that the validator can find it.
+    for (int scenario = 0; scenario < 3; ++scenario) {
+        std::size_t loc; 
+        if (scenario == 0) {
+            loc = 0;
+        } else if (scenario == 1) {
+            loc = dim / 2;
+        } else {
+            loc = dim - 1;
+        }
+
+        ptrs[loc] = NULL;
+
+        {
+            H5::H5File handle(path, H5F_ACC_RDWR);
+            auto ahandle = handle.openGroup("foo").openAttribute("bar");
+            ahandle.write(stype, ptrs.data());
+        }
+
+        {
+            H5::H5File handle(path, H5F_ACC_RDONLY);
+            auto ahandle = handle.openGroup("foo").openAttribute("bar");
+            std::string msg;
+            try {
+                ritsuko::hdf5::validate_1d_strings(ahandle, dim);
+            } catch (std::exception& e) {
+                msg = e.what();
+            }
+            EXPECT_THAT(msg, ::testing::HasSubstr("NULL pointer"));
+        }
+
+        ptrs[loc] = placeholder;
+    }
+}

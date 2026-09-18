@@ -166,7 +166,7 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
  * It is assumed that this attribute is scalar.
  * It is also assumed that its datatype is of the string class.
  */
-inline void validate_scalar_string_attribute(const H5::Attribute& attr) {
+inline void validate_scalar_string(const H5::Attribute& attr) {
     assert(attr.getSpace().getSimpleExtentNdims() == 0);
     assert(attr.getDataType().getClass() == H5T_STRING);
 
@@ -195,7 +195,7 @@ inline void validate_scalar_string_attribute(const H5::Attribute& attr) {
  * It is also assumed that its datatype is of the string class.
  * @param full_length Length of the attribute, i.e., the extent of its sole dimension.
  */
-inline void validate_1d_string_attribute(const H5::Attribute& attr, hsize_t full_length) {
+inline void validate_1d_strings(const H5::Attribute& attr, hsize_t full_length) {
     assert(attr.getSpace().getSimpleExtentNdims() == 1);
     assert(attr.getDataType().getClass() == H5T_STRING);
 
