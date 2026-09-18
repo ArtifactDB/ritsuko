@@ -101,16 +101,19 @@ $(function(){ initResizable(false); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;H5Cpp.h&quot;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for exceeds_limit.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="exceeds__limit_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2exceeds__limit_8hpp" alt=""/></div>
 <map name="aritsuko_2hdf5_2exceeds__limit_8hpp" id="aritsuko_2hdf5_2exceeds__limit_8hpp">
-<area shape="rect" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="20,5,161,46"/>
+<area shape="rect" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="69,5,210,46"/>
 <area shape="rect" title=" " alt="" coords="5,94,77,120"/>
-<area shape="poly" title=" " alt="" coords="80,48,59,82,54,79,76,45"/>
+<area shape="poly" title=" " alt="" coords="117,48,70,86,66,82,114,44"/>
 <area shape="rect" title=" " alt="" coords="101,94,178,120"/>
-<area shape="poly" title=" " alt="" coords="105,45,126,79,122,82,100,48"/>
+<area shape="poly" title=" " alt="" coords="142,46,142,78,137,78,137,46"/>
+<area shape="rect" title=" " alt="" coords="202,94,266,120"/>
+<area shape="poly" title=" " alt="" coords="165,44,210,82,207,86,161,48"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -146,16 +149,16 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6cd65a78811faa2894a672f5ce993949" id="r_a6cd65a78811faa2894a672f5ce993949"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a6cd65a78811faa2894a672f5ce993949">ritsuko::hdf5::exceeds_integer_limit</a> (const H5::IntType &amp;itype, size_t precision, bool is_signed)</td></tr>
-<tr class="separator:a6cd65a78811faa2894a672f5ce993949"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0060e0e567cca4777de2a86e1a78e075" id="r_a0060e0e567cca4777de2a86e1a78e075"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a0060e0e567cca4777de2a86e1a78e075">ritsuko::hdf5::exceeds_integer_limit</a> (const H5::DataSet &amp;data, size_t precision, bool is_signed)</td></tr>
-<tr class="separator:a0060e0e567cca4777de2a86e1a78e075"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30fdc08bda57c7d14c40e6f62b8399e3" id="r_a30fdc08bda57c7d14c40e6f62b8399e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a30fdc08bda57c7d14c40e6f62b8399e3">ritsuko::hdf5::exceeds_integer_limit</a> (const H5::Attribute &amp;attr, size_t precision, bool is_signed)</td></tr>
-<tr class="separator:a30fdc08bda57c7d14c40e6f62b8399e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75437c5e8c8b6eed3e3613f23d761e5a" id="r_a75437c5e8c8b6eed3e3613f23d761e5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a75437c5e8c8b6eed3e3613f23d761e5a">ritsuko::hdf5::exceeds_float_limit</a> (const H5::DataSet &amp;data, size_t precision)</td></tr>
-<tr class="separator:a75437c5e8c8b6eed3e3613f23d761e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae495a6326a3b8eaa96e04bf68eda5e02" id="r_ae495a6326a3b8eaa96e04bf68eda5e02"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ae495a6326a3b8eaa96e04bf68eda5e02">ritsuko::hdf5::exceeds_float_limit</a> (const H5::Attribute &amp;attr, size_t precision)</td></tr>
-<tr class="separator:ae495a6326a3b8eaa96e04bf68eda5e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e931e9ab9cf2cbae2a9865f72177f88" id="r_a5e931e9ab9cf2cbae2a9865f72177f88"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a5e931e9ab9cf2cbae2a9865f72177f88">ritsuko::hdf5::exceeds_integer_limit</a> (const H5::IntType &amp;itype, std::size_t precision, bool is_signed)</td></tr>
+<tr class="separator:a5e931e9ab9cf2cbae2a9865f72177f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80df306e30993c8c29b1f6a6e5bd9095" id="r_a80df306e30993c8c29b1f6a6e5bd9095"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a80df306e30993c8c29b1f6a6e5bd9095">ritsuko::hdf5::exceeds_integer_limit</a> (const H5::DataSet &amp;data, std::size_t precision, bool is_signed)</td></tr>
+<tr class="separator:a80df306e30993c8c29b1f6a6e5bd9095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa4db0b8b2b1a4e79874f8693978f30" id="r_aafa4db0b8b2b1a4e79874f8693978f30"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#aafa4db0b8b2b1a4e79874f8693978f30">ritsuko::hdf5::exceeds_integer_limit</a> (const H5::Attribute &amp;attr, std::size_t precision, bool is_signed)</td></tr>
+<tr class="separator:aafa4db0b8b2b1a4e79874f8693978f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a597697dc2595ce137bdae40622075" id="r_ab3a597697dc2595ce137bdae40622075"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ab3a597697dc2595ce137bdae40622075">ritsuko::hdf5::exceeds_float_limit</a> (const H5::DataSet &amp;data, std::size_t precision)</td></tr>
+<tr class="separator:ab3a597697dc2595ce137bdae40622075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b943572affc708f5ab0c65df87b7aa" id="r_a52b943572affc708f5ab0c65df87b7aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a52b943572affc708f5ab0c65df87b7aa">ritsuko::hdf5::exceeds_float_limit</a> (const H5::Attribute &amp;attr, std::size_t precision)</td></tr>
+<tr class="separator:a52b943572affc708f5ab0c65df87b7aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Check for larger-than-expected types in HDF5 datasets. </p>
