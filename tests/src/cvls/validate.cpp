@@ -56,6 +56,50 @@ TEST(CvlsValidatePointers, GeneralErrors) {
     }
 }
 
+TEST(CvlsValidatePointers, Scalar) {
+    const std::string path = "TEST-vls-validate.h5";
+
+    {
+        H5::H5File handle(path, H5F_ACC_TRUNC);
+        auto dtype = ritsuko::cvls::define_pointer_datatype<std::uint32_t, std::uint32_t>();
+        ritsuko::cvls::Pointer<std::uint32_t, std::uint32_t> data;
+        data.offset = 0;
+        data.length = 10;
+
+        H5::DataSpace dspace;
+        auto dhandle = handle.createDataSet("stuff", dtype, dspace);
+        dhandle.write(&data, dtype);
+    }
+
+    H5::H5File handle(path, H5F_ACC_RDONLY);
+    auto dhandle = handle.openDataSet("stuff");
+    ritsuko::cvls::validate_scalar_pointer<std::uint64_t, std::uint64_t>(dhandle, 100);
+
+    // Fails if pointers are out of range.
+    {
+        std::string errmsg = "no_error";
+        try {
+            ritsuko::cvls::validate_scalar_pointer<std::uint64_t, std::uint64_t>(dhandle, 5);
+        } catch (std::exception& e) {
+            errmsg = e.what();
+        }
+        EXPECT_THAT(errmsg, ::testing::HasSubstr("out of range"));
+    }
+
+    // Fails if the type is too small.
+    {
+        std::string errmsg = "no_error";
+        try {
+            ritsuko::cvls::validate_scalar_pointer<std::uint16_t, std::uint16_t>(dhandle, 100);
+        } catch (std::exception& e) {
+            errmsg = e.what();
+        }
+        EXPECT_THAT(errmsg, ::testing::HasSubstr("first member"));
+    }
+}
+
+/************************************/
+
 class CvlsValidatePointersTest : public ::testing::TestWithParam<bool> {};
 
 TEST_P(CvlsValidatePointersTest, OneDim) {
@@ -157,13 +201,8 @@ TEST_P(CvlsValidatePointersTest, NDim) {
     }
 }
 
-INSTANTIATE_TEST_SUITE_P(
-    CvlsValidatePointers,
-    CvlsValidatePointersTest,
-    ::testing::Values(false, true)
-);
-
-TEST(CvlsValidatePointers, OneDimError) {
+TEST_P(CvlsValidatePointersTest, OneDimIterationError) {
+    const bool chunked = GetParam();
     const std::string path = "TEST-vls-validate.h5";
     hsize_t nlen = 103; 
     hsize_t heap = 100;
@@ -171,8 +210,14 @@ TEST(CvlsValidatePointers, OneDimError) {
     auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
+        H5::DSetCreatPropList cplist;
+        if (chunked) {
+            hsize_t chunk = 12;
+            cplist.setDeflate(6);
+            cplist.setChunk(1, &chunk);
+        }
         H5::DataSpace dspace(1, &nlen);
-        auto dhandle = handle.createDataSet("foobar", dtype, dspace);
+        auto dhandle = handle.createDataSet("foobar", dtype, dspace, cplist);
     }
 
     std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > data(nlen);
@@ -181,7 +226,7 @@ TEST(CvlsValidatePointers, OneDimError) {
         data[i].length = 10;
     }
 
-    // Injecting errors at different locations to check that we actually iterate through the entire dataset.
+    // Injecting errors at different locations to check that we actually iterate through the entire chunked dataset.
     for (int scenario = 0; scenario < 3; ++scenario) {
         std::size_t loc; 
         if (scenario == 0) {
@@ -224,19 +269,26 @@ TEST(CvlsValidatePointers, OneDimError) {
     }
 }
 
-TEST(CvlsValidatePointers, NDimErrors) {
+TEST_P(CvlsValidatePointersTest, NDimIterationError) {
+    const bool chunked = GetParam();
     const std::string path = "TEST-vls-validate.h5";
     std::vector<hsize_t> dims{ 78, 51 };
-    hsize_t nlen = dims[0] * dims[1];
-    hsize_t heap = 100;
+    const hsize_t heap = 100;
 
     auto dtype = ritsuko::cvls::define_pointer_datatype<uint32_t, uint32_t>();
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
+        H5::DSetCreatPropList cplist;
+        if (chunked) {
+            std::vector<hsize_t> chunk{ 12, 17 };
+            cplist.setDeflate(6);
+            cplist.setChunk(2, chunk.data());
+        }
         H5::DataSpace dspace(2, dims.data());
-        auto dhandle = handle.createDataSet("foobar", dtype, dspace);
+        auto dhandle = handle.createDataSet("foobar", dtype, dspace, cplist);
     }
 
+    const hsize_t nlen = dims[0] * dims[1];
     std::vector<ritsuko::cvls::Pointer<uint32_t, uint32_t> > data(nlen);
     for (size_t i = 0; i < nlen; ++i) {
         data[i].offset = 0;
@@ -285,47 +337,13 @@ TEST(CvlsValidatePointers, NDimErrors) {
     }
 }
 
-TEST(CvlsValidatePointers, Scalar) {
-    const std::string path = "TEST-vls-validate.h5";
+INSTANTIATE_TEST_SUITE_P(
+    CvlsValidatePointers,
+    CvlsValidatePointersTest,
+    ::testing::Values(false, true)
+);
 
-    {
-        H5::H5File handle(path, H5F_ACC_TRUNC);
-        auto dtype = ritsuko::cvls::define_pointer_datatype<std::uint32_t, std::uint32_t>();
-        ritsuko::cvls::Pointer<std::uint32_t, std::uint32_t> data;
-        data.offset = 0;
-        data.length = 10;
-
-        H5::DataSpace dspace;
-        auto dhandle = handle.createDataSet("stuff", dtype, dspace);
-        dhandle.write(&data, dtype);
-    }
-
-    H5::H5File handle(path, H5F_ACC_RDONLY);
-    auto dhandle = handle.openDataSet("stuff");
-    ritsuko::cvls::validate_scalar_pointer<std::uint64_t, std::uint64_t>(dhandle, 100);
-
-    // Fails if pointers are out of range.
-    {
-        std::string errmsg = "no_error";
-        try {
-            ritsuko::cvls::validate_scalar_pointer<std::uint64_t, std::uint64_t>(dhandle, 5);
-        } catch (std::exception& e) {
-            errmsg = e.what();
-        }
-        EXPECT_THAT(errmsg, ::testing::HasSubstr("out of range"));
-    }
-
-    // Fails if the type is too small.
-    {
-        std::string errmsg = "no_error";
-        try {
-            ritsuko::cvls::validate_scalar_pointer<std::uint16_t, std::uint16_t>(dhandle, 100);
-        } catch (std::exception& e) {
-            errmsg = e.what();
-        }
-        EXPECT_THAT(errmsg, ::testing::HasSubstr("first member"));
-    }
-}
+/************************************/
 
 TEST(CvlsValidateHeap, Basic) {
     const std::string path = "TEST-vls-heap.h5";
