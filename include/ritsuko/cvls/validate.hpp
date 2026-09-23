@@ -35,7 +35,7 @@ namespace cvls {
  *
  * @param data A HDF5 dataset. 
  * It is assumed that this dataset is scalar.
- * @param heap_length Length of the heap dataset. 
+ * @param heap_length Length of the heap dataset, see `validate_heap()`.
  */
 template<typename Offset_, typename Length_>
 inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length) {
@@ -62,7 +62,7 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
  * @param data A HDF5 dataset. 
  * It is assumed that this dataset is 1-dimensional.
  * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
- * @param heap_length Length of the heap dataset. 
+ * @param heap_length Length of the heap dataset, see `validate_heap()`.
  */
 template<typename Offset_, typename Length_>
 inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, hsize_t heap_length) {
@@ -114,7 +114,7 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
  * It is assumed that this dataset has at least 1 dimension.
  * @param dimensions Dimensions of the dataset. 
  * This should be non-empty.
- * @param heap_length Length of the heap dataset. 
+ * @param heap_length Length of the heap dataset, see `validate_heap()`.
  */
 template<typename Offset_, typename Length_>
 void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length) {
@@ -162,17 +162,23 @@ void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& d
  *
  * @param data A HDF5 dataset.
  * It may have any shape and its datatype may be of any class.
+ *
+ * @return Extent of the sole dimension of `data`, typically for use as `heap_length` in `validate_nd_pointers()` and related functions.
  */
-inline void validate_heap(const H5::DataSet& data) {
+inline hsize_t validate_heap(const H5::DataSet& data) {
     if (data.getTypeClass() != H5T_INTEGER) {
         throw std::runtime_error("expected an integer datatype for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
     }
     if (hdf5::exceeds_integer_limit(data.getIntType(), 8, false)) {
         throw std::runtime_error("expected 8-bit unsigned integers for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
     }
-    if (data.getSpace().getSimpleExtentNdims() != 1) {
+    auto dspace = data.getSpace();
+    if (dspace.getSimpleExtentNdims() != 1) {
         throw std::runtime_error("expected a 1-dimensional dataset for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
     }
+    hsize_t len;
+    dspace.getSimpleExtentDims(&len);
+    return len;
 }
 
 }

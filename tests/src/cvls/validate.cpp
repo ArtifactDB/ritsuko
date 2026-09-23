@@ -369,7 +369,7 @@ TEST(CvlsValidateHeap, Basic) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foo");
-    ritsuko::cvls::validate_heap(dhandle);
+    EXPECT_EQ(ritsuko::cvls::validate_heap(dhandle), 10);
 
     {
         auto xhandle = handle.openDataSet("bar");
