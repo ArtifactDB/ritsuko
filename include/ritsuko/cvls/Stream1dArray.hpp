@@ -42,19 +42,17 @@ public:
      * @param pointers_ptr Pointer to a HDF5 dataset containing the compressed VLS pointers.
      * It is assumed that this dataset satisfies `validate_pointer_datatype()`.
      * It is also assumed that this dataset is 1-dimensional.
-     * @param length Length of the `pointers_ptr` dataset, i.e., the extent of its sole dimension.
+     * @param pointers_length Length of the `pointers_ptr` dataset, i.e., the extent of its sole dimension.
      * @param heap_ptr Pointer to a HDF5 dataset containing the compressed VLS heap.
      * It is assumed that this dataset already satisfies `validate_heap()`.
+     * @param heap_length Length of the `heap_ptr` dataset, i.e, the extent of its sole dimension.
+     * This can be set to the return value of `validate_heap()`.
      */
-    Stream1dArray(DataSetPointer_ pointers_ptr, hsize_t length, DataSetPointer_ heap_ptr) : 
+    Stream1dArray(DataSetPointer_ pointers_ptr, hsize_t pointers_length, DataSetPointer_ heap_ptr, hsize_t heap_length) : 
         my_pointers_ptr(std::move(pointers_ptr)), 
         my_heap_ptr(std::move(heap_ptr)),
-        my_pointer_full_length(length), 
-        my_heap_full_length([&]{
-            hsize_t output;
-            my_heap_ptr->getSpace().getSimpleExtentDims(&output);
-            return output;
-        }()),
+        my_pointer_full_length(pointers_length), 
+        my_heap_full_length(heap_length),
         my_pointer_block_size([&]{
             assert(my_pointers_ptr->getSpace().getSimpleExtentNdims() == 1);
             hsize_t output;

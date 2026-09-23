@@ -48,6 +48,7 @@ TEST_P(CvlsStream1dArrayTest, Basic) {
 
     // Creating a file.
     const std::string path = "TEST-vls-stream.h5";
+    std::size_t heap_len;
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
 
@@ -57,6 +58,7 @@ TEST_P(CvlsStream1dArrayTest, Basic) {
         create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ (chunked ? 51 : 0));
 
         auto heap = create_heap(example, count);
+        heap_len = heap.size();
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
@@ -64,7 +66,7 @@ TEST_P(CvlsStream1dArrayTest, Basic) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle, heap_len);
 
     std::vector<std::string> chunk(stream.chunk_size());
     hsize_t total = 0;
@@ -99,6 +101,7 @@ TEST(CvlsStream1dArray, NullTerminated) {
 
     // Creating a file.
     const std::string path = "TEST-vls-stream.h5";
+    std::size_t heap_len;
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
         size_t extra = 2; // injecting some extra null terminators, to check that we respect the first null.
@@ -109,13 +112,14 @@ TEST(CvlsStream1dArray, NullTerminated) {
         create_vls_pointer_dataset(handle, "foo", pointers, dtype, /* chunk_size = */ 17);
 
         auto heap = create_heap(example, count, extra);
+        heap_len = heap.size();
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle);
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle, heap_len);
 
     std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
@@ -139,6 +143,7 @@ TEST(CvlsStream1dArray, Unicode) {
 
     // Creating a file.
     const std::string path = "TEST-vls-stream.h5";
+    std::size_t heap_len;
     {
         H5::H5File handle(path, H5F_ACC_TRUNC);
 
@@ -148,6 +153,7 @@ TEST(CvlsStream1dArray, Unicode) {
         create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
         auto heap = create_heap(example, count);
+        heap_len = heap.size();
         create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
     }
 
@@ -155,7 +161,7 @@ TEST(CvlsStream1dArray, Unicode) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, nlen, &chandle);
+    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, nlen, &chandle, heap_len);
 
     std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
@@ -174,6 +180,7 @@ TEST(CvlsStream1dArray, Failures) {
 
     // Start is out of range.
     {
+        std::size_t heap_len;
         {
             H5::H5File handle(path, H5F_ACC_TRUNC);
 
@@ -184,13 +191,14 @@ TEST(CvlsStream1dArray, Failures) {
             create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
             std::vector<unsigned char> heap;
+            heap_len = heap.size();
             create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
         }
 
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = handle.openDataSet("foo");
         auto chandle = handle.openDataSet("bar");
-        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle, heap_len);
 
         std::vector<std::string> chunk(stream.chunk_size());
         std::string msg;
@@ -204,6 +212,7 @@ TEST(CvlsStream1dArray, Failures) {
 
     // End is out of range.
     {
+        std::size_t heap_len;
         {
             H5::H5File handle(path, H5F_ACC_TRUNC);
 
@@ -214,13 +223,14 @@ TEST(CvlsStream1dArray, Failures) {
             create_vls_pointer_dataset(handle, "foo", pointers, dtype);
 
             std::vector<unsigned char> heap(5);
+            heap_len = heap.size();
             create_dataset(handle, "bar", heap, H5::PredType::NATIVE_UINT8);
         }
 
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = handle.openDataSet("foo");
         auto chandle = handle.openDataSet("bar");
-        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle);
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle, heap_len);
 
         std::vector<std::string> chunk(stream.chunk_size());
         std::string msg;
