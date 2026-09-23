@@ -130,8 +130,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a8575dc2c8283fd17c3439e5ebe2c47ea" id="r_a8575dc2c8283fd17c3439e5ebe2c47ea"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
 <tr class="memitem:a8575dc2c8283fd17c3439e5ebe2c47ea"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8575dc2c8283fd17c3439e5ebe2c47ea">validate_nd_pointers</a> (const H5::DataSet &amp;data, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t heap_length)</td></tr>
 <tr class="separator:a8575dc2c8283fd17c3439e5ebe2c47ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc6dac5a614dbea828e079da7f2265ad" id="r_abc6dac5a614dbea828e079da7f2265ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc6dac5a614dbea828e079da7f2265ad">validate_heap</a> (const H5::DataSet &amp;data)</td></tr>
-<tr class="separator:abc6dac5a614dbea828e079da7f2265ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a7281493831fc4dec1fe55fa66acd6" id="r_ad9a7281493831fc4dec1fe55fa66acd6"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap</a> (const H5::DataSet &amp;data)</td></tr>
+<tr class="separator:ad9a7281493831fc4dec1fe55fa66acd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utilities for reading and validating compressed VLS arrays. </p>
@@ -247,15 +247,15 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   <table class="params">
     <tr><td class="paramname">data</td><td>A HDF5 dataset. It is assumed that this dataset is 1-dimensional. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the dataset, i.e., the extent of its sole dimension. </td></tr>
-    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
+    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset, see <code><a class="el" href="#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap()</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="abc6dac5a614dbea828e079da7f2265ad" name="abc6dac5a614dbea828e079da7f2265ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc6dac5a614dbea828e079da7f2265ad">&#9670;&#160;</a></span>validate_heap()</h2>
+<a id="ad9a7281493831fc4dec1fe55fa66acd6" name="ad9a7281493831fc4dec1fe55fa66acd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a7281493831fc4dec1fe55fa66acd6">&#9670;&#160;</a></span>validate_heap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,7 +264,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ritsuko::cvls::validate_heap </td>
+          <td class="memname">hsize_t ritsuko::cvls::validate_heap </td>
           <td>(</td>
           <td class="paramtype">const H5::DataSet &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
@@ -279,10 +279,11 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 <p>Validate a HDF5 dataset containing the compressed VLS heap. An error is thrown if the dataset is not 1-dimensional or does not contain unsigned 8-bit integers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>A HDF5 dataset. It may have any shape and its datatype may be of any class. </td></tr>
+    <tr><td class="paramname">data</td><td>A HDF5 dataset. It may have any shape and its datatype may be of any class.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Extent of the sole dimension of <code>data</code>, typically for use as <code>heap_length</code> in <code><a class="el" href="#a8575dc2c8283fd17c3439e5ebe2c47ea">validate_nd_pointers()</a></code> and related functions. </dd></dl>
 
 </div>
 </div>
@@ -323,7 +324,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   <table class="params">
     <tr><td class="paramname">data</td><td>A non-scalar HDF5 dataset. It is assumed that this dataset has at least 1 dimension. </td></tr>
     <tr><td class="paramname">dimensions</td><td>Dimensions of the dataset. This should be non-empty. </td></tr>
-    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
+    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset, see <code><a class="el" href="#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap()</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -460,7 +461,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>A HDF5 dataset. It is assumed that this dataset is scalar. </td></tr>
-    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset. </td></tr>
+    <tr><td class="paramname">heap_length</td><td>Length of the heap dataset, see <code><a class="el" href="#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap()</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
