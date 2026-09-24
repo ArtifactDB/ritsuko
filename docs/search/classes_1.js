@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pointer_0',['Pointer',['../structritsuko_1_1cvls_1_1Pointer.html',1,'ritsuko::cvls']]]
+  ['cast_0',['Cast',['https://ltla.github.io/sanisizer/classsanisizer_1_1Cast.html',1,'sanisizer']]]
 ];

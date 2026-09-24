@@ -101,7 +101,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;H5Cpp.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;sanisizer/sanisizer.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="codeRef" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer/sanisizer.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../utils.hpp&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
@@ -119,8 +119,8 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">static_assert</span>(std::is_base_of&lt;H5::H5Object, Object_&gt;::value);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">const</span> <span class="keyword">auto</span> len = H5Iget_name(obj.getId(), NULL, 0);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        std::vector&lt;char&gt; buffer(sanisizer::sum&lt;<span class="keyword">typename</span> std::vector&lt;char&gt;::size_type&gt;(len, 1));</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        H5Iget_name(obj.getId(), buffer.data(), sanisizer::cast&lt;std::size_t&gt;(buffer.size()));</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        std::vector&lt;char&gt; buffer(<a class="code hl_functionRef" href="https://ltla.github.io/sanisizer/namespacesanisizer.html#ad0351da831c6ee07baf0a96c51a019c9">sanisizer::sum</a>&lt;<span class="keyword">typename</span> std::vector&lt;char&gt;::size_type&gt;(len, 1));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        H5Iget_name(obj.getId(), buffer.data(), <a class="code hl_functionRef" href="https://ltla.github.io/sanisizer/namespacesanisizer.html#acde4a5b2077777f0c0d0b0761183b29b">sanisizer::cast&lt;std::size_t&gt;</a>(buffer.size()));</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> std::string(buffer.begin(), buffer.begin() + len);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
@@ -133,6 +133,9 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:29</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:21</div></div>
+<div class="ttc" id="anamespacesanisizer_html_acde4a5b2077777f0c0d0b0761183b29b"><div class="ttname"><a href="https://ltla.github.io/sanisizer/namespacesanisizer.html#acde4a5b2077777f0c0d0b0761183b29b">sanisizer::cast</a></div><div class="ttdeci">constexpr Dest_ cast(Value_ x)</div></div>
+<div class="ttc" id="anamespacesanisizer_html_ad0351da831c6ee07baf0a96c51a019c9"><div class="ttname"><a href="https://ltla.github.io/sanisizer/namespacesanisizer.html#ad0351da831c6ee07baf0a96c51a019c9">sanisizer::sum</a></div><div class="ttdeci">constexpr Dest_ sum(First_ first, Args_... more)</div></div>
+<div class="ttc" id="asanisizer_8hpp_html"><div class="ttname"><a href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

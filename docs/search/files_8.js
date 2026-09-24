@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['validate_2ehpp_0',['validate.hpp',['../validate_8hpp.html',1,'']]],
-  ['validate_5fstring_2ehpp_1',['validate_string.hpp',['../validate__string_8hpp.html',1,'']]]
+  ['parse_5fversion_5fstring_2ehpp_0',['parse_version_string.hpp',['../parse__version__string_8hpp.html',1,'']]],
+  ['pointer_2ehpp_1',['Pointer.hpp',['../Pointer_8hpp.html',1,'']]],
+  ['ptrdiff_2ehpp_2',['ptrdiff.hpp',['https://ltla.github.io/sanisizer/ptrdiff_8hpp.html',1,'']]]
 ];

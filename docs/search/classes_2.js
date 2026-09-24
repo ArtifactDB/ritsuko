@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reclaimvlsmemory_0',['ReclaimVlsMemory',['../classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html',1,'ritsuko::hdf5']]]
+  ['exact_0',['Exact',['https://ltla.github.io/sanisizer/classsanisizer_1_1Exact.html',1,'sanisizer']]]
 ];

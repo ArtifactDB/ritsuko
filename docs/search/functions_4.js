@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['ge_0',['ge',['../structritsuko_1_1Version.html#a4ee512218afbabd3ac432f3ae324169e',1,'ritsuko::Version']]],
-  ['get_5fname_1',['get_name',['../namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865',1,'ritsuko::hdf5']]],
-  ['gt_2',['gt',['../structritsuko_1_1Version.html#a957cd60b32aa1a42f8590355ba23b4d2',1,'ritsuko::Version']]]
+  ['from_5ffloat_0',['from_float',['https://ltla.github.io/sanisizer/namespacesanisizer.html#a56076716172db1c8ee4b11e1a01bb4b6',1,'sanisizer']]]
 ];

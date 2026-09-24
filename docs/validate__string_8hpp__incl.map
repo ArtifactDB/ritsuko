@@ -12,7 +12,7 @@
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="635,32,763,54,820,71,842,81,858,92,868,106,874,121,879,152,874,153,869,122,863,108,854,96,839,85,818,76,762,59,634,37"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="530,168,601,193"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="609,44,632,59,652,77,662,98,662,109,658,121,639,145,613,162,610,158,635,141,654,118,657,108,657,99,647,80,629,63,607,49"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="112,168,264,193"/>
+<area shape="rect" id="Node000008" href="/github/workspace/docs/sanisizer.tag$sanisizer_8hpp.html" title=" " alt="" coords="112,168,264,193"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="496,29,387,30,261,39,202,48,149,60,107,76,79,96,74,105,73,113,84,130,107,146,136,159,134,164,105,151,81,134,68,115,69,103,75,92,104,71,147,55,201,43,261,34,387,25,496,23"/>
 <area shape="rect" id="Node000009" href="$get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="361,94,463,120"/>
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="528,49,450,89,447,84,526,44"/>

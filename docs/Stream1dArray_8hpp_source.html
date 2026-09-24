@@ -104,7 +104,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;H5Cpp.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;sanisizer/sanisizer.hpp&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="codeRef" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer/sanisizer.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="get__name_8hpp.html">../hdf5/get_name.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="strnlen_8hpp.html">../hdf5/strnlen.hpp</a>&quot;</span></div>
@@ -117,7 +117,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html">   31</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html">Stream1dArrayOptions</a> {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html#aa5b4069cccceb8a759719c1460508800">   36</a></span>    hsize_t <a class="code hl_variable" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html#aa5b4069cccceb8a759719c1460508800">contiguous_chunk_size</a> = 10000;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html#aa5b4069cccceb8a759719c1460508800">   36</a></span>    hsize_t <a class="code hl_variable" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html#aa5b4069cccceb8a759719c1460508800">contiguous_chunk_size</a> = <a class="code hl_functionRef" href="https://ltla.github.io/sanisizer/namespacesanisizer.html#abd46ba64586c8de228897cc013def813">sanisizer::cap&lt;hsize_t&gt;</a>(10000);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
 </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
@@ -146,10 +146,10 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        my_pointer_dspace(1, &amp;my_pointer_full_length),</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        my_heap_dspace(1, &amp;my_heap_full_length),</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        my_pointer_dtype(<a class="code hl_function" href="namespaceritsuko_1_1cvls.html#ab2f108342f0b595b891d6f61166bca63">define_pointer_datatype&lt;Offset_, Length_&gt;</a>()),</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        my_pointer_buffer(sanisizer::cast&lt;I&lt;<span class="keyword">decltype</span>(my_pointer_buffer.size())&gt; &gt;(my_pointer_block_size))</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        my_pointer_buffer(<a class="code hl_functionRef" href="https://ltla.github.io/sanisizer/namespacesanisizer.html#acde4a5b2077777f0c0d0b0761183b29b">sanisizer::cast</a>&lt;I&lt;<span class="keyword">decltype</span>(my_pointer_buffer.size())&gt; &gt;(my_pointer_block_size))</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// Check that maximum allocation is possible, so we don&#39;t have to check casts for individual string lengths.</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        sanisizer::cast&lt;I&lt;<span class="keyword">decltype</span>(my_heap_buffer.size())&gt; &gt;(my_heap_full_length);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_functionRef" href="https://ltla.github.io/sanisizer/namespacesanisizer.html#acde4a5b2077777f0c0d0b0761183b29b">sanisizer::cast</a>&lt;I&lt;<span class="keyword">decltype</span>(my_heap_buffer.size())&gt; &gt;(my_heap_full_length);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
 </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
@@ -253,6 +253,9 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:29</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ab50df338dbb7fed71795d0f0772d7307"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ab50df338dbb7fed71795d0f0772d7307">ritsuko::hdf5::strnlen</a></div><div class="ttdeci">std::size_t strnlen(const char *ptr, std::size_t max)</div><div class="ttdef"><b>Definition</b> strnlen.hpp:25</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:21</div></div>
+<div class="ttc" id="anamespacesanisizer_html_abd46ba64586c8de228897cc013def813"><div class="ttname"><a href="https://ltla.github.io/sanisizer/namespacesanisizer.html#abd46ba64586c8de228897cc013def813">sanisizer::cap</a></div><div class="ttdeci">constexpr Dest_ cap(Value_ x)</div></div>
+<div class="ttc" id="anamespacesanisizer_html_acde4a5b2077777f0c0d0b0761183b29b"><div class="ttname"><a href="https://ltla.github.io/sanisizer/namespacesanisizer.html#acde4a5b2077777f0c0d0b0761183b29b">sanisizer::cast</a></div><div class="ttdeci">constexpr Dest_ cast(Value_ x)</div></div>
+<div class="ttc" id="asanisizer_8hpp_html"><div class="ttname"><a href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer.hpp</a></div></div>
 <div class="ttc" id="astrnlen_8hpp_html"><div class="ttname"><a href="strnlen_8hpp.html">strnlen.hpp</a></div><div class="ttdoc">Determine the length of a fixed-size string.</div></div>
 <div class="ttc" id="astructritsuko_1_1cvls_1_1Stream1dArrayOptions_html"><div class="ttname"><a href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html">ritsuko::cvls::Stream1dArrayOptions</a></div><div class="ttdoc">Options for Stream1dArray.</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:31</div></div>
 <div class="ttc" id="astructritsuko_1_1cvls_1_1Stream1dArrayOptions_html_aa5b4069cccceb8a759719c1460508800"><div class="ttname"><a href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html#aa5b4069cccceb8a759719c1460508800">ritsuko::cvls::Stream1dArrayOptions::contiguous_chunk_size</a></div><div class="ttdeci">hsize_t contiguous_chunk_size</div><div class="ttdef"><b>Definition</b> Stream1dArray.hpp:36</div></div>
