@@ -117,7 +117,7 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
  * Overload of `validate_pointer_datatype()` that accepts a HDF5 dataset.
  * This will throw an error if the HDF5 dataset does not use a compound datatype that satisfies `validate_pointer_datatype()`.
  *
- * @param type A HDF5 dataset.
+ * @param data A HDF5 dataset.
  * This may have any datatype.
  * @param offset_precision Maximum number of bits in the integer type used for the start position, see `Pointer::offset`.
  * @param length_precision Maximum number of bits in the integer type used for the string size, see `Pointer::length`.
