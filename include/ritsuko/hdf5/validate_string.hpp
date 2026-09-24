@@ -62,7 +62,7 @@ struct Validate1dStringsOptions {
      * Size of the streaming chunks (in terms of the number of elements) to use for contiguous HDF5 datasets.
      * This is ignored for chunked datasets where the streaming chunk size is identical to the dataset chunk size. 
      */
-    hsize_t contiguous_chunk_size = 10000;
+    hsize_t contiguous_chunk_size = sanisizer::cap<hsize_t>(10000);
 };
 
 /**
@@ -122,7 +122,7 @@ struct ValidateNdStringsOptions {
      * Size of the streaming chunks (in terms of the number of elements) to use for contiguous HDF5 datasets.
      * This is ignored for chunked datasets where the streaming chunk dimensions are identical to the dataset chunk dimensions. 
      */
-    hsize_t contiguous_chunk_size = 10000;
+    hsize_t contiguous_chunk_size = sanisizer::cap<hsize_t>(10000);
 };
 
 /**

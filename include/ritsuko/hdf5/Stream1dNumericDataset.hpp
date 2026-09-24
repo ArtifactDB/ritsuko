@@ -9,6 +9,7 @@
 #include <algorithm>
 
 #include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include "get_name.hpp"
 #include "as_numeric_datatype.hpp"
@@ -30,7 +31,7 @@ struct Stream1dNumericDatasetOptions {
      * Size of the streaming chunks (in terms of the number of elements) to use for non-chunked HDF5 datasets.
      * This is ignored for chunked datasets where the streaming chunk size is identical to the dataset chunk size. 
      */
-    hsize_t contiguous_chunk_size = 10000;
+    hsize_t contiguous_chunk_size = sanisizer::cap<hsize_t>(10000);
 };
 
 /**
