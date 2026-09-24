@@ -6,5 +6,6 @@ var searchData=
   ['is_5frfc3339_3',['is_rfc3339',['../namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505',1,'ritsuko']]],
   ['is_5frfc3339_5fsuffix_4',['is_rfc3339_suffix',['../namespaceritsuko.html#ac5f8ff07715c8177a709e440eb029f30',1,'ritsuko']]],
   ['is_5futf8_5fstring_5',['is_utf8_string',['../namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a',1,'ritsuko::hdf5::is_utf8_string(const H5::StrType &amp;stype)'],['../namespaceritsuko_1_1hdf5.html#abb640ca5a6816733631a41238c59fbab',1,'ritsuko::hdf5::is_utf8_string(const H5::DataSet &amp;data)'],['../namespaceritsuko_1_1hdf5.html#af4ec3b78b2341db4641a2eff0533c090',1,'ritsuko::hdf5::is_utf8_string(const H5::Attribute &amp;attr)']]],
-  ['iteratechunks_6',['IterateChunks',['../structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567',1,'ritsuko::hdf5::IterateChunks']]]
+  ['iterate_5fstream_6',['iterate_stream',['../namespaceritsuko_1_1cvls.html#a7df34d6e0e035659712e20763c38f833',1,'ritsuko::cvls::iterate_stream()'],['../namespaceritsuko_1_1hdf5.html#ab6ed1e445dab0a46c7aa35ba5fafae9b',1,'ritsuko::hdf5::iterate_stream(Stream1dNumericDataset&lt; Type_, DataSetPointer_ &gt; &amp;stream, Action_ action)'],['../namespaceritsuko_1_1hdf5.html#ae9002c98455f072a7dc167e06eb15270',1,'ritsuko::hdf5::iterate_stream(Stream1dStringDataset&lt; DataSetPointer_ &gt; &amp;stream, Action_ action)']]],
+  ['iteratechunks_7',['IterateChunks',['../structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567',1,'ritsuko::hdf5::IterateChunks']]]
 ];
