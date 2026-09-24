@@ -121,13 +121,13 @@ TEST_P(CvlsValidatePointersTest, OneDim) {
     // Regular validation works as expected.
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foo");
-    ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, 20000);
+    ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, 20000, {});
 
     // Fails if pointers are out of range.
     {
         std::string errmsg = "no_error";
         try {
-            ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, 20);
+            ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, 20, {});
         } catch (std::exception& e) {
             errmsg = e.what();
         }
@@ -138,7 +138,7 @@ TEST_P(CvlsValidatePointersTest, OneDim) {
     {
         std::string errmsg = "no_error";
         try {
-            ritsuko::cvls::validate_1d_pointers<std::uint16_t, std::uint16_t>(dhandle, nlen, 20000);
+            ritsuko::cvls::validate_1d_pointers<std::uint16_t, std::uint16_t>(dhandle, nlen, 20000, {});
         } catch (std::exception& e) {
             errmsg = e.what();
         }
@@ -176,13 +176,13 @@ TEST_P(CvlsValidatePointersTest, NDim) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::cvls::validate_nd_pointers<std::uint64_t, std::uint64_t>(dhandle, dims, 1000000);
+    ritsuko::cvls::validate_nd_pointers<std::uint64_t, std::uint64_t>(dhandle, dims, 1000000, {});
 
     // Fails if pointers are out of range.
     {
         std::string errmsg = "no_error";
         try {
-            ritsuko::cvls::validate_nd_pointers<std::uint64_t, std::uint64_t>(dhandle, dims, 1000);
+            ritsuko::cvls::validate_nd_pointers<std::uint64_t, std::uint64_t>(dhandle, dims, 1000, {});
         } catch (std::exception& e) {
             errmsg = e.what();
         }
@@ -193,7 +193,7 @@ TEST_P(CvlsValidatePointersTest, NDim) {
     {
         std::string errmsg = "no_error";
         try {
-            ritsuko::cvls::validate_nd_pointers<std::uint32_t, std::uint16_t>(dhandle, dims, 20000);
+            ritsuko::cvls::validate_nd_pointers<std::uint32_t, std::uint16_t>(dhandle, dims, 20000, {});
         } catch (std::exception& e) {
             errmsg = e.what();
         }
@@ -258,7 +258,7 @@ TEST_P(CvlsValidatePointersTest, OneDimIterationError) {
             auto dhandle = handle.openDataSet("foobar");
             std::string msg;
             try {
-                ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, heap);
+                ritsuko::cvls::validate_1d_pointers<std::uint64_t, std::uint64_t>(dhandle, nlen, heap, {});
             } catch (std::exception& e) {
                 msg = e.what();
             }
@@ -326,7 +326,7 @@ TEST_P(CvlsValidatePointersTest, NDimIterationError) {
             auto dhandle = handle.openDataSet("foobar");
             std::string msg;
             try {
-                ritsuko::cvls::validate_nd_pointers<std::uint64_t, std::uint64_t>(dhandle, dims, heap);
+                ritsuko::cvls::validate_nd_pointers<std::uint64_t, std::uint64_t>(dhandle, dims, heap, {});
             } catch (std::exception& e) {
                 msg = e.what();
             }

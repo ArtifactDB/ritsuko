@@ -20,7 +20,7 @@ TEST_P(Hdf5Stream1dNumericDatasetTest, Integer) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, example.size());
+    ritsuko::hdf5::Stream1dNumericDataset<int> stream(&dhandle, example.size(), {});
 
     std::vector<int> chunk(stream.chunk_size());
     hsize_t total = 0;
@@ -54,7 +54,7 @@ TEST_P(Hdf5Stream1dNumericDatasetTest, Float) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, example.size());
+    ritsuko::hdf5::Stream1dNumericDataset<double> stream(&dhandle, example.size(), {});
 
     std::vector<double> chunk(stream.chunk_size());
     while (true) {

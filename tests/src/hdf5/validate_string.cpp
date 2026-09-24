@@ -43,7 +43,7 @@ TEST(Hdf5ValidateString, Fixed1dimensionalDataset) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::validate_1d_strings(dhandle, dim);
+        ritsuko::hdf5::validate_1d_strings(dhandle, dim, {});
     }
 }
 
@@ -70,7 +70,7 @@ TEST(Hdf5ValidateString, FixedNdimensionalDataset) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::validate_nd_strings(dhandle, dims);
+        ritsuko::hdf5::validate_nd_strings(dhandle, dims, {});
     }
 }
 
@@ -144,7 +144,7 @@ TEST_P(Hdf5ValidateStringTest, Variable1dimensionalDataset) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::validate_1d_strings(dhandle, dim);
+        ritsuko::hdf5::validate_1d_strings(dhandle, dim, {});
     }
 
     // Now injecting a NULL at some key places and checking that the validator can find it.
@@ -171,7 +171,7 @@ TEST_P(Hdf5ValidateStringTest, Variable1dimensionalDataset) {
             auto dhandle = handle.openDataSet("foobar");
             std::string msg;
             try {
-                ritsuko::hdf5::validate_1d_strings(dhandle, dim);
+                ritsuko::hdf5::validate_1d_strings(dhandle, dim, {});
             } catch (std::exception& e) {
                 msg = e.what();
             }
@@ -210,7 +210,7 @@ TEST_P(Hdf5ValidateStringTest, VariableNdimensionalDataset) {
     {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto dhandle = handle.openDataSet("foobar");
-        ritsuko::hdf5::validate_nd_strings(dhandle, dims);
+        ritsuko::hdf5::validate_nd_strings(dhandle, dims, {});
     }
 
     // Now injecting a NULL at some key places and checking that the validator can find it.
@@ -237,7 +237,7 @@ TEST_P(Hdf5ValidateStringTest, VariableNdimensionalDataset) {
             auto dhandle = handle.openDataSet("foobar");
             std::string msg;
             try {
-                ritsuko::hdf5::validate_nd_strings(dhandle, dims);
+                ritsuko::hdf5::validate_nd_strings(dhandle, dims, {});
             } catch (std::exception& e) {
                 msg = e.what();
             }

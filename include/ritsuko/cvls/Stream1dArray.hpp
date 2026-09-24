@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <cstdint>
 #include <cassert>
+#include <algorithm>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -23,6 +24,17 @@
 namespace ritsuko {
 
 namespace cvls {
+
+/**
+ * @brief Options for `Stream1dArray`.
+ */
+struct Stream1dArrayOptions {
+    /**
+     * Size of the streaming chunks (in terms of the number of elements) to use for non-chunked HDF5 datasets.
+     * This is ignored for chunked datasets where the streaming chunk size is identical to the dataset chunk size. 
+     */
+    hsize_t contiguous_chunk_size = 10000;
+};
 
 /**
  * @brief Stream a 1-dimensional compressed VLS array into memory.
@@ -47,8 +59,9 @@ public:
      * It is assumed that this dataset already satisfies `validate_heap()`.
      * @param heap_length Length of the `heap_ptr` dataset, i.e, the extent of its sole dimension.
      * This can be set to the return value of `validate_heap()`.
+     * @param options Further options.
      */
-    Stream1dArray(DataSetPointer_ pointers_ptr, hsize_t pointers_length, DataSetPointer_ heap_ptr, hsize_t heap_length) : 
+    Stream1dArray(DataSetPointer_ pointers_ptr, hsize_t pointers_length, DataSetPointer_ heap_ptr, hsize_t heap_length, const Stream1dArrayOptions& options) : 
         my_pointers_ptr(std::move(pointers_ptr)), 
         my_heap_ptr(std::move(heap_ptr)),
         my_pointer_full_length(pointers_length), 
@@ -60,8 +73,7 @@ public:
             if (plist.getLayout() == H5D_CHUNKED) {
                 plist.getChunk(1, &output);
             } else {
-                // Hard-coding the upper bound to save ourselves from processing an extra argument.
-                output = sanisizer::min(my_pointer_full_length, 10000);
+                output = std::min(my_pointer_full_length, options.contiguous_chunk_size);
             }
             return output;
         }()),

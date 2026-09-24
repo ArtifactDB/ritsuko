@@ -66,7 +66,7 @@ TEST_P(CvlsStream1dArrayTest, Basic) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle, heap_len);
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle, heap_len, {});
 
     std::vector<std::string> chunk(stream.chunk_size());
     hsize_t total = 0;
@@ -119,7 +119,7 @@ TEST(CvlsStream1dArray, NullTerminated) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle, heap_len);
+    ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, nlen, &chandle, heap_len, {});
 
     std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
@@ -161,7 +161,7 @@ TEST(CvlsStream1dArray, Unicode) {
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto phandle = handle.openDataSet("foo");
     auto chandle = handle.openDataSet("bar");
-    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, nlen, &chandle, heap_len);
+    ritsuko::cvls::Stream1dArray<uint64_t, uint64_t> stream(&phandle, nlen, &chandle, heap_len, {});
 
     std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
@@ -198,7 +198,7 @@ TEST(CvlsStream1dArray, Failures) {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = handle.openDataSet("foo");
         auto chandle = handle.openDataSet("bar");
-        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle, heap_len);
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle, heap_len, {});
 
         std::vector<std::string> chunk(stream.chunk_size());
         std::string msg;
@@ -230,7 +230,7 @@ TEST(CvlsStream1dArray, Failures) {
         H5::H5File handle(path, H5F_ACC_RDONLY);
         auto phandle = handle.openDataSet("foo");
         auto chandle = handle.openDataSet("bar");
-        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle, heap_len);
+        ritsuko::cvls::Stream1dArray<std::uint64_t, std::uint64_t> stream(&phandle, 1, &chandle, heap_len, {});
 
         std::vector<std::string> chunk(stream.chunk_size());
         std::string msg;

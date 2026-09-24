@@ -24,7 +24,7 @@ TEST_P(Hdf5Stream1dStringDatasetTest, Fixed) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, example.size());
+    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, example.size(), {});
 
     std::vector<std::string> chunk(stream.chunk_size());
     hsize_t total = 0;
@@ -59,7 +59,7 @@ TEST_P(Hdf5Stream1dStringDatasetTest, Variable) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, example.size());
+    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, example.size(), {});
 
     std::vector<std::string> chunk(stream.chunk_size());
     while (true) {
@@ -91,7 +91,7 @@ TEST(Hdf5Stream1dStringDataset, VariableNullFail) {
 
     H5::H5File handle(path, H5F_ACC_RDONLY);
     auto dhandle = handle.openDataSet("foobar");
-    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, 10);
+    ritsuko::hdf5::Stream1dStringDataset stream(&dhandle, 10, {});
 
     std::vector<std::string> chunk(stream.chunk_size());
     std::string msg;

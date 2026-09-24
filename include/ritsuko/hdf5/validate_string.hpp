@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdexcept>
 #include <cassert>
+#include <algorithm>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -54,6 +55,17 @@ inline void validate_scalar_string(const H5::DataSet& data) {
 }
 
 /**
+ * @brief Options for `validate_1d_strings()`.
+ */
+struct Validate1dStringsOptions {
+    /**
+     * Size of the streaming chunks (in terms of the number of elements) to use for contiguous HDF5 datasets.
+     * This is ignored for chunked datasets where the streaming chunk size is identical to the dataset chunk size. 
+     */
+    hsize_t contiguous_chunk_size = 10000;
+};
+
+/**
  * Check that a 1-dimensional string dataset is valid.
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
@@ -62,8 +74,9 @@ inline void validate_scalar_string(const H5::DataSet& data) {
  * It is assumed that this dataset is 1-dimensional.
  * It is also assumed that its datatype is of the string class.
  * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
+ * @param options Further options.
  */
-inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
+inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length, const Validate1dStringsOptions& options) {
     assert(data.getSpace().getSimpleExtentNdims() == 1);
     assert(data.getDataType().getClass() == H5T_STRING);
 
@@ -72,10 +85,12 @@ inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
         return;
     }
 
-    hsize_t block_size = 10000;
+    hsize_t block_size;
     const auto& plist = data.getCreatePlist();
     if (plist.getLayout() == H5D_CHUNKED) {
         plist.getChunk(1, &block_size);
+    } else {
+        block_size = std::min(full_length, options.contiguous_chunk_size);
     }
 
     H5::DataSpace mspace(1, &block_size), dspace(1, &full_length);
@@ -100,6 +115,17 @@ inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
 }
 
 /**
+ * @brief Options for `validate_nd_strings()`.
+ */
+struct ValidateNdStringsOptions {
+    /**
+     * Size of the streaming chunks (in terms of the number of elements) to use for contiguous HDF5 datasets.
+     * This is ignored for chunked datasets where the streaming chunk dimensions are identical to the dataset chunk dimensions. 
+     */
+    hsize_t contiguous_chunk_size = 10000;
+};
+
+/**
  * Check that an N-dimensional string dataset is valid.
  * Currently, this involves checking that there are no `NULL` entries for variable-length string datatypes.
  * For fixed-width string datasets, this function is a no-op.
@@ -108,8 +134,9 @@ inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length) {
  * It is assumed that this dataset has at least 1 dimension.
  * It is also assumed that its datatype is of the string class.
  * @param dimensions Dimensions of the dataset.
+ * @param options Further options.
  */
-inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize_t>& dimensions) {
+inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, const ValidateNdStringsOptions& options) {
     assert(data.getSpace().getSimpleExtentNdims() > 0);
     assert(data.getDataType().getClass() == H5T_STRING);
 
@@ -128,8 +155,7 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
         chunk_dims.resize(ndims); // this is safe as 'dimensions' and 'chunk_dims' have the same size_type.
         plist.getChunk(dimensions.size(), chunk_dims.data());
     } else {
-        // Hard-coding this to save ourselves an argument.
-        chunk_dims = mock_contiguous_chunks(dimensions, 10000);
+        chunk_dims = mock_contiguous_chunks(dimensions, options.contiguous_chunk_size);
     }
 
     IterateChunks iter(dimensions, chunk_dims);

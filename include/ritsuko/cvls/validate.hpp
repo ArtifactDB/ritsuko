@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <limits>
 #include <cassert>
+#include <algorithm>
 
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
@@ -52,6 +53,17 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
 }
 
 /**
+ * @brief Options for `validate_1d_pointers()`.
+ */
+struct Validate1dPointersOptions {
+    /**
+     * Size of the streaming chunks (in terms of the number of elements) to use for contiguous HDF5 datasets.
+     * This is ignored for chunked datasets where the streaming chunk size is identical to the dataset chunk size. 
+     */
+    hsize_t contiguous_chunk_size = 10000;
+};
+
+/**
  * Validate the pointer dataset for a 1-dimensional compressed VLS array. 
  * An error is thrown if the datatype is not consistent with the expected precision of the `Pointer` types,
  * or if any pointers are out of range of the associated heap dataset.
@@ -63,9 +75,10 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
  * It is assumed that this dataset is 1-dimensional.
  * @param full_length Length of the dataset, i.e., the extent of its sole dimension.
  * @param heap_length Length of the heap dataset, see `validate_heap()`.
+ * @param options Further options.
  */
 template<typename Offset_, typename Length_>
-inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, hsize_t heap_length) {
+inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, hsize_t heap_length, const Validate1dPointersOptions& options) {
     validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
     assert(data.getSpace().getSimpleExtentNdims() == 1);
 
@@ -74,9 +87,7 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
     if (plist.getLayout() == H5D_CHUNKED) {
         plist.getChunk(1, &block_size);
     } else {
-        // Hard-coding the mock chunk size for non-chunked datasets,
-        // it's not worth requiring an extra function argument to customize this.
-        block_size = sanisizer::min(full_length, 10000);
+        block_size = std::min(full_length, options.contiguous_chunk_size);
     }
 
     H5::DataSpace mspace(1, &block_size), dspace(1, &full_length);
@@ -103,6 +114,17 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
 }
 
 /**
+ * @brief Options for `validate_nd_pointers()`.
+ */
+struct ValidateNdPointersOptions {
+    /**
+     * Size of the streaming chunks (in terms of the number of elements) to use for contiguous HDF5 datasets.
+     * This is ignored for chunked datasets where the streaming chunk dimensions are identical to the dataset chunk dimensions.
+     */
+    hsize_t contiguous_chunk_size = 10000;
+};
+
+/**
  * Check that the pointers for an N-dimensional compressed VLS array is valid.
  * An error is thrown if the datatype is not consistent with the expected precision,
  * or if any pointers are out of range of the associated heap dataset.
@@ -115,9 +137,10 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
  * @param dimensions Dimensions of the dataset. 
  * This should be non-empty.
  * @param heap_length Length of the heap dataset, see `validate_heap()`.
+ * @param options Further options.
  */
 template<typename Offset_, typename Length_>
-void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length) {
+void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length, const ValidateNdPointersOptions& options) {
     validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
     assert(data.getSpace().getSimpleExtentNdims() > 0);
 
@@ -131,7 +154,7 @@ void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& d
         chunk_dims.resize(ndim); // No need to check this, dimensions is of the same type as chunk_dims.
         plist.getChunk(ndim, chunk_dims.data());
     } else {
-        chunk_dims = hdf5::mock_contiguous_chunks(dimensions, 10000); // Hard-coding the upper bound to save ourselves an argument.
+        chunk_dims = hdf5::mock_contiguous_chunks(dimensions, options.contiguous_chunk_size);
     }
 
     hdf5::IterateChunks iter(dimensions, chunk_dims);

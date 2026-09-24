@@ -6,8 +6,10 @@
 #include <stdexcept>
 #include <cassert>
 #include <type_traits>
+#include <algorithm>
 
 #include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include "get_name.hpp"
 #include "strnlen.hpp"
@@ -21,6 +23,17 @@
 namespace ritsuko {
 
 namespace hdf5 {
+
+/**
+ * @brief Options for `Stream1dStringDataset`.
+ */
+struct Stream1dStringDatasetOptions {
+    /**
+     * Size of the streaming chunks (in terms of the number of elements) to use for contiguous HDF5 datasets.
+     * This is ignored for chunked datasets where the streaming chunk size is identical to the dataset chunk size. 
+     */
+    hsize_t contiguous_chunk_size = 10000;
+};
 
 /**
  * @brief Stream a 1-dimensional HDF5 string dataset into memory.
@@ -37,11 +50,11 @@ public:
      * @param data_ptr Pointer to a HDF5 dataset. 
      * It is assumed that this dataset is 1-dimensional.
      * It is also assumed that its datatype is an integer or float. 
-     *
      * If `data_ptr` is a raw pointer, it should not be deleted before the last call to any methods of this `Stream1dStringDataset` instance. 
      * @param length Length of the dataset, i.e., the extent of its sole dimension.
+     * @param options Further options.
      */
-    Stream1dStringDataset(DataSetPointer_ data_ptr, hsize_t length) :
+    Stream1dStringDataset(DataSetPointer_ data_ptr, hsize_t length, const Stream1dStringDatasetOptions& options) :
         my_data_ptr(std::move(data_ptr)), 
         my_full_length(length), 
         my_block_size([&]{
@@ -51,9 +64,7 @@ public:
             if (plist.getLayout() == H5D_CHUNKED) {
                 plist.getChunk(1, &output);
             } else {
-                // Hard-coding the mock chunk size for contiguous datasets,
-                // not worth complicating the constructor with an extra argument.
-                output = sanisizer::min(length, 10000);
+                output = std::min(length, options.contiguous_chunk_size);
             }
             return output;
         }()),
