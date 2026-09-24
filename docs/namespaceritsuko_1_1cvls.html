@@ -108,6 +108,15 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html">Stream1dArray</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a 1-dimensional compressed VLS array into memory.  <a href="classritsuko_1_1cvls_1_1Stream1dArray.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html">Stream1dArrayOptions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html" title="Stream a 1-dimensional compressed VLS array into memory.">Stream1dArray</a></code>.  <a href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1cvls_1_1Validate1dPointersOptions.html">Validate1dPointersOptions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="#aab7f9ebc0fb02f0253c92b654cfb6a4e">validate_1d_pointers()</a></code>.  <a href="structritsuko_1_1cvls_1_1Validate1dPointersOptions.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1cvls_1_1ValidateNdPointersOptions.html">ValidateNdPointersOptions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="#a41b5bc90863cd71a85735c1fd147527b">validate_nd_pointers()</a></code>.  <a href="structritsuko_1_1cvls_1_1ValidateNdPointersOptions.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -121,18 +130,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ad3aea60d4e5951f489b2cd4d8cca1898" id="r_ad3aea60d4e5951f489b2cd4d8cca1898"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
 <tr class="memitem:ad3aea60d4e5951f489b2cd4d8cca1898"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad3aea60d4e5951f489b2cd4d8cca1898">is_Pointer_out_of_range</a> (const <a class="el" href="structritsuko_1_1cvls_1_1Pointer.html">Pointer</a>&lt; Offset_, Length_ &gt; &amp;ptr, const hsize_t heap_length)</td></tr>
 <tr class="separator:ad3aea60d4e5951f489b2cd4d8cca1898"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7df34d6e0e035659712e20763c38f833" id="r_a7df34d6e0e035659712e20763c38f833"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ , typename DataSetPointer_ , class Action_ &gt; </td></tr>
-<tr class="memitem:a7df34d6e0e035659712e20763c38f833"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7df34d6e0e035659712e20763c38f833">iterate_stream</a> (<a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html">Stream1dArray</a>&lt; Offset_, Length_, DataSetPointer_ &gt; &amp;stream, Action_ action)</td></tr>
-<tr class="separator:a7df34d6e0e035659712e20763c38f833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85ae1bea23d03cefafe86ec507e19d84" id="r_a85ae1bea23d03cefafe86ec507e19d84"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
 <tr class="memitem:a85ae1bea23d03cefafe86ec507e19d84"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a85ae1bea23d03cefafe86ec507e19d84">validate_scalar_pointer</a> (const H5::DataSet &amp;data, hsize_t heap_length)</td></tr>
 <tr class="separator:a85ae1bea23d03cefafe86ec507e19d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bb581e32522b443a81715d9cd9667d0" id="r_a4bb581e32522b443a81715d9cd9667d0"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
-<tr class="memitem:a4bb581e32522b443a81715d9cd9667d0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4bb581e32522b443a81715d9cd9667d0">validate_1d_pointers</a> (const H5::DataSet &amp;data, hsize_t full_length, hsize_t heap_length)</td></tr>
-<tr class="separator:a4bb581e32522b443a81715d9cd9667d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8575dc2c8283fd17c3439e5ebe2c47ea" id="r_a8575dc2c8283fd17c3439e5ebe2c47ea"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
-<tr class="memitem:a8575dc2c8283fd17c3439e5ebe2c47ea"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8575dc2c8283fd17c3439e5ebe2c47ea">validate_nd_pointers</a> (const H5::DataSet &amp;data, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t heap_length)</td></tr>
-<tr class="separator:a8575dc2c8283fd17c3439e5ebe2c47ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7f9ebc0fb02f0253c92b654cfb6a4e" id="r_aab7f9ebc0fb02f0253c92b654cfb6a4e"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
+<tr class="memitem:aab7f9ebc0fb02f0253c92b654cfb6a4e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aab7f9ebc0fb02f0253c92b654cfb6a4e">validate_1d_pointers</a> (const H5::DataSet &amp;data, hsize_t full_length, hsize_t heap_length, const <a class="el" href="structritsuko_1_1cvls_1_1Validate1dPointersOptions.html">Validate1dPointersOptions</a> &amp;options)</td></tr>
+<tr class="separator:aab7f9ebc0fb02f0253c92b654cfb6a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b5bc90863cd71a85735c1fd147527b" id="r_a41b5bc90863cd71a85735c1fd147527b"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ &gt; </td></tr>
+<tr class="memitem:a41b5bc90863cd71a85735c1fd147527b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a41b5bc90863cd71a85735c1fd147527b">validate_nd_pointers</a> (const H5::DataSet &amp;data, const std::vector&lt; hsize_t &gt; &amp;dimensions, hsize_t heap_length, const <a class="el" href="structritsuko_1_1cvls_1_1ValidateNdPointersOptions.html">ValidateNdPointersOptions</a> &amp;options)</td></tr>
+<tr class="separator:a41b5bc90863cd71a85735c1fd147527b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9a7281493831fc4dec1fe55fa66acd6" id="r_ad9a7281493831fc4dec1fe55fa66acd6"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap</a> (const H5::DataSet &amp;data)</td></tr>
 <tr class="separator:ad9a7281493831fc4dec1fe55fa66acd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -205,48 +211,8 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 
 </div>
 </div>
-<a id="a7df34d6e0e035659712e20763c38f833" name="a7df34d6e0e035659712e20763c38f833"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7df34d6e0e035659712e20763c38f833">&#9670;&#160;</a></span>iterate_stream()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Offset_ , typename Length_ , typename DataSetPointer_ , class Action_ &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ritsuko::cvls::iterate_stream </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html">Stream1dArray</a>&lt; Offset_, Length_, DataSetPointer_ &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>stream</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action_</td>          <td class="paramname"><span class="paramname"><em>action</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Quickly iterate through a 1-dimensional compressed VLS array, applying an action to each string.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Offset_</td><td>See <code><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html" title="Stream a 1-dimensional compressed VLS array into memory.">Stream1dArray</a></code> for details. </td></tr>
-    <tr><td class="paramname">Length_</td><td>See <code><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html" title="Stream a 1-dimensional compressed VLS array into memory.">Stream1dArray</a></code> for details. </td></tr>
-    <tr><td class="paramname">DataSetPointer_</td><td>See <code><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html" title="Stream a 1-dimensional compressed VLS array into memory.">Stream1dArray</a></code> for details. </td></tr>
-    <tr><td class="paramname">Action_</td><td>Functor that accepts a <code>hsize_t</code> and a <code>std::string</code>. The return value is ignored.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>Stream of a 1-dimensional compressed VLS array. </td></tr>
-    <tr><td class="paramname">action</td><td>Action to perform on each string of the array. This should accept the position and contents of each string as a <code>hsize_t</code> and <code>std::string</code>, respectively. The return value is ignored. This functor will be called with consecutive positions from zero until the length of the array. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4bb581e32522b443a81715d9cd9667d0" name="a4bb581e32522b443a81715d9cd9667d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bb581e32522b443a81715d9cd9667d0">&#9670;&#160;</a></span>validate_1d_pointers()</h2>
+<a id="aab7f9ebc0fb02f0253c92b654cfb6a4e" name="aab7f9ebc0fb02f0253c92b654cfb6a4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7f9ebc0fb02f0253c92b654cfb6a4e">&#9670;&#160;</a></span>validate_1d_pointers()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,7 +235,12 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>&#160;)</td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structritsuko_1_1cvls_1_1Validate1dPointersOptions.html">Validate1dPointersOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -291,6 +262,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
     <tr><td class="paramname">data</td><td>A HDF5 dataset. It is assumed that this dataset is 1-dimensional. </td></tr>
     <tr><td class="paramname">full_length</td><td>Length of the dataset, i.e., the extent of its sole dimension. </td></tr>
     <tr><td class="paramname">heap_length</td><td>Length of the heap dataset, see <code><a class="el" href="#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap()</a></code>. </td></tr>
+    <tr><td class="paramname">options</td><td>Further options. </td></tr>
   </table>
   </dd>
 </dl>
@@ -326,12 +298,12 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Extent of the sole dimension of <code>data</code>, typically for use as <code>heap_length</code> in <code><a class="el" href="#a8575dc2c8283fd17c3439e5ebe2c47ea">validate_nd_pointers()</a></code> and related functions. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Extent of the sole dimension of <code>data</code>, typically for use as <code>heap_length</code> in <code><a class="el" href="#a41b5bc90863cd71a85735c1fd147527b">validate_nd_pointers()</a></code> and related functions. </dd></dl>
 
 </div>
 </div>
-<a id="a8575dc2c8283fd17c3439e5ebe2c47ea" name="a8575dc2c8283fd17c3439e5ebe2c47ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8575dc2c8283fd17c3439e5ebe2c47ea">&#9670;&#160;</a></span>validate_nd_pointers()</h2>
+<a id="a41b5bc90863cd71a85735c1fd147527b" name="a41b5bc90863cd71a85735c1fd147527b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b5bc90863cd71a85735c1fd147527b">&#9670;&#160;</a></span>validate_nd_pointers()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,7 +323,12 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>&#160;)</td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structritsuko_1_1cvls_1_1ValidateNdPointersOptions.html">ValidateNdPointersOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -368,6 +345,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
     <tr><td class="paramname">data</td><td>A non-scalar HDF5 dataset. It is assumed that this dataset has at least 1 dimension. </td></tr>
     <tr><td class="paramname">dimensions</td><td>Dimensions of the dataset. This should be non-empty. </td></tr>
     <tr><td class="paramname">heap_length</td><td>Length of the heap dataset, see <code><a class="el" href="#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap()</a></code>. </td></tr>
+    <tr><td class="paramname">options</td><td>Further options. </td></tr>
   </table>
   </dd>
 </dl>
@@ -456,7 +434,7 @@ template&lt;typename Offset_ , typename Length_ &gt; </div>
 <p>Overload of <code><a class="el" href="#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype()</a></code> that accepts a HDF5 dataset. This will throw an error if the HDF5 dataset does not use a compound datatype that satisfies <code><a class="el" href="#a644674df96b20adb0dda470e12c54496">validate_pointer_datatype()</a></code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type</td><td>A HDF5 dataset. This may have any datatype. </td></tr>
+    <tr><td class="paramname">data</td><td>A HDF5 dataset. This may have any datatype. </td></tr>
     <tr><td class="paramname">offset_precision</td><td>Maximum number of bits in the integer type used for the start position, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44">Pointer::offset</a></code>. </td></tr>
     <tr><td class="paramname">length_precision</td><td>Maximum number of bits in the integer type used for the string size, see <code><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html#a26a7642f69dfb3e853c14d3625d5e256">Pointer::length</a></code>. </td></tr>
   </table>

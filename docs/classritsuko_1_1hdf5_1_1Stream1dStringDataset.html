@@ -104,8 +104,8 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adb2510252d5e72f3379d0d41a5318829" id="r_adb2510252d5e72f3379d0d41a5318829"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb2510252d5e72f3379d0d41a5318829">Stream1dStringDataset</a> (DataSetPointer_ data_ptr, hsize_t length)</td></tr>
-<tr class="separator:adb2510252d5e72f3379d0d41a5318829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e8b449be8e1ba04abbf3bc0cd31a6a3" id="r_a8e8b449be8e1ba04abbf3bc0cd31a6a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e8b449be8e1ba04abbf3bc0cd31a6a3">Stream1dStringDataset</a> (DataSetPointer_ data_ptr, hsize_t length, const <a class="el" href="structritsuko_1_1hdf5_1_1Stream1dStringDatasetOptions.html">Stream1dStringDatasetOptions</a> &amp;options)</td></tr>
+<tr class="separator:a8e8b449be8e1ba04abbf3bc0cd31a6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af782821f4d38888e4ee156d12ed9e64d" id="r_af782821f4d38888e4ee156d12ed9e64d"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af782821f4d38888e4ee156d12ed9e64d">chunk_size</a> () const</td></tr>
 <tr class="separator:af782821f4d38888e4ee156d12ed9e64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96db7a8b796513773dc77d99f20137b1" id="r_a96db7a8b796513773dc77d99f20137b1"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96db7a8b796513773dc77d99f20137b1">load</a> (std::string *buffer)</td></tr>
@@ -124,8 +124,8 @@ class ritsuko::hdf5::Stream1dStringDataset&lt; DataSetPointer_ &gt;</div><p>Stre
 </dl>
 <p>This streams in a 1-dimensional HDF5 string dataset in a chunk-wise manner. The aim is to enable inspection of the dataset contents while minimizing memory usage. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="adb2510252d5e72f3379d0d41a5318829" name="adb2510252d5e72f3379d0d41a5318829"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb2510252d5e72f3379d0d41a5318829">&#9670;&#160;</a></span>Stream1dStringDataset()</h2>
+<a id="a8e8b449be8e1ba04abbf3bc0cd31a6a3" name="a8e8b449be8e1ba04abbf3bc0cd31a6a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e8b449be8e1ba04abbf3bc0cd31a6a3">&#9670;&#160;</a></span>Stream1dStringDataset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,7 +143,12 @@ template&lt;class DataSetPointer_  = const H5::DataSet*&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structritsuko_1_1hdf5_1_1Stream1dStringDatasetOptions.html">Stream1dStringDatasetOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -154,13 +159,9 @@ template&lt;class DataSetPointer_  = const H5::DataSet*&gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data_ptr</td><td>Pointer to a HDF5 dataset. It is assumed that this dataset is 1-dimensional. It is also assumed that its datatype is an integer or float.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>If <code>data_ptr</code> is a raw pointer, it should not be deleted before the last call to any methods of this <code><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html" title="Stream a 1-dimensional HDF5 string dataset into memory.">Stream1dStringDataset</a></code> instance. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
+    <tr><td class="paramname">data_ptr</td><td>Pointer to a HDF5 dataset. It is assumed that this dataset is 1-dimensional. It is also assumed that its datatype is an integer or float. If <code>data_ptr</code> is a raw pointer, it should not be deleted before the last call to any methods of this <code><a class="el" href="classritsuko_1_1hdf5_1_1Stream1dStringDataset.html" title="Stream a 1-dimensional HDF5 string dataset into memory.">Stream1dStringDataset</a></code> instance. </td></tr>
     <tr><td class="paramname">length</td><td>Length of the dataset, i.e., the extent of its sole dimension. </td></tr>
+    <tr><td class="paramname">options</td><td>Further options. </td></tr>
   </table>
   </dd>
 </dl>

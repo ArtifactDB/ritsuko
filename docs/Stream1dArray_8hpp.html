@@ -92,8 +92,7 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle"><div class="title">Stream1dArray.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -105,6 +104,7 @@ $(function(){ initResizable(false); });
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &quot;H5Cpp.h&quot;</code><br />
 <code>#include &quot;sanisizer/sanisizer.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="get__name_8hpp_source.html">../hdf5/get_name.hpp</a>&quot;</code><br />
@@ -115,27 +115,29 @@ Include dependency graph for Stream1dArray.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Stream1dArray_8hpp__incl.png" border="0" usemap="#aritsuko_2cvls_2Stream1dArray_8hpp" alt=""/></div>
 <map name="aritsuko_2cvls_2Stream1dArray_8hpp" id="aritsuko_2cvls_2Stream1dArray_8hpp">
-<area shape="rect" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="292,5,494,31"/>
+<area shape="rect" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="324,5,526,31"/>
 <area shape="rect" title=" " alt="" coords="5,241,63,267"/>
-<area shape="poly" title=" " alt="" coords="339,34,280,53,219,81,169,117,123,158,55,231,51,228,119,154,166,113,217,77,278,48,337,29"/>
+<area shape="poly" title=" " alt="" coords="349,34,282,52,215,81,165,116,120,157,54,231,50,227,116,153,162,112,213,77,280,47,348,29"/>
 <area shape="rect" title=" " alt="" coords="366,241,419,267"/>
-<area shape="poly" title=" " alt="" coords="367,34,317,61,265,100,245,122,232,145,229,168,239,192,252,200,281,212,352,237,350,242,279,217,250,205,235,195,224,169,227,143,241,119,262,96,315,57,365,29"/>
+<area shape="poly" title=" " alt="" coords="371,34,323,52,300,65,278,81,262,98,252,113,239,153,234,174,234,182,239,192,252,200,281,212,352,237,350,242,279,217,250,205,235,195,229,184,228,174,234,152,247,110,258,94,275,77,297,61,321,47,370,29"/>
 <area shape="rect" title=" " alt="" coords="1205,241,1282,267"/>
-<area shape="poly" title=" " alt="" coords="495,17,686,22,798,30,913,42,1022,59,1120,82,1198,112,1227,130,1249,151,1259,169,1262,189,1256,227,1251,226,1256,189,1254,170,1245,154,1224,135,1195,117,1118,87,1021,64,912,47,798,35,685,28,494,22"/>
+<area shape="poly" title=" " alt="" coords="527,17,711,24,819,32,928,44,1033,61,1125,84,1200,114,1228,131,1249,151,1259,169,1262,189,1256,227,1251,226,1256,189,1254,170,1245,154,1225,135,1197,118,1124,89,1032,67,927,50,818,38,710,30,526,23"/>
 <area shape="rect" title=" " alt="" coords="549,241,610,267"/>
-<area shape="poly" title=" " alt="" coords="401,30,440,102,470,148,505,191,550,230,546,234,501,195,466,151,436,105,396,33"/>
-<area shape="rect" title=" " alt="" coords="326,79,390,105"/>
-<area shape="poly" title=" " alt="" coords="389,32,373,66,368,64,385,30"/>
+<area shape="poly" title=" " alt="" coords="439,30,459,51,476,78,487,110,489,137,493,163,506,192,524,213,546,231,543,235,520,217,501,195,487,164,484,137,482,111,472,80,454,54,435,33"/>
+<area shape="rect" title=" " alt="" coords="299,79,364,105"/>
+<area shape="poly" title=" " alt="" coords="410,34,361,72,357,67,407,29"/>
+<area shape="rect" title=" " alt="" coords="388,79,462,105"/>
+<area shape="poly" title=" " alt="" coords="427,31,427,63,422,63,422,31"/>
 <area shape="rect" title=" " alt="" coords="670,241,742,267"/>
-<area shape="poly" title=" " alt="" coords="435,29,485,47,543,73,603,107,657,151,684,188,700,226,696,228,679,191,653,154,600,112,541,77,483,52,434,34"/>
+<area shape="poly" title=" " alt="" coords="459,29,503,48,555,74,609,109,657,151,683,188,700,226,695,228,679,191,653,154,606,113,552,79,500,52,457,34"/>
 <area shape="rect" title=" " alt="" coords="86,241,238,267"/>
-<area shape="poly" title=" " alt="" coords="353,34,304,53,256,81,219,113,192,154,177,191,169,227,163,226,172,190,188,151,215,109,252,77,302,48,351,29"/>
+<area shape="poly" title=" " alt="" coords="362,34,305,52,250,81,216,113,192,154,178,191,169,227,164,226,173,190,188,152,212,109,247,77,303,47,361,29"/>
 <area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="249,160,390,186"/>
-<area shape="poly" title=" " alt="" coords="367,34,339,53,326,66,316,80,311,96,310,113,314,145,309,146,304,113,306,95,312,78,322,62,335,49,364,29"/>
+<area shape="poly" title=" " alt="" coords="360,34,320,52,303,64,290,80,284,96,286,113,302,147,298,149,281,115,279,96,285,78,300,61,318,47,358,29"/>
 <area shape="rect" href="strnlen_8hpp.html" title="Determine the length of a fixed&#45;size string." alt="" coords="846,160,969,186"/>
-<area shape="poly" title=" " alt="" coords="494,24,675,43,758,58,816,77,840,91,860,109,893,146,889,149,857,113,836,95,814,81,756,63,674,48,494,29"/>
+<area shape="poly" title=" " alt="" coords="527,25,690,45,764,59,816,77,840,91,860,109,893,146,889,149,857,113,836,96,814,81,763,64,689,50,526,30"/>
 <area shape="rect" href="Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="718,79,804,105"/>
-<area shape="poly" title=" " alt="" coords="456,29,703,77,702,82,455,34"/>
+<area shape="poly" title=" " alt="" coords="483,29,703,75,701,81,481,34"/>
 <area shape="poly" title=" " alt="" coords="275,189,79,243,77,238,274,184"/>
 <area shape="poly" title=" " alt="" coords="332,184,373,228,369,232,329,188"/>
 <area shape="poly" title=" " alt="" coords="379,184,656,240,655,245,378,189"/>
@@ -182,6 +184,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html">ritsuko::cvls::Stream1dArrayOptions</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html" title="Stream a 1-dimensional compressed VLS array into memory.">Stream1dArray</a></code>.  <a href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html">ritsuko::cvls::Stream1dArray&lt; Offset_, Length_, DataSetPointer_ &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream a 1-dimensional compressed VLS array into memory.  <a href="classritsuko_1_1cvls_1_1Stream1dArray.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,12 +199,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1cvls.html">ritsuko::cvls</a></td></tr>
 <tr class="memdesc:namespaceritsuko_1_1cvls"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilities for reading and validating compressed VLS arrays. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a7df34d6e0e035659712e20763c38f833" id="r_a7df34d6e0e035659712e20763c38f833"><td class="memTemplParams" colspan="2">template&lt;typename Offset_ , typename Length_ , typename DataSetPointer_ , class Action_ &gt; </td></tr>
-<tr class="memitem:a7df34d6e0e035659712e20763c38f833"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1cvls.html#a7df34d6e0e035659712e20763c38f833">ritsuko::cvls::iterate_stream</a> (<a class="el" href="classritsuko_1_1cvls_1_1Stream1dArray.html">Stream1dArray</a>&lt; Offset_, Length_, DataSetPointer_ &gt; &amp;stream, Action_ action)</td></tr>
-<tr class="separator:a7df34d6e0e035659712e20763c38f833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stream a 1-dimensional compressed VLS array into memory. </p>

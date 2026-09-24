@@ -104,8 +104,8 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad6db980c6ee8a604c922e938feddcf2e" id="r_ad6db980c6ee8a604c922e938feddcf2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6db980c6ee8a604c922e938feddcf2e">Stream1dArray</a> (DataSetPointer_ pointers_ptr, hsize_t pointers_length, DataSetPointer_ heap_ptr, hsize_t heap_length)</td></tr>
-<tr class="separator:ad6db980c6ee8a604c922e938feddcf2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a020b7aefc1d23d955e8dac16a0765c35" id="r_a020b7aefc1d23d955e8dac16a0765c35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a020b7aefc1d23d955e8dac16a0765c35">Stream1dArray</a> (DataSetPointer_ pointers_ptr, hsize_t pointers_length, DataSetPointer_ heap_ptr, hsize_t heap_length, const <a class="el" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html">Stream1dArrayOptions</a> &amp;options)</td></tr>
+<tr class="separator:a020b7aefc1d23d955e8dac16a0765c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43f5fa53e706efbc1ad202d1579394a1" id="r_a43f5fa53e706efbc1ad202d1579394a1"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43f5fa53e706efbc1ad202d1579394a1">chunk_size</a> () const</td></tr>
 <tr class="separator:a43f5fa53e706efbc1ad202d1579394a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04779d6100730f1d1da798ff8d61a008" id="r_a04779d6100730f1d1da798ff8d61a008"><td class="memItemLeft" align="right" valign="top">hsize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04779d6100730f1d1da798ff8d61a008">load</a> (std::string *buffer)</td></tr>
@@ -126,8 +126,8 @@ class ritsuko::cvls::Stream1dArray&lt; Offset_, Length_, DataSetPointer_ &gt;</d
 </dl>
 <p>This streams in a 1-dimensional compressed VLS array in chunks. Callers can then iterate over the individual strings. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad6db980c6ee8a604c922e938feddcf2e" name="ad6db980c6ee8a604c922e938feddcf2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6db980c6ee8a604c922e938feddcf2e">&#9670;&#160;</a></span>Stream1dArray()</h2>
+<a id="a020b7aefc1d23d955e8dac16a0765c35" name="a020b7aefc1d23d955e8dac16a0765c35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a020b7aefc1d23d955e8dac16a0765c35">&#9670;&#160;</a></span>Stream1dArray()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +155,12 @@ template&lt;typename Offset_ , typename Length_ , typename DataSetPointer_  = co
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>&#160;)</td>
+          <td class="paramtype">hsize_t</td>          <td class="paramname"><span class="paramname"><em>heap_length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structritsuko_1_1cvls_1_1Stream1dArrayOptions.html">Stream1dArrayOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -170,6 +175,7 @@ template&lt;typename Offset_ , typename Length_ , typename DataSetPointer_  = co
     <tr><td class="paramname">pointers_length</td><td>Length of the <code>pointers_ptr</code> dataset, i.e., the extent of its sole dimension. </td></tr>
     <tr><td class="paramname">heap_ptr</td><td><a class="el" href="structritsuko_1_1cvls_1_1Pointer.html" title="Pointer into the compressed VLS heap.">Pointer</a> to a HDF5 dataset containing the compressed VLS heap. It is assumed that this dataset already satisfies <code><a class="el" href="namespaceritsuko_1_1cvls.html#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap()</a></code>. </td></tr>
     <tr><td class="paramname">heap_length</td><td>Length of the <code>heap_ptr</code> dataset, i.e, the extent of its sole dimension. This can be set to the return value of <code><a class="el" href="namespaceritsuko_1_1cvls.html#ad9a7281493831fc4dec1fe55fa66acd6">validate_heap()</a></code>. </td></tr>
+    <tr><td class="paramname">options</td><td>Further options. </td></tr>
   </table>
   </dd>
 </dl>
