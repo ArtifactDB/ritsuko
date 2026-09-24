@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - master
-    paths:
+    paths-ignore:
       - 'tests/**'
       - 'cmake/**'
 
