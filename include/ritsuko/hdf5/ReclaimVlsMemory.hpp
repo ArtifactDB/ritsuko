@@ -5,6 +5,8 @@
 
 #include "H5Cpp.h"
 
+#include "../utils.hpp"
+
 /**
  * @file ReclaimVlsMemory.hpp
  * @brief Reclaim memory allocated to HDF5's variable length strings.

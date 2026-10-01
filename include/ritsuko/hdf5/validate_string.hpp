@@ -10,7 +10,6 @@
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
 
-#include "get_name.hpp"
 #include "mock_contiguous_chunks.hpp"
 #include "IterateChunks.hpp"
 #include "ReclaimVlsMemory.hpp"
@@ -50,7 +49,7 @@ inline void validate_scalar_string(const H5::DataSet& data) {
     [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &dspace, &plist, &vptr);
 
     if (vptr == NULL) {
-        throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
+        throw std::runtime_error("detected a NULL pointer for a variable length string");
     }
 }
 
@@ -96,21 +95,27 @@ inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length, co
     H5::DataSpace mspace(1, &block_size), dspace(1, &full_length);
     auto buffer = sanisizer::create<std::vector<char*> >(block_size);
 
-    for (hsize_t i = 0; i < full_length; i += block_size) {
-        const hsize_t available = sanisizer::min(full_length - i, block_size);
+    hsize_t pos = 0;
+    while (true) {
+        const hsize_t available = sanisizer::min(full_length - pos, block_size);
+        if (available == 0) {
+            break;
+        }
+
         constexpr hsize_t zero = 0;
         mspace.selectHyperslab(H5S_SELECT_SET, &available, &zero);
-        dspace.selectHyperslab(H5S_SELECT_SET, &available, &i);
-
+        dspace.selectHyperslab(H5S_SELECT_SET, &available, &pos);
         data.read(buffer.data(), dtype, mspace, dspace);
 
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
         [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
-        for (hsize_t j = 0; j < available; ++j) {
-            if (buffer[j] == NULL) {
-                throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
+        for (hsize_t i = 0; i < available; ++i) {
+            if (buffer[i] == NULL) {
+                throw std::runtime_error("detected a NULL pointer for a variable length string at position " + std::to_string(pos + i));
             }
         }
+
+        pos += available;
     }
 }
 
@@ -167,8 +172,9 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
 
     while (iter.advance()) {
         const auto& curcount = iter.counts();
+        const auto& curstart = iter.starts();
         mspace.setExtentSimple(ndim, curcount.data());
-        fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.starts().data());
+        fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), curstart.data());
 
         data.read(buffer.data(), stype, mspace, fspace);
         const auto& plist = H5::DSetMemXferPropList::DEFAULT;
@@ -177,7 +183,8 @@ inline void validate_nd_strings(const H5::DataSet& data, const std::vector<hsize
         const auto npts = mspace.getSimpleExtentNpoints();
         for (I<decltype(npts)> i = 0; i < npts; ++i) {
             if (buffer[i] == NULL) {
-                throw std::runtime_error("detected NULL pointer in a variable-length string dataset");
+                auto posstr = emit_coordinates_as_string(i, npts, curstart, curcount);
+                throw std::runtime_error("detected NULL pointer for a variable-length string at position " + posstr);
             }
         }
     }
@@ -207,7 +214,7 @@ inline void validate_scalar_string(const H5::Attribute& attr) {
     attr.read(dtype, &buffer);
     [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, &buffer);
     if (buffer == NULL) {
-        throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
+        throw std::runtime_error("detected a NULL pointer for a variable length string");
     }
 }
 
@@ -237,7 +244,7 @@ inline void validate_1d_strings(const H5::Attribute& attr, hsize_t full_length) 
     [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
     for (hsize_t i = 0; i < full_length; ++i) {
         if (buffer[i] == NULL) {
-            throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
+            throw std::runtime_error("detected a NULL pointer for a variable length string");
         }
     }
 }

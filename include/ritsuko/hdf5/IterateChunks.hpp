@@ -129,6 +129,26 @@ private:
     bool my_finished = false;
 };
 
+/**
+ * @cond
+ */
+inline std::string emit_coordinates_as_string(hsize_t position, hsize_t chunk_size, const std::vector<hsize_t>& starts, const std::vector<hsize_t>& counts) {
+    std::string msg;
+    const auto ndim = starts.size();
+    for (I<decltype(ndim)> d = 0; d < ndim; ++d) {
+        if (d != 0) {
+            msg += ", ";
+        }
+        chunk_size /= counts[d];
+        msg += std::to_string(starts[d] + position / chunk_size);
+        position %= chunk_size;
+    }
+    return "(" + msg + ")";
+}
+/**
+ * @endcond
+ */
+
 }
 
 }

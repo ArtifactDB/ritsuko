@@ -11,9 +11,9 @@
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
 
-#include "get_name.hpp"
 #include "strnlen.hpp"
 #include "ReclaimVlsMemory.hpp"
+#include "../utils.hpp"
 
 /**
  * @file Stream1dStringDataset.hpp
@@ -117,7 +117,7 @@ public:
             [[maybe_unused]] ReclaimVlsMemory deletor(&my_dtype, &my_mspace, &plist, my_var_buffer.data());
             for (hsize_t i = 0; i < my_available; ++i) {
                 if (my_var_buffer[i] == NULL) {
-                    throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(*my_data_ptr) + "'");
+                    throw std::runtime_error("detected a NULL pointer for a variable length string at position " + std::to_string(start() + i));
                 }
                 auto& curstr = buffer[i];
                 curstr.clear();

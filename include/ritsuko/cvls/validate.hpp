@@ -11,7 +11,6 @@
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
 
-#include "../hdf5/get_name.hpp"
 #include "../hdf5/IterateChunks.hpp"
 #include "../hdf5/mock_contiguous_chunks.hpp"
 
@@ -40,7 +39,12 @@ namespace cvls {
  */
 template<typename Offset_, typename Length_>
 inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length) {
-    validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
+    try {
+        validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
+    } catch (std::exception& e) {
+        throw std::runtime_error("failed to validate the datatype; " + std::string(e.what()));
+    }
+
     assert(data.getSpace().getSimpleExtentNdims() == 0);
 
     auto dtype = define_pointer_datatype<Offset_, Length_>();
@@ -48,7 +52,7 @@ inline void validate_scalar_pointer(const H5::DataSet& data, hsize_t heap_length
     data.read(&val, dtype);
 
     if (is_Pointer_out_of_range(val, heap_length)) {
-        throw std::runtime_error("compressed VLS array pointer at '" + hdf5::get_name(data) + "' is out of range of the heap");
+        throw std::runtime_error("pointer is out of range of the heap");
     }
 }
 
@@ -79,7 +83,11 @@ struct Validate1dPointersOptions {
  */
 template<typename Offset_, typename Length_>
 inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, hsize_t heap_length, const Validate1dPointersOptions& options) {
-    validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
+    try {
+        validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
+    } catch (std::exception& e) {
+        throw std::runtime_error("failed to validate the datatype; " + std::string(e.what()));
+    }
     assert(data.getSpace().getSimpleExtentNdims() == 1);
 
     const auto& plist = data.getCreatePlist();
@@ -105,7 +113,7 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
         for (I<decltype(available)> j = 0; j < available; ++j) {
             const auto& val = buffer[j];
             if (is_Pointer_out_of_range(val, heap_length)) {
-                throw std::runtime_error("compressed VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
+                throw std::runtime_error("pointer at position " + std::to_string(i + j) + " is out of range of the heap");
             }
         }
 
@@ -141,7 +149,11 @@ struct ValidateNdPointersOptions {
  */
 template<typename Offset_, typename Length_>
 void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& dimensions, hsize_t heap_length, const ValidateNdPointersOptions& options) {
-    validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
+    try {
+        validate_pointer_datatype(data, std::numeric_limits<Offset_>::digits, std::numeric_limits<Length_>::digits);
+    } catch (std::exception& e) {
+        throw std::runtime_error("failed to validate the datatype; " + std::string(e.what()));
+    }
     assert(data.getSpace().getSimpleExtentNdims() > 0);
 
     // Cast of 'ndim' to 'int' is implicitly safe if the assertion holds.
@@ -165,15 +177,17 @@ void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& d
 
     while (iter.advance()) {
         const auto& curcount = iter.counts();
+        const auto& curstart = iter.starts();
         mspace.setExtentSimple(ndim, curcount.data());
-        fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), iter.starts().data());
+        fspace.selectHyperslab(H5S_SELECT_SET, curcount.data(), curstart.data());
 
         data.read(buffer.data(), dtype, mspace, fspace);
         const auto available = mspace.getSimpleExtentNpoints();
         for (I<decltype(available)> i = 0; i < available; ++i) {
             const auto& val = buffer[i];
             if (is_Pointer_out_of_range(val, heap_length)) {
-                throw std::runtime_error("compressed VLS array pointers at '" + hdf5::get_name(data) + "' are out of range of the heap");
+                auto posstr = hdf5::emit_coordinates_as_string(i, available, curstart, curcount);
+                throw std::runtime_error("pointer at position " + posstr + " is out of range of the heap");
             }
         }
     }
@@ -190,14 +204,14 @@ void validate_nd_pointers(const H5::DataSet& data, const std::vector<hsize_t>& d
  */
 inline hsize_t validate_heap(const H5::DataSet& data) {
     if (data.getTypeClass() != H5T_INTEGER) {
-        throw std::runtime_error("expected an integer datatype for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
+        throw std::runtime_error("expected an integer datatype");
     }
     if (hdf5::exceeds_integer_limit(data.getIntType(), 8, false)) {
-        throw std::runtime_error("expected 8-bit unsigned integers for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
+        throw std::runtime_error("expected 8-bit unsigned integers");
     }
     auto dspace = data.getSpace();
     if (dspace.getSimpleExtentNdims() != 1) {
-        throw std::runtime_error("expected a 1-dimensional dataset for the compressed VLS heap at '" + hdf5::get_name(data) + "'");
+        throw std::runtime_error("expected a 1-dimensional dataset");
     }
     hsize_t len;
     dspace.getSimpleExtentDims(&len);

@@ -2,13 +2,13 @@
 #define RITSUKO_HDF5_READ_SCALAR_STRING_HPP
 
 #include "H5Cpp.h"
+#include "sanisizer/sanisizer.hpp"
 
 #include <string>
 #include <vector>
 #include <stdexcept>
 #include <cassert>
 
-#include "get_name.hpp"
 #include "strnlen.hpp"
 #include "ReclaimVlsMemory.hpp"
 
@@ -38,7 +38,7 @@ inline std::string read_scalar_string(const H5::DataSet& data) {
         data.read(&vptr, dtype);
         [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &dspace, &plist, &vptr);
         if (vptr == NULL) {
-            throw std::runtime_error("detected a NULL pointer for a variable length string in '" + get_name(data) + "'");
+            throw std::runtime_error("detected a NULL pointer for a variable length string");
         }
         std::string output(vptr);
         return output;
@@ -71,7 +71,7 @@ inline std::string read_scalar_string(const H5::Attribute& attr) {
         attr.read(dtype, &buffer);
         [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &dspace, &plist, &buffer);
         if (buffer == NULL) {
-            throw std::runtime_error("detected a NULL pointer for a variable length string attribute");
+            throw std::runtime_error("detected a NULL pointer for a variable length string");
         }
         return std::string(buffer);
 

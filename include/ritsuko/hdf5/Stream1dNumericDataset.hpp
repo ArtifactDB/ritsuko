@@ -11,7 +11,7 @@
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
 
-#include "get_name.hpp"
+#include "../utils.hpp"
 #include "as_numeric_datatype.hpp"
 
 /**

@@ -11,7 +11,7 @@
 
 #include "../hdf5/as_numeric_datatype.hpp"
 #include "../hdf5/exceeds_limit.hpp"
-#include "../hdf5/get_name.hpp"
+#include "../utils.hpp"
 
 /**
  * @file Pointer.hpp
@@ -87,29 +87,29 @@ H5::CompType define_pointer_datatype() {
  */
 inline void validate_pointer_datatype(const H5::CompType& type, const std::size_t offset_precision, const std::size_t length_precision) {
     if (type.getNmembers() != 2) {
-        throw std::runtime_error("expected compressed VLS compound datatype to have two members");
+        throw std::runtime_error("datatype should have two members");
     }
 
     if (type.getMemberName(0) != "offset") {
-        throw std::runtime_error("first member of a compressed VLS compound datatype should be named 'offset'");
+        throw std::runtime_error("first member should be named 'offset'");
     }
     if (type.getMemberClass(0) != H5T_INTEGER) {
-        throw std::runtime_error("first member of a compressed VLS compound datatype should have integer type");
+        throw std::runtime_error("first member should be an integer datatype");
     }
     auto offset_type = type.getMemberIntType(0);
     if (hdf5::exceeds_integer_limit(offset_type, offset_precision, false)) {
-        throw std::runtime_error("first member of a compressed VLS compound datatype should not exceed a " + std::to_string(offset_precision) + "-bit unsigned integer");
+        throw std::runtime_error("first member should not exceed a " + std::to_string(offset_precision) + "-bit unsigned integer");
     }
 
     if (type.getMemberName(1) != "length") {
-        throw std::runtime_error("second member of a compressed VLS compound datatype should be named 'length'");
+        throw std::runtime_error("second member should be named 'length'");
     }
     if (type.getMemberClass(1) != H5T_INTEGER) {
-        throw std::runtime_error("second member of a compressed VLS compound datatype should have integer type");
+        throw std::runtime_error("second member should be an integer datatype");
     }
     auto length_type = type.getMemberIntType(1);
     if (hdf5::exceeds_integer_limit(length_type, length_precision, false)) {
-        throw std::runtime_error("second member of a VLS compound datatype should not exceed a " + std::to_string(length_precision) + "-bit unsigned integer");
+        throw std::runtime_error("second member should not exceed a " + std::to_string(length_precision) + "-bit unsigned integer");
     }
 }
 
@@ -124,16 +124,9 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
  */
 inline void validate_pointer_datatype(const H5::DataSet& data, const std::size_t offset_precision, const std::size_t length_precision) {
     if (data.getTypeClass() != H5T_COMPOUND) {
-        throw std::runtime_error("expected a compound datatype for a compressed VLS pointer dataset at '" + hdf5::get_name(data) + "'");
+        throw std::runtime_error("expected a compound datatype");
     }
-
-    try {
-        validate_pointer_datatype(data.getCompType(), offset_precision, length_precision);
-    } catch (std::exception& e) {
-        std::string msg = e.what();
-        msg += " in '" + hdf5::get_name(data) + "'";
-        throw std::runtime_error(msg.c_str());
-    }
+    validate_pointer_datatype(data.getCompType(), offset_precision, length_precision);
 }
 
 /**
