@@ -1,7 +1,9 @@
 <map id="ritsuko/hdf5/ReclaimVlsMemory.hpp" name="ritsuko/hdf5/ReclaimVlsMemory.hpp">
-<area shape="rect" id="Node000001" title="Reclaim memory allocated to HDF5&#39;s variable length strings." alt="" coords="5,5,235,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="30,79,111,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,33,90,68,85,65,110,30"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="135,79,206,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,30,156,65,151,68,126,33"/>
+<area shape="rect" id="Node000001" title="Reclaim memory allocated to HDF5&#39;s variable length strings." alt="" coords="31,5,261,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,87,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,34,77,72,74,67,127,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,79,182,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,31,149,63,143,63,143,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="206,79,286,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,29,218,67,215,72,161,34"/>
 </map>

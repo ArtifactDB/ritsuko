@@ -6,7 +6,6 @@
     <filename>Pointer_8hpp.html</filename>
     <includes id="as__numeric__datatype_8hpp" name="as_numeric_datatype.hpp" local="yes" import="no" module="no" objc="no">../hdf5/as_numeric_datatype.hpp</includes>
     <includes id="exceeds__limit_8hpp" name="exceeds_limit.hpp" local="yes" import="no" module="no" objc="no">../hdf5/exceeds_limit.hpp</includes>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">../hdf5/get_name.hpp</includes>
     <class kind="struct">ritsuko::cvls::Pointer</class>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::cvls</namespace>
@@ -15,7 +14,6 @@
     <name>Stream1dArray.hpp</name>
     <path>ritsuko/cvls/</path>
     <filename>Stream1dArray_8hpp.html</filename>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">../hdf5/get_name.hpp</includes>
     <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">../hdf5/strnlen.hpp</includes>
     <includes id="Pointer_8hpp" name="Pointer.hpp" local="yes" import="no" module="no" objc="no">Pointer.hpp</includes>
     <class kind="struct">ritsuko::cvls::Stream1dArrayOptions</class>
@@ -27,7 +25,6 @@
     <name>validate.hpp</name>
     <path>ritsuko/cvls/</path>
     <filename>validate_8hpp.html</filename>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">../hdf5/get_name.hpp</includes>
     <includes id="IterateChunks_8hpp" name="IterateChunks.hpp" local="yes" import="no" module="no" objc="no">../hdf5/IterateChunks.hpp</includes>
     <includes id="mock__contiguous__chunks_8hpp" name="mock_contiguous_chunks.hpp" local="yes" import="no" module="no" objc="no">../hdf5/mock_contiguous_chunks.hpp</includes>
     <includes id="Pointer_8hpp" name="Pointer.hpp" local="yes" import="no" module="no" objc="no">Pointer.hpp</includes>
@@ -96,7 +93,6 @@
     <name>read_scalar_string.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>read__scalar__string_8hpp.html</filename>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">get_name.hpp</includes>
     <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">strnlen.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">ReclaimVlsMemory.hpp</includes>
     <namespace>ritsuko</namespace>
@@ -114,7 +110,6 @@
     <name>Stream1dNumericDataset.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>Stream1dNumericDataset_8hpp.html</filename>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">get_name.hpp</includes>
     <includes id="as__numeric__datatype_8hpp" name="as_numeric_datatype.hpp" local="yes" import="no" module="no" objc="no">as_numeric_datatype.hpp</includes>
     <class kind="struct">ritsuko::hdf5::Stream1dNumericDatasetOptions</class>
     <class kind="class">ritsuko::hdf5::Stream1dNumericDataset</class>
@@ -125,7 +120,6 @@
     <name>Stream1dStringDataset.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>Stream1dStringDataset_8hpp.html</filename>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">get_name.hpp</includes>
     <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">strnlen.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">ReclaimVlsMemory.hpp</includes>
     <class kind="struct">ritsuko::hdf5::Stream1dStringDatasetOptions</class>
@@ -144,7 +138,6 @@
     <name>validate_string.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>validate__string_8hpp.html</filename>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">get_name.hpp</includes>
     <includes id="mock__contiguous__chunks_8hpp" name="mock_contiguous_chunks.hpp" local="yes" import="no" module="no" objc="no">mock_contiguous_chunks.hpp</includes>
     <includes id="IterateChunks_8hpp" name="IterateChunks.hpp" local="yes" import="no" module="no" objc="no">IterateChunks.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">ReclaimVlsMemory.hpp</includes>

@@ -108,47 +108,39 @@ $(function(){ initResizable(false); });
 <code>#include &quot;<a class="elRef" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer/sanisizer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="as__numeric__datatype_8hpp_source.html">../hdf5/as_numeric_datatype.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="exceeds__limit_8hpp_source.html">../hdf5/exceeds_limit.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="get__name_8hpp_source.html">../hdf5/get_name.hpp</a>&quot;</code><br />
+<code>#include &quot;../utils.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Pointer.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Pointer_8hpp__incl.png" border="0" usemap="#aritsuko_2cvls_2Pointer_8hpp" alt=""/></div>
 <map name="aritsuko_2cvls_2Pointer_8hpp" id="aritsuko_2cvls_2Pointer_8hpp">
-<area shape="rect" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="343,5,500,31"/>
+<area shape="rect" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="336,5,493,31"/>
 <area shape="rect" title=" " alt="" coords="5,168,83,193"/>
-<area shape="poly" title=" " alt="" coords="342,29,203,48,140,63,97,81,82,96,69,115,53,154,48,151,65,113,78,93,95,77,138,57,202,42,342,23"/>
-<area shape="rect" title=" " alt="" coords="513,168,567,193"/>
-<area shape="poly" title=" " alt="" coords="444,29,472,50,499,77,521,115,535,152,530,154,516,117,495,81,469,54,441,34"/>
-<area shape="rect" title=" " alt="" coords="129,168,194,193"/>
-<area shape="poly" title=" " alt="" coords="342,26,275,32,205,43,146,59,124,69,110,81,103,98,108,118,121,138,137,155,133,159,117,141,103,120,98,98,106,77,122,64,144,54,204,38,274,27,342,21"/>
-<area shape="rect" title=" " alt="" coords="776,86,829,112"/>
-<area shape="poly" title=" " alt="" coords="501,26,623,45,758,76,764,78,762,83,757,82,622,50,500,31"/>
-<area shape="rect" title=" " alt="" coords="228,168,300,193"/>
-<area shape="poly" title=" " alt="" coords="406,33,347,81,312,120,283,157,279,153,308,116,343,77,402,29"/>
-<area shape="rect" target="_parent" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html" title=" " alt="" coords="775,168,926,193"/>
-<area shape="poly" title=" " alt="" coords="501,23,605,40,661,56,715,77,741,95,766,118,821,157,818,161,762,122,738,100,712,81,659,61,603,45,500,28"/>
-<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="358,79,485,120"/>
-<area shape="poly" title=" " alt="" coords="424,31,424,64,419,64,419,31"/>
-<area shape="rect" href="exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="120,86,283,112"/>
-<area shape="poly" title=" " alt="" coords="388,34,250,83,248,78,387,29"/>
-<area shape="rect" href="get__name_8hpp.html" title="Get the name of a HDF5 object." alt="" coords="560,86,701,112"/>
-<area shape="poly" title=" " alt="" coords="455,29,585,78,583,83,453,34"/>
-<area shape="poly" title=" " alt="" coords="383,123,303,163,301,158,381,118"/>
-<area shape="rect" title=" " alt="" coords="407,168,489,193"/>
-<area shape="poly" title=" " alt="" coords="430,119,442,152,437,154,425,121"/>
-<area shape="rect" title=" " alt="" coords="323,168,384,193"/>
-<area shape="poly" title=" " alt="" coords="407,122,376,158,372,154,403,118"/>
-<area shape="poly" title=" " alt="" coords="178,115,83,163,80,158,176,110"/>
-<area shape="poly" title=" " alt="" coords="198,114,177,155,172,152,193,111"/>
-<area shape="poly" title=" " alt="" coords="213,111,247,154,243,157,209,114"/>
-<area shape="poly" title=" " alt="" coords="619,115,567,159,563,155,615,111"/>
-<area shape="poly" title=" " alt="" coords="570,115,315,169,314,164,569,110"/>
-<area shape="poly" title=" " alt="" coords="665,110,804,160,802,165,664,115"/>
-<area shape="poly" title=" " alt="" coords="604,115,491,164,489,159,601,110"/>
-<area shape="rect" title=" " alt="" coords="694,168,751,193"/>
-<area shape="poly" title=" " alt="" coords="646,111,699,155,695,159,643,115"/>
-<area shape="rect" title=" " alt="" coords="591,168,670,193"/>
-<area shape="poly" title=" " alt="" coords="633,113,633,152,628,152,628,113"/>
+<area shape="poly" title=" " alt="" coords="336,28,196,47,133,62,108,71,91,81,76,96,65,115,51,153,46,151,60,113,72,93,88,77,106,66,131,57,195,42,335,23"/>
+<area shape="rect" title=" " alt="" coords="503,86,556,112"/>
+<area shape="poly" title=" " alt="" coords="434,29,501,75,498,80,431,34"/>
+<area shape="rect" title=" " alt="" coords="144,168,208,193"/>
+<area shape="poly" title=" " alt="" coords="336,26,268,32,199,43,139,59,118,69,103,81,98,90,97,98,104,118,119,140,140,157,137,161,115,144,99,121,91,99,93,88,99,77,115,64,138,54,198,38,268,27,335,21"/>
+<area shape="rect" title=" " alt="" coords="580,86,633,112"/>
+<area shape="poly" title=" " alt="" coords="449,29,569,77,570,77,568,82,567,81,447,34"/>
+<area shape="rect" title=" " alt="" coords="278,168,349,193"/>
+<area shape="poly" title=" " alt="" coords="394,34,366,54,341,80,325,117,318,153,313,152,320,115,336,78,362,50,390,29"/>
+<area shape="rect" target="_parent" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html" title=" " alt="" coords="656,86,808,112"/>
+<area shape="poly" title=" " alt="" coords="464,29,669,80,668,85,463,34"/>
+<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="351,79,478,120"/>
+<area shape="poly" title=" " alt="" coords="417,31,417,64,412,64,412,31"/>
+<area shape="rect" href="exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="113,86,276,112"/>
+<area shape="poly" title=" " alt="" coords="382,34,243,83,242,78,380,29"/>
+<area shape="rect" title=" " alt="" coords="832,86,912,112"/>
+<area shape="poly" title=" " alt="" coords="494,24,646,42,734,57,821,76,828,79,827,84,819,82,733,63,646,48,493,29"/>
+<area shape="poly" title=" " alt="" coords="391,122,342,160,339,156,388,118"/>
+<area shape="rect" title=" " alt="" coords="462,168,543,193"/>
+<area shape="poly" title=" " alt="" coords="438,118,479,155,476,159,435,122"/>
+<area shape="rect" title=" " alt="" coords="378,168,438,193"/>
+<area shape="poly" title=" " alt="" coords="416,120,413,152,408,152,410,120"/>
+<area shape="poly" title=" " alt="" coords="173,115,82,163,79,158,171,110"/>
+<area shape="poly" title=" " alt="" coords="194,113,185,153,180,152,189,112"/>
+<area shape="poly" title=" " alt="" coords="214,110,284,156,281,161,211,115"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">

@@ -97,13 +97,13 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define RITSUKO_HDF5_READ_SCALAR_STRING_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;H5Cpp.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="get__name_8hpp.html">get_name.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="codeRef" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer/sanisizer.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="strnlen_8hpp.html">strnlen.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="ReclaimVlsMemory_8hpp.html">ReclaimVlsMemory.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
@@ -124,7 +124,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        data.read(&amp;vptr, dtype);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        [[maybe_unused]] <a class="code hl_class" href="classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html">ReclaimVlsMemory</a> deletor(&amp;dtype, &amp;dspace, &amp;plist, &amp;vptr);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (vptr == NULL) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;detected a NULL pointer for a variable length string in &#39;&quot;</span> + <a class="code hl_function" href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">get_name</a>(data) + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;detected a NULL pointer for a variable length string&quot;</span>);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        std::string output(vptr);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> output;</div>
@@ -154,7 +154,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        attr.read(dtype, &amp;buffer);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        [[maybe_unused]] <a class="code hl_class" href="classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html">ReclaimVlsMemory</a> deletor(&amp;dtype, &amp;dspace, &amp;plist, &amp;buffer);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">if</span> (buffer == NULL) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;detected a NULL pointer for a variable length string attribute&quot;</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;detected a NULL pointer for a variable length string&quot;</span>);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> std::string(buffer);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
@@ -173,13 +173,12 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aReclaimVlsMemory_8hpp_html"><div class="ttname"><a href="ReclaimVlsMemory_8hpp.html">ReclaimVlsMemory.hpp</a></div><div class="ttdoc">Reclaim memory allocated to HDF5's variable length strings.</div></div>
-<div class="ttc" id="aclassritsuko_1_1hdf5_1_1ReclaimVlsMemory_html"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html">ritsuko::hdf5::ReclaimVlsMemory</a></div><div class="ttdoc">Reclaim memory for HDF5's variable length strings.</div><div class="ttdef"><b>Definition</b> ReclaimVlsMemory.hpp:36</div></div>
-<div class="ttc" id="aget__name_8hpp_html"><div class="ttname"><a href="get__name_8hpp.html">get_name.hpp</a></div><div class="ttdoc">Get the name of a HDF5 object.</div></div>
-<div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a4b7fb14a62a3dc80bcca289226b42865"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a4b7fb14a62a3dc80bcca289226b42865">ritsuko::hdf5::get_name</a></div><div class="ttdeci">std::string get_name(const Object_ &amp;obj)</div><div class="ttdef"><b>Definition</b> get_name.hpp:29</div></div>
+<div class="ttc" id="aclassritsuko_1_1hdf5_1_1ReclaimVlsMemory_html"><div class="ttname"><a href="classritsuko_1_1hdf5_1_1ReclaimVlsMemory.html">ritsuko::hdf5::ReclaimVlsMemory</a></div><div class="ttdoc">Reclaim memory for HDF5's variable length strings.</div><div class="ttdef"><b>Definition</b> ReclaimVlsMemory.hpp:38</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_a6c30575af3d92242718dd1ca4489a525"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#a6c30575af3d92242718dd1ca4489a525">ritsuko::hdf5::read_scalar_string</a></div><div class="ttdeci">std::string read_scalar_string(const H5::DataSet &amp;data)</div><div class="ttdef"><b>Definition</b> read_scalar_string.hpp:29</div></div>
 <div class="ttc" id="anamespaceritsuko_1_1hdf5_html_ab50df338dbb7fed71795d0f0772d7307"><div class="ttname"><a href="namespaceritsuko_1_1hdf5.html#ab50df338dbb7fed71795d0f0772d7307">ritsuko::hdf5::strnlen</a></div><div class="ttdeci">std::size_t strnlen(const char *ptr, std::size_t max)</div><div class="ttdef"><b>Definition</b> strnlen.hpp:25</div></div>
 <div class="ttc" id="anamespaceritsuko_html"><div class="ttname"><a href="namespaceritsuko.html">ritsuko</a></div><div class="ttdoc">Helper functions for ArtifactDB parsing and validation.</div><div class="ttdef"><b>Definition</b> Pointer.hpp:21</div></div>
 <div class="ttc" id="anamespacesanisizer_html_a0c7c43499ff60d5185708c50b32a40d7"><div class="ttname"><a href="https://ltla.github.io/sanisizer/namespacesanisizer.html#a0c7c43499ff60d5185708c50b32a40d7">sanisizer::create</a></div><div class="ttdeci">Container_ create(Value_ x, Args_ &amp;&amp;... args)</div></div>
+<div class="ttc" id="asanisizer_8hpp_html"><div class="ttname"><a href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer.hpp</a></div></div>
 <div class="ttc" id="astrnlen_8hpp_html"><div class="ttname"><a href="strnlen_8hpp.html">strnlen.hpp</a></div><div class="ttdoc">Determine the length of a fixed-size string.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
