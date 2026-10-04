@@ -8,7 +8,6 @@
 #include "hdf5/strnlen.hpp"
 #include "hdf5/as_numeric_datatype.hpp"
 #include "hdf5/mock_contiguous_chunks.hpp"
-#include "hdf5/get_name.hpp"
 #include "hdf5/ReclaimVlsMemory.hpp"
 #include "hdf5/validate_string.hpp"
 #include "hdf5/Stream1dStringDataset.hpp"

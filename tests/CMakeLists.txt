@@ -29,7 +29,6 @@ add_executable(
     src/hdf5/mock_contiguous_chunks.cpp
     src/hdf5/validate_string.cpp
     src/hdf5/read_scalar_string.cpp
-    src/hdf5/get_name.cpp
     src/hdf5/as_numeric_datatype.cpp
 
     src/cvls/Pointer.cpp
