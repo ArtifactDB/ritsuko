@@ -142,9 +142,6 @@ Functions</h2></td></tr>
 <tr class="separator:ab3a597697dc2595ce137bdae40622075"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52b943572affc708f5ab0c65df87b7aa" id="r_a52b943572affc708f5ab0c65df87b7aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52b943572affc708f5ab0c65df87b7aa">exceeds_float_limit</a> (const H5::Attribute &amp;attr, std::size_t precision)</td></tr>
 <tr class="separator:a52b943572affc708f5ab0c65df87b7aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b7fb14a62a3dc80bcca289226b42865" id="r_a4b7fb14a62a3dc80bcca289226b42865"><td class="memTemplParams" colspan="2">template&lt;class Object_ &gt; </td></tr>
-<tr class="memitem:a4b7fb14a62a3dc80bcca289226b42865"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4b7fb14a62a3dc80bcca289226b42865">get_name</a> (const Object_ &amp;obj)</td></tr>
-<tr class="separator:a4b7fb14a62a3dc80bcca289226b42865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a188b248f678ed8edd7564193e54fa44a" id="r_a188b248f678ed8edd7564193e54fa44a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a188b248f678ed8edd7564193e54fa44a">is_utf8_string</a> (const H5::StrType &amp;stype)</td></tr>
 <tr class="separator:a188b248f678ed8edd7564193e54fa44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb640ca5a6816733631a41238c59fbab" id="r_abb640ca5a6816733631a41238c59fbab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb640ca5a6816733631a41238c59fbab">is_utf8_string</a> (const H5::DataSet &amp;data)</td></tr>
@@ -407,38 +404,6 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether the datatype cannot be represented by the limiting integer type. </dd></dl>
-
-</div>
-</div>
-<a id="a4b7fb14a62a3dc80bcca289226b42865" name="a4b7fb14a62a3dc80bcca289226b42865"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b7fb14a62a3dc80bcca289226b42865">&#9670;&#160;</a></span>get_name()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Object_ &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ritsuko::hdf5::get_name </td>
-          <td>(</td>
-          <td class="paramtype">const Object_ &amp;</td>          <td class="paramname"><span class="paramname"><em>obj</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get the name of a HDF5 object, usually for printing informative error messages. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Object_</td><td>Type of HDF5 object, usually a <code>Group</code>, <code>DataSet</code> or <code>Attribute</code>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">obj</td><td>A HDF5 object. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Name of the HDF5 object inside the file. </dd></dl>
 
 </div>
 </div>

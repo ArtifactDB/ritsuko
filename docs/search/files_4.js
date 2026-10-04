@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['get_5fname_2ehpp_0',['get_name.hpp',['../get__name_8hpp.html',1,'']]]
+  ['is_5fdate_5ftime_2ehpp_0',['is_date_time.hpp',['../is__date__time_8hpp.html',1,'']]],
+  ['is_5futf8_5fstring_2ehpp_1',['is_utf8_string.hpp',['../is__utf8__string_8hpp.html',1,'']]],
+  ['iteratechunks_2ehpp_2',['IterateChunks.hpp',['../IterateChunks_8hpp.html',1,'']]]
 ];

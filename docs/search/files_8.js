@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['parse_5fversion_5fstring_2ehpp_0',['parse_version_string.hpp',['../parse__version__string_8hpp.html',1,'']]],
-  ['pointer_2ehpp_1',['Pointer.hpp',['../Pointer_8hpp.html',1,'']]],
-  ['ptrdiff_2ehpp_2',['ptrdiff.hpp',['https://ltla.github.io/sanisizer/ptrdiff_8hpp.html',1,'']]]
+  ['read_5fscalar_5fstring_2ehpp_0',['read_scalar_string.hpp',['../read__scalar__string_8hpp.html',1,'']]],
+  ['reclaimvlsmemory_2ehpp_1',['ReclaimVlsMemory.hpp',['../ReclaimVlsMemory_8hpp.html',1,'']]],
+  ['ritsuko_2ehpp_2',['ritsuko.hpp',['../ritsuko_8hpp.html',1,'']]]
 ];

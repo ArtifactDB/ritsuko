@@ -61,13 +61,6 @@
     <namespace>ritsuko::hdf5</namespace>
   </compound>
   <compound kind="file">
-    <name>get_name.hpp</name>
-    <path>ritsuko/hdf5/</path>
-    <filename>get__name_8hpp.html</filename>
-    <namespace>ritsuko</namespace>
-    <namespace>ritsuko::hdf5</namespace>
-  </compound>
-  <compound kind="file">
     <name>is_utf8_string.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>is__utf8__string_8hpp.html</filename>
@@ -156,7 +149,6 @@
     <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">hdf5/strnlen.hpp</includes>
     <includes id="as__numeric__datatype_8hpp" name="as_numeric_datatype.hpp" local="yes" import="no" module="no" objc="no">hdf5/as_numeric_datatype.hpp</includes>
     <includes id="mock__contiguous__chunks_8hpp" name="mock_contiguous_chunks.hpp" local="yes" import="no" module="no" objc="no">hdf5/mock_contiguous_chunks.hpp</includes>
-    <includes id="get__name_8hpp" name="get_name.hpp" local="yes" import="no" module="no" objc="no">hdf5/get_name.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">hdf5/ReclaimVlsMemory.hpp</includes>
     <includes id="validate__string_8hpp" name="validate_string.hpp" local="yes" import="no" module="no" objc="no">hdf5/validate_string.hpp</includes>
     <includes id="Stream1dStringDataset_8hpp" name="Stream1dStringDataset.hpp" local="yes" import="no" module="no" objc="no">hdf5/Stream1dStringDataset.hpp</includes>
@@ -698,13 +690,6 @@
       <anchorfile>namespaceritsuko_1_1hdf5.html</anchorfile>
       <anchor>a52b943572affc708f5ab0c65df87b7aa</anchor>
       <arglist>(const H5::Attribute &amp;attr, std::size_t precision)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>get_name</name>
-      <anchorfile>namespaceritsuko_1_1hdf5.html</anchorfile>
-      <anchor>a4b7fb14a62a3dc80bcca289226b42865</anchor>
-      <arglist>(const Object_ &amp;obj)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
