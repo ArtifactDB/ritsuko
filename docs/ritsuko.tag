@@ -151,6 +151,7 @@
     <includes id="is__date__time_8hpp" name="is_date_time.hpp" local="yes" import="no" module="no" objc="no">is_date_time.hpp</includes>
     <includes id="parse__version__string_8hpp" name="parse_version_string.hpp" local="yes" import="no" module="no" objc="no">parse_version_string.hpp</includes>
     <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">strnlen.hpp</includes>
+    <includes id="itoa_8hpp" name="itoa.hpp" local="yes" import="no" module="no" objc="no">itoa.hpp</includes>
     <includes id="IterateChunks_8hpp" name="IterateChunks.hpp" local="yes" import="no" module="no" objc="no">hdf5/IterateChunks.hpp</includes>
     <includes id="as__numeric__datatype_8hpp" name="as_numeric_datatype.hpp" local="yes" import="no" module="no" objc="no">hdf5/as_numeric_datatype.hpp</includes>
     <includes id="mock__contiguous__chunks_8hpp" name="mock_contiguous_chunks.hpp" local="yes" import="no" module="no" objc="no">hdf5/mock_contiguous_chunks.hpp</includes>
