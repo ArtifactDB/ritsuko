@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <cmath>
 
-#include "ritsuko/format/is_date_time.hpp"
+#include "ritsuko/is_date_time.hpp"
 
 bool is_date(std::string x) {
     return ritsuko::is_date(x.c_str(), x.size());

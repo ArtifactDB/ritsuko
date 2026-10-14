@@ -11,8 +11,7 @@
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
 
-#include "../hdf5/strnlen.hpp"
-
+#include "../strnlen.hpp"
 #include "Pointer.hpp"
 
 /**
@@ -140,7 +139,7 @@ public:
                 my_heap_buffer.resize(count);
                 my_heap_ptr->read(my_heap_buffer.data(), H5::PredType::NATIVE_UINT8, my_heap_mspace, my_heap_dspace);
                 const char* text_ptr = reinterpret_cast<const char*>(my_heap_buffer.data());
-                curstr.insert(curstr.end(), text_ptr, text_ptr + hdf5::strnlen(text_ptr, count));
+                curstr.insert(curstr.end(), text_ptr, text_ptr + strnlen(text_ptr, count));
             }
         }
 

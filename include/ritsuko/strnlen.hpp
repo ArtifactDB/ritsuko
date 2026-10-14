@@ -1,5 +1,5 @@
-#ifndef RITSUKO_HDF5_UTILS_STRINGS_HPP
-#define RITSUKO_HDF5_UTILS_STRINGS_HPP
+#ifndef RITSUKO_STRNLEN_HPP
+#define RITSUKO_STRNLEN_HPP
 
 #include "H5Cpp.h"
 
@@ -11,8 +11,6 @@
  */
 
 namespace ritsuko {
-
-namespace hdf5 {
 
 /**
  * Get the length of a fixed-size string, either by searching for the first null terminator or by reaching the `max` length.
@@ -26,8 +24,6 @@ inline std::size_t strnlen(const char* ptr, std::size_t max) {
     std::size_t j = 0;
     for (; j < max && ptr[j] != '\0'; ++j) {}
     return j;
-}
-
 }
 
 }

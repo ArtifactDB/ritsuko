@@ -11,9 +11,9 @@
 #include "H5Cpp.h"
 #include "sanisizer/sanisizer.hpp"
 
-#include "strnlen.hpp"
 #include "ReclaimVlsMemory.hpp"
 #include "../utils.hpp"
+#include "../strnlen.hpp"
 
 /**
  * @file Stream1dStringDataset.hpp

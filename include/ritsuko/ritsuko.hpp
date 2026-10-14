@@ -1,11 +1,11 @@
 #ifndef RITSUKO_RITSUKO_HPP
 #define RITSUKO_RITSUKO_HPP
 
-#include "format/is_date_time.hpp"
-#include "format/parse_version_string.hpp"
+#include "is_date_time.hpp"
+#include "parse_version_string.hpp"
+#include "strnlen.hpp"
 
 #include "hdf5/IterateChunks.hpp"
-#include "hdf5/strnlen.hpp"
 #include "hdf5/as_numeric_datatype.hpp"
 #include "hdf5/mock_contiguous_chunks.hpp"
 #include "hdf5/ReclaimVlsMemory.hpp"

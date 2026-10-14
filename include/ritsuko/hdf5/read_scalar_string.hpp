@@ -9,7 +9,7 @@
 #include <stdexcept>
 #include <cassert>
 
-#include "strnlen.hpp"
+#include "../strnlen.hpp"
 #include "ReclaimVlsMemory.hpp"
 
 /**

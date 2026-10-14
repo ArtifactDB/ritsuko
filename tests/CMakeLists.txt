@@ -18,8 +18,8 @@ enable_testing()
 add_executable(
     libtest 
 
-    src/format/is_date_time.cpp
-    src/format/parse_version_string.cpp
+    src/is_date_time.cpp
+    src/parse_version_string.cpp
 
     src/hdf5/exceeds_limit.cpp
     src/hdf5/is_utf8_string.cpp
