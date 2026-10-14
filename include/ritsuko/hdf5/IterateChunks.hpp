@@ -8,6 +8,7 @@
 #include <cmath>
 
 #include "../utils.hpp"
+#include "../itoa.hpp"
 
 /**
  * @file IterateChunks.hpp
@@ -140,7 +141,7 @@ inline std::string emit_coordinates_as_string(hsize_t position, hsize_t chunk_si
             msg += ", ";
         }
         chunk_size /= counts[d];
-        msg += std::to_string(starts[d] + position / chunk_size);
+        msg += itoa(starts[d] + position / chunk_size);
         position %= chunk_size;
     }
     return "(" + msg + ")";

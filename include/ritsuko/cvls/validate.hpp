@@ -13,7 +13,7 @@
 
 #include "../hdf5/IterateChunks.hpp"
 #include "../hdf5/mock_contiguous_chunks.hpp"
-
+#include "../itoa.hpp"
 #include "Pointer.hpp"
 
 /**
@@ -113,7 +113,7 @@ inline void validate_1d_pointers(const H5::DataSet& data, hsize_t full_length, h
         for (I<decltype(available)> j = 0; j < available; ++j) {
             const auto& val = buffer[j];
             if (is_Pointer_out_of_range(val, heap_length)) {
-                throw std::runtime_error("pointer at position " + std::to_string(i + j) + " is out of range of the heap");
+                throw std::runtime_error("pointer at position " + itoa(i + j) + " is out of range of the heap");
             }
         }
 

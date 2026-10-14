@@ -4,6 +4,7 @@
 #include "is_date_time.hpp"
 #include "parse_version_string.hpp"
 #include "strnlen.hpp"
+#include "itoa.hpp"
 
 #include "hdf5/IterateChunks.hpp"
 #include "hdf5/as_numeric_datatype.hpp"

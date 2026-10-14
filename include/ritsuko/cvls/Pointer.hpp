@@ -12,6 +12,7 @@
 #include "../hdf5/as_numeric_datatype.hpp"
 #include "../hdf5/exceeds_limit.hpp"
 #include "../utils.hpp"
+#include "../itoa.hpp"
 
 /**
  * @file Pointer.hpp
@@ -98,7 +99,7 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
     }
     auto offset_type = type.getMemberIntType(0);
     if (hdf5::exceeds_integer_limit(offset_type, offset_precision, false)) {
-        throw std::runtime_error("first member should not exceed a " + std::to_string(offset_precision) + "-bit unsigned integer");
+        throw std::runtime_error("first member should not exceed a " + itoa(offset_precision) + "-bit unsigned integer");
     }
 
     if (type.getMemberName(1) != "length") {
@@ -109,7 +110,7 @@ inline void validate_pointer_datatype(const H5::CompType& type, const std::size_
     }
     auto length_type = type.getMemberIntType(1);
     if (hdf5::exceeds_integer_limit(length_type, length_precision, false)) {
-        throw std::runtime_error("second member should not exceed a " + std::to_string(length_precision) + "-bit unsigned integer");
+        throw std::runtime_error("second member should not exceed a " + itoa(length_precision) + "-bit unsigned integer");
     }
 }
 

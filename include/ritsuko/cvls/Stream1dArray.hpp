@@ -12,6 +12,7 @@
 #include "sanisizer/sanisizer.hpp"
 
 #include "../strnlen.hpp"
+#include "../itoa.hpp"
 #include "Pointer.hpp"
 
 /**
@@ -119,7 +120,7 @@ public:
         for (I<decltype(my_available)> i = 0; i < my_available; ++i) {
             const auto& val = my_pointer_buffer[i];
             if (is_Pointer_out_of_range(val, my_heap_full_length)) {
-                throw std::runtime_error("pointer is out of range of the heap at position " + std::to_string(i + my_last_loaded));
+                throw std::runtime_error("pointer is out of range of the heap at position " + itoa(i + my_last_loaded));
             }
 
             auto& curstr = buffer[i];

@@ -13,6 +13,7 @@
 #include "mock_contiguous_chunks.hpp"
 #include "IterateChunks.hpp"
 #include "ReclaimVlsMemory.hpp"
+#include "../itoa.hpp"
 
 /**
  * @file validate_string.hpp
@@ -111,7 +112,7 @@ inline void validate_1d_strings(const H5::DataSet& data, hsize_t full_length, co
         [[maybe_unused]] ReclaimVlsMemory deletor(&dtype, &mspace, &plist, buffer.data());
         for (hsize_t i = 0; i < available; ++i) {
             if (buffer[i] == NULL) {
-                throw std::runtime_error("detected a NULL pointer for a variable length string at position " + std::to_string(pos + i));
+                throw std::runtime_error("detected a NULL pointer for a variable length string at position " + itoa(pos + i));
             }
         }
 
