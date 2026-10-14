@@ -11,5 +11,6 @@ var searchData=
   ['is_5frfc3339_8',['is_rfc3339',['../namespaceritsuko.html#abf542db46552ae71530ecfccd1f66505',1,'ritsuko']]],
   ['is_5frfc3339_5fsuffix_9',['is_rfc3339_suffix',['../namespaceritsuko.html#ac5f8ff07715c8177a709e440eb029f30',1,'ritsuko']]],
   ['is_5futf8_5fstring_10',['is_utf8_string',['../namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a',1,'ritsuko::hdf5::is_utf8_string(const H5::StrType &amp;stype)'],['../namespaceritsuko_1_1hdf5.html#abb640ca5a6816733631a41238c59fbab',1,'ritsuko::hdf5::is_utf8_string(const H5::DataSet &amp;data)'],['../namespaceritsuko_1_1hdf5.html#af4ec3b78b2341db4641a2eff0533c090',1,'ritsuko::hdf5::is_utf8_string(const H5::Attribute &amp;attr)']]],
-  ['iteratechunks_11',['IterateChunks',['../structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567',1,'ritsuko::hdf5::IterateChunks']]]
+  ['iteratechunks_11',['IterateChunks',['../structritsuko_1_1hdf5_1_1IterateChunks.html#ae68b8d871b3ce26ef8488a2ce7df6567',1,'ritsuko::hdf5::IterateChunks']]],
+  ['itoa_12',['itoa',['../namespaceritsuko.html#af40997896fd85dfeb3dbb0a87bad7258',1,'ritsuko::itoa(Integer_ x, std::string &amp;output)'],['../namespaceritsuko.html#ae33fe1295cde35bf13a36611506bcaac',1,'ritsuko::itoa(Integer_ x)']]]
 ];

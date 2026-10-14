@@ -1,5 +1,5 @@
-<map id="ritsuko/hdf5/strnlen.hpp" name="ritsuko/hdf5/strnlen.hpp">
-<area shape="rect" id="Node000001" title="Determine the length of a fixed&#45;size string." alt="" coords="231,5,387,31"/>
+<map id="ritsuko/strnlen.hpp" name="ritsuko/strnlen.hpp">
+<area shape="rect" id="Node000001" title="Determine the length of a fixed&#45;size string." alt="" coords="246,5,373,31"/>
 <area shape="rect" id="Node000002" href="$Stream1dArray_8hpp.html" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="5,86,208,112"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,39,139,88,137,83,263,34"/>
 <area shape="rect" id="Node000003" href="$ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="246,168,373,193"/>

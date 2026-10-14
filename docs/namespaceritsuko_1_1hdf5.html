@@ -154,8 +154,6 @@ Functions</h2></td></tr>
 <tr class="separator:a6c30575af3d92242718dd1ca4489a525"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75511764ce7ee2832375efbcf31222d8" id="r_a75511764ce7ee2832375efbcf31222d8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75511764ce7ee2832375efbcf31222d8">read_scalar_string</a> (const H5::Attribute &amp;attr)</td></tr>
 <tr class="separator:a75511764ce7ee2832375efbcf31222d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab50df338dbb7fed71795d0f0772d7307" id="r_ab50df338dbb7fed71795d0f0772d7307"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab50df338dbb7fed71795d0f0772d7307">strnlen</a> (const char *ptr, std::size_t max)</td></tr>
-<tr class="separator:ab50df338dbb7fed71795d0f0772d7307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5215e0cac9f009ec0c09d8e59794004" id="r_ae5215e0cac9f009ec0c09d8e59794004"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5215e0cac9f009ec0c09d8e59794004">validate_scalar_string</a> (const H5::DataSet &amp;data)</td></tr>
 <tr class="separator:ae5215e0cac9f009ec0c09d8e59794004"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ce09c80a23b149f79ef2a654ae6ff5b" id="r_a8ce09c80a23b149f79ef2a654ae6ff5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ce09c80a23b149f79ef2a654ae6ff5b">validate_1d_strings</a> (const H5::DataSet &amp;data, hsize_t full_length, const <a class="el" href="structritsuko_1_1hdf5_1_1Validate1dStringsOptions.html">Validate1dStringsOptions</a> &amp;options)</td></tr>
@@ -604,44 +602,6 @@ template&lt;typename Type_ &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>String containing the contents of the sole dataset entry. </dd></dl>
-
-</div>
-</div>
-<a id="ab50df338dbb7fed71795d0f0772d7307" name="ab50df338dbb7fed71795d0f0772d7307"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab50df338dbb7fed71795d0f0772d7307">&#9670;&#160;</a></span>strnlen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::size_t ritsuko::hdf5::strnlen </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Get the length of a fixed-size string, either by searching for the first null terminator or by reaching the <code>max</code> length.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to an array of characters, possibly containing a C-style string. </td></tr>
-    <tr><td class="paramname">max</td><td>Maximum length of the array referenced by <code>ptr</code>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of characters to the first occurence of the null terminator or <code>max</code>, depending on which is smaller. </dd></dl>
 
 </div>
 </div>

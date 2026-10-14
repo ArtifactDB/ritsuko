@@ -110,65 +110,73 @@ $(function(){ initResizable(false); });
 <code>#include &quot;<a class="elRef" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html">sanisizer/sanisizer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="IterateChunks_8hpp_source.html">../hdf5/IterateChunks.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mock__contiguous__chunks_8hpp_source.html">../hdf5/mock_contiguous_chunks.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="itoa_8hpp_source.html">../itoa.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Pointer_8hpp_source.html">Pointer.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for validate.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="validate_8hpp__incl.png" border="0" usemap="#aritsuko_2cvls_2validate_8hpp" alt=""/></div>
 <map name="aritsuko_2cvls_2validate_8hpp" id="aritsuko_2cvls_2validate_8hpp">
-<area shape="rect" title="Helper functions to validate compressed VLS datasets." alt="" coords="682,5,843,31"/>
-<area shape="rect" title=" " alt="" coords="25,175,78,201"/>
-<area shape="poly" title=" " alt="" coords="691,34,449,82,281,123,115,170,93,177,92,171,113,165,280,118,448,76,690,29"/>
-<area shape="rect" title=" " alt="" coords="1052,175,1110,201"/>
-<area shape="poly" title=" " alt="" coords="842,29,909,47,943,60,976,77,1017,113,1062,162,1059,165,1013,117,973,81,941,65,907,52,840,34"/>
-<area shape="rect" title=" " alt="" coords="77,256,154,282"/>
-<area shape="poly" title=" " alt="" coords="681,25,513,36,413,46,310,60,212,79,126,103,58,133,33,150,15,169,8,188,15,207,37,231,64,248,61,253,33,235,11,210,3,188,11,166,29,146,55,129,124,98,211,74,309,55,412,41,513,31,681,20"/>
-<area shape="rect" title=" " alt="" coords="593,175,646,201"/>
-<area shape="poly" title=" " alt="" coords="734,34,699,53,667,81,643,121,628,161,623,159,638,118,663,77,696,49,732,29"/>
-<area shape="rect" title=" " alt="" coords="1277,86,1341,112"/>
-<area shape="poly" title=" " alt="" coords="843,21,1034,38,1147,54,1259,76,1267,78,1265,84,1258,82,1146,59,1034,43,843,26"/>
-<area shape="rect" title=" " alt="" coords="1266,175,1341,201"/>
-<area shape="poly" title=" " alt="" coords="844,20,940,27,1048,38,1146,54,1186,64,1216,77,1240,94,1262,116,1292,160,1288,163,1258,120,1237,98,1213,81,1184,70,1145,59,1047,43,940,32,843,26"/>
-<area shape="rect" title=" " alt="" coords="584,256,655,282"/>
-<area shape="poly" title=" " alt="" coords="758,33,661,210,638,245,634,242,656,207,754,30"/>
-<area shape="rect" target="_parent" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html" title=" " alt="" coords="721,175,873,201"/>
-<area shape="poly" title=" " alt="" coords="767,31,794,160,789,161,762,32"/>
-<area shape="rect" href="IterateChunks_8hpp.html" title="Iterate through a dataspace by chunk." alt="" coords="1037,86,1202,112"/>
-<area shape="poly" title=" " alt="" coords="818,29,1050,80,1049,85,817,34"/>
-<area shape="rect" href="mock__contiguous__chunks_8hpp.html" title="Mock chunk sizes for a contiguous HDF5 dataset." alt="" coords="800,79,962,120"/>
-<area shape="poly" title=" " alt="" coords="782,29,840,68,837,72,779,34"/>
-<area shape="rect" href="Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="460,86,547,112"/>
-<area shape="poly" title=" " alt="" coords="723,34,559,84,557,79,722,29"/>
-<area shape="poly" title=" " alt="" coords="1117,114,1095,162,1090,160,1112,112"/>
-<area shape="poly" title=" " alt="" coords="1147,110,1265,166,1263,171,1144,115"/>
-<area shape="poly" title=" " alt="" coords="1127,112,1134,133,1138,159,1136,186,1124,210,1100,223,1057,233,931,250,789,261,671,268,671,263,788,256,931,245,1056,228,1098,218,1120,206,1131,185,1133,159,1128,134,1122,114"/>
-<area shape="rect" title=" " alt="" coords="1186,175,1243,201"/>
-<area shape="poly" title=" " alt="" coords="1135,111,1192,163,1188,167,1131,115"/>
-<area shape="rect" title=" " alt="" coords="897,175,977,201"/>
-<area shape="poly" title=" " alt="" coords="1095,115,977,171,975,166,1093,110"/>
-<area shape="poly" title=" " alt="" coords="927,118,1040,166,1038,171,925,123"/>
-<area shape="poly" title=" " alt="" coords="926,118,957,136,985,158,994,170,999,183,998,197,991,210,969,227,936,240,849,258,753,267,671,270,670,265,753,261,849,252,934,235,966,222,987,207,993,195,994,184,989,173,981,162,954,140,923,122"/>
-<area shape="poly" title=" " alt="" coords="864,122,821,166,817,162,860,118"/>
-<area shape="poly" title=" " alt="" coords="460,107,299,127,198,146,98,170,92,172,91,167,96,165,197,141,298,122,460,102"/>
-<area shape="poly" title=" " alt="" coords="460,106,381,112,286,124,199,143,165,155,143,170,131,185,123,203,117,241,112,240,118,202,126,182,139,166,163,150,197,138,285,119,380,107,460,100"/>
-<area shape="poly" title=" " alt="" coords="521,110,593,163,589,168,518,115"/>
-<area shape="poly" title=" " alt="" coords="514,111,605,242,601,245,510,114"/>
-<area shape="poly" title=" " alt="" coords="546,110,742,168,740,173,544,115"/>
-<area shape="poly" title=" " alt="" coords="547,103,698,125,792,143,886,165,893,167,891,172,884,170,791,148,697,131,547,108"/>
-<area shape="rect" title=" " alt="" coords="221,256,285,282"/>
-<area shape="poly" title=" " alt="" coords="479,115,432,139,380,170,354,189,329,210,281,249,278,244,326,206,351,185,377,165,429,134,477,110"/>
-<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="391,168,518,208"/>
-<area shape="poly" title=" " alt="" coords="499,114,475,156,470,153,494,111"/>
-<area shape="rect" href="exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="153,175,316,201"/>
-<area shape="poly" title=" " alt="" coords="466,115,287,173,286,167,465,110"/>
-<area shape="poly" title=" " alt="" coords="497,207,582,247,579,252,494,211"/>
-<area shape="rect" title=" " alt="" coords="414,256,495,282"/>
-<area shape="poly" title=" " alt="" coords="457,209,457,241,452,241,452,209"/>
-<area shape="rect" title=" " alt="" coords="329,256,390,282"/>
-<area shape="poly" title=" " alt="" coords="433,211,387,248,384,244,429,207"/>
-<area shape="poly" title=" " alt="" coords="218,203,148,250,145,245,215,199"/>
-<area shape="poly" title=" " alt="" coords="294,199,569,255,568,260,293,204"/>
-<area shape="poly" title=" " alt="" coords="240,201,249,240,244,242,234,202"/>
+<area shape="rect" title="Helper functions to validate compressed VLS datasets." alt="" coords="509,5,670,31"/>
+<area shape="rect" title=" " alt="" coords="195,256,248,282"/>
+<area shape="poly" title=" " alt="" coords="508,25,437,30,354,40,267,57,182,82,133,97,95,110,63,131,34,169,27,188,34,206,180,253,179,258,30,210,22,188,30,166,59,127,92,105,132,92,180,76,266,52,354,35,437,25,508,19"/>
+<area shape="rect" title=" " alt="" coords="330,175,387,201"/>
+<area shape="poly" title=" " alt="" coords="539,34,488,53,439,81,419,100,401,121,374,163,369,160,396,118,415,96,436,77,486,48,537,29"/>
+<area shape="rect" title=" " alt="" coords="1207,256,1284,282"/>
+<area shape="poly" title=" " alt="" coords="670,19,808,25,972,36,1127,53,1190,64,1238,76,1298,99,1351,126,1370,142,1382,162,1383,184,1373,210,1358,227,1340,241,1300,259,1298,254,1337,236,1355,223,1368,207,1378,183,1377,163,1366,146,1348,130,1296,103,1236,82,1189,69,1126,58,971,42,807,31,670,25"/>
+<area shape="rect" title=" " alt="" coords="1283,175,1335,201"/>
+<area shape="poly" title=" " alt="" coords="663,29,911,76,1081,117,1250,165,1269,171,1267,176,1248,170,1080,122,910,82,662,34"/>
+<area shape="rect" title=" " alt="" coords="1461,86,1525,112"/>
+<area shape="poly" title=" " alt="" coords="670,20,1071,38,1286,55,1375,65,1443,76,1451,78,1450,84,1442,82,1375,70,1286,60,1070,44,670,25"/>
+<area shape="rect" title=" " alt="" coords="96,256,170,282"/>
+<area shape="poly" title=" " alt="" coords="508,23,396,26,267,36,150,53,104,66,71,81,37,108,15,138,10,154,8,170,12,188,21,207,33,222,48,234,83,252,80,257,45,239,29,226,16,210,7,190,3,171,4,153,10,135,33,104,68,77,102,61,149,48,267,30,395,21,508,17"/>
+<area shape="rect" title=" " alt="" coords="916,256,988,282"/>
+<area shape="poly" title=" " alt="" coords="671,20,840,31,942,41,1046,56,1145,75,1234,99,1304,129,1330,147,1350,166,1359,188,1357,199,1349,211,1307,220,1213,234,1003,264,1002,258,1212,229,1306,215,1346,206,1352,197,1354,188,1346,169,1327,151,1301,134,1232,104,1144,80,1045,61,941,47,840,36,670,25"/>
+<area shape="rect" target="_parent" href="https://ltla.github.io/sanisizer/sanisizer_8hpp.html" title=" " alt="" coords="566,175,717,201"/>
+<area shape="poly" title=" " alt="" coords="600,30,614,52,626,78,637,121,642,160,637,161,632,122,621,80,609,54,596,33"/>
+<area shape="rect" href="IterateChunks_8hpp.html" title="Iterate through a dataspace by chunk." alt="" coords="209,86,375,112"/>
+<area shape="poly" title=" " alt="" coords="544,34,353,85,352,79,543,29"/>
+<area shape="rect" href="itoa_8hpp.html" title="Convert an integer to a string." alt="" coords="178,175,254,201"/>
+<area shape="poly" title=" " alt="" coords="508,23,422,26,329,36,249,53,219,66,199,81,191,99,190,119,195,141,204,160,199,163,190,143,185,120,185,97,195,77,216,61,247,48,328,31,421,21,508,17"/>
+<area shape="rect" href="mock__contiguous__chunks_8hpp.html" title="Mock chunk sizes for a contiguous HDF5 dataset." alt="" coords="449,79,612,120"/>
+<area shape="poly" title=" " alt="" coords="582,33,556,68,552,65,578,30"/>
+<area shape="rect" href="Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="813,86,899,112"/>
+<area shape="poly" title=" " alt="" coords="631,29,801,79,800,84,630,34"/>
+<area shape="poly" title=" " alt="" coords="303,111,342,161,338,165,299,114"/>
+<area shape="poly" title=" " alt="" coords="253,115,208,136,186,151,167,169,156,186,148,205,139,242,134,241,143,203,151,184,163,166,183,147,205,132,251,110"/>
+<area shape="poly" title=" " alt="" coords="293,112,296,159,304,185,320,206,333,213,356,219,421,230,603,242,788,248,899,254,902,254,901,259,898,259,788,253,603,247,421,235,354,225,332,218,317,210,300,188,291,160,288,113"/>
+<area shape="rect" title=" " alt="" coords="45,175,102,201"/>
+<area shape="poly" title=" " alt="" coords="262,115,122,170,117,172,115,167,120,165,260,110"/>
+<area shape="rect" title=" " alt="" coords="411,175,490,201"/>
+<area shape="poly" title=" " alt="" coords="316,110,416,165,414,170,313,115"/>
+<area shape="poly" title=" " alt="" coords="283,114,238,165,234,162,279,111"/>
+<area shape="poly" title=" " alt="" coords="219,201,222,241,217,241,214,201"/>
+<area shape="poly" title=" " alt="" coords="205,203,159,247,155,243,202,199"/>
+<area shape="rect" title=" " alt="" coords="494,256,575,282"/>
+<area shape="poly" title=" " alt="" coords="251,199,274,206,383,233,479,254,478,259,382,238,273,211,250,204"/>
+<area shape="poly" title=" " alt="" coords="493,123,398,170,395,165,490,118"/>
+<area shape="poly" title=" " alt="" coords="531,120,534,164,541,187,555,206,582,223,621,234,668,241,719,244,821,248,899,254,902,254,901,259,898,259,820,253,718,250,667,246,620,239,580,227,551,210,537,190,529,165,526,120"/>
+<area shape="poly" title=" " alt="" coords="557,118,616,164,613,168,554,122"/>
+<area shape="poly" title=" " alt="" coords="844,115,731,211,690,224,636,235,505,252,369,263,263,269,263,263,369,257,504,246,636,229,689,218,728,206,841,111"/>
+<area shape="poly" title=" " alt="" coords="900,100,980,107,1075,119,1163,138,1198,150,1222,166,1235,182,1243,202,1249,240,1243,241,1237,203,1230,185,1218,170,1195,155,1162,143,1075,124,979,112,899,106"/>
+<area shape="poly" title=" " alt="" coords="900,102,1062,122,1163,140,1265,165,1270,167,1269,172,1263,170,1162,146,1061,127,899,107"/>
+<area shape="poly" title=" " alt="" coords="877,111,907,134,934,166,948,204,954,241,949,241,943,206,930,169,903,138,874,115"/>
+<area shape="poly" title=" " alt="" coords="827,115,686,171,684,167,825,110"/>
+<area shape="poly" title=" " alt="" coords="813,113,506,178,505,172,812,107"/>
+<area shape="poly" title=" " alt="" coords="813,108,600,132,319,170,269,179,269,174,318,165,599,127,812,103"/>
+<area shape="rect" title=" " alt="" coords="1053,256,1117,282"/>
+<area shape="poly" title=" " alt="" coords="877,111,959,166,1061,244,1057,248,956,170,874,115"/>
+<area shape="rect" href="as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="792,168,920,208"/>
+<area shape="poly" title=" " alt="" coords="859,113,859,153,853,153,853,113"/>
+<area shape="rect" href="exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="1045,175,1208,201"/>
+<area shape="poly" title=" " alt="" coords="895,110,1075,167,1073,173,893,115"/>
+<area shape="poly" title=" " alt="" coords="881,207,927,244,924,248,878,211"/>
+<area shape="poly" title=" " alt="" coords="792,208,591,257,590,252,791,202"/>
+<area shape="rect" title=" " alt="" coords="826,256,886,282"/>
+<area shape="poly" title=" " alt="" coords="859,209,859,241,853,241,853,209"/>
+<area shape="poly" title=" " alt="" coords="1146,199,1216,245,1213,250,1143,203"/>
+<area shape="poly" title=" " alt="" coords="1101,204,993,252,991,247,1099,199"/>
+<area shape="poly" title=" " alt="" coords="1123,202,1101,243,1096,241,1118,200"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">

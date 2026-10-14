@@ -122,8 +122,16 @@ Functions</h2></td></tr>
 <tr class="separator:ac5f8ff07715c8177a709e440eb029f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf542db46552ae71530ecfccd1f66505" id="r_abf542db46552ae71530ecfccd1f66505"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf542db46552ae71530ecfccd1f66505">is_rfc3339</a> (const char *ptr, size_t len)</td></tr>
 <tr class="separator:abf542db46552ae71530ecfccd1f66505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40997896fd85dfeb3dbb0a87bad7258" id="r_af40997896fd85dfeb3dbb0a87bad7258"><td class="memTemplParams" colspan="2">template&lt;typename Integer_ &gt; </td></tr>
+<tr class="memitem:af40997896fd85dfeb3dbb0a87bad7258"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af40997896fd85dfeb3dbb0a87bad7258">itoa</a> (Integer_ x, std::string &amp;output)</td></tr>
+<tr class="separator:af40997896fd85dfeb3dbb0a87bad7258"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae33fe1295cde35bf13a36611506bcaac" id="r_ae33fe1295cde35bf13a36611506bcaac"><td class="memTemplParams" colspan="2">template&lt;typename Integer_ &gt; </td></tr>
+<tr class="memitem:ae33fe1295cde35bf13a36611506bcaac"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae33fe1295cde35bf13a36611506bcaac">itoa</a> (Integer_ x)</td></tr>
+<tr class="separator:ae33fe1295cde35bf13a36611506bcaac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee7609d114de23145d8d28ddde55c810" id="r_aee7609d114de23145d8d28ddde55c810"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structritsuko_1_1Version.html">Version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee7609d114de23145d8d28ddde55c810">parse_version_string</a> (const char *version_string, size_t size, bool skip_patch=false)</td></tr>
 <tr class="separator:aee7609d114de23145d8d28ddde55c810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da760acab33392f8137955c4f4a9a4b" id="r_a3da760acab33392f8137955c4f4a9a4b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3da760acab33392f8137955c4f4a9a4b">strnlen</a> (const char *ptr, std::size_t max)</td></tr>
+<tr class="separator:a3da760acab33392f8137955c4f4a9a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Helper functions for ArtifactDB parsing and validation. </p>
@@ -274,6 +282,76 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ae33fe1295cde35bf13a36611506bcaac" name="ae33fe1295cde35bf13a36611506bcaac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33fe1295cde35bf13a36611506bcaac">&#9670;&#160;</a></span>itoa() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Integer_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ritsuko::itoa </td>
+          <td>(</td>
+          <td class="paramtype">Integer_</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Overload of <code><a class="el" href="#af40997896fd85dfeb3dbb0a87bad7258">itoa()</a></code> that returns a new string.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Integer_</td><td>Integer type.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Integer value, see comments in <code><a class="el" href="#af40997896fd85dfeb3dbb0a87bad7258">itoa()</a></code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String representation of <code>x</code>. </dd></dl>
+
+</div>
+</div>
+<a id="af40997896fd85dfeb3dbb0a87bad7258" name="af40997896fd85dfeb3dbb0a87bad7258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40997896fd85dfeb3dbb0a87bad7258">&#9670;&#160;</a></span>itoa() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Integer_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ritsuko::itoa </td>
+          <td>(</td>
+          <td class="paramtype">Integer_</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>output</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This implementation is provided as a locale-independent alternative to <code>std::to_string()</code>. It also avoids ambiguity in overload selection if the integer is not an alias of the types accepted by the <code>std::to_string()</code> overloads.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Integer_</td><td>Integer type.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Integer value. This is usually zero or positive in most <b>ritsuko</b>-related applications, but negative values are also allowed. </td></tr>
+    <tr><td class="paramname">output</td><td>Buffer to which the string representation of <code>x</code> is appended. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aee7609d114de23145d8d28ddde55c810" name="aee7609d114de23145d8d28ddde55c810"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aee7609d114de23145d8d28ddde55c810">&#9670;&#160;</a></span>parse_version_string()</h2>
 
@@ -314,6 +392,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <code><a class="el" href="structritsuko_1_1Version.html" title="Version number.">Version</a></code> object containing the version number. If <code>skip_patch = true</code>, the <code>patch</code> number is always zero. </dd></dl>
+
+</div>
+</div>
+<a id="a3da760acab33392f8137955c4f4a9a4b" name="a3da760acab33392f8137955c4f4a9a4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da760acab33392f8137955c4f4a9a4b">&#9670;&#160;</a></span>strnlen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t ritsuko::strnlen </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the length of a fixed-size string, either by searching for the first null terminator or by reaching the <code>max</code> length.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to an array of characters, possibly containing a C-style string. </td></tr>
+    <tr><td class="paramname">max</td><td>Maximum length of the array referenced by <code>ptr</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of characters to the first occurence of the null terminator or <code>max</code>, depending on which is smaller. </dd></dl>
 
 </div>
 </div>

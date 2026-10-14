@@ -1,46 +1,52 @@
 <map id="ritsuko/cvls/Stream1dArray.hpp" name="ritsuko/cvls/Stream1dArray.hpp">
-<area shape="rect" id="Node000001" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="789,5,991,31"/>
+<area shape="rect" id="Node000001" title="Stream a 1&#45;dimensional compressed VLS array into memory." alt="" coords="456,5,658,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,63,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="789,24,472,40,278,57,82,82,78,82,78,77,82,76,277,51,472,35,788,19"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="138,160,191,186"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="792,34,656,54,507,82,340,123,207,161,206,156,338,118,505,76,656,49,792,29"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="190,241,267,267"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="788,24,616,32,517,40,416,53,321,70,237,92,171,120,146,136,128,154,121,173,128,192,150,216,177,233,175,238,146,220,124,195,116,172,124,151,143,132,168,115,235,87,320,64,415,47,516,35,616,27,788,18"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="1238,241,1299,267"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="992,28,1058,43,1127,67,1193,102,1223,125,1249,151,1260,168,1267,188,1272,225,1267,226,1262,189,1256,171,1245,154,1219,129,1190,106,1125,72,1056,48,991,33"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="1310,79,1374,105"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="986,29,1131,49,1292,76,1295,77,1294,82,1291,82,1130,55,986,34"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="1398,79,1472,105"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="992,26,1170,45,1383,76,1383,81,1170,50,991,31"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="936,241,1007,267"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="915,29,947,48,984,75,1020,110,1047,152,1053,173,1047,194,1031,217,1010,235,1006,231,1027,214,1042,192,1048,173,1042,154,1016,113,981,79,944,53,913,34"/>
-<area shape="rect" id="Node000009" href="/github/workspace/docs/sanisizer.tag$sanisizer_8hpp.html" title=" " alt="" coords="734,160,886,186"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="886,33,826,148,821,145,881,30"/>
-<area shape="rect" id="Node000010" href="$strnlen_8hpp.html" title="Determine the length of a fixed&#45;size string." alt="" coords="910,160,1033,186"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="899,30,960,145,955,148,894,33"/>
-<area shape="rect" id="Node000012" href="$Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="518,79,604,105"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="834,34,619,81,618,75,833,29"/>
-<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="974,186,974,225,969,225,969,186"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="470,241,534,267"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="928,189,899,196,706,229,550,250,549,245,705,224,897,191,927,184"/>
-<area shape="poly" id="edge14_Node000012_Node000003" title=" " alt="" coords="518,100,380,118,295,134,211,155,205,157,204,152,209,150,294,129,379,113,517,95"/>
-<area shape="poly" id="edge13_Node000012_Node000004" title=" " alt="" coords="517,95,467,98,408,107,347,125,318,138,292,155,274,170,260,189,240,228,235,225,256,186,270,167,288,151,316,134,345,120,407,102,467,93,517,90"/>
-<area shape="poly" id="edge17_Node000012_Node000008" title=" " alt="" coords="569,104,599,147,621,171,647,191,681,208,717,221,791,239,862,248,920,251,920,256,861,254,790,245,715,226,679,213,645,196,618,175,595,151,565,107"/>
-<area shape="poly" id="edge18_Node000012_Node000009" title=" " alt="" coords="600,103,758,152,756,158,598,108"/>
-<area shape="poly" id="edge15_Node000012_Node000011" title=" " alt="" coords="517,100,460,106,396,118,340,134,320,143,307,154,298,173,302,188,315,202,337,214,395,233,455,244,454,249,394,238,335,219,312,206,297,191,293,172,303,151,317,139,339,129,395,112,459,101,517,94"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="658,160,711,186"/>
-<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="581,103,654,149,652,154,578,107"/>
-<area shape="rect" id="Node000014" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="1108,153,1235,193"/>
-<area shape="poly" id="edge19_Node000012_Node000014" title=" " alt="" coords="604,95,1045,150,1093,157,1092,162,1044,155,604,101"/>
-<area shape="rect" id="Node000016" href="$exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="420,160,584,186"/>
-<area shape="poly" id="edge23_Node000012_Node000016" title=" " alt="" coords="554,107,522,149,518,146,550,103"/>
-<area shape="rect" id="Node000017" title=" " alt="" coords="317,160,396,186"/>
-<area shape="poly" id="edge27_Node000012_Node000017" title=" " alt="" coords="530,108,403,157,401,152,528,103"/>
-<area shape="poly" id="edge22_Node000014_Node000005" title=" " alt="" coords="1197,192,1244,229,1240,233,1194,196"/>
-<area shape="poly" id="edge20_Node000014_Node000008" title=" " alt="" coords="1122,196,1017,238,1015,233,1120,191"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="1131,241,1212,267"/>
-<area shape="poly" id="edge21_Node000014_Node000015" title=" " alt="" coords="1174,194,1174,226,1169,226,1169,194"/>
-<area shape="poly" id="edge25_Node000016_Node000004" title=" " alt="" coords="461,189,283,240,282,235,459,184"/>
-<area shape="poly" id="edge24_Node000016_Node000008" title=" " alt="" coords="565,184,602,191,920,242,920,248,602,196,564,189"/>
-<area shape="poly" id="edge26_Node000016_Node000011" title=" " alt="" coords="505,186,505,225,499,225,499,186"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="456,32,281,52,82,82,78,83,77,77,82,76,280,46,455,26"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="201,241,254,267"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="455,23,380,33,302,56,265,73,231,95,202,121,179,154,174,173,179,192,190,212,204,229,199,232,185,215,174,194,168,173,174,152,198,118,228,90,262,68,300,51,379,28,454,18"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="974,241,1051,267"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="659,17,846,24,956,32,1067,44,1174,61,1269,84,1345,113,1374,131,1396,151,1403,162,1405,173,1403,184,1396,195,1373,212,1339,225,1251,243,1152,252,1067,255,1067,250,1152,247,1250,238,1338,220,1371,207,1392,192,1398,182,1400,173,1398,164,1392,154,1371,135,1343,118,1267,89,1173,66,1067,49,955,37,845,29,658,23"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="405,241,466,267"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="528,34,491,52,450,78,411,112,382,154,376,173,382,192,393,212,409,229,405,233,389,215,377,194,371,173,377,152,407,109,447,74,489,48,525,29"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="1456,79,1521,105"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="658,19,810,23,1005,34,1221,51,1438,76,1442,77,1441,82,1438,82,1221,56,1005,39,810,29,658,24"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="84,241,158,267"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="455,31,317,50,257,64,215,81,182,113,157,152,140,192,129,227,124,225,135,190,152,149,178,109,213,77,255,59,316,45,455,26"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="572,241,643,267"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="562,31,604,225,599,226,557,32"/>
+<area shape="rect" id="Node000009" href="/github/workspace/docs/sanisizer.tag$sanisizer_8hpp.html" title=" " alt="" coords="1230,160,1382,186"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="619,29,1219,150,1236,154,1235,159,1217,155,618,34"/>
+<area shape="rect" id="Node000010" href="$strnlen_8hpp.html" title="Determine the length of a fixed&#45;size string." alt="" coords="644,160,738,186"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="569,30,673,147,669,150,565,33"/>
+<area shape="rect" id="Node000012" href="$itoa_8hpp.html" title="Convert an integer to a string." alt="" coords="189,160,266,186"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="479,34,408,52,337,81,288,115,250,151,246,147,285,111,334,77,406,47,478,29"/>
+<area shape="rect" id="Node000014" href="$Pointer_8hpp.html" title="Compound datatype of the compresed VLS heap pointer." alt="" coords="732,79,818,105"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="595,29,724,71,723,76,593,34"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="680,188,633,233,629,229,677,184"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="743,241,808,267"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="706,184,753,229,750,233,702,188"/>
+<area shape="poly" id="edge13_Node000012_Node000003" title=" " alt="" coords="230,186,230,225,225,225,225,186"/>
+<area shape="poly" id="edge14_Node000012_Node000007" title=" " alt="" coords="213,188,151,234,147,230,210,184"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="289,241,371,267"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="245,184,304,229,301,234,241,188"/>
+<area shape="poly" id="edge18_Node000014_Node000003" title=" " alt="" coords="732,96,662,100,573,109,476,127,380,155,344,172,310,192,254,233,251,229,307,188,342,167,378,150,475,121,573,104,662,95,731,91"/>
+<area shape="poly" id="edge17_Node000014_Node000004" title=" " alt="" coords="819,91,860,95,905,104,950,122,989,151,1001,168,1009,188,1016,226,1010,227,1004,189,997,170,985,155,948,127,904,109,859,100,819,96"/>
+<area shape="poly" id="edge21_Node000014_Node000008" title=" " alt="" coords="733,103,681,121,656,135,635,154,624,171,617,189,610,226,605,225,612,188,619,168,631,151,653,131,679,116,731,98"/>
+<area shape="poly" id="edge22_Node000014_Node000009" title=" " alt="" coords="819,95,994,116,1218,150,1239,154,1238,159,1218,155,993,122,819,101"/>
+<area shape="poly" id="edge19_Node000014_Node000011" title=" " alt="" coords="778,105,778,226,773,226,773,105"/>
+<area shape="poly" id="edge32_Node000014_Node000012" title=" " alt="" coords="732,98,537,115,411,132,285,155,275,158,273,153,284,150,410,127,536,110,731,93"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1050,160,1103,186"/>
+<area shape="poly" id="edge20_Node000014_Node000015" title=" " alt="" coords="820,98,918,119,1032,150,1037,152,1035,157,1031,155,916,124,818,104"/>
+<area shape="rect" id="Node000016" href="$as__numeric__datatype_8hpp.html" title="Choose a HDF5 datatype." alt="" coords="392,153,519,193"/>
+<area shape="poly" id="edge23_Node000014_Node000016" title=" " alt="" coords="732,107,535,155,534,150,731,101"/>
+<area shape="rect" id="Node000017" href="$exceeds__limit_8hpp.html" title="Check for larger&#45;than&#45;expected types in HDF5 datasets." alt="" coords="812,160,976,186"/>
+<area shape="poly" id="edge27_Node000014_Node000017" title=" " alt="" coords="795,103,865,149,862,153,792,107"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1126,160,1206,186"/>
+<area shape="poly" id="edge31_Node000014_Node000018" title=" " alt="" coords="819,96,953,115,1035,131,1116,150,1123,152,1122,157,1115,155,1033,136,952,120,818,101"/>
+<area shape="poly" id="edge26_Node000016_Node000005" title=" " alt="" coords="453,194,445,227,440,225,448,193"/>
+<area shape="poly" id="edge24_Node000016_Node000008" title=" " alt="" coords="495,192,572,231,569,236,492,196"/>
+<area shape="poly" id="edge25_Node000016_Node000013" title=" " alt="" coords="426,196,364,235,361,230,423,191"/>
+<area shape="poly" id="edge29_Node000017_Node000004" title=" " alt="" coords="913,184,983,230,980,235,911,188"/>
+<area shape="poly" id="edge28_Node000017_Node000008" title=" " alt="" coords="851,189,659,242,657,236,849,184"/>
+<area shape="poly" id="edge30_Node000017_Node000011" title=" " alt="" coords="877,188,808,235,805,230,875,184"/>
 </map>

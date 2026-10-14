@@ -1,13 +1,20 @@
 <map id="ritsuko/hdf5/IterateChunks.hpp" name="ritsuko/hdf5/IterateChunks.hpp">
-<area shape="rect" id="Node000001" title="Iterate through a dataspace by chunk." alt="" coords="119,5,318,31"/>
+<area shape="rect" id="Node000001" title="Iterate through a dataspace by chunk." alt="" coords="130,5,328,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,77,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,34,86,75,84,70,187,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,34,88,75,86,70,196,29"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="100,79,158,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,34,158,71,154,67,202,29"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="181,79,256,105"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="221,31,221,63,216,63,216,31"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="279,79,336,105"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="235,29,282,67,279,71,232,34"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="360,79,439,105"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="250,29,355,70,354,75,248,34"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,34,160,72,157,67,210,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="244,153,318,178"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="227,32,220,66,220,85,225,104,237,124,254,141,250,145,233,127,220,106,215,86,215,65,222,31"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="234,79,291,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="237,30,253,64,248,66,232,32"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="315,79,394,105"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="252,29,321,69,319,73,249,34"/>
+<area shape="rect" id="Node000007" href="$itoa_8hpp.html" title="Convert an integer to a string." alt="" coords="418,79,494,105"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="268,29,403,71,402,76,267,34"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="427,108,326,149,324,144,425,103"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="382,153,436,178"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="450,106,427,141,423,138,446,103"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="460,153,542,178"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="465,103,488,138,483,141,461,106"/>
 </map>

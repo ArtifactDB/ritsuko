@@ -6,6 +6,7 @@
     <filename>Pointer_8hpp.html</filename>
     <includes id="as__numeric__datatype_8hpp" name="as_numeric_datatype.hpp" local="yes" import="no" module="no" objc="no">../hdf5/as_numeric_datatype.hpp</includes>
     <includes id="exceeds__limit_8hpp" name="exceeds_limit.hpp" local="yes" import="no" module="no" objc="no">../hdf5/exceeds_limit.hpp</includes>
+    <includes id="itoa_8hpp" name="itoa.hpp" local="yes" import="no" module="no" objc="no">../itoa.hpp</includes>
     <class kind="struct">ritsuko::cvls::Pointer</class>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::cvls</namespace>
@@ -14,7 +15,8 @@
     <name>Stream1dArray.hpp</name>
     <path>ritsuko/cvls/</path>
     <filename>Stream1dArray_8hpp.html</filename>
-    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">../hdf5/strnlen.hpp</includes>
+    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">../strnlen.hpp</includes>
+    <includes id="itoa_8hpp" name="itoa.hpp" local="yes" import="no" module="no" objc="no">../itoa.hpp</includes>
     <includes id="Pointer_8hpp" name="Pointer.hpp" local="yes" import="no" module="no" objc="no">Pointer.hpp</includes>
     <class kind="struct">ritsuko::cvls::Stream1dArrayOptions</class>
     <class kind="class">ritsuko::cvls::Stream1dArray</class>
@@ -27,24 +29,12 @@
     <filename>validate_8hpp.html</filename>
     <includes id="IterateChunks_8hpp" name="IterateChunks.hpp" local="yes" import="no" module="no" objc="no">../hdf5/IterateChunks.hpp</includes>
     <includes id="mock__contiguous__chunks_8hpp" name="mock_contiguous_chunks.hpp" local="yes" import="no" module="no" objc="no">../hdf5/mock_contiguous_chunks.hpp</includes>
+    <includes id="itoa_8hpp" name="itoa.hpp" local="yes" import="no" module="no" objc="no">../itoa.hpp</includes>
     <includes id="Pointer_8hpp" name="Pointer.hpp" local="yes" import="no" module="no" objc="no">Pointer.hpp</includes>
     <class kind="struct">ritsuko::cvls::Validate1dPointersOptions</class>
     <class kind="struct">ritsuko::cvls::ValidateNdPointersOptions</class>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::cvls</namespace>
-  </compound>
-  <compound kind="file">
-    <name>is_date_time.hpp</name>
-    <path>ritsuko/format/</path>
-    <filename>is__date__time_8hpp.html</filename>
-    <namespace>ritsuko</namespace>
-  </compound>
-  <compound kind="file">
-    <name>parse_version_string.hpp</name>
-    <path>ritsuko/format/</path>
-    <filename>parse__version__string_8hpp.html</filename>
-    <class kind="struct">ritsuko::Version</class>
-    <namespace>ritsuko</namespace>
   </compound>
   <compound kind="file">
     <name>as_numeric_datatype.hpp</name>
@@ -71,6 +61,7 @@
     <name>IterateChunks.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>IterateChunks_8hpp.html</filename>
+    <includes id="itoa_8hpp" name="itoa.hpp" local="yes" import="no" module="no" objc="no">../itoa.hpp</includes>
     <class kind="struct">ritsuko::hdf5::IterateChunks</class>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::hdf5</namespace>
@@ -86,7 +77,7 @@
     <name>read_scalar_string.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>read__scalar__string_8hpp.html</filename>
-    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">strnlen.hpp</includes>
+    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">../strnlen.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">ReclaimVlsMemory.hpp</includes>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::hdf5</namespace>
@@ -113,17 +104,11 @@
     <name>Stream1dStringDataset.hpp</name>
     <path>ritsuko/hdf5/</path>
     <filename>Stream1dStringDataset_8hpp.html</filename>
-    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">strnlen.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">ReclaimVlsMemory.hpp</includes>
+    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">../strnlen.hpp</includes>
+    <includes id="itoa_8hpp" name="itoa.hpp" local="yes" import="no" module="no" objc="no">../itoa.hpp</includes>
     <class kind="struct">ritsuko::hdf5::Stream1dStringDatasetOptions</class>
     <class kind="class">ritsuko::hdf5::Stream1dStringDataset</class>
-    <namespace>ritsuko</namespace>
-    <namespace>ritsuko::hdf5</namespace>
-  </compound>
-  <compound kind="file">
-    <name>strnlen.hpp</name>
-    <path>ritsuko/hdf5/</path>
-    <filename>strnlen_8hpp.html</filename>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::hdf5</namespace>
   </compound>
@@ -134,19 +119,39 @@
     <includes id="mock__contiguous__chunks_8hpp" name="mock_contiguous_chunks.hpp" local="yes" import="no" module="no" objc="no">mock_contiguous_chunks.hpp</includes>
     <includes id="IterateChunks_8hpp" name="IterateChunks.hpp" local="yes" import="no" module="no" objc="no">IterateChunks.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">ReclaimVlsMemory.hpp</includes>
+    <includes id="itoa_8hpp" name="itoa.hpp" local="yes" import="no" module="no" objc="no">../itoa.hpp</includes>
     <class kind="struct">ritsuko::hdf5::Validate1dStringsOptions</class>
     <class kind="struct">ritsuko::hdf5::ValidateNdStringsOptions</class>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::hdf5</namespace>
   </compound>
   <compound kind="file">
+    <name>is_date_time.hpp</name>
+    <path>ritsuko/</path>
+    <filename>is__date__time_8hpp.html</filename>
+    <namespace>ritsuko</namespace>
+  </compound>
+  <compound kind="file">
+    <name>itoa.hpp</name>
+    <path>ritsuko/</path>
+    <filename>itoa_8hpp.html</filename>
+    <namespace>ritsuko</namespace>
+  </compound>
+  <compound kind="file">
+    <name>parse_version_string.hpp</name>
+    <path>ritsuko/</path>
+    <filename>parse__version__string_8hpp.html</filename>
+    <class kind="struct">ritsuko::Version</class>
+    <namespace>ritsuko</namespace>
+  </compound>
+  <compound kind="file">
     <name>ritsuko.hpp</name>
     <path>ritsuko/</path>
     <filename>ritsuko_8hpp.html</filename>
-    <includes id="is__date__time_8hpp" name="is_date_time.hpp" local="yes" import="no" module="no" objc="no">format/is_date_time.hpp</includes>
-    <includes id="parse__version__string_8hpp" name="parse_version_string.hpp" local="yes" import="no" module="no" objc="no">format/parse_version_string.hpp</includes>
+    <includes id="is__date__time_8hpp" name="is_date_time.hpp" local="yes" import="no" module="no" objc="no">is_date_time.hpp</includes>
+    <includes id="parse__version__string_8hpp" name="parse_version_string.hpp" local="yes" import="no" module="no" objc="no">parse_version_string.hpp</includes>
+    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">strnlen.hpp</includes>
     <includes id="IterateChunks_8hpp" name="IterateChunks.hpp" local="yes" import="no" module="no" objc="no">hdf5/IterateChunks.hpp</includes>
-    <includes id="strnlen_8hpp" name="strnlen.hpp" local="yes" import="no" module="no" objc="no">hdf5/strnlen.hpp</includes>
     <includes id="as__numeric__datatype_8hpp" name="as_numeric_datatype.hpp" local="yes" import="no" module="no" objc="no">hdf5/as_numeric_datatype.hpp</includes>
     <includes id="mock__contiguous__chunks_8hpp" name="mock_contiguous_chunks.hpp" local="yes" import="no" module="no" objc="no">hdf5/mock_contiguous_chunks.hpp</includes>
     <includes id="ReclaimVlsMemory_8hpp" name="ReclaimVlsMemory.hpp" local="yes" import="no" module="no" objc="no">hdf5/ReclaimVlsMemory.hpp</includes>
@@ -162,6 +167,12 @@
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::hdf5</namespace>
     <namespace>ritsuko::cvls</namespace>
+  </compound>
+  <compound kind="file">
+    <name>strnlen.hpp</name>
+    <path>ritsuko/</path>
+    <filename>strnlen_8hpp.html</filename>
+    <namespace>ritsuko</namespace>
   </compound>
   <compound kind="struct">
     <name>ritsuko::hdf5::IterateChunks</name>
@@ -566,11 +577,32 @@
       <arglist>(const char *ptr, size_t len)</arglist>
     </member>
     <member kind="function">
+      <type>void</type>
+      <name>itoa</name>
+      <anchorfile>namespaceritsuko.html</anchorfile>
+      <anchor>af40997896fd85dfeb3dbb0a87bad7258</anchor>
+      <arglist>(Integer_ x, std::string &amp;output)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>itoa</name>
+      <anchorfile>namespaceritsuko.html</anchorfile>
+      <anchor>ae33fe1295cde35bf13a36611506bcaac</anchor>
+      <arglist>(Integer_ x)</arglist>
+    </member>
+    <member kind="function">
       <type>Version</type>
       <name>parse_version_string</name>
       <anchorfile>namespaceritsuko.html</anchorfile>
       <anchor>aee7609d114de23145d8d28ddde55c810</anchor>
       <arglist>(const char *version_string, size_t size, bool skip_patch=false)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::size_t</type>
+      <name>strnlen</name>
+      <anchorfile>namespaceritsuko.html</anchorfile>
+      <anchor>a3da760acab33392f8137955c4f4a9a4b</anchor>
+      <arglist>(const char *ptr, std::size_t max)</arglist>
     </member>
   </compound>
   <compound kind="namespace">
@@ -732,13 +764,6 @@
       <anchorfile>namespaceritsuko_1_1hdf5.html</anchorfile>
       <anchor>a75511764ce7ee2832375efbcf31222d8</anchor>
       <arglist>(const H5::Attribute &amp;attr)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::size_t</type>
-      <name>strnlen</name>
-      <anchorfile>namespaceritsuko_1_1hdf5.html</anchorfile>
-      <anchor>ab50df338dbb7fed71795d0f0772d7307</anchor>
-      <arglist>(const char *ptr, std::size_t max)</arglist>
     </member>
     <member kind="function">
       <type>void</type>

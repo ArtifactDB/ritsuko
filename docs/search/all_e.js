@@ -13,8 +13,9 @@ var searchData=
   ['stream1dstringdataset_10',['Stream1dStringDataset',['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html',1,'ritsuko::hdf5::Stream1dStringDataset&lt; DataSetPointer_ &gt;'],['../classritsuko_1_1hdf5_1_1Stream1dStringDataset.html#a8e8b449be8e1ba04abbf3bc0cd31a6a3',1,'ritsuko::hdf5::Stream1dStringDataset::Stream1dStringDataset()']]],
   ['stream1dstringdataset_2ehpp_11',['Stream1dStringDataset.hpp',['../Stream1dStringDataset_8hpp.html',1,'']]],
   ['stream1dstringdatasetoptions_12',['Stream1dStringDatasetOptions',['../structritsuko_1_1hdf5_1_1Stream1dStringDatasetOptions.html',1,'ritsuko::hdf5']]],
-  ['strnlen_13',['strnlen',['../namespaceritsuko_1_1hdf5.html#ab50df338dbb7fed71795d0f0772d7307',1,'ritsuko::hdf5']]],
+  ['strnlen_13',['strnlen',['../namespaceritsuko.html#a3da760acab33392f8137955c4f4a9a4b',1,'ritsuko']]],
   ['strnlen_2ehpp_14',['strnlen.hpp',['../strnlen_8hpp.html',1,'']]],
   ['sum_15',['sum',['https://ltla.github.io/sanisizer/namespacesanisizer.html#ad0351da831c6ee07baf0a96c51a019c9',1,'sanisizer']]],
-  ['sum_5funsafe_16',['sum_unsafe',['https://ltla.github.io/sanisizer/namespacesanisizer.html#a6f87dc746d660a88c85ed46d90e5d54c',1,'sanisizer']]]
+  ['sum_2ehpp_16',['sum.hpp',['https://ltla.github.io/sanisizer/sum_8hpp.html',1,'']]],
+  ['sum_5funsafe_17',['sum_unsafe',['https://ltla.github.io/sanisizer/namespacesanisizer.html#a6f87dc746d660a88c85ed46d90e5d54c',1,'sanisizer']]]
 ];

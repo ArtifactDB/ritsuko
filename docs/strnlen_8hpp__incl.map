@@ -1,5 +1,5 @@
-<map id="ritsuko/hdf5/strnlen.hpp" name="ritsuko/hdf5/strnlen.hpp">
-<area shape="rect" id="Node000001" title="Determine the length of a fixed&#45;size string." alt="" coords="8,5,164,31"/>
+<map id="ritsuko/strnlen.hpp" name="ritsuko/strnlen.hpp">
+<area shape="rect" id="Node000001" title="Determine the length of a fixed&#45;size string." alt="" coords="23,5,150,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,77,105"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,33,59,67,54,64,77,30"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="101,79,165,105"/>
