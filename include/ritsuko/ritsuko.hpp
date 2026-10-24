@@ -15,7 +15,7 @@
 #include "hdf5/Stream1dNumericDataset.hpp"
 #include "hdf5/exceeds_limit.hpp"
 #include "hdf5/read_scalar_string.hpp"
-#include "hdf5/is_utf8_string.hpp"
+#include "hdf5/is_utf8_cstring.hpp"
 
 #include "cvls/Pointer.hpp"
 #include "cvls/validate.hpp"

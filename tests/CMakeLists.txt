@@ -24,7 +24,7 @@ add_executable(
     src/itoa.cpp
 
     src/hdf5/exceeds_limit.cpp
-    src/hdf5/is_utf8_string.cpp
+    src/hdf5/is_utf8_cstring.cpp
     src/hdf5/Stream1dNumericDataset.cpp
     src/hdf5/Stream1dStringDataset.cpp
     src/hdf5/IterateChunks.cpp
