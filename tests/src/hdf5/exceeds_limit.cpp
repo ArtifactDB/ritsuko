@@ -56,6 +56,11 @@ TEST(Hdf5ExceedsIntegerLimit, Failed) {
 
     EXPECT_TRUE(ritsuko::hdf5::exceeds_integer_limit(handle.openDataSet("FLOAT32"), 32, false));
     EXPECT_TRUE(ritsuko::hdf5::exceeds_integer_limit(handle.openDataSet("FLOAT32"), 64, true));
+
+// Can't get coverage of this special case, because there literally isn't another available sign type.
+//    H5::IntType itype(H5::PredType::NATIVE_UINT64);
+//    itype.setSign(H5T_NSGN);
+//    EXPECT_TRUE(ritsuko::hdf5::exceeds_integer_limit(itype, 64, true));
 }
 
 TEST(Hdf5ExceedsFloatLimit, Safe) {

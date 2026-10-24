@@ -20,24 +20,30 @@ namespace hdf5 {
  * This is used by validators to ensure that a dataset can be represented in memory by the limiting type.
  *
  * @param itype HDF5 integer datatype.
- * @param precision Number of bits in the limiting integer type, assuming 2's complement.
+ * @param precision Number of bits in the limiting integer type.
+ * This assumes 2's complement if `is_signed = true`.
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the datatype cannot be represented by the limiting integer type.
  */
 inline bool exceeds_integer_limit(const H5::IntType& itype, std::size_t precision, bool is_signed) {
-    if (itype.getSign() == H5T_SGN_NONE) {
+    const auto sign = itype.getSign(); 
+    if (sign == H5T_SGN_NONE) {
         if (is_signed) {
             return (itype.getPrecision() >= precision); // equality, as one bit of the limiting type is used for the sign.
         } else {
             return (itype.getPrecision() > precision);
         }
-    } else {
+    } else if (sign == H5T_SGN_2) {
         if (is_signed) {
             return (itype.getPrecision() > precision);
         } else {
             return true;
         }
+    } else {
+        // Some other as-yet-unsupported integer type (1's complement, perhaps?)
+        // so we'll just err on the side of caution and say it doesn't fit in the limiting unsigned or 2's complement integer.
+        return true;
     }
 }
 
@@ -46,7 +52,8 @@ inline bool exceeds_integer_limit(const H5::IntType& itype, std::size_t precisio
  *
  * @param data A HDF5 dataset.
  * Its datatype may be of any class.
- * @param precision Number of bits in the limiting integer type, assuming 2's complement.
+ * @param precision Number of bits in the limiting integer type. 
+ * This assumes 2's complement if `is_signed = true`.
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the dataset uses a datatype than cannot be represented by the limiting integer type.
@@ -65,7 +72,8 @@ inline bool exceeds_integer_limit(const H5::DataSet& data, std::size_t precision
  *
  * @param attr A HDF5 attribute.
  * Its datatype may be of any class.
- * @param precision Number of bits in the limiting integer type, assuming 2's complement.
+ * @param precision Number of bits in the limiting integer type.
+ * This assumes 2's complement if `is_signed = true`.
  * @param is_signed Whether the limiting integer type is signed.
  *
  * @return Whether the attribute uses a datatype than cannot be represented by the limiting integer type.

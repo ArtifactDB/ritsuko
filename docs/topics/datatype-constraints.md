@@ -10,7 +10,8 @@ However, writers are still free to choose a smaller type to reduce the size of t
 ## Integers 
 
 If a HDF5 dataset/attribute contains integers, the specification should declare the largest integer datatype that can be used.
-This includes both the bit width and sign, assuming a two's complement representation for all integers.
+This includes both the bit width and the signedness of the integer type.
+We assume a two's complement representation for signed integers.
 
 For example, most objects containing integers will specify that the corresponding HDF5 dataset/attribute's datatype is no larger than a 32-bit signed integer. 
 Readers can thus safely assume that an `int32_t` is sufficient to represent all possible values.
