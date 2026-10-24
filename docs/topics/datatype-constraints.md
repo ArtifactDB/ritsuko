@@ -32,6 +32,9 @@ Most objects containing strings will specify that the HDF5 dataset should contai
 This supports both ASCII and UTF-8 encodings as the former is a subset of the latter anyway.
 
 From a specification perspective, there is no difference between variable and fixed length string datatypes.
-In the latter, the length of the string is defined by null termination or by the fixed length if no null character is present.
-This interpretation is the same regardless of the choice of string padding strategy. 
-If a string is right-padded with spaces (as in Fortran), the spaces should just be treated as part of the string.
+For the fixed-length string datatype, the length of each string is defined as the number of bytes to the first null character, or as the fixed length if no null character is present.
+For the variable-length string datatype, each entry of the dataset/attribute should refer to a null-terminated string, i.e., readers should never encounter a `NULL` pointer.
+
+Similarly, specifications do not differentiate between null termination and null padding in HDF5 string datatypes.
+Both are considered to yield appropriate C-style strings when the length is unknown.
+By comparison, Fortran-style blank-padded strings should not be used as it is unclear whether the trailing blanks are meant to be discarded.

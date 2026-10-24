@@ -25,14 +25,17 @@ This attribute should be a scalar of the same exact datatype as the dataset.
 All values in the dataset comparing equal to the placeholder value should be treated as missing.
 Note that the equality comparison has some implications:
 
-- If the dataset is stored in double precision, readers should represent the data in memory with at least as much precision during the placeholder comparison.
+- During the placeholder comparison, readers should represent the data in memory with at least as much precision as used in its storage.
   Otherwise, a cast to lower precision may cause non-missing values to be (incorrectly) equal to the placeholder.
 - If the placeholder is an NaN value, all NaNs in the dataset should be treated as missing, regardless of the specific type of NaN.
   We do not consider the NaN payload during placeholder comparisons as this may not be handled reliably across machines.
 
 ## For strings
 
-This attribute should be a string scalar in either UTF-8 or ASCII encoding.
+This attribute should be a scalar of a string datatype.
+The datatype does not need to be exactly the same as that of the dataset but it should be subject to the constraints in ["Datatype constraints"](./datatype-constraints.md),
+i.e., it should use either UTF-8 or ASCII encoding and it should use either null termination or padding. 
+The string length is defined by null termination or, for fixed-length strings, the fixed length if no null character is present.
 All values in the dataset with the same sequence of bytes (as defined by, e.g., `strcmp`) as the placeholder value should be treated as missing.
 
 ## Further comments
