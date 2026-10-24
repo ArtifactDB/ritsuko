@@ -308,7 +308,7 @@ template&lt;typename Type_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">attr</td><td>A HDF5 attribute. Its datatype may be of any class. </td></tr>
-    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type. This assumes 2's complement if <code>is_signed = true</code>. </td></tr>
     <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
   </table>
   </dd>
@@ -352,7 +352,7 @@ template&lt;typename Type_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>A HDF5 dataset. Its datatype may be of any class. </td></tr>
-    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type. This assumes 2's complement if <code>is_signed = true</code>. </td></tr>
     <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
   </table>
   </dd>
@@ -396,7 +396,7 @@ template&lt;typename Type_ &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">itype</td><td>HDF5 integer datatype. </td></tr>
-    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type, assuming 2's complement. </td></tr>
+    <tr><td class="paramname">precision</td><td>Number of bits in the limiting integer type. This assumes 2's complement if <code>is_signed = true</code>. </td></tr>
     <tr><td class="paramname">is_signed</td><td>Whether the limiting integer type is signed.</td></tr>
   </table>
   </dd>
