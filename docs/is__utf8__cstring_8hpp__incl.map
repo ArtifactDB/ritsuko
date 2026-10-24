@@ -1,5 +1,5 @@
-<map id="ritsuko/hdf5/is_utf8_string.hpp" name="ritsuko/hdf5/is_utf8_string.hpp">
-<area shape="rect" id="Node000001" title="Check if a string datatype uses a UTF&#45;8 encoding." alt="" coords="74,5,207,46"/>
+<map id="ritsuko/hdf5/is_utf8_cstring.hpp" name="ritsuko/hdf5/is_utf8_cstring.hpp">
+<area shape="rect" id="Node000001" title="Check if a string datatype uses null termination and UTF&#45;8 encoding." alt="" coords="74,5,207,46"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,94,87,120"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,48,74,86,70,82,116,44"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="110,94,171,120"/>

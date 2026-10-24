@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ritsuko: ritsuko/hdf5/is_utf8_string.hpp File Reference</title>
+<title>ritsuko: ritsuko/hdf5/is_utf8_cstring.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,21 +93,21 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">is_utf8_string.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">is_utf8_cstring.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Check if a string datatype uses a UTF-8 encoding.  
+<p>Check if a string datatype uses null termination and UTF-8 encoding.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &quot;H5Cpp.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for is_utf8_string.hpp:</div>
+Include dependency graph for is_utf8_cstring.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="is__utf8__string_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2is__utf8__string_8hpp" alt=""/></div>
-<map name="aritsuko_2hdf5_2is__utf8__string_8hpp" id="aritsuko_2hdf5_2is__utf8__string_8hpp">
-<area shape="rect" title="Check if a string datatype uses a UTF&#45;8 encoding." alt="" coords="74,5,207,46"/>
+<div class="center"><img src="is__utf8__cstring_8hpp__incl.png" border="0" usemap="#aritsuko_2hdf5_2is__utf8__cstring_8hpp" alt=""/></div>
+<map name="aritsuko_2hdf5_2is__utf8__cstring_8hpp" id="aritsuko_2hdf5_2is__utf8__cstring_8hpp">
+<area shape="rect" title="Check if a string datatype uses null termination and UTF&#45;8 encoding." alt="" coords="74,5,207,46"/>
 <area shape="rect" title=" " alt="" coords="5,94,87,120"/>
 <area shape="poly" title=" " alt="" coords="119,48,74,86,70,82,116,44"/>
 <area shape="rect" title=" " alt="" coords="110,94,171,120"/>
@@ -119,15 +119,15 @@ Include dependency graph for is_utf8_string.hpp:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="is__utf8__string_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2is__utf8__string_8hppdep" alt=""/></div>
-<map name="aritsuko_2hdf5_2is__utf8__string_8hppdep" id="aritsuko_2hdf5_2is__utf8__string_8hppdep">
-<area shape="rect" title="Check if a string datatype uses a UTF&#45;8 encoding." alt="" coords="5,5,138,46"/>
+<div class="center"><img src="is__utf8__cstring_8hpp__dep__incl.png" border="0" usemap="#aritsuko_2hdf5_2is__utf8__cstring_8hppdep" alt=""/></div>
+<map name="aritsuko_2hdf5_2is__utf8__cstring_8hppdep" id="aritsuko_2hdf5_2is__utf8__cstring_8hppdep">
+<area shape="rect" title="Check if a string datatype uses null termination and UTF&#45;8 encoding." alt="" coords="5,5,138,46"/>
 <area shape="rect" href="ritsuko_8hpp.html" title="Umbrella header for ritsuko." alt="" coords="8,94,135,120"/>
 <area shape="poly" title=" " alt="" coords="74,62,74,93,69,93,69,62"/>
 </map>
 </div>
 </div>
-<p><a href="is__utf8__string_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="is__utf8__cstring_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -140,15 +140,15 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a188b248f678ed8edd7564193e54fa44a" id="r_a188b248f678ed8edd7564193e54fa44a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a188b248f678ed8edd7564193e54fa44a">ritsuko::hdf5::is_utf8_string</a> (const H5::StrType &amp;stype)</td></tr>
-<tr class="separator:a188b248f678ed8edd7564193e54fa44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb640ca5a6816733631a41238c59fbab" id="r_abb640ca5a6816733631a41238c59fbab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#abb640ca5a6816733631a41238c59fbab">ritsuko::hdf5::is_utf8_string</a> (const H5::DataSet &amp;data)</td></tr>
-<tr class="separator:abb640ca5a6816733631a41238c59fbab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4ec3b78b2341db4641a2eff0533c090" id="r_af4ec3b78b2341db4641a2eff0533c090"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#af4ec3b78b2341db4641a2eff0533c090">ritsuko::hdf5::is_utf8_string</a> (const H5::Attribute &amp;attr)</td></tr>
-<tr class="separator:af4ec3b78b2341db4641a2eff0533c090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49aeb192acaaa3b21752c0fb71678f1f" id="r_a49aeb192acaaa3b21752c0fb71678f1f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#a49aeb192acaaa3b21752c0fb71678f1f">ritsuko::hdf5::is_utf8_cstring</a> (const H5::StrType &amp;stype)</td></tr>
+<tr class="separator:a49aeb192acaaa3b21752c0fb71678f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c3cc8aaacc6815a1596d7fc70e9fd8" id="r_ac9c3cc8aaacc6815a1596d7fc70e9fd8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#ac9c3cc8aaacc6815a1596d7fc70e9fd8">ritsuko::hdf5::is_utf8_cstring</a> (const H5::DataSet &amp;data)</td></tr>
+<tr class="separator:ac9c3cc8aaacc6815a1596d7fc70e9fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf148c44777ba09d85b42d8db47cfe1c" id="r_acf148c44777ba09d85b42d8db47cfe1c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceritsuko_1_1hdf5.html#acf148c44777ba09d85b42d8db47cfe1c">ritsuko::hdf5::is_utf8_cstring</a> (const H5::Attribute &amp;attr)</td></tr>
+<tr class="separator:acf148c44777ba09d85b42d8db47cfe1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Check if a string datatype uses a UTF-8 encoding. </p>
+<div class="textblock"><p>Check if a string datatype uses null termination and UTF-8 encoding. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

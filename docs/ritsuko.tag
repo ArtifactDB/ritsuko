@@ -51,9 +51,9 @@
     <namespace>ritsuko::hdf5</namespace>
   </compound>
   <compound kind="file">
-    <name>is_utf8_string.hpp</name>
+    <name>is_utf8_cstring.hpp</name>
     <path>ritsuko/hdf5/</path>
-    <filename>is__utf8__string_8hpp.html</filename>
+    <filename>is__utf8__cstring_8hpp.html</filename>
     <namespace>ritsuko</namespace>
     <namespace>ritsuko::hdf5</namespace>
   </compound>
@@ -161,7 +161,7 @@
     <includes id="Stream1dNumericDataset_8hpp" name="Stream1dNumericDataset.hpp" local="yes" import="no" module="no" objc="no">hdf5/Stream1dNumericDataset.hpp</includes>
     <includes id="exceeds__limit_8hpp" name="exceeds_limit.hpp" local="yes" import="no" module="no" objc="no">hdf5/exceeds_limit.hpp</includes>
     <includes id="read__scalar__string_8hpp" name="read_scalar_string.hpp" local="yes" import="no" module="no" objc="no">hdf5/read_scalar_string.hpp</includes>
-    <includes id="is__utf8__string_8hpp" name="is_utf8_string.hpp" local="yes" import="no" module="no" objc="no">hdf5/is_utf8_string.hpp</includes>
+    <includes id="is__utf8__cstring_8hpp" name="is_utf8_cstring.hpp" local="yes" import="no" module="no" objc="no">hdf5/is_utf8_cstring.hpp</includes>
     <includes id="Pointer_8hpp" name="Pointer.hpp" local="yes" import="no" module="no" objc="no">cvls/Pointer.hpp</includes>
     <includes id="validate_8hpp" name="validate.hpp" local="yes" import="no" module="no" objc="no">cvls/validate.hpp</includes>
     <includes id="Stream1dArray_8hpp" name="Stream1dArray.hpp" local="yes" import="no" module="no" objc="no">cvls/Stream1dArray.hpp</includes>
@@ -726,23 +726,23 @@
     </member>
     <member kind="function">
       <type>bool</type>
-      <name>is_utf8_string</name>
+      <name>is_utf8_cstring</name>
       <anchorfile>namespaceritsuko_1_1hdf5.html</anchorfile>
-      <anchor>a188b248f678ed8edd7564193e54fa44a</anchor>
+      <anchor>a49aeb192acaaa3b21752c0fb71678f1f</anchor>
       <arglist>(const H5::StrType &amp;stype)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
-      <name>is_utf8_string</name>
+      <name>is_utf8_cstring</name>
       <anchorfile>namespaceritsuko_1_1hdf5.html</anchorfile>
-      <anchor>abb640ca5a6816733631a41238c59fbab</anchor>
+      <anchor>ac9c3cc8aaacc6815a1596d7fc70e9fd8</anchor>
       <arglist>(const H5::DataSet &amp;data)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
-      <name>is_utf8_string</name>
+      <name>is_utf8_cstring</name>
       <anchorfile>namespaceritsuko_1_1hdf5.html</anchorfile>
-      <anchor>af4ec3b78b2341db4641a2eff0533c090</anchor>
+      <anchor>acf148c44777ba09d85b42d8db47cfe1c</anchor>
       <arglist>(const H5::Attribute &amp;attr)</arglist>
     </member>
     <member kind="function">

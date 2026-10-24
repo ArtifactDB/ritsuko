@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['nd_5foffset_0',['nd_offset',['https://ltla.github.io/sanisizer/namespacesanisizer.html#a8d460a84022487d3460671e5ff96f163',1,'sanisizer']]],
-  ['nd_5foffset_2ehpp_1',['nd_offset.hpp',['https://ltla.github.io/sanisizer/nd__offset_8hpp.html',1,'']]],
-  ['ne_2',['ne',['../structritsuko_1_1Version.html#a3573807071f76404ab0f2fbb1dc2f20d',1,'ritsuko::Version']]]
+  ['major_0',['major',['../structritsuko_1_1Version.html#a37246955fe4b871ea90d04f3bab26aa9',1,'ritsuko::Version']]],
+  ['max_1',['max',['https://ltla.github.io/sanisizer/structsanisizer_1_1Bounded.html#a49c663a1120236dc17b3379e0d10722c',1,'sanisizer::Bounded::max'],['https://ltla.github.io/sanisizer/namespacesanisizer.html#a692dab8520331e20e6d2361439a53450',1,'sanisizer::max(First_ first, Second_ second)']]],
+  ['min_2',['min',['https://ltla.github.io/sanisizer/namespacesanisizer.html#aa483a5cd81fb958f0cd7198752030076',1,'sanisizer']]],
+  ['minor_3',['minor',['../structritsuko_1_1Version.html#a78d16b15d3c78d26cd68a686ef49426c',1,'ritsuko::Version']]],
+  ['missing_20value_20placeholder_4',['Missing value placeholder',['../md__2github_2workspace_2docs_2topics_2missing-placeholder.html',1,'']]],
+  ['mock_5fcontiguous_5fchunks_5',['mock_contiguous_chunks',['../namespaceritsuko_1_1hdf5.html#a193739956649ed6018a2691e0cb45d13',1,'ritsuko::hdf5']]],
+  ['mock_5fcontiguous_5fchunks_2ehpp_6',['mock_contiguous_chunks.hpp',['../mock__contiguous__chunks_8hpp.html',1,'']]]
 ];

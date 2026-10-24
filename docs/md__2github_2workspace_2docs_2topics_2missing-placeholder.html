@@ -97,7 +97,7 @@ $(function(){ initResizable(false); });
 <h1>For floating-point</h1>
 <p>This attribute should be a scalar of the same exact datatype as the dataset. All values in the dataset comparing equal to the placeholder value should be treated as missing. Note that the equality comparison has some implications:</p>
 <ul>
-<li>If the dataset is stored in double precision, readers should represent the data in memory with at least as much precision during the placeholder comparison. Otherwise, a cast to lower precision may cause non-missing values to be (incorrectly) equal to the placeholder.</li>
+<li>During the placeholder comparison, readers should represent the data in memory with at least as much precision as used in its storage. Otherwise, a cast to lower precision may cause non-missing values to be (incorrectly) equal to the placeholder.</li>
 <li>If the placeholder is an NaN value, all NaNs in the dataset should be treated as missing, regardless of the specific type of NaN. We do not consider the NaN payload during placeholder comparisons as this may not be handled reliably across machines.</li>
 </ul>
 <h1>For strings</h1>

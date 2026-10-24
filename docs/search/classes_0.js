@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['attestation_0',['Attestation',['https://ltla.github.io/sanisizer/structsanisizer_1_1Attestation.html',1,'sanisizer']]]
+  ['bounded_0',['Bounded',['https://ltla.github.io/sanisizer/structsanisizer_1_1Bounded.html',1,'sanisizer']]]
 ];

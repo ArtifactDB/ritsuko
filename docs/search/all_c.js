@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['parse_5fversion_5fstring_0',['parse_version_string',['../namespaceritsuko.html#aee7609d114de23145d8d28ddde55c810',1,'ritsuko']]],
-  ['parse_5fversion_5fstring_2ehpp_1',['parse_version_string.hpp',['../parse__version__string_8hpp.html',1,'']]],
-  ['parsing_20and_20validation_2',['C++ utilities for parsing and validation',['../index.html',1,'']]],
-  ['patch_3',['patch',['../structritsuko_1_1Version.html#ab11472e3a5b0a73724a8367bde91fafb',1,'ritsuko::Version']]],
-  ['placeholder_4',['Missing value placeholder',['../md__2github_2workspace_2docs_2topics_2missing-placeholder.html',1,'']]],
-  ['pointer_5',['Pointer',['../structritsuko_1_1cvls_1_1Pointer.html',1,'ritsuko::cvls']]],
-  ['pointer_2ehpp_6',['Pointer.hpp',['../Pointer_8hpp.html',1,'']]],
-  ['product_7',['product',['https://ltla.github.io/sanisizer/namespacesanisizer.html#ace3b6841d0fd165ae3f47d07a713a15c',1,'sanisizer']]],
-  ['product_2ehpp_8',['product.hpp',['https://ltla.github.io/sanisizer/product_8hpp.html',1,'']]],
-  ['product_5funsafe_9',['product_unsafe',['https://ltla.github.io/sanisizer/namespacesanisizer.html#aa3df28f9c655292959f7fbf22e61f9c2',1,'sanisizer']]],
-  ['ptrdiff_2ehpp_10',['ptrdiff.hpp',['https://ltla.github.io/sanisizer/ptrdiff_8hpp.html',1,'']]]
+  ['offset_0',['offset',['../structritsuko_1_1cvls_1_1Pointer.html#aea7226605d2f6141be9367215aefff44',1,'ritsuko::cvls::Pointer']]],
+  ['operator_20integer_5f_1',['operator Integer_',['https://ltla.github.io/sanisizer/classsanisizer_1_1Exact.html#ae46a64c0dbe62535e6d5ffe8e555bba5',1,'sanisizer::Exact']]],
+  ['operator_20output_5f_2',['operator Output_',['https://ltla.github.io/sanisizer/classsanisizer_1_1Cast.html#a22b477d41df49b122428deb6532e2307',1,'sanisizer::Cast::operator Output_()'],['https://ltla.github.io/sanisizer/classsanisizer_1_1Exact.html#a0f5204707227e757d6b1dd25ba60619c',1,'sanisizer::Exact::operator Output_()']]],
+  ['operator_21_3d_3',['operator!=',['../structritsuko_1_1Version.html#ae9589dc549fa6e1c0b56d13afdc0dd9a',1,'ritsuko::Version']]],
+  ['operator_3c_4',['operator&lt;',['../structritsuko_1_1Version.html#ace04f21a572ba2dce8825b38c9bb94c8',1,'ritsuko::Version']]],
+  ['operator_3c_3d_5',['operator&lt;=',['../structritsuko_1_1Version.html#a51aac8210920ab34b637f8d443366fc7',1,'ritsuko::Version']]],
+  ['operator_3d_3d_6',['operator==',['../structritsuko_1_1Version.html#a5e3761b0f6740ab7d1d9fe4d2e96d2a9',1,'ritsuko::Version']]],
+  ['operator_3e_7',['operator&gt;',['../structritsuko_1_1Version.html#a2533ff64d845d296993e33eae7f9fa0d',1,'ritsuko::Version']]],
+  ['operator_3e_3d_8',['operator&gt;=',['../structritsuko_1_1Version.html#a322331b6e57da64690a3016c5f9ad173',1,'ritsuko::Version']]],
+  ['organization_9',['HDF5 internal organization',['../md__2github_2workspace_2docs_2topics_2internal-organization.html',1,'']]]
 ];

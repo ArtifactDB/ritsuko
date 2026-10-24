@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utilities_20for_20parsing_20and_20validation_0',['C++ utilities for parsing and validation',['../index.html',1,'']]]
+  ['to_5ffloat_0',['to_float',['https://ltla.github.io/sanisizer/namespacesanisizer.html#a447b72d39555bf45311e5f3419246e95',1,'sanisizer']]]
 ];
